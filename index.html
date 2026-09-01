@@ -657,8 +657,8 @@
             top: 40%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 320px;
-            height: 320px;
+            width: 256px;
+            height: 256px;
             pointer-events: none;
             z-index: 1;
         }
@@ -697,16 +697,17 @@
         .walkie-device {
             position: relative;
             z-index: 5;
-            width: 160px;
+            width: 128px;
             height: auto;
             background: linear-gradient(165deg, #1e293b 0%, #0f172a 100%);
             border: none;
-            border-radius: 22px;
+            border-radius: 18px;
             box-shadow: none;
-            padding: 16px;
+            padding: 13px;
             display: flex;
             flex-direction: column;
             align-items: center;
+            font-family: var(--font-mono);
             animation: devicePulse 3s ease-in-out infinite alternate;
         }
 
@@ -721,43 +722,43 @@
 
         .walkie-antenna {
             position: absolute;
-            top: -52px;
-            left: 32px;
-            width: 10px;
-            height: 56px;
+            top: -42px;
+            left: 26px;
+            width: 8px;
+            height: 45px;
             background: linear-gradient(to right, #334155, #0f172a);
-            border-radius: 5px 5px 0 0;
+            border-radius: 4px 4px 0 0;
             border: none;
         }
         .walkie-antenna-tip {
             position: absolute;
-            top: -6px;
+            top: -5px;
             left: -2px;
-            width: 13px;
-            height: 8px;
+            width: 10px;
+            height: 6px;
             background: var(--accent-orange);
-            border-radius: 3px;
+            border-radius: 2px;
             box-shadow: none;
         }
 
         .walkie-knob {
             position: absolute;
-            top: -16px;
-            right: 32px;
-            width: 19px;
-            height: 18px;
+            top: -13px;
+            right: 26px;
+            width: 15px;
+            height: 14px;
             background: #334155;
-            border-radius: 3px 3px 0 0;
+            border-radius: 2px 2px 0 0;
             border: none;
         }
 
         .walkie-screen {
             width: 100%;
-            height: 68px;
+            height: 54px;
             background: #0f0c08;
             border: none;
-            border-radius: 10px;
-            margin-top: 12px;
+            border-radius: 8px;
+            margin-top: 10px;
             position: relative;
             overflow: hidden;
             display: flex;
@@ -781,8 +782,9 @@
             font-family: var(--font-mono);
             color: #ff8c00;
             font-weight: 700;
-            font-size: 0.75rem;
-            letter-spacing: 1.5px;
+            font-size: 0.58rem;
+            line-height: 1.3;
+            letter-spacing: 1px;
             text-align: center;
             text-shadow: 0 0 8px rgba(255, 140, 0, 0.7);
             z-index: 3;
@@ -790,10 +792,12 @@
         }
 
         .screen-status {
-            font-size: 0.55rem;
+            font-family: var(--font-mono);
+            font-size: 0.42rem;
+            font-weight: 600;
             color: #b8a898;
-            margin-top: 3px;
-            letter-spacing: 1px;
+            margin-top: 2px;
+            letter-spacing: 0.8px;
             z-index: 3;
         }
 
@@ -822,13 +826,13 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            margin-top: 12px;
-            gap: 4px;
+            margin-top: 10px;
+            gap: 3px;
         }
 
         .walkie-call-btn {
-            width: 26px;
-            height: 26px;
+            width: 21px;
+            height: 21px;
             border-radius: 50%;
             border: none;
             flex-shrink: 0;
@@ -838,25 +842,25 @@
         }
 
         .walkie-call-btn svg {
-            width: 13px;
-            height: 13px;
+            width: 10px;
+            height: 10px;
             fill: #ffffff;
         }
 
         .call-answer {
             background: #2ecc71;
-            box-shadow: 0 0 8px rgba(46, 204, 113, 0.55);
+            box-shadow: 0 0 6px rgba(46, 204, 113, 0.55);
         }
 
         .call-end {
             background: #e74c3c;
-            box-shadow: 0 0 8px rgba(231, 76, 60, 0.55);
+            box-shadow: 0 0 6px rgba(231, 76, 60, 0.55);
         }
 
         .walkie-dpad {
             position: relative;
-            width: 60px;
-            height: 60px;
+            width: 48px;
+            height: 48px;
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             grid-template-rows: repeat(3, 1fr);
@@ -869,34 +873,34 @@
             align-items: center;
             justify-content: center;
             background: #334155;
-            border-radius: 4px;
+            border-radius: 3px;
         }
 
         .dpad-btn svg {
-            width: 9px;
-            height: 9px;
+            width: 7px;
+            height: 7px;
             fill: var(--accent-orange);
         }
 
         .dpad-up {
             grid-column: 2;
             grid-row: 1;
-            border-radius: 4px 4px 0 0;
+            border-radius: 3px 3px 0 0;
         }
         .dpad-left {
             grid-column: 1;
             grid-row: 2;
-            border-radius: 4px 0 0 4px;
+            border-radius: 3px 0 0 3px;
         }
         .dpad-right {
             grid-column: 3;
             grid-row: 2;
-            border-radius: 0 4px 4px 0;
+            border-radius: 0 3px 3px 0;
         }
         .dpad-down {
             grid-column: 2;
             grid-row: 3;
-            border-radius: 0 0 4px 4px;
+            border-radius: 0 0 3px 3px;
         }
 
         .dpad-center {
@@ -906,35 +910,37 @@
             border-radius: 50%;
             color: #1a140e;
             font-family: var(--font-mono);
-            font-size: 0.5rem;
+            font-size: 0.38rem;
             font-weight: 700;
+            letter-spacing: 0.3px;
         }
 
         /* ===== KEYPAD NOMBOR MACAM TELEFON ===== */
         .walkie-keypad {
             width: 100%;
-            margin-top: 12px;
+            margin-top: 10px;
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 6px;
+            gap: 5px;
         }
 
         .keypad-key {
             aspect-ratio: 1 / 1;
             background: #334155;
-            border-radius: 7px;
+            border-radius: 5px;
             display: flex;
             align-items: center;
             justify-content: center;
             color: #ffffff;
             font-family: var(--font-mono);
             font-weight: 700;
-            font-size: 0.78rem;
+            font-size: 0.6rem;
+            letter-spacing: 0.3px;
         }
 
         .walkie-light {
-            width: 8px;
-            height: 8px;
+            width: 6px;
+            height: 6px;
             border-radius: 50%;
             background: var(--accent-orange);
             box-shadow: 0 0 12px var(--accent-orange);
