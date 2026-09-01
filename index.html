@@ -31,6 +31,10 @@
             --hair-color: #3d2b1f;
             --pants-color: #3d3d3d;
             --shoe-color: #2d2d2d;
+            --blazer-color: #2f3b4c;
+            --blazer-color-dark: #232c38;
+            --shirt-color: #ffffff;
+            --tie-color: var(--accent-orange);
 
             --font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
                 Roboto, 'Helvetica Neue', sans-serif;
@@ -653,8 +657,8 @@
             top: 40%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 400px;
-            height: 400px;
+            width: 320px;
+            height: 320px;
             pointer-events: none;
             z-index: 1;
         }
@@ -693,13 +697,13 @@
         .walkie-device {
             position: relative;
             z-index: 5;
-            width: 200px;
-            height: 340px;
+            width: 160px;
+            height: auto;
             background: linear-gradient(165deg, #1e293b 0%, #0f172a 100%);
             border: none;
-            border-radius: 28px;
+            border-radius: 22px;
             box-shadow: none;
-            padding: 20px;
+            padding: 16px;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -717,43 +721,43 @@
 
         .walkie-antenna {
             position: absolute;
-            top: -65px;
-            left: 40px;
-            width: 12px;
-            height: 70px;
+            top: -52px;
+            left: 32px;
+            width: 10px;
+            height: 56px;
             background: linear-gradient(to right, #334155, #0f172a);
-            border-radius: 6px 6px 0 0;
+            border-radius: 5px 5px 0 0;
             border: none;
         }
         .walkie-antenna-tip {
             position: absolute;
-            top: -8px;
+            top: -6px;
             left: -2px;
-            width: 16px;
-            height: 10px;
+            width: 13px;
+            height: 8px;
             background: var(--accent-orange);
-            border-radius: 4px;
+            border-radius: 3px;
             box-shadow: none;
         }
 
         .walkie-knob {
             position: absolute;
-            top: -20px;
-            right: 40px;
-            width: 24px;
-            height: 22px;
+            top: -16px;
+            right: 32px;
+            width: 19px;
+            height: 18px;
             background: #334155;
-            border-radius: 4px 4px 0 0;
+            border-radius: 3px 3px 0 0;
             border: none;
         }
 
         .walkie-screen {
             width: 100%;
-            height: 90px;
+            height: 68px;
             background: #0f0c08;
             border: none;
-            border-radius: 12px;
-            margin-top: 15px;
+            border-radius: 10px;
+            margin-top: 12px;
             position: relative;
             overflow: hidden;
             display: flex;
@@ -777,8 +781,8 @@
             font-family: var(--font-mono);
             color: #ff8c00;
             font-weight: 700;
-            font-size: 0.95rem;
-            letter-spacing: 2px;
+            font-size: 0.75rem;
+            letter-spacing: 1.5px;
             text-align: center;
             text-shadow: 0 0 8px rgba(255, 140, 0, 0.7);
             z-index: 3;
@@ -786,9 +790,9 @@
         }
 
         .screen-status {
-            font-size: 0.65rem;
+            font-size: 0.55rem;
             color: #b8a898;
-            margin-top: 4px;
+            margin-top: 3px;
             letter-spacing: 1px;
             z-index: 3;
         }
@@ -812,44 +816,129 @@
             }
         }
 
-        .walkie-speaker {
+        /* ===== BUTANG CALL (JAWAB / TAMAT) + PAD NAVIGASI ===== */
+        .walkie-call-row {
             width: 100%;
-            margin-top: 25px;
             display: flex;
-            flex-direction: column;
-            gap: 6px;
             align-items: center;
+            justify-content: space-between;
+            margin-top: 12px;
+            gap: 4px;
         }
 
-        .speaker-line {
-            height: 4px;
-            background: rgba(255, 123, 0, 0.25);
-            border-radius: 2px;
+        .walkie-call-btn {
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
             border: none;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
-        .speaker-line:nth-child(1) {
-            width: 80%;
+
+        .walkie-call-btn svg {
+            width: 13px;
+            height: 13px;
+            fill: #ffffff;
         }
-        .speaker-line:nth-child(2) {
-            width: 90%;
+
+        .call-answer {
+            background: #2ecc71;
+            box-shadow: 0 0 8px rgba(46, 204, 113, 0.55);
         }
-        .speaker-line:nth-child(3) {
-            width: 75%;
+
+        .call-end {
+            background: #e74c3c;
+            box-shadow: 0 0 8px rgba(231, 76, 60, 0.55);
         }
-        .speaker-line:nth-child(4) {
-            width: 85%;
+
+        .walkie-dpad {
+            position: relative;
+            width: 60px;
+            height: 60px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(3, 1fr);
+            gap: 2px;
         }
-        .speaker-line:nth-child(5) {
-            width: 60%;
+
+        .dpad-btn,
+        .dpad-center {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #334155;
+            border-radius: 4px;
+        }
+
+        .dpad-btn svg {
+            width: 9px;
+            height: 9px;
+            fill: var(--accent-orange);
+        }
+
+        .dpad-up {
+            grid-column: 2;
+            grid-row: 1;
+            border-radius: 4px 4px 0 0;
+        }
+        .dpad-left {
+            grid-column: 1;
+            grid-row: 2;
+            border-radius: 4px 0 0 4px;
+        }
+        .dpad-right {
+            grid-column: 3;
+            grid-row: 2;
+            border-radius: 0 4px 4px 0;
+        }
+        .dpad-down {
+            grid-column: 2;
+            grid-row: 3;
+            border-radius: 0 0 4px 4px;
+        }
+
+        .dpad-center {
+            grid-column: 2;
+            grid-row: 2;
+            background: var(--accent-orange);
+            border-radius: 50%;
+            color: #1a140e;
+            font-family: var(--font-mono);
+            font-size: 0.5rem;
+            font-weight: 700;
+        }
+
+        /* ===== KEYPAD NOMBOR MACAM TELEFON ===== */
+        .walkie-keypad {
+            width: 100%;
+            margin-top: 12px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 6px;
+        }
+
+        .keypad-key {
+            aspect-ratio: 1 / 1;
+            background: #334155;
+            border-radius: 7px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ffffff;
+            font-family: var(--font-mono);
+            font-weight: 700;
+            font-size: 0.78rem;
         }
 
         .walkie-light {
-            width: 10px;
-            height: 10px;
+            width: 8px;
+            height: 8px;
             border-radius: 50%;
             background: var(--accent-orange);
             box-shadow: 0 0 12px var(--accent-orange);
-            margin-top: 20px;
+            margin-top: 14px;
             animation: blinkLight 1.5s ease-in-out infinite alternate;
         }
 
@@ -1380,13 +1469,18 @@
                             <circle cx="45" cy="19" r="1.8" fill="var(--skin-stroke)"/>
                             <circle cx="55" cy="19" r="1.8" fill="var(--skin-stroke)"/>
                             <path d="M46,24 Q50,27 54,24" stroke="var(--skin-stroke)" stroke-width="1.2" fill="none" stroke-linecap="round"/>
-                            <rect x="35" y="33" width="30" height="28" rx="4" fill="var(--accent-orange)" stroke="var(--skin-stroke)" stroke-width="1.2"/>
-                            <path d="M42,33 L50,28 L58,33" fill="var(--accent-orange-dark)" stroke="var(--skin-stroke)" stroke-width="0.8"/>
-                            <rect x="35" y="54" width="30" height="3" fill="var(--accent-orange-dark)" stroke="var(--skin-stroke)" stroke-width="0.8"/>
-                            <path d="M35,36 Q26,44 33,52" stroke="var(--skin-color)" stroke-width="6" fill="none" stroke-linecap="round"/>
-                            <path d="M33,52 Q37,50 41,48" stroke="var(--skin-color)" stroke-width="5" fill="none" stroke-linecap="round"/>
-                            <path d="M65,36 Q74,44 67,52" stroke="var(--skin-color)" stroke-width="6" fill="none" stroke-linecap="round"/>
-                            <path d="M67,52 Q63,50 59,48" stroke="var(--skin-color)" stroke-width="5" fill="none" stroke-linecap="round"/>
+                            <rect x="35" y="33" width="30" height="28" rx="4" fill="var(--blazer-color)" stroke="var(--skin-stroke)" stroke-width="1.2"/>
+                            <path d="M35,33 L44,33 L47,41 L35,46 Z" fill="var(--blazer-color-dark)" stroke="var(--skin-stroke)" stroke-width="0.6"/>
+                            <path d="M65,33 L56,33 L53,41 L65,46 Z" fill="var(--blazer-color-dark)" stroke="var(--skin-stroke)" stroke-width="0.6"/>
+                            <path d="M44,33 L50,41 L56,33 Z" fill="var(--shirt-color)" stroke="var(--skin-stroke)" stroke-width="0.5"/>
+                            <path d="M48,34 L52,34 L51,44 L50,47 L49,44 Z" fill="var(--tie-color)" stroke="var(--skin-stroke)" stroke-width="0.4"/>
+                            <rect x="35" y="55" width="30" height="2" fill="var(--blazer-color-dark)"/>
+                            <path d="M35,36 Q26,44 33,52" stroke="var(--blazer-color)" stroke-width="6" fill="none" stroke-linecap="round"/>
+                            <path d="M33,52 Q37,50 41,48" stroke="var(--blazer-color)" stroke-width="5" fill="none" stroke-linecap="round"/>
+                            <circle cx="40" cy="49" r="3" fill="var(--skin-color)" stroke="var(--skin-stroke)" stroke-width="0.6"/>
+                            <path d="M65,36 Q74,44 67,52" stroke="var(--blazer-color)" stroke-width="6" fill="none" stroke-linecap="round"/>
+                            <path d="M67,52 Q63,50 59,48" stroke="var(--blazer-color)" stroke-width="5" fill="none" stroke-linecap="round"/>
+                            <circle cx="60" cy="49" r="3" fill="var(--skin-color)" stroke="var(--skin-stroke)" stroke-width="0.6"/>
                             <rect x="39" y="61" width="8" height="18" rx="3" fill="var(--pants-color)" stroke="var(--skin-stroke)" stroke-width="1.2"/>
                             <rect x="53" y="61" width="8" height="18" rx="3" fill="var(--pants-color)" stroke="var(--skin-stroke)" stroke-width="1.2"/>
                             <ellipse cx="43" cy="81" rx="7" ry="3.5" fill="var(--shoe-color)" stroke="var(--skin-stroke)" stroke-width="0.8"/>
@@ -1407,11 +1501,16 @@
                             <circle cx="45" cy="19" r="1.8" fill="var(--skin-stroke)"/>
                             <circle cx="55" cy="19" r="1.8" fill="var(--skin-stroke)"/>
                             <path d="M46,24 Q50,27 54,24" stroke="var(--skin-stroke)" stroke-width="1.2" fill="none" stroke-linecap="round"/>
-                            <rect x="35" y="33" width="30" height="28" rx="4" fill="var(--accent-orange)" stroke="var(--skin-stroke)" stroke-width="1.2"/>
-                            <path d="M42,33 L50,28 L58,33" fill="var(--accent-orange-dark)" stroke="var(--skin-stroke)" stroke-width="0.8"/>
-                            <rect x="35" y="54" width="30" height="3" fill="var(--accent-orange-dark)" stroke="var(--skin-stroke)" stroke-width="0.8"/>
-                            <path d="M35,36 Q28,48 30,60" stroke="var(--skin-color)" stroke-width="6" fill="none" stroke-linecap="round"/>
-                            <path d="M65,36 Q72,48 70,60" stroke="var(--skin-color)" stroke-width="6" fill="none" stroke-linecap="round"/>
+                            <rect x="35" y="33" width="30" height="28" rx="4" fill="var(--blazer-color)" stroke="var(--skin-stroke)" stroke-width="1.2"/>
+                            <path d="M35,33 L44,33 L47,41 L35,46 Z" fill="var(--blazer-color-dark)" stroke="var(--skin-stroke)" stroke-width="0.6"/>
+                            <path d="M65,33 L56,33 L53,41 L65,46 Z" fill="var(--blazer-color-dark)" stroke="var(--skin-stroke)" stroke-width="0.6"/>
+                            <path d="M44,33 L50,41 L56,33 Z" fill="var(--shirt-color)" stroke="var(--skin-stroke)" stroke-width="0.5"/>
+                            <path d="M48,34 L52,34 L51,44 L50,47 L49,44 Z" fill="var(--tie-color)" stroke="var(--skin-stroke)" stroke-width="0.4"/>
+                            <rect x="35" y="55" width="30" height="2" fill="var(--blazer-color-dark)"/>
+                            <path d="M35,36 Q28,48 30,60" stroke="var(--blazer-color)" stroke-width="6" fill="none" stroke-linecap="round"/>
+                            <circle cx="30" cy="60" r="3" fill="var(--skin-color)" stroke="var(--skin-stroke)" stroke-width="0.6"/>
+                            <path d="M65,36 Q72,48 70,60" stroke="var(--blazer-color)" stroke-width="6" fill="none" stroke-linecap="round"/>
+                            <circle cx="70" cy="60" r="3" fill="var(--skin-color)" stroke="var(--skin-stroke)" stroke-width="0.6"/>
                             <rect x="39" y="61" width="8" height="18" rx="3" fill="var(--pants-color)" stroke="var(--skin-stroke)" stroke-width="1.2"/>
                             <rect x="53" y="61" width="8" height="18" rx="3" fill="var(--pants-color)" stroke="var(--skin-stroke)" stroke-width="1.2"/>
                             <ellipse cx="43" cy="81" rx="7" ry="3.5" fill="var(--shoe-color)" stroke="var(--skin-stroke)" stroke-width="0.8"/>
@@ -1432,11 +1531,16 @@
                             <circle cx="45" cy="19" r="1.8" fill="var(--skin-stroke)"/>
                             <circle cx="55" cy="19" r="1.8" fill="var(--skin-stroke)"/>
                             <path d="M46,24 Q50,27 54,24" stroke="var(--skin-stroke)" stroke-width="1.2" fill="none" stroke-linecap="round"/>
-                            <rect x="35" y="33" width="30" height="28" rx="4" fill="var(--accent-orange)" stroke="var(--skin-stroke)" stroke-width="1.2"/>
-                            <path d="M42,33 L50,28 L58,33" fill="var(--accent-orange-dark)" stroke="var(--skin-stroke)" stroke-width="0.8"/>
-                            <rect x="35" y="54" width="30" height="3" fill="var(--accent-orange-dark)" stroke="var(--skin-stroke)" stroke-width="0.8"/>
-                            <path d="M35,36 Q28,48 30,60" stroke="var(--skin-color)" stroke-width="6" fill="none" stroke-linecap="round"/>
-                            <path d="M65,36 Q72,48 70,60" stroke="var(--skin-color)" stroke-width="6" fill="none" stroke-linecap="round"/>
+                            <rect x="35" y="33" width="30" height="28" rx="4" fill="var(--blazer-color)" stroke="var(--skin-stroke)" stroke-width="1.2"/>
+                            <path d="M35,33 L44,33 L47,41 L35,46 Z" fill="var(--blazer-color-dark)" stroke="var(--skin-stroke)" stroke-width="0.6"/>
+                            <path d="M65,33 L56,33 L53,41 L65,46 Z" fill="var(--blazer-color-dark)" stroke="var(--skin-stroke)" stroke-width="0.6"/>
+                            <path d="M44,33 L50,41 L56,33 Z" fill="var(--shirt-color)" stroke="var(--skin-stroke)" stroke-width="0.5"/>
+                            <path d="M48,34 L52,34 L51,44 L50,47 L49,44 Z" fill="var(--tie-color)" stroke="var(--skin-stroke)" stroke-width="0.4"/>
+                            <rect x="35" y="55" width="30" height="2" fill="var(--blazer-color-dark)"/>
+                            <path d="M35,36 Q28,48 30,60" stroke="var(--blazer-color)" stroke-width="6" fill="none" stroke-linecap="round"/>
+                            <circle cx="30" cy="60" r="3" fill="var(--skin-color)" stroke="var(--skin-stroke)" stroke-width="0.6"/>
+                            <path d="M65,36 Q72,48 70,60" stroke="var(--blazer-color)" stroke-width="6" fill="none" stroke-linecap="round"/>
+                            <circle cx="70" cy="60" r="3" fill="var(--skin-color)" stroke="var(--skin-stroke)" stroke-width="0.6"/>
                             <rect x="39" y="61" width="8" height="18" rx="3" fill="var(--pants-color)" stroke="var(--skin-stroke)" stroke-width="1.2"/>
                             <rect x="53" y="61" width="8" height="18" rx="3" fill="var(--pants-color)" stroke="var(--skin-stroke)" stroke-width="1.2"/>
                             <ellipse cx="43" cy="81" rx="7" ry="3.5" fill="var(--shoe-color)" stroke="var(--skin-stroke)" stroke-width="0.8"/>
@@ -1457,11 +1561,16 @@
                             <circle cx="45" cy="19" r="1.8" fill="var(--skin-stroke)"/>
                             <circle cx="55" cy="19" r="1.8" fill="var(--skin-stroke)"/>
                             <path d="M46,24 Q50,27 54,24" stroke="var(--skin-stroke)" stroke-width="1.2" fill="none" stroke-linecap="round"/>
-                            <rect x="35" y="33" width="30" height="28" rx="4" fill="var(--accent-orange)" stroke="var(--skin-stroke)" stroke-width="1.2"/>
-                            <path d="M42,33 L50,28 L58,33" fill="var(--accent-orange-dark)" stroke="var(--skin-stroke)" stroke-width="0.8"/>
-                            <rect x="35" y="54" width="30" height="3" fill="var(--accent-orange-dark)" stroke="var(--skin-stroke)" stroke-width="0.8"/>
-                            <path d="M35,36 Q28,48 30,60" stroke="var(--skin-color)" stroke-width="6" fill="none" stroke-linecap="round"/>
-                            <path d="M65,36 Q72,48 70,60" stroke="var(--skin-color)" stroke-width="6" fill="none" stroke-linecap="round"/>
+                            <rect x="35" y="33" width="30" height="28" rx="4" fill="var(--blazer-color)" stroke="var(--skin-stroke)" stroke-width="1.2"/>
+                            <path d="M35,33 L44,33 L47,41 L35,46 Z" fill="var(--blazer-color-dark)" stroke="var(--skin-stroke)" stroke-width="0.6"/>
+                            <path d="M65,33 L56,33 L53,41 L65,46 Z" fill="var(--blazer-color-dark)" stroke="var(--skin-stroke)" stroke-width="0.6"/>
+                            <path d="M44,33 L50,41 L56,33 Z" fill="var(--shirt-color)" stroke="var(--skin-stroke)" stroke-width="0.5"/>
+                            <path d="M48,34 L52,34 L51,44 L50,47 L49,44 Z" fill="var(--tie-color)" stroke="var(--skin-stroke)" stroke-width="0.4"/>
+                            <rect x="35" y="55" width="30" height="2" fill="var(--blazer-color-dark)"/>
+                            <path d="M35,36 Q28,48 30,60" stroke="var(--blazer-color)" stroke-width="6" fill="none" stroke-linecap="round"/>
+                            <circle cx="30" cy="60" r="3" fill="var(--skin-color)" stroke="var(--skin-stroke)" stroke-width="0.6"/>
+                            <path d="M65,36 Q72,48 70,60" stroke="var(--blazer-color)" stroke-width="6" fill="none" stroke-linecap="round"/>
+                            <circle cx="70" cy="60" r="3" fill="var(--skin-color)" stroke="var(--skin-stroke)" stroke-width="0.6"/>
                             <rect x="39" y="61" width="8" height="18" rx="3" fill="var(--pants-color)" stroke="var(--skin-stroke)" stroke-width="1.2"/>
                             <rect x="53" y="61" width="8" height="18" rx="3" fill="var(--pants-color)" stroke="var(--skin-stroke)" stroke-width="1.2"/>
                             <ellipse cx="43" cy="81" rx="7" ry="3.5" fill="var(--shoe-color)" stroke="var(--skin-stroke)" stroke-width="0.8"/>
@@ -1482,11 +1591,16 @@
                             <circle cx="45" cy="19" r="1.8" fill="var(--skin-stroke)"/>
                             <circle cx="55" cy="19" r="1.8" fill="var(--skin-stroke)"/>
                             <path d="M46,24 Q50,27 54,24" stroke="var(--skin-stroke)" stroke-width="1.2" fill="none" stroke-linecap="round"/>
-                            <rect x="35" y="33" width="30" height="28" rx="4" fill="var(--accent-orange)" stroke="var(--skin-stroke)" stroke-width="1.2"/>
-                            <path d="M42,33 L50,28 L58,33" fill="var(--accent-orange-dark)" stroke="var(--skin-stroke)" stroke-width="0.8"/>
-                            <rect x="35" y="54" width="30" height="3" fill="var(--accent-orange-dark)" stroke="var(--skin-stroke)" stroke-width="0.8"/>
-                            <path d="M35,36 Q28,48 30,60" stroke="var(--skin-color)" stroke-width="6" fill="none" stroke-linecap="round"/>
-                            <path d="M65,36 Q72,48 70,60" stroke="var(--skin-color)" stroke-width="6" fill="none" stroke-linecap="round"/>
+                            <rect x="35" y="33" width="30" height="28" rx="4" fill="var(--blazer-color)" stroke="var(--skin-stroke)" stroke-width="1.2"/>
+                            <path d="M35,33 L44,33 L47,41 L35,46 Z" fill="var(--blazer-color-dark)" stroke="var(--skin-stroke)" stroke-width="0.6"/>
+                            <path d="M65,33 L56,33 L53,41 L65,46 Z" fill="var(--blazer-color-dark)" stroke="var(--skin-stroke)" stroke-width="0.6"/>
+                            <path d="M44,33 L50,41 L56,33 Z" fill="var(--shirt-color)" stroke="var(--skin-stroke)" stroke-width="0.5"/>
+                            <path d="M48,34 L52,34 L51,44 L50,47 L49,44 Z" fill="var(--tie-color)" stroke="var(--skin-stroke)" stroke-width="0.4"/>
+                            <rect x="35" y="55" width="30" height="2" fill="var(--blazer-color-dark)"/>
+                            <path d="M35,36 Q28,48 30,60" stroke="var(--blazer-color)" stroke-width="6" fill="none" stroke-linecap="round"/>
+                            <circle cx="30" cy="60" r="3" fill="var(--skin-color)" stroke="var(--skin-stroke)" stroke-width="0.6"/>
+                            <path d="M65,36 Q72,48 70,60" stroke="var(--blazer-color)" stroke-width="6" fill="none" stroke-linecap="round"/>
+                            <circle cx="70" cy="60" r="3" fill="var(--skin-color)" stroke="var(--skin-stroke)" stroke-width="0.6"/>
                             <rect x="39" y="61" width="8" height="18" rx="3" fill="var(--pants-color)" stroke="var(--skin-stroke)" stroke-width="1.2"/>
                             <rect x="53" y="61" width="8" height="18" rx="3" fill="var(--pants-color)" stroke="var(--skin-stroke)" stroke-width="1.2"/>
                             <ellipse cx="43" cy="81" rx="7" ry="3.5" fill="var(--shoe-color)" stroke="var(--skin-stroke)" stroke-width="0.8"/>
@@ -1567,13 +1681,40 @@
                         <div class="screen-text">BRAVO<br />THE FUTURE</div>
                         <div class="screen-status">ONLINE // 100%</div>
                     </div>
-                    <div class="walkie-speaker">
-                        <div class="speaker-line"></div>
-                        <div class="speaker-line"></div>
-                        <div class="speaker-line"></div>
-                        <div class="speaker-line"></div>
-                        <div class="speaker-line"></div>
+
+                    <div class="walkie-call-row">
+                        <div class="walkie-call-btn call-answer" aria-label="Jawab panggilan">
+                            <svg viewBox="0 0 24 24"><path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.6.1.4 0 .8-.2 1L6.6 10.8z"/></svg>
+                        </div>
+
+                        <div class="walkie-dpad">
+                            <div class="dpad-btn dpad-up"><svg viewBox="0 0 24 24"><path d="M12 6l7 10H5z"/></svg></div>
+                            <div class="dpad-btn dpad-left"><svg viewBox="0 0 24 24"><path d="M15 5L5 12l10 7z"/></svg></div>
+                            <div class="dpad-center">OK</div>
+                            <div class="dpad-btn dpad-right"><svg viewBox="0 0 24 24"><path d="M9 5l10 7-10 7z"/></svg></div>
+                            <div class="dpad-btn dpad-down"><svg viewBox="0 0 24 24"><path d="M12 18L5 8h14z"/></svg></div>
+                        </div>
+
+                        <div class="walkie-call-btn call-end" aria-label="Tamatkan panggilan">
+                            <svg viewBox="0 0 24 24"><path d="M12 9c-2.1 0-4.1.4-6 1.1v3.3c0 .5-.3.9-.7 1.1-1 .5-1.9 1.1-2.7 1.9-.4.4-1 .4-1.4 0L.3 15.5c-.4-.4-.4-1 0-1.4C3.7 10.6 7.7 9 12 9s8.3 1.6 11.7 5.1c.4.4.4 1 0 1.4l-.9 1.9c-.4.4-1 .4-1.4 0-.8-.8-1.7-1.4-2.7-1.9-.4-.2-.7-.6-.7-1.1v-3.3C16.1 9.4 14.1 9 12 9z"/></svg>
+                        </div>
                     </div>
+
+                    <div class="walkie-keypad">
+                        <div class="keypad-key">1</div>
+                        <div class="keypad-key">2</div>
+                        <div class="keypad-key">3</div>
+                        <div class="keypad-key">4</div>
+                        <div class="keypad-key">5</div>
+                        <div class="keypad-key">6</div>
+                        <div class="keypad-key">7</div>
+                        <div class="keypad-key">8</div>
+                        <div class="keypad-key">9</div>
+                        <div class="keypad-key">*</div>
+                        <div class="keypad-key">0</div>
+                        <div class="keypad-key">#</div>
+                    </div>
+
                     <div class="walkie-light"></div>
                 </div>
             </div>
