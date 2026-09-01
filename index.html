@@ -111,7 +111,42 @@
         }
 
         /* ==========================================================================
-           4. HEADER — DIGITAL IDENTITY (Tanpa Border) - DI PUSATKAN
+           4. ANIMASI FADE IN UNTUK SEMUA TEKS
+           ========================================================================== */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(12px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            opacity: 0;
+            animation: fadeIn 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        .fade-in-d1 {
+            animation-delay: 0.1s;
+        }
+        .fade-in-d2 {
+            animation-delay: 0.2s;
+        }
+        .fade-in-d3 {
+            animation-delay: 0.3s;
+        }
+        .fade-in-d4 {
+            animation-delay: 0.4s;
+        }
+        .fade-in-d5 {
+            animation-delay: 0.5s;
+        }
+
+        /* ==========================================================================
+           5. HEADER — DIGITAL IDENTITY (Tanpa Border) - DI PUSATKAN
            ========================================================================== */
         .header-digital {
             display: flex;
@@ -208,7 +243,7 @@
         }
 
         /* ==========================================================================
-           5. HERO — GREETING & SUBTEXT - DI PUSATKAN
+           6. HERO — GREETING & SUBTEXT - DI PUSATKAN
            ========================================================================== */
         .hero-section {
             text-align: center;
@@ -285,7 +320,7 @@
         }
 
         /* ==========================================================================
-           6. TEAM EXPERIENCE — 5 PERSONNEL ARC COMPOSITION - DI PUSATKAN
+           7. TEAM EXPERIENCE — 5 PERSONNEL ARC COMPOSITION - DI PUSATKAN
            ========================================================================== */
         .team-section {
             padding: 60px 0 100px;
@@ -491,7 +526,7 @@
         }
 
         /* ==========================================================================
-           7. SCROLL INDICATOR - DI PUSATKAN
+           8. SCROLL INDICATOR - DI PUSATKAN
            ========================================================================== */
         .scroll-indicator {
             text-align: center;
@@ -533,7 +568,7 @@
         }
 
         /* ==========================================================================
-           8. VISION & MISSION SECTION - DI PUSATKAN
+           9. VISION & MISSION SECTION - DI PUSATKAN
            ========================================================================== */
         .vision-section {
             padding: 90px 0;
@@ -632,7 +667,7 @@
         }
 
         /* ==========================================================================
-           9. WALKIE TALKIE + WORKSTATION ICON - DI PUSATKAN
+           10. WALKIE TALKIE + WORKSTATION ICON - DI PUSATKAN (Tinggi dikurang 20%)
            ========================================================================== */
         .walkie-section {
             padding: 90px 0;
@@ -657,8 +692,8 @@
             top: 40%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 256px;
-            height: 256px;
+            width: 220px;
+            height: 220px;
             pointer-events: none;
             z-index: 1;
         }
@@ -697,13 +732,13 @@
         .walkie-device {
             position: relative;
             z-index: 5;
-            width: 128px;
+            width: 120px;
             height: auto;
             background: linear-gradient(165deg, #1e293b 0%, #0f172a 100%);
             border: none;
-            border-radius: 18px;
+            border-radius: 16px;
             box-shadow: none;
-            padding: 13px;
+            padding: 10px 12px 12px;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -741,7 +776,6 @@
             }
         }
 
-        /* ===== FADE IN BERTURUTAN UNTUK SETIAP KOMPONEN DEVICE ===== */
         .walkie-part {
             opacity: 0;
             transform: translateY(8px);
@@ -755,20 +789,20 @@
 
         .walkie-antenna {
             position: absolute;
-            top: -42px;
-            left: 26px;
-            width: 8px;
-            height: 45px;
+            top: -36px;
+            left: 24px;
+            width: 6px;
+            height: 38px;
             background: linear-gradient(to right, #334155, #0f172a);
-            border-radius: 4px 4px 0 0;
+            border-radius: 3px 3px 0 0;
             border: none;
         }
         .walkie-antenna-tip {
             position: absolute;
-            top: -5px;
+            top: -4px;
             left: -2px;
             width: 10px;
-            height: 6px;
+            height: 5px;
             background: var(--accent-orange);
             border-radius: 2px;
             box-shadow: none;
@@ -776,10 +810,10 @@
 
         .walkie-knob {
             position: absolute;
-            top: -13px;
-            right: 26px;
-            width: 15px;
-            height: 14px;
+            top: -11px;
+            right: 22px;
+            width: 12px;
+            height: 12px;
             background: #334155;
             border-radius: 2px 2px 0 0;
             border: none;
@@ -787,11 +821,11 @@
 
         .walkie-screen {
             width: 100%;
-            height: 54px;
+            height: 42px;
             background: #0f0c08;
             border: none;
-            border-radius: 8px;
-            margin-top: 10px;
+            border-radius: 6px;
+            margin-top: 8px;
             position: relative;
             overflow: hidden;
             display: flex;
@@ -815,8 +849,8 @@
             font-family: var(--font-mono);
             color: #ff8c00;
             font-weight: 700;
-            font-size: 0.58rem;
-            line-height: 1.3;
+            font-size: 0.5rem;
+            line-height: 1.2;
             letter-spacing: 1px;
             text-align: center;
             text-shadow: 0 0 8px rgba(255, 140, 0, 0.7);
@@ -826,10 +860,10 @@
 
         .screen-status {
             font-family: var(--font-mono);
-            font-size: 0.42rem;
+            font-size: 0.35rem;
             font-weight: 600;
             color: #b8a898;
-            margin-top: 2px;
+            margin-top: 1px;
             letter-spacing: 0.8px;
             z-index: 3;
         }
@@ -853,19 +887,18 @@
             }
         }
 
-        /* ===== BUTANG CALL (JAWAB / TAMAT) + PAD NAVIGASI ===== */
         .walkie-call-row {
             width: 100%;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            margin-top: 10px;
+            margin-top: 8px;
             gap: 3px;
         }
 
         .walkie-call-btn {
-            width: 21px;
-            height: 21px;
+            width: 18px;
+            height: 18px;
             border-radius: 50%;
             border: none;
             flex-shrink: 0;
@@ -875,8 +908,8 @@
         }
 
         .walkie-call-btn svg {
-            width: 10px;
-            height: 10px;
+            width: 8px;
+            height: 8px;
             fill: #ffffff;
         }
 
@@ -892,8 +925,8 @@
 
         .walkie-dpad {
             position: relative;
-            width: 48px;
-            height: 48px;
+            width: 40px;
+            height: 40px;
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             grid-template-rows: repeat(3, 1fr);
@@ -910,8 +943,8 @@
         }
 
         .dpad-btn svg {
-            width: 7px;
-            height: 7px;
+            width: 6px;
+            height: 6px;
             fill: var(--accent-orange);
         }
 
@@ -943,41 +976,40 @@
             border-radius: 50%;
             color: #1a140e;
             font-family: var(--font-mono);
-            font-size: 0.38rem;
+            font-size: 0.35rem;
             font-weight: 700;
             letter-spacing: 0.3px;
         }
 
-        /* ===== KEYPAD NOMBOR MACAM TELEFON ===== */
         .walkie-keypad {
             width: 100%;
-            margin-top: 10px;
+            margin-top: 8px;
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 5px;
+            gap: 3px;
         }
 
         .keypad-key {
             aspect-ratio: 1 / 1;
             background: #334155;
-            border-radius: 5px;
+            border-radius: 4px;
             display: flex;
             align-items: center;
             justify-content: center;
             color: #ffffff;
             font-family: var(--font-mono);
             font-weight: 700;
-            font-size: 0.6rem;
+            font-size: 0.5rem;
             letter-spacing: 0.3px;
         }
 
         .walkie-light {
-            width: 6px;
-            height: 6px;
+            width: 5px;
+            height: 5px;
             border-radius: 50%;
             background: var(--accent-orange);
             box-shadow: 0 0 12px var(--accent-orange);
-            margin-top: 14px;
+            margin-top: 10px;
             animation: blinkLight 1.5s ease-in-out infinite alternate;
         }
 
@@ -1017,7 +1049,6 @@
             font-weight: 700;
         }
 
-        /* ===== WORKSTATION ICON — DENGAN SIREN DI ATAS MEJA & KOMPUTER DI TENGAH ===== */
         .workstation-icon {
             margin-top: 50px;
             text-align: center;
@@ -1088,7 +1119,7 @@
         }
 
         /* ==========================================================================
-           10. FOOTER — DI PUSATKAN DENGAN SIREN SAIZ WALKIE-TALKIE
+           11. FOOTER — DI PUSATKAN DENGAN SIREN SAIZ WALKIE-TALKIE
            ========================================================================== */
         .footer-digital {
             margin-top: 100px;
@@ -1099,7 +1130,6 @@
             width: 100%;
         }
 
-        /* SIREN FOOTER - SAIZ SAMA DENGAN WALKIE-TALKIE (200px lebar) */
         .footer-siren {
             text-align: center;
             margin-bottom: 30px;
@@ -1238,7 +1268,7 @@
         }
 
         /* ==========================================================================
-           11. REKA BENTUK RESPONSIF (TABLET & MOBILE)
+           12. REKA BENTUK RESPONSIF (TABLET & MOBILE)
            ========================================================================== */
         @media (max-width: 1024px) {
             .team-arc-container {
@@ -1517,47 +1547,36 @@
                     <div class="avatar-wrapper">
                         <div class="leader-halo"></div>
                         <svg class="avatar-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                            <!-- Kepala -->
                             <circle cx="50" cy="20" r="13" fill="var(--skin-color)" stroke="var(--skin-stroke)" stroke-width="1.2"/>
-                            <!-- Mata -->
                             <circle cx="45" cy="18" r="1.8" fill="var(--skin-stroke)"/>
                             <circle cx="55" cy="18" r="1.8" fill="var(--skin-stroke)"/>
-                            <!-- Hidung -->
                             <path d="M48,21 L50,23 L52,21" stroke="var(--skin-stroke)" stroke-width="1" fill="none" stroke-linecap="round"/>
-                            <!-- Mulut -->
                             <path d="M46,25 Q50,28 54,25" stroke="var(--skin-stroke)" stroke-width="1.2" fill="none" stroke-linecap="round"/>
-                            <!-- Topi pemadam (helmet) - ringkas, tanpa tanduk, diangkat sedikit -->
                             <path d="M34,10 L66,10 Q68,10 68,12 L66,17 L34,17 L32,12 Q32,10 34,10Z" fill="#ffcc00" stroke="#b38600" stroke-width="0.8"/>
                             <path d="M36,8 Q50,-2 64,8 Z" fill="#ffcc00" stroke="#b38600" stroke-width="0.8"/>
                             <path d="M34,9 L50,4 L66,9" fill="none" stroke="#ffffff" stroke-width="1.2"/>
-                            <!-- Visor (pelindung mata) - lebih nipis dan tidak menutup mata -->
                             <path d="M35,16 L65,16 Q66,18 63,19 L37,19 Q34,18 35,16Z" fill="rgba(0,0,0,0.15)" stroke="#333" stroke-width="0.4"/>
-                            <!-- Baju api (turnout coat) -->
                             <rect x="33" y="33" width="34" height="28" rx="3" fill="var(--accent-orange)" stroke="#cc6200" stroke-width="1.2"/>
                             <rect x="33" y="42" width="34" height="4" fill="#cccccc" stroke="#999" stroke-width="0.5"/>
                             <path d="M38,33 L44,28 L50,33 L56,28 L62,33" fill="var(--accent-orange)" stroke="#cc6200" stroke-width="0.8"/>
                             <line x1="50" y1="33" x2="50" y2="42" stroke="#cc6200" stroke-width="1"/>
-                            <!-- Lengan kiri -->
                             <path d="M33,36 Q24,44 27,54" stroke="var(--accent-orange)" stroke-width="8" fill="none" stroke-linecap="round"/>
                             <path d="M33,36 Q24,44 27,54" stroke="#cccccc" stroke-width="1.5" fill="none" stroke-dasharray="2 2" transform="translate(0,4)"/>
                             <circle cx="27" cy="56" r="3" fill="var(--skin-color)" stroke="var(--skin-stroke)" stroke-width="0.6"/>
-                            <!-- Lengan kanan -->
                             <path d="M67,36 Q76,44 73,54" stroke="var(--accent-orange)" stroke-width="8" fill="none" stroke-linecap="round"/>
                             <path d="M67,36 Q76,44 73,54" stroke="#cccccc" stroke-width="1.5" fill="none" stroke-dasharray="2 2" transform="translate(0,4)"/>
                             <circle cx="73" cy="56" r="3" fill="var(--skin-color)" stroke="var(--skin-stroke)" stroke-width="0.6"/>
-                            <!-- Seluar -->
                             <rect x="39" y="61" width="8" height="18" rx="2" fill="#d97a00" stroke="#b86200" stroke-width="1.2"/>
                             <rect x="53" y="61" width="8" height="18" rx="2" fill="#d97a00" stroke="#b86200" stroke-width="1.2"/>
                             <rect x="39" y="68" width="8" height="2" fill="#cccccc"/>
                             <rect x="53" y="68" width="8" height="2" fill="#cccccc"/>
-                            <!-- But -->
                             <ellipse cx="43" cy="81" rx="7" ry="3.5" fill="#333" stroke="#222" stroke-width="0.8"/>
                             <ellipse cx="57" cy="81" rx="7" ry="3.5" fill="#333" stroke="#222" stroke-width="0.8"/>
                         </svg>
                     </div>
                     <div class="member-info">
-                        <div class="member-name">NAME_LEADER</div>
-                        <div class="member-role">ROLE_LEADER</div>
+                        <div class="member-name fade-in fade-in-d1">NAME_LEADER</div>
+                        <div class="member-role fade-in fade-in-d2">ROLE_LEADER</div>
                     </div>
                 </div>
 
@@ -1593,8 +1612,8 @@
                         </svg>
                     </div>
                     <div class="member-info">
-                        <div class="member-name">NAME_01</div>
-                        <div class="member-role">ROLE_01</div>
+                        <div class="member-name fade-in fade-in-d3">NAME_01</div>
+                        <div class="member-role fade-in fade-in-d4">ROLE_01</div>
                     </div>
                 </div>
 
@@ -1630,8 +1649,8 @@
                         </svg>
                     </div>
                     <div class="member-info">
-                        <div class="member-name">NAME_02</div>
-                        <div class="member-role">ROLE_02</div>
+                        <div class="member-name fade-in fade-in-d3">NAME_02</div>
+                        <div class="member-role fade-in fade-in-d4">ROLE_02</div>
                     </div>
                 </div>
 
@@ -1667,8 +1686,8 @@
                         </svg>
                     </div>
                     <div class="member-info">
-                        <div class="member-name">NAME_03</div>
-                        <div class="member-role">ROLE_03</div>
+                        <div class="member-name fade-in fade-in-d3">NAME_03</div>
+                        <div class="member-role fade-in fade-in-d4">ROLE_03</div>
                     </div>
                 </div>
 
@@ -1704,8 +1723,8 @@
                         </svg>
                     </div>
                     <div class="member-info">
-                        <div class="member-name">NAME_04</div>
-                        <div class="member-role">ROLE_04</div>
+                        <div class="member-name fade-in fade-in-d3">NAME_04</div>
+                        <div class="member-role fade-in fade-in-d4">ROLE_04</div>
                     </div>
                 </div>
             </div>
@@ -1721,8 +1740,8 @@
              ========================================================================== -->
         <section class="vision-section" id="visionSection">
             <div class="section-title-wrap">
-                <div class="section-tag">STRATEGIK</div>
-                <h2 class="section-title">OUR DIRECTION</h2>
+                <div class="section-tag fade-in">STRATEGIK</div>
+                <h2 class="section-title fade-in fade-in-d1">OUR DIRECTION</h2>
             </div>
 
             <div class="glass-cards-grid">
@@ -1733,7 +1752,7 @@
                         </svg>
                     </div>
                     <div class="card-header-title">VISI PROJEK</div>
-                    <div class="card-body-text" id="visionText">
+                    <div class="card-body-text fade-in fade-in-d2" id="visionText">
                         INOVASI SELARAS GENERASI
                     </div>
                 </div>
@@ -1745,7 +1764,7 @@
                         </svg>
                     </div>
                     <div class="card-header-title">MISI PROJEK</div>
-                    <div class="card-body-text" id="missionText">
+                    <div class="card-body-text fade-in fade-in-d3" id="missionText">
                         MEREALISASIKAN GAYA KERJA YANG SISTEMATIK DAN MODEN
                     </div>
                 </div>
@@ -1757,8 +1776,8 @@
              ========================================================================== -->
         <section class="walkie-section" id="walkieSection">
             <div class="section-title-wrap">
-                <div class="section-tag">KOMUNIKASI DIGITAL</div>
-                <h2 class="section-title">COMMAND SYSTEM</h2>
+                <div class="section-tag fade-in">KOMUNIKASI DIGITAL</div>
+                <h2 class="section-title fade-in fade-in-d1">COMMAND SYSTEM</h2>
             </div>
 
             <div class="walkie-wrapper">
@@ -1878,7 +1897,7 @@
                         <path d="M340,315 L340,330" stroke="#444" stroke-width="2.5"/>
                     </g>
                 </svg>
-                <div class="workstation-label">DIGITAL WORKSPACE · ACTIVE</div>
+                <div class="workstation-label fade-in">DIGITAL WORKSPACE · ACTIVE</div>
             </div>
         </section>
     </div>
@@ -1915,11 +1934,11 @@
             </div>
 
             <div class="footer-content">
-                <div class="footer-email" id="footerEmail">
+                <div class="footer-email fade-in" id="footerEmail">
                     ✉ <a href="mailto:hello@digitalisasibravopgo.com">hello@digitalisasibravopgo.com</a>
                 </div>
 
-                <div class="footer-copyright" id="footerCopyright">
+                <div class="footer-copyright fade-in fade-in-d1" id="footerCopyright">
                     © 2035 BRAVO THE FUTURE — ALL RIGHTS RESERVED
                 </div>
 
