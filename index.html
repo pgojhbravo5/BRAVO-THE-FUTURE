@@ -1311,6 +1311,129 @@
         }
 
         /* ==========================================================================
+           11B. JAMBATAN TRANSITION — JENTERA BOMBA BERGERAK
+           ========================================================================== */
+        .truck-transition {
+            position: relative;
+            width: 100%;
+            height: 130px;
+            margin: 10px 0 20px;
+            overflow: hidden;
+            z-index: 5;
+        }
+
+        .truck-transition .truck-road {
+            position: absolute;
+            left: 0;
+            bottom: 26px;
+            width: 100%;
+            height: 3px;
+            background: repeating-linear-gradient(
+                90deg,
+                var(--accent-orange) 0px,
+                var(--accent-orange) 26px,
+                transparent 26px,
+                transparent 52px
+            );
+            opacity: 0.45;
+        }
+
+        .truck-drive-wrap {
+            position: absolute;
+            bottom: 16px;
+            left: -260px;
+            width: 220px;
+            animation: truckDriveLoop 10s linear infinite;
+            will-change: left, transform;
+        }
+
+        .truck-drive-wrap svg {
+            width: 100%;
+            height: auto;
+            display: block;
+            filter: drop-shadow(0 8px 10px rgba(0, 0, 0, 0.18));
+        }
+
+        @keyframes truckDriveLoop {
+            0% {
+                left: -260px;
+                transform: scaleX(1);
+            }
+            47% {
+                left: calc(100% + 40px);
+                transform: scaleX(1);
+            }
+            50% {
+                left: calc(100% + 40px);
+                transform: scaleX(-1);
+            }
+            97% {
+                left: -260px;
+                transform: scaleX(-1);
+            }
+            100% {
+                left: -260px;
+                transform: scaleX(1);
+            }
+        }
+
+        .truck-wheel {
+            animation: truckWheelSpin 0.5s linear infinite;
+            transform-box: fill-box;
+            transform-origin: center;
+        }
+
+        @keyframes truckWheelSpin {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .truck-sound-toggle {
+            position: absolute;
+            top: 10px;
+            right: 24px;
+            z-index: 6;
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            border: 1px solid var(--border-light);
+            background: rgba(255, 255, 255, 0.75);
+            color: var(--accent-orange-dark);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .truck-sound-toggle:hover {
+            background: var(--accent-orange);
+            color: #fff;
+            transform: scale(1.08);
+        }
+        .truck-sound-toggle svg {
+            width: 16px;
+            height: 16px;
+        }
+        .truck-sound-toggle[aria-pressed="true"] {
+            background: var(--accent-orange);
+            color: #fff;
+            box-shadow: 0 0 0 4px var(--accent-glow);
+        }
+        .truck-sound-toggle .icon-on {
+            display: none;
+        }
+        .truck-sound-toggle[aria-pressed="true"] .icon-on {
+            display: block;
+        }
+        .truck-sound-toggle[aria-pressed="true"] .icon-off {
+            display: none;
+        }
+
+        /* ==========================================================================
            12. REKA BENTUK RESPONSIF
            ========================================================================== */
         @media (max-width: 1024px) {
@@ -1335,6 +1458,19 @@
         }
 
         @media (max-width: 768px) {
+            .truck-transition {
+                height: 100px;
+            }
+            .truck-drive-wrap {
+                width: 160px;
+                bottom: 12px;
+            }
+            .truck-sound-toggle {
+                width: 30px;
+                height: 30px;
+                right: 12px;
+            }
+
             /* ===== SKALA TIPOGRAFI MOBILE ===== */
             :root {
                 --fs-hero: 2rem;
@@ -1634,6 +1770,14 @@
                 animation: none !important;
                 fill: #ff3300 !important;
             }
+            .truck-drive-wrap {
+                left: 50% !important;
+                transform: translateX(-50%) !important;
+                animation: none !important;
+            }
+            .truck-wheel {
+                animation: none !important;
+            }
             .walkie-device.entered {
                 animation: deviceEntrance 0.01ms forwards !important;
             }
@@ -1691,6 +1835,68 @@
             <div class="greeting-container" id="greetingContainer" aria-label="Ucapan selamat datang"></div>
             <p class="hero-subtext" id="heroSubtext"></p>
         </section>
+
+        <!-- ==========================================================================
+             JAMBATAN TRANSITION 1 — JENTERA BOMBA BERGERAK
+             ========================================================================== -->
+        <div class="truck-transition" data-truck-transition>
+            <div class="truck-road" aria-hidden="true"></div>
+            <button type="button" class="truck-sound-toggle" data-truck-sound aria-pressed="false" aria-label="Hidupkan bunyi siren jentera bomba">
+                <svg class="icon-off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M4 9v6h4l5 5V4L8 9H4z" fill="currentColor" stroke="none" />
+                    <line x1="16" y1="9" x2="22" y2="15" />
+                    <line x1="22" y1="9" x2="16" y2="15" />
+                </svg>
+                <svg class="icon-on" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M4 9v6h4l5 5V4L8 9H4z" fill="currentColor" stroke="none" />
+                    <path d="M16 8a5 5 0 0 1 0 8" />
+                    <path d="M18.5 5.5a9 9 0 0 1 0 13" />
+                </svg>
+            </button>
+            <div class="truck-drive-wrap" aria-hidden="true">
+                <svg viewBox="0 0 240 130" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Jentera bomba bergerak">
+                    <rect x="30" y="44" width="130" height="5" rx="2" fill="#c0c0c0" />
+                    <rect x="30" y="56" width="130" height="5" rx="2" fill="#c0c0c0" />
+                    <g stroke="#8a8a8a" stroke-width="2">
+                        <line x1="38" y1="44" x2="38" y2="61" />
+                        <line x1="50" y1="44" x2="50" y2="61" />
+                        <line x1="62" y1="44" x2="62" y2="61" />
+                        <line x1="74" y1="44" x2="74" y2="61" />
+                        <line x1="86" y1="44" x2="86" y2="61" />
+                        <line x1="98" y1="44" x2="98" y2="61" />
+                        <line x1="110" y1="44" x2="110" y2="61" />
+                        <line x1="122" y1="44" x2="122" y2="61" />
+                        <line x1="134" y1="44" x2="134" y2="61" />
+                        <line x1="146" y1="44" x2="146" y2="61" />
+                        <line x1="158" y1="44" x2="158" y2="61" />
+                    </g>
+                    <rect x="20" y="64" width="150" height="46" rx="6" fill="#d81e05" />
+                    <rect x="20" y="86" width="150" height="9" fill="#ffffff" />
+                    <text x="95" y="82" text-anchor="middle" font-family="Arial, sans-serif" font-size="15" font-weight="800" fill="#ffffff" letter-spacing="1">BOMBA</text>
+                    <path d="M170 110 L170 70 Q170 62 178 62 L196 62 Q206 62 212 72 L220 92 L220 110 Z" fill="#c81a04" />
+                    <path d="M180 70 L196 70 Q200 70 203 75 L208 90 L180 90 Z" fill="#bfe3ff" stroke="#7fb8de" stroke-width="1" />
+                    <rect x="212" y="96" width="7" height="7" rx="1" fill="#fff4c2" />
+                    <rect x="70" y="50" width="46" height="9" rx="3" fill="#2b2b2b" />
+                    <ellipse cx="82" cy="58" rx="26" ry="7" fill="rgba(255,60,0,0.15)" class="siren-glow" />
+                    <ellipse cx="104" cy="58" rx="26" ry="7" fill="rgba(0,100,255,0.08)" class="siren-glow" style="animation-delay: 0.4s;" />
+                    <circle cx="82" cy="54" r="6" class="siren-light" />
+                    <circle cx="104" cy="54" r="6" class="siren-light" style="animation-delay: 0.4s;" />
+                    <line x1="20" y1="64" x2="20" y2="110" stroke="#8a1200" stroke-width="1.5" />
+                    <g class="truck-wheel">
+                        <circle cx="56" cy="110" r="16" fill="#1c1c1c" />
+                        <circle cx="56" cy="110" r="6" fill="#c9c9c9" />
+                        <line x1="56" y1="100" x2="56" y2="120" stroke="#8a8a8a" stroke-width="2" />
+                        <line x1="46" y1="110" x2="66" y2="110" stroke="#8a8a8a" stroke-width="2" />
+                    </g>
+                    <g class="truck-wheel">
+                        <circle cx="186" cy="110" r="16" fill="#1c1c1c" />
+                        <circle cx="186" cy="110" r="6" fill="#c9c9c9" />
+                        <line x1="186" y1="100" x2="186" y2="120" stroke="#8a8a8a" stroke-width="2" />
+                        <line x1="176" y1="110" x2="196" y2="110" stroke="#8a8a8a" stroke-width="2" />
+                    </g>
+                </svg>
+            </div>
+        </div>
 
         <!-- ==========================================================================
              TEAM EXPERIENCE — 5 PERSONNEL ARC COMPOSITION
@@ -1893,6 +2099,67 @@
             </div>
         </section>
 
+<!-- ==========================================================================
+             JAMBATAN TRANSITION 2 — JENTERA BOMBA BERGERAK
+             ========================================================================== -->
+        <div class="truck-transition" data-truck-transition>
+            <div class="truck-road" aria-hidden="true"></div>
+            <button type="button" class="truck-sound-toggle" data-truck-sound aria-pressed="false" aria-label="Hidupkan bunyi siren jentera bomba">
+                <svg class="icon-off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M4 9v6h4l5 5V4L8 9H4z" fill="currentColor" stroke="none" />
+                    <line x1="16" y1="9" x2="22" y2="15" />
+                    <line x1="22" y1="9" x2="16" y2="15" />
+                </svg>
+                <svg class="icon-on" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M4 9v6h4l5 5V4L8 9H4z" fill="currentColor" stroke="none" />
+                    <path d="M16 8a5 5 0 0 1 0 8" />
+                    <path d="M18.5 5.5a9 9 0 0 1 0 13" />
+                </svg>
+            </button>
+            <div class="truck-drive-wrap" aria-hidden="true">
+                <svg viewBox="0 0 240 130" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Jentera bomba bergerak">
+                    <rect x="30" y="44" width="130" height="5" rx="2" fill="#c0c0c0" />
+                    <rect x="30" y="56" width="130" height="5" rx="2" fill="#c0c0c0" />
+                    <g stroke="#8a8a8a" stroke-width="2">
+                        <line x1="38" y1="44" x2="38" y2="61" />
+                        <line x1="50" y1="44" x2="50" y2="61" />
+                        <line x1="62" y1="44" x2="62" y2="61" />
+                        <line x1="74" y1="44" x2="74" y2="61" />
+                        <line x1="86" y1="44" x2="86" y2="61" />
+                        <line x1="98" y1="44" x2="98" y2="61" />
+                        <line x1="110" y1="44" x2="110" y2="61" />
+                        <line x1="122" y1="44" x2="122" y2="61" />
+                        <line x1="134" y1="44" x2="134" y2="61" />
+                        <line x1="146" y1="44" x2="146" y2="61" />
+                        <line x1="158" y1="44" x2="158" y2="61" />
+                    </g>
+                    <rect x="20" y="64" width="150" height="46" rx="6" fill="#d81e05" />
+                    <rect x="20" y="86" width="150" height="9" fill="#ffffff" />
+                    <text x="95" y="82" text-anchor="middle" font-family="Arial, sans-serif" font-size="15" font-weight="800" fill="#ffffff" letter-spacing="1">BOMBA</text>
+                    <path d="M170 110 L170 70 Q170 62 178 62 L196 62 Q206 62 212 72 L220 92 L220 110 Z" fill="#c81a04" />
+                    <path d="M180 70 L196 70 Q200 70 203 75 L208 90 L180 90 Z" fill="#bfe3ff" stroke="#7fb8de" stroke-width="1" />
+                    <rect x="212" y="96" width="7" height="7" rx="1" fill="#fff4c2" />
+                    <rect x="70" y="50" width="46" height="9" rx="3" fill="#2b2b2b" />
+                    <ellipse cx="82" cy="58" rx="26" ry="7" fill="rgba(255,60,0,0.15)" class="siren-glow" />
+                    <ellipse cx="104" cy="58" rx="26" ry="7" fill="rgba(0,100,255,0.08)" class="siren-glow" style="animation-delay: 0.4s;" />
+                    <circle cx="82" cy="54" r="6" class="siren-light" />
+                    <circle cx="104" cy="54" r="6" class="siren-light" style="animation-delay: 0.4s;" />
+                    <line x1="20" y1="64" x2="20" y2="110" stroke="#8a1200" stroke-width="1.5" />
+                    <g class="truck-wheel">
+                        <circle cx="56" cy="110" r="16" fill="#1c1c1c" />
+                        <circle cx="56" cy="110" r="6" fill="#c9c9c9" />
+                        <line x1="56" y1="100" x2="56" y2="120" stroke="#8a8a8a" stroke-width="2" />
+                        <line x1="46" y1="110" x2="66" y2="110" stroke="#8a8a8a" stroke-width="2" />
+                    </g>
+                    <g class="truck-wheel">
+                        <circle cx="186" cy="110" r="16" fill="#1c1c1c" />
+                        <circle cx="186" cy="110" r="6" fill="#c9c9c9" />
+                        <line x1="186" y1="100" x2="186" y2="120" stroke="#8a8a8a" stroke-width="2" />
+                        <line x1="176" y1="110" x2="196" y2="110" stroke="#8a8a8a" stroke-width="2" />
+                    </g>
+                </svg>
+            </div>
+        </div>
         <!-- ==========================================================================
              VISION & MISSION — OUR DIRECTION
              ========================================================================== -->
@@ -1932,6 +2199,67 @@
             </div>
         </section>
 
+<!-- ==========================================================================
+             JAMBATAN TRANSITION 3 — JENTERA BOMBA BERGERAK
+             ========================================================================== -->
+        <div class="truck-transition" data-truck-transition>
+            <div class="truck-road" aria-hidden="true"></div>
+            <button type="button" class="truck-sound-toggle" data-truck-sound aria-pressed="false" aria-label="Hidupkan bunyi siren jentera bomba">
+                <svg class="icon-off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M4 9v6h4l5 5V4L8 9H4z" fill="currentColor" stroke="none" />
+                    <line x1="16" y1="9" x2="22" y2="15" />
+                    <line x1="22" y1="9" x2="16" y2="15" />
+                </svg>
+                <svg class="icon-on" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M4 9v6h4l5 5V4L8 9H4z" fill="currentColor" stroke="none" />
+                    <path d="M16 8a5 5 0 0 1 0 8" />
+                    <path d="M18.5 5.5a9 9 0 0 1 0 13" />
+                </svg>
+            </button>
+            <div class="truck-drive-wrap" aria-hidden="true">
+                <svg viewBox="0 0 240 130" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Jentera bomba bergerak">
+                    <rect x="30" y="44" width="130" height="5" rx="2" fill="#c0c0c0" />
+                    <rect x="30" y="56" width="130" height="5" rx="2" fill="#c0c0c0" />
+                    <g stroke="#8a8a8a" stroke-width="2">
+                        <line x1="38" y1="44" x2="38" y2="61" />
+                        <line x1="50" y1="44" x2="50" y2="61" />
+                        <line x1="62" y1="44" x2="62" y2="61" />
+                        <line x1="74" y1="44" x2="74" y2="61" />
+                        <line x1="86" y1="44" x2="86" y2="61" />
+                        <line x1="98" y1="44" x2="98" y2="61" />
+                        <line x1="110" y1="44" x2="110" y2="61" />
+                        <line x1="122" y1="44" x2="122" y2="61" />
+                        <line x1="134" y1="44" x2="134" y2="61" />
+                        <line x1="146" y1="44" x2="146" y2="61" />
+                        <line x1="158" y1="44" x2="158" y2="61" />
+                    </g>
+                    <rect x="20" y="64" width="150" height="46" rx="6" fill="#d81e05" />
+                    <rect x="20" y="86" width="150" height="9" fill="#ffffff" />
+                    <text x="95" y="82" text-anchor="middle" font-family="Arial, sans-serif" font-size="15" font-weight="800" fill="#ffffff" letter-spacing="1">BOMBA</text>
+                    <path d="M170 110 L170 70 Q170 62 178 62 L196 62 Q206 62 212 72 L220 92 L220 110 Z" fill="#c81a04" />
+                    <path d="M180 70 L196 70 Q200 70 203 75 L208 90 L180 90 Z" fill="#bfe3ff" stroke="#7fb8de" stroke-width="1" />
+                    <rect x="212" y="96" width="7" height="7" rx="1" fill="#fff4c2" />
+                    <rect x="70" y="50" width="46" height="9" rx="3" fill="#2b2b2b" />
+                    <ellipse cx="82" cy="58" rx="26" ry="7" fill="rgba(255,60,0,0.15)" class="siren-glow" />
+                    <ellipse cx="104" cy="58" rx="26" ry="7" fill="rgba(0,100,255,0.08)" class="siren-glow" style="animation-delay: 0.4s;" />
+                    <circle cx="82" cy="54" r="6" class="siren-light" />
+                    <circle cx="104" cy="54" r="6" class="siren-light" style="animation-delay: 0.4s;" />
+                    <line x1="20" y1="64" x2="20" y2="110" stroke="#8a1200" stroke-width="1.5" />
+                    <g class="truck-wheel">
+                        <circle cx="56" cy="110" r="16" fill="#1c1c1c" />
+                        <circle cx="56" cy="110" r="6" fill="#c9c9c9" />
+                        <line x1="56" y1="100" x2="56" y2="120" stroke="#8a8a8a" stroke-width="2" />
+                        <line x1="46" y1="110" x2="66" y2="110" stroke="#8a8a8a" stroke-width="2" />
+                    </g>
+                    <g class="truck-wheel">
+                        <circle cx="186" cy="110" r="16" fill="#1c1c1c" />
+                        <circle cx="186" cy="110" r="6" fill="#c9c9c9" />
+                        <line x1="186" y1="100" x2="186" y2="120" stroke="#8a8a8a" stroke-width="2" />
+                        <line x1="176" y1="110" x2="196" y2="110" stroke="#8a8a8a" stroke-width="2" />
+                    </g>
+                </svg>
+            </div>
+        </div>
         <!-- ==========================================================================
              WALKIE TALKIE + WORKSTATION ICON
              ========================================================================== -->
@@ -2474,6 +2802,99 @@
             }
         }
 
+        /* ==========================================================================
+           JENTERA BOMBA — SIREN AUDIO (WEB AUDIO API SINTETIK)
+           ========================================================================== */
+        function initFireTruckSirens() {
+            let audioCtx = null;
+            const activeSirens = new Map();
+
+            function getAudioCtx() {
+                if (!audioCtx) {
+                    const AudioCtor = window.AudioContext || window.webkitAudioContext;
+                    if (!AudioCtor) return null;
+                    audioCtx = new AudioCtor();
+                }
+                if (audioCtx.state === 'suspended') {
+                    audioCtx.resume();
+                }
+                return audioCtx;
+            }
+
+            function resetButton(btn) {
+                btn.setAttribute('aria-pressed', 'false');
+                btn.setAttribute('aria-label', 'Hidupkan bunyi siren jentera bomba');
+            }
+
+            function startSiren(btn) {
+                const ctx = getAudioCtx();
+                if (!ctx) return;
+
+                const osc = ctx.createOscillator();
+                const gain = ctx.createGain();
+                osc.type = 'sine';
+                gain.gain.value = 0.0001;
+                osc.connect(gain);
+                gain.connect(ctx.destination);
+
+                const now = ctx.currentTime;
+                osc.frequency.setValueAtTime(560, now);
+                gain.gain.linearRampToValueAtTime(0.07, now + 0.25);
+
+                let sweepUp = true;
+                const sweepInterval = setInterval(() => {
+                    const t = ctx.currentTime;
+                    osc.frequency.cancelScheduledValues(t);
+                    osc.frequency.setValueAtTime(osc.frequency.value, t);
+                    osc.frequency.linearRampToValueAtTime(sweepUp ? 1100 : 560, t + 0.9);
+                    sweepUp = !sweepUp;
+                }, 900);
+
+                osc.start();
+                activeSirens.set(btn, { osc, gain, sweepInterval });
+            }
+
+            function stopSiren(btn) {
+                const active = activeSirens.get(btn);
+                if (!active) return;
+                const ctx = getAudioCtx();
+                if (ctx) {
+                    const now = ctx.currentTime;
+                    active.gain.gain.cancelScheduledValues(now);
+                    active.gain.gain.setValueAtTime(active.gain.gain.value, now);
+                    active.gain.gain.linearRampToValueAtTime(0.0001, now + 0.25);
+                }
+                clearInterval(active.sweepInterval);
+                setTimeout(() => {
+                    try { active.osc.stop(); } catch (e) { /* noop */ }
+                }, 300);
+                activeSirens.delete(btn);
+            }
+
+            document.querySelectorAll('[data-truck-sound]').forEach((btn) => {
+                btn.addEventListener('click', () => {
+                    const isOn = btn.getAttribute('aria-pressed') === 'true';
+                    if (isOn) {
+                        stopSiren(btn);
+                        resetButton(btn);
+                    } else {
+                        startSiren(btn);
+                        btn.setAttribute('aria-pressed', 'true');
+                        btn.setAttribute('aria-label', 'Matikan bunyi siren jentera bomba');
+                    }
+                });
+            });
+
+            document.addEventListener('visibilitychange', () => {
+                if (document.hidden) {
+                    activeSirens.forEach((_, btn) => {
+                        stopSiren(btn);
+                        resetButton(btn);
+                    });
+                }
+            });
+        }
+
         document.addEventListener('DOMContentLoaded', () => {
             initContent();
             animateGreeting();
@@ -2481,6 +2902,7 @@
             initParticleCanvas();
             initCursorGlow();
             initWalkieInteractions();
+            initFireTruckSirens();
 
             let resizeTimeout;
             window.addEventListener('resize', () => {
