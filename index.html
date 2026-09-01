@@ -949,7 +949,7 @@
         }
 
         /* ==========================================================================
-           10. FOOTER — DI PUSATKAN
+           10. FOOTER — DI PUSATKAN DENGAN SIREN SAIZ WALKIE-TALKIE
            ========================================================================== */
         .footer-digital {
             margin-top: 100px;
@@ -960,32 +960,40 @@
             width: 100%;
         }
 
+        /* SIREN FOOTER - SAIZ SAMA DENGAN WALKIE-TALKIE (200px lebar) */
         .footer-siren {
             text-align: center;
             margin-bottom: 30px;
             width: 100%;
         }
 
-        .footer-siren svg {
-            width: 80px;
-            height: 80px;
+        .footer-siren-wrapper {
             display: inline-block;
+            width: 200px;
+            max-width: 100%;
+            position: relative;
+        }
+
+        .footer-siren-wrapper svg {
+            width: 100%;
+            height: auto;
+            display: block;
             animation: sirenBlink 0.8s infinite alternate;
             transition: all 0.4s ease;
         }
 
-        .footer-siren svg:hover {
-            transform: scale(1.15) rotate(5deg);
+        .footer-siren-wrapper svg:hover {
+            transform: scale(1.05);
             filter: drop-shadow(0 0 30px rgba(255, 60, 0, 0.8));
         }
 
-        .footer-siren-glow {
-            filter: drop-shadow(0 0 15px rgba(255, 60, 0, 0.6));
-            transition: filter 0.4s ease;
+        .footer-siren-wrapper .siren-glow {
+            transition: all 0.5s ease;
         }
 
-        .footer-siren-glow:hover {
-            filter: drop-shadow(0 0 35px rgba(255, 60, 0, 0.9));
+        .footer-siren-wrapper .siren-glow:hover {
+            opacity: 1;
+            filter: drop-shadow(0 0 30px rgba(255, 60, 0, 0.5));
         }
 
         .footer-content {
@@ -1096,6 +1104,9 @@
             .glass-cards-grid {
                 max-width: 700px;
             }
+            .footer-siren-wrapper {
+                width: 160px;
+            }
         }
 
         @media (max-width: 768px) {
@@ -1187,9 +1198,8 @@
             .workstation-icon {
                 max-width: 320px;
             }
-            .footer-siren svg {
-                width: 60px;
-                height: 60px;
+            .footer-siren-wrapper {
+                width: 140px;
             }
         }
 
@@ -1255,9 +1265,8 @@
             .workstation-icon {
                 max-width: 280px;
             }
-            .footer-siren svg {
-                width: 50px;
-                height: 50px;
+            .footer-siren-wrapper {
+                width: 120px;
             }
             .section-title {
                 font-size: 1.5rem;
@@ -1290,7 +1299,7 @@
                 display: none !important;
             }
             .siren-light,
-            .footer-siren svg {
+            .footer-siren-wrapper svg {
                 animation: none !important;
                 fill: #ff3300 !important;
             }
@@ -1607,18 +1616,34 @@
     </div>
 
     <!-- ==========================================================================
-       FOOTER — DI PUSATKAN
+       FOOTER — SIREN SAIZ WALKIE-TALKIE + EMAIL · COPYRIGHT · SOSMED
        ========================================================================== -->
     <footer class="footer-digital">
         <div class="main-container">
+            <!-- SIREN FOOTER - SAIZ SAMA DENGAN WALKIE-TALKIE (200px) -->
             <div class="footer-siren">
-                <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" class="footer-siren-glow">
-                    <rect x="30" y="80" width="60" height="20" fill="#333" rx="6"/>
-                    <rect x="40" y="50" width="40" height="34" fill="#222" rx="6"/>
-                    <circle cx="60" cy="62" r="15" fill="#ff0000" stroke="#cc0000" stroke-width="2.5"/>
-                    <ellipse cx="60" cy="82" rx="50" ry="12" fill="rgba(255, 60, 0, 0.15)"/>
-                    <ellipse cx="60" cy="82" rx="60" ry="15" fill="rgba(0, 100, 255, 0.08)"/>
-                </svg>
+                <div class="footer-siren-wrapper">
+                    <svg viewBox="0 0 200 180" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Tapak lampu -->
+                        <rect x="30" y="120" width="140" height="40" fill="#333" rx="8"/>
+                        <!-- Badan lampu utama -->
+                        <rect x="50" y="40" width="100" height="85" fill="#222" rx="12"/>
+                        <!-- Bahagian atas lampu (bulat) -->
+                        <ellipse cx="100" cy="45" rx="50" ry="15" fill="#1a1a1a"/>
+                        <!-- Lampu kiri - berkelip -->
+                        <circle cx="80" cy="75" r="20" fill="#ff0000" class="siren-light" />
+                        <!-- Lampu kanan - berkelip (delay) -->
+                        <circle cx="120" cy="75" r="20" fill="#ff0000" class="siren-light" style="animation-delay: 0.4s;" />
+                        <!-- Sorotan cahaya atas -->
+                        <ellipse cx="100" cy="100" rx="60" ry="12" fill="rgba(255, 60, 0, 0.15)" class="siren-glow" />
+                        <ellipse cx="100" cy="100" rx="70" ry="15" fill="rgba(0, 100, 255, 0.08)" class="siren-glow" style="animation-delay: 0.4s;" />
+                        <!-- Butiran pada badan lampu -->
+                        <rect x="65" y="55" width="70" height="4" fill="#444" rx="2"/>
+                        <rect x="65" y="65" width="70" height="4" fill="#444" rx="2"/>
+                        <!-- Logo kecil di tengah -->
+                        <text x="100" y="110" text-anchor="middle" font-family="monospace" font-size="8" fill="#666" font-weight="bold">SIREN</text>
+                    </svg>
+                </div>
             </div>
 
             <div class="footer-content">
