@@ -100,7 +100,7 @@
         }
 
         /* ==========================================================================
-           4. HEADER — DIGITAL IDENTITY (Tanpa Border)
+           4. HEADER — DIGITAL IDENTITY (Tanpa Border) - DI PUSATKAN
            ========================================================================== */
         .header-digital {
             display: flex;
@@ -109,6 +109,7 @@
             padding: 40px 0 20px;
             opacity: 0;
             animation: fadeInHeader 1.2s var(--transition-smooth) forwards;
+            width: 100%;
         }
 
         .header-top {
@@ -117,6 +118,8 @@
             justify-content: center;
             gap: 30px;
             width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
         }
 
         .logo-badge {
@@ -132,6 +135,7 @@
             position: relative;
             opacity: 0;
             animation: logoFade 1s var(--transition-smooth) 0.3s forwards;
+            flex-shrink: 0;
         }
         .logo-badge::before {
             display: none;
@@ -193,7 +197,7 @@
         }
 
         /* ==========================================================================
-           5. HERO — GREETING & SUBTEXT
+           5. HERO — GREETING & SUBTEXT - DI PUSATKAN
            ========================================================================== */
         .hero-section {
             text-align: center;
@@ -223,7 +227,6 @@
             margin-right: auto;
         }
 
-        /* Setiap perkataan dalam baris berasingan untuk ucapan selamat datang */
         .greeting-line {
             display: flex;
             flex-wrap: wrap;
@@ -247,7 +250,6 @@
             filter: blur(0);
         }
 
-        /* Pembahagian perkataan secara berbaris */
         .greeting-word {
             display: inline-flex;
             flex-wrap: wrap;
@@ -272,11 +274,12 @@
         }
 
         /* ==========================================================================
-           6. TEAM EXPERIENCE — 5 PERSONNEL ARC COMPOSITION (Tanpa Border)
+           6. TEAM EXPERIENCE — 5 PERSONNEL ARC COMPOSITION - DI PUSATKAN
            ========================================================================== */
         .team-section {
             padding: 60px 0 100px;
             position: relative;
+            width: 100%;
         }
 
         .team-arc-container {
@@ -286,7 +289,6 @@
             margin: 0 auto;
         }
 
-        /* Garis Sambungan SVG — jingga */
         .connection-svg {
             position: absolute;
             top: 0;
@@ -310,7 +312,6 @@
             }
         }
 
-        /* Pembungkus Kad Anggota */
         .team-node {
             position: absolute;
             display: flex;
@@ -326,7 +327,6 @@
             z-index: 20;
         }
 
-        /* Posisi Arc Desktop */
         .node-leader {
             top: 10px;
             left: 50%;
@@ -353,7 +353,6 @@
             transform: translateX(-50%);
         }
 
-        /* Avatar Styling — Tanpa Border & Shadow */
         .avatar-wrapper {
             position: relative;
             border-radius: 50%;
@@ -427,7 +426,6 @@
             opacity: 0.95;
         }
 
-        /* Animasi Kemasukan Pasukan */
         .node-leader {
             opacity: 0;
             transform: translate(-50%, 30px) scale(0.75);
@@ -480,13 +478,14 @@
         }
 
         /* ==========================================================================
-           7. SCROLL INDICATOR
+           7. SCROLL INDICATOR - DI PUSATKAN
            ========================================================================== */
         .scroll-indicator {
             text-align: center;
             margin-top: 20px;
             opacity: 0.8;
             transition: opacity 0.5s ease;
+            width: 100%;
         }
 
         .scroll-text {
@@ -521,15 +520,17 @@
         }
 
         /* ==========================================================================
-           8. VISION & MISSION SECTION — LANGSUNG DI ATAS BODY
+           8. VISION & MISSION SECTION - DI PUSATKAN
            ========================================================================== */
         .vision-section {
             padding: 90px 0;
+            width: 100%;
         }
 
         .section-title-wrap {
             text-align: center;
             margin-bottom: 50px;
+            width: 100%;
         }
 
         .section-tag {
@@ -553,6 +554,8 @@
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 30px;
+            max-width: 900px;
+            margin: 0 auto;
         }
 
         .glass-card {
@@ -568,6 +571,7 @@
             transform: translateY(40px);
             transition: opacity 0.8s var(--transition-smooth),
                 transform 0.8s var(--transition-smooth);
+            text-align: center;
         }
 
         .glass-card.visible {
@@ -587,7 +591,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 24px;
+            margin: 0 auto 24px;
             border: none;
         }
 
@@ -615,7 +619,7 @@
         }
 
         /* ==========================================================================
-           9. WALKIE TALKIE + WORKSTATION ICON (BESAR)
+           9. WALKIE TALKIE + WORKSTATION ICON - DI PUSATKAN
            ========================================================================== */
         .walkie-section {
             padding: 90px 0;
@@ -623,6 +627,7 @@
             flex-direction: column;
             align-items: center;
             position: relative;
+            width: 100%;
         }
 
         .walkie-wrapper {
@@ -630,7 +635,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            margin: 40px 0;
+            margin: 40px auto;
         }
 
         .radio-waves {
@@ -850,6 +855,7 @@
         .digital-message {
             text-align: center;
             margin-top: 30px;
+            width: 100%;
         }
 
         .msg-line {
@@ -873,12 +879,13 @@
             font-weight: 700;
         }
 
-        /* ===== WORKSTATION ICON — SAIZ BESAR SEPADAN WALKIE ===== */
         .workstation-icon {
             margin-top: 50px;
             text-align: center;
             width: 100%;
             max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .workstation-icon svg {
@@ -895,9 +902,9 @@
             margin-top: 12px;
             text-transform: uppercase;
             font-weight: 600;
+            text-align: center;
         }
 
-        /* Animasi lampu siren — berkelip dengan saiz lebih besar */
         .siren-light {
             animation: sirenBlink 0.8s infinite alternate;
             transform-origin: center;
@@ -942,7 +949,7 @@
         }
 
         /* ==========================================================================
-           10. FOOTER — TANPA SEMPADAN + LAMPU SIREN BULAT TUNGGAL DI ATAS
+           10. FOOTER — DI PUSATKAN
            ========================================================================== */
         .footer-digital {
             margin-top: 100px;
@@ -950,12 +957,13 @@
             border-top: none;
             background: transparent;
             position: relative;
+            width: 100%;
         }
 
-        /* Lampu siren bulat tunggal di bahagian atas footer */
         .footer-siren {
             text-align: center;
             margin-bottom: 30px;
+            width: 100%;
         }
 
         .footer-siren svg {
@@ -971,7 +979,6 @@
             filter: drop-shadow(0 0 30px rgba(255, 60, 0, 0.8));
         }
 
-        /* Efek glow untuk lampu siren footer */
         .footer-siren-glow {
             filter: drop-shadow(0 0 15px rgba(255, 60, 0, 0.6));
             transition: filter 0.4s ease;
@@ -983,10 +990,13 @@
 
         .footer-content {
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
             align-items: center;
             flex-wrap: wrap;
-            gap: 20px;
+            gap: 30px;
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
         }
 
         .footer-email {
@@ -1032,6 +1042,7 @@
         .social-links {
             display: flex;
             gap: 16px;
+            justify-content: center;
         }
 
         .social-icon {
@@ -1082,6 +1093,9 @@
             .workstation-icon {
                 max-width: 400px;
             }
+            .glass-cards-grid {
+                max-width: 700px;
+            }
         }
 
         @media (max-width: 768px) {
@@ -1105,7 +1119,6 @@
                 height: 22px;
             }
 
-            /* Saiz teks ucapan pada telefon - lebih kecil dan padat */
             .greeting-container {
                 font-size: 2.4rem;
                 letter-spacing: 3px;
@@ -1128,6 +1141,7 @@
 
             .glass-cards-grid {
                 grid-template-columns: 1fr;
+                max-width: 500px;
             }
 
             .team-arc-container {
@@ -1200,7 +1214,6 @@
                 height: 18px;
             }
 
-            /* Saiz teks ucapan pada telefon kecil - lebih kecil */
             .greeting-container {
                 font-size: 1.8rem;
                 letter-spacing: 2px;
@@ -1256,6 +1269,9 @@
                 font-size: 0.85rem;
                 letter-spacing: 2px;
             }
+            .glass-cards-grid {
+                max-width: 100%;
+            }
         }
 
         /* ACCESSIBILITY: REDUCED MOTION */
@@ -1285,18 +1301,15 @@
     <!-- Latar Belakang Zarah Canvas (KEKAL) -->
     <canvas id="particle-canvas"></canvas>
 
-    <!-- Digital Grid — DIBUANG SEPENUHNYA -->
-
     <!-- Cursor Glow Spot Light (KEKAL) -->
     <div class="cursor-glow" id="cursorGlow"></div>
 
     <div class="main-container">
         <!-- ==========================================================================
-             HEADER — DIGITAL IDENTITY
+             HEADER — DIGITAL IDENTITY - DI PUSATKAN
              ========================================================================== -->
         <header class="header-digital">
             <div class="header-top">
-                <!-- Logo Left -->
                 <div class="logo-badge" id="logo-left" aria-label="Logo Kiri">
                     <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--accent-orange)" stroke-width="2">
                         <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
@@ -1305,7 +1318,6 @@
                     </svg>
                 </div>
 
-                <!-- Tajuk Utama -->
                 <div class="brand-title-wrap">
                     <h1 class="brand-title" id="brandTitle">BRAVO THE FUTURE</h1>
                     <div class="brand-subtitle" id="brandSubtitle">
@@ -1313,7 +1325,6 @@
                     </div>
                 </div>
 
-                <!-- Logo Right -->
                 <div class="logo-badge" id="logo-right" aria-label="Logo Kanan">
                     <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--accent-orange)" stroke-width="2">
                         <circle cx="12" cy="12" r="10"></circle>
@@ -1325,7 +1336,7 @@
         </header>
 
         <!-- ==========================================================================
-             HERO — SELAMAT DATANG & SUBTEXT
+             HERO — SELAMAT DATANG & SUBTEXT - DI PUSATKAN
              ========================================================================== -->
         <section class="hero-section">
             <div class="greeting-container" id="greetingContainer" aria-label="Selamat Datang"></div>
@@ -1333,47 +1344,32 @@
         </section>
 
         <!-- ==========================================================================
-             TEAM EXPERIENCE — 5 PERSONNEL ARC COMPOSITION
+             TEAM EXPERIENCE — 5 PERSONNEL ARC COMPOSITION - DI PUSATKAN
              ========================================================================== -->
         <section class="team-section" id="teamSection">
             <div class="team-arc-container" id="teamArcContainer">
-                <!-- SVG Connecting Lines -->
                 <svg class="connection-svg" id="connectionSvg"></svg>
 
-                <!-- ===== KETUA PASUKAN — BER PELUK TUBUH (ARM CROSSED) ===== -->
                 <div class="team-node node-leader" id="nodeLeader" data-index="0">
                     <div class="leader-badge-title">Ketua Pasukan</div>
                     <div class="avatar-wrapper">
                         <div class="leader-halo"></div>
                         <svg class="avatar-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                            <!-- Kepala -->
                             <circle cx="50" cy="20" r="13" fill="var(--skin-color)" stroke="var(--skin-stroke)" stroke-width="1.2"/>
-                            <!-- Rambut -->
                             <path d="M37,18 Q50,3 63,18 Q65,20 63,22 Q50,9 37,22 Q35,20 37,18Z" fill="var(--hair-color)" stroke="var(--skin-stroke)" stroke-width="0.8"/>
-                            <!-- Mata -->
                             <circle cx="45" cy="19" r="1.8" fill="var(--skin-stroke)"/>
                             <circle cx="55" cy="19" r="1.8" fill="var(--skin-stroke)"/>
-                            <!-- Senyuman -->
                             <path d="M46,24 Q50,27 54,24" stroke="var(--skin-stroke)" stroke-width="1.2" fill="none" stroke-linecap="round"/>
-                            <!-- Badan -->
                             <rect x="35" y="33" width="30" height="28" rx="4" fill="var(--accent-orange)" stroke="var(--skin-stroke)" stroke-width="1.2"/>
-                            <!-- Kolar baju -->
                             <path d="M42,33 L50,28 L58,33" fill="var(--accent-orange-dark)" stroke="var(--skin-stroke)" stroke-width="0.8"/>
-                            <!-- Tali pinggang -->
                             <rect x="35" y="54" width="30" height="3" fill="var(--accent-orange-dark)" stroke="var(--skin-stroke)" stroke-width="0.8"/>
-                            <!-- Lengan kiri — berpeluk (cross) -->
                             <path d="M35,36 Q26,44 33,52" stroke="var(--skin-color)" stroke-width="6" fill="none" stroke-linecap="round"/>
                             <path d="M33,52 Q37,50 41,48" stroke="var(--skin-color)" stroke-width="5" fill="none" stroke-linecap="round"/>
-                            <!-- Lengan kanan — berpeluk (cross) -->
                             <path d="M65,36 Q74,44 67,52" stroke="var(--skin-color)" stroke-width="6" fill="none" stroke-linecap="round"/>
                             <path d="M67,52 Q63,50 59,48" stroke="var(--skin-color)" stroke-width="5" fill="none" stroke-linecap="round"/>
-                            <!-- Kaki kiri -->
                             <rect x="39" y="61" width="8" height="18" rx="3" fill="var(--pants-color)" stroke="var(--skin-stroke)" stroke-width="1.2"/>
-                            <!-- Kaki kanan -->
                             <rect x="53" y="61" width="8" height="18" rx="3" fill="var(--pants-color)" stroke="var(--skin-stroke)" stroke-width="1.2"/>
-                            <!-- Kasut kiri -->
                             <ellipse cx="43" cy="81" rx="7" ry="3.5" fill="var(--shoe-color)" stroke="var(--skin-stroke)" stroke-width="0.8"/>
-                            <!-- Kasut kanan -->
                             <ellipse cx="57" cy="81" rx="7" ry="3.5" fill="var(--shoe-color)" stroke="var(--skin-stroke)" stroke-width="0.8"/>
                         </svg>
                     </div>
@@ -1383,7 +1379,6 @@
                     </div>
                 </div>
 
-                <!-- ===== ANGGOTA 1 — BERDIRI (KIRI DALAM) ===== -->
                 <div class="team-node node-member node-member-1" id="nodeMember1" data-index="1">
                     <div class="avatar-wrapper">
                         <svg class="avatar-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
@@ -1395,9 +1390,7 @@
                             <rect x="35" y="33" width="30" height="28" rx="4" fill="var(--accent-orange)" stroke="var(--skin-stroke)" stroke-width="1.2"/>
                             <path d="M42,33 L50,28 L58,33" fill="var(--accent-orange-dark)" stroke="var(--skin-stroke)" stroke-width="0.8"/>
                             <rect x="35" y="54" width="30" height="3" fill="var(--accent-orange-dark)" stroke="var(--skin-stroke)" stroke-width="0.8"/>
-                            <!-- Lengan kiri — turun -->
                             <path d="M35,36 Q28,48 30,60" stroke="var(--skin-color)" stroke-width="6" fill="none" stroke-linecap="round"/>
-                            <!-- Lengan kanan — turun -->
                             <path d="M65,36 Q72,48 70,60" stroke="var(--skin-color)" stroke-width="6" fill="none" stroke-linecap="round"/>
                             <rect x="39" y="61" width="8" height="18" rx="3" fill="var(--pants-color)" stroke="var(--skin-stroke)" stroke-width="1.2"/>
                             <rect x="53" y="61" width="8" height="18" rx="3" fill="var(--pants-color)" stroke="var(--skin-stroke)" stroke-width="1.2"/>
@@ -1411,7 +1404,6 @@
                     </div>
                 </div>
 
-                <!-- ===== ANGGOTA 2 — BERDIRI (KIRI LUAR) ===== -->
                 <div class="team-node node-member node-member-2" id="nodeMember2" data-index="2">
                     <div class="avatar-wrapper">
                         <svg class="avatar-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
@@ -1437,7 +1429,6 @@
                     </div>
                 </div>
 
-                <!-- ===== ANGGOTA 3 — BERDIRI (KANAN DALAM) ===== -->
                 <div class="team-node node-member node-member-3" id="nodeMember3" data-index="3">
                     <div class="avatar-wrapper">
                         <svg class="avatar-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
@@ -1463,7 +1454,6 @@
                     </div>
                 </div>
 
-                <!-- ===== ANGGOTA 4 — BERDIRI (KANAN LUAR) ===== -->
                 <div class="team-node node-member node-member-4" id="nodeMember4" data-index="4">
                     <div class="avatar-wrapper">
                         <svg class="avatar-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
@@ -1490,7 +1480,6 @@
                 </div>
             </div>
 
-            <!-- Scroll Indicator -->
             <div class="scroll-indicator" id="scrollIndicator">
                 <div class="scroll-text">SCROLL TO DISCOVER</div>
                 <div class="scroll-arrow">↓</div>
@@ -1498,8 +1487,8 @@
         </section>
 
         <!-- ==========================================================================
-             VISION & MISSION — OUR DIRECTION (Text Direct Atas Body)
-           ========================================================================== -->
+             VISION & MISSION — OUR DIRECTION - DI PUSATKAN
+             ========================================================================== -->
         <section class="vision-section" id="visionSection">
             <div class="section-title-wrap">
                 <div class="section-tag">STRATEGIK</div>
@@ -1507,7 +1496,6 @@
             </div>
 
             <div class="glass-cards-grid">
-                <!-- Kad Visi -->
                 <div class="glass-card" id="cardVision">
                     <div class="card-icon">
                         <svg viewBox="0 0 24 24">
@@ -1520,7 +1508,6 @@
                     </div>
                 </div>
 
-                <!-- Kad Misi -->
                 <div class="glass-card" id="cardMission">
                     <div class="card-icon">
                         <svg viewBox="0 0 24 24">
@@ -1536,8 +1523,8 @@
         </section>
 
         <!-- ==========================================================================
-             WALKIE TALKIE + WORKSTATION ICON (BESAR + LAMPU SIREN)
-           ========================================================================== -->
+             WALKIE TALKIE + WORKSTATION ICON - DI PUSATKAN
+             ========================================================================== -->
         <section class="walkie-section" id="walkieSection">
             <div class="section-title-wrap">
                 <div class="section-tag">KOMUNIKASI DIGITAL</div>
@@ -1583,23 +1570,15 @@
                 </div>
             </div>
 
-            <!-- ===== IKON WORKSTATION — SAIZ BESAR + LAMPU SIREN ===== -->
             <div class="workstation-icon">
                 <svg viewBox="0 0 500 450" xmlns="http://www.w3.org/2000/svg">
                     <g transform="skewY(-10deg)">
-                        <!-- Meja (lebih lebar & tinggi) -->
                         <rect x="20" y="240" width="420" height="35" fill="#8B5A2B" stroke="#5C3A1E" stroke-width="3" rx="4"/>
-                        <!-- Kaki meja kiri -->
                         <rect x="40" y="275" width="20" height="70" fill="#6B4226" rx="2"/>
-                        <!-- Kaki meja kanan -->
                         <rect x="400" y="275" width="20" height="70" fill="#6B4226" rx="2"/>
-                        <!-- Tapak monitor -->
                         <rect x="120" y="200" width="160" height="40" fill="#555" rx="4"/>
-                        <!-- Skrin monitor (belakang) -->
                         <rect x="130" y="70" width="140" height="130" fill="#333" rx="6"/>
-                        <!-- Skrin (dalam) -->
                         <rect x="136" y="76" width="128" height="118" fill="#1a1a2e" rx="4"/>
-                        <!-- Paparan kod pada skrin (lebih terperinci) -->
                         <rect x="142" y="84" width="116" height="102" fill="#0f3460" rx="2"/>
                         <line x1="148" y1="98" x2="240" y2="98" stroke="#00ffcc" stroke-width="2.5" opacity="0.9"/>
                         <line x1="148" y1="110" x2="220" y2="110" stroke="#00ffcc" stroke-width="2.5" opacity="0.7"/>
@@ -1608,24 +1587,16 @@
                         <line x1="148" y1="146" x2="225" y2="146" stroke="#00ffcc" stroke-width="2.5" opacity="0.2"/>
                         <line x1="148" y1="158" x2="200" y2="158" stroke="#00ffcc" stroke-width="2.5" opacity="0.15"/>
                         <line x1="148" y1="170" x2="215" y2="170" stroke="#00ffcc" stroke-width="2.5" opacity="0.1"/>
-                        <!-- Keyboard (lebih besar) -->
                         <rect x="100" y="245" width="200" height="25" fill="#444" rx="4"/>
-                        <!-- Baris kekunci -->
                         <rect x="108" y="249" width="184" height="7" fill="#666" rx="2"/>
                         <rect x="108" y="259" width="184" height="7" fill="#666" rx="2"/>
-                        <!-- Tetikus (di sebelah kanan keyboard) -->
                         <ellipse cx="330" cy="250" rx="22" ry="15" fill="#555" stroke="#444" stroke-width="2"/>
                         <path d="M330,235 L330,250" stroke="#444" stroke-width="2.5"/>
 
-                        <!-- ===== LAMPU SIREN DI BAWAH MEJA (DIPERBESARKAN) ===== -->
-                        <!-- Tapak lampu siren -->
                         <rect x="200" y="286" width="50" height="12" fill="#333" rx="3"/>
-                        <!-- Badan lampu siren -->
                         <rect x="208" y="270" width="34" height="20" fill="#222" rx="4"/>
-                        <!-- Lampu berkelip (kiri & kanan) - saiz lebih besar -->
                         <circle cx="220" cy="275" r="9" class="siren-light" />
                         <circle cx="230" cy="275" r="9" class="siren-light" style="animation-delay: 0.4s;" />
-                        <!-- Sorotan cahaya (effect glow) - lebih besar -->
                         <ellipse cx="225" cy="286" rx="45" ry="10" fill="rgba(255, 60, 0, 0.15)" class="siren-glow" />
                         <ellipse cx="225" cy="286" rx="55" ry="12" fill="rgba(0, 100, 255, 0.08)" class="siren-glow" style="animation-delay: 0.4s;" />
                     </g>
@@ -1636,37 +1607,29 @@
     </div>
 
     <!-- ==========================================================================
-       FOOTER — LAMPU SIREN BULAT TUNGGAL DI ATAS + EMAIL · COPYRIGHT · SOSMED
+       FOOTER — DI PUSATKAN
        ========================================================================== -->
     <footer class="footer-digital">
         <div class="main-container">
-            <!-- Ikon Lampu Siren Bulat Tunggal di bahagian atas footer (DIPERBESARKAN) -->
             <div class="footer-siren">
                 <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" class="footer-siren-glow">
-                    <!-- Tapak -->
                     <rect x="30" y="80" width="60" height="20" fill="#333" rx="6"/>
-                    <!-- Badan lampu -->
                     <rect x="40" y="50" width="40" height="34" fill="#222" rx="6"/>
-                    <!-- Lampu bulat tunggal -->
                     <circle cx="60" cy="62" r="15" fill="#ff0000" stroke="#cc0000" stroke-width="2.5"/>
-                    <!-- Sorotan cahaya -->
                     <ellipse cx="60" cy="82" rx="50" ry="12" fill="rgba(255, 60, 0, 0.15)"/>
                     <ellipse cx="60" cy="82" rx="60" ry="15" fill="rgba(0, 100, 255, 0.08)"/>
                 </svg>
             </div>
 
             <div class="footer-content">
-                <!-- Kiri: Alamat Email -->
                 <div class="footer-email" id="footerEmail">
                     ✉ <a href="mailto:hello@digitalisasibravopgo.com">hello@digitalisasibravopgo.com</a>
                 </div>
 
-                <!-- Tengah: Copyright -->
                 <div class="footer-copyright" id="footerCopyright">
                     © 2035 BRAVO THE FUTURE — ALL RIGHTS RESERVED
                 </div>
 
-                <!-- Kanan: Ikon Media Sosial -->
                 <div class="social-links">
                     <a href="#" class="social-icon" aria-label="Facebook">
                         <svg viewBox="0 0 24 24">
@@ -1700,9 +1663,6 @@
        JAVASCRIPT ARCHITECTURE & LOGIK INTERAKSI
        ========================================================================== -->
     <script>
-        /* --------------------------------------------------------------------------
-           1. KONFIGURASI KANDUNGAN BOLEH DISUNTING (PROJECT_CONFIG)
-           -------------------------------------------------------------------------- */
         const PROJECT_CONFIG = {
             PROJECT_NAME: 'BRAVO THE FUTURE',
             PROJECT_SUBTITLE: 'PROJEK DIGITALISASI BRAVO PGO JOHOR',
@@ -1726,9 +1686,6 @@
             ],
         };
 
-        /* --------------------------------------------------------------------------
-           2. PENERAPAN KANDUNGAN KE DALAM DOM
-           -------------------------------------------------------------------------- */
         function initContent() {
             document.getElementById('brandTitle').textContent =
                 PROJECT_CONFIG.PROJECT_NAME;
@@ -1743,7 +1700,6 @@
             document.getElementById('footerCopyright').textContent =
                 PROJECT_CONFIG.FOOTER;
 
-            // Isi Data Pasukan
             const nodes = [
                 document.getElementById('nodeLeader'),
                 document.getElementById('nodeMember1'),
@@ -1764,29 +1720,20 @@
             });
         }
 
-        /* --------------------------------------------------------------------------
-           3. ANIMASI SELAMAT DATANG (LETTER BY LETTER FADE + BLUR)
-              - Setiap perkataan dalam baris yang berasingan
-              - Dipusatkan dengan flex
-           -------------------------------------------------------------------------- */
         function animateGreeting() {
             const container = document.getElementById('greetingContainer');
             const text = PROJECT_CONFIG.GREETING;
             container.innerHTML = '';
 
-            // Pisahkan perkataan mengikut ruang
             const words = text.split(' ');
 
-            // Untuk setiap perkataan, buat div pembungkus baris
             words.forEach((word, wordIndex) => {
                 const wordDiv = document.createElement('div');
                 wordDiv.className = 'greeting-line';
 
-                // Bungkus setiap perkataan dalam span untuk flex
                 const wordSpan = document.createElement('span');
                 wordSpan.className = 'greeting-word';
 
-                // Pecah perkataan kepada huruf
                 word.split('').forEach((char, charIndex) => {
                     const span = document.createElement('span');
                     span.className = 'char-span';
@@ -1799,19 +1746,16 @@
                 wordDiv.appendChild(wordSpan);
                 container.appendChild(wordDiv);
 
-                // Tambah ruang selepas perkataan (kecuali perkataan terakhir)
                 if (wordIndex < words.length - 1) {
                     const space = document.createElement('span');
                     space.className = 'char-span';
                     space.textContent = '\u00A0';
                     space.style.width = '0.3em';
                     space.style.display = 'inline-block';
-                    // Tambah ruang ke baris semasa
                     wordDiv.appendChild(space);
                 }
             });
 
-            // Kira semua span.char-span
             const allChars = container.querySelectorAll('.char-span');
             allChars.forEach((span, index) => {
                 setTimeout(() => {
@@ -1824,9 +1768,6 @@
             }, 1200 + allChars.length * 70 + 300);
         }
 
-        /* --------------------------------------------------------------------------
-           4. DRAWING GARIS SAMBUNGAN DIGITAL PASUKAN (SVG)
-           -------------------------------------------------------------------------- */
         function drawTeamConnections() {
             const svg = document.getElementById('connectionSvg');
             const container = document.getElementById('teamArcContainer');
@@ -1868,22 +1809,16 @@
             });
         }
 
-        /* --------------------------------------------------------------------------
-           5. SCROLL REVEAL OBSERVER (INTERSECTION OBSERVER)
-           -------------------------------------------------------------------------- */
         function initScrollReveals() {
             const observerOptions = { threshold: 0.25 };
 
-            // Observer Pasukan
             const teamObserver = new IntersectionObserver((entries) => {
                 entries.forEach((entry) => {
                     if (entry.isIntersecting) {
-                        // Ketua masuk
                         setTimeout(() => {
                             document.getElementById('nodeLeader').classList.add('entered');
                         }, 200);
 
-                        // Anggota masuk serentak kiri & kanan
                         const leftMembers = [
                             document.getElementById('nodeMember1'),
                             document.getElementById('nodeMember2'),
@@ -1910,7 +1845,6 @@
             const teamSec = document.getElementById('teamSection');
             if (teamSec) teamObserver.observe(teamSec);
 
-            // Observer Scroll Indicator Fadeout
             const scrollIndicator = document.getElementById('scrollIndicator');
             window.addEventListener('scroll', () => {
                 if (window.scrollY > 150) {
@@ -1920,7 +1854,6 @@
                 }
             });
 
-            // Observer Visi & Misi Cards
             const visionObserver = new IntersectionObserver((entries) => {
                 entries.forEach((entry) => {
                     if (entry.isIntersecting) {
@@ -1940,7 +1873,6 @@
             const visionSec = document.getElementById('visionSection');
             if (visionSec) visionObserver.observe(visionSec);
 
-            // Observer Walkie Talkie & Digital Message
             const walkieObserver = new IntersectionObserver((entries) => {
                 entries.forEach((entry) => {
                     if (entry.isIntersecting) {
@@ -1959,9 +1891,6 @@
             if (walkieSec) walkieObserver.observe(walkieSec);
         }
 
-        /* --------------------------------------------------------------------------
-           6. CANVAS BACKGROUND PARTICLE SYSTEM — jingga (KEKAL)
-           -------------------------------------------------------------------------- */
         function initParticleCanvas() {
             const canvas = document.getElementById('particle-canvas');
             const ctx = canvas.getContext('2d');
@@ -2038,9 +1967,6 @@
             });
         }
 
-        /* --------------------------------------------------------------------------
-           7. CURSOR GLOW EFFECT (DESKTOP ONLY) — KEKAL
-           -------------------------------------------------------------------------- */
         function initCursorGlow() {
             const glow = document.getElementById('cursorGlow');
             if (!glow || window.innerWidth < 768) return;
@@ -2051,9 +1977,6 @@
             });
         }
 
-        /* --------------------------------------------------------------------------
-           8. INITIALIZATION ON DOM READY
-           -------------------------------------------------------------------------- */
         document.addEventListener('DOMContentLoaded', () => {
             initContent();
             animateGreeting();
