@@ -614,7 +614,7 @@
         }
 
         /* ==========================================================================
-           9. WALKIE TALKIE + WORKSTATION ICON
+           9. WALKIE TALKIE + WORKSTATION ICON (BESAR)
            ========================================================================== */
         .walkie-section {
             padding: 90px 0;
@@ -872,14 +872,15 @@
             font-weight: 700;
         }
 
-        /* ----- WORKSTATION ICON (sudut kiri 15°) ----- */
+        /* ===== WORKSTATION ICON — SAIZ BESAR SEPADAN WALKIE ===== */
         .workstation-icon {
             margin-top: 50px;
             text-align: center;
+            width: 100%;
+            max-width: 400px;
         }
 
         .workstation-icon svg {
-            max-width: 280px;
             width: 100%;
             height: auto;
             display: inline-block;
@@ -893,6 +894,34 @@
             margin-top: 12px;
             text-transform: uppercase;
             font-weight: 600;
+        }
+
+        /* Animasi lampu siren — berkelip */
+        @keyframes sirenBlink {
+            0% {
+                opacity: 0.2;
+                fill: #ff0000;
+            }
+            25% {
+                opacity: 1;
+                fill: #ff3300;
+            }
+            50% {
+                opacity: 0.2;
+                fill: #0066ff;
+            }
+            75% {
+                opacity: 1;
+                fill: #0044cc;
+            }
+            100% {
+                opacity: 0.2;
+                fill: #ff0000;
+            }
+        }
+
+        .siren-light {
+            animation: sirenBlink 0.8s infinite alternate;
         }
 
         /* ==========================================================================
@@ -989,6 +1018,9 @@
             .node-member-4 {
                 left: 90%;
             }
+            .workstation-icon {
+                max-width: 320px;
+            }
         }
 
         @media (max-width: 768px) {
@@ -1048,8 +1080,8 @@
                 order: 3;
             }
 
-            .workstation-icon svg {
-                max-width: 220px;
+            .workstation-icon {
+                max-width: 280px;
             }
         }
 
@@ -1073,8 +1105,8 @@
                 top: -24px;
                 padding: 1px 8px;
             }
-            .workstation-icon svg {
-                max-width: 180px;
+            .workstation-icon {
+                max-width: 220px;
             }
         }
 
@@ -1092,6 +1124,10 @@
             .cursor-glow,
             .radio-waves {
                 display: none !important;
+            }
+            .siren-light {
+                animation: none !important;
+                fill: #ff3300 !important;
             }
         }
     </style>
@@ -1352,7 +1388,7 @@
         </section>
 
         <!-- ==========================================================================
-             WALKIE TALKIE + WORKSTATION ICON
+             WALKIE TALKIE + WORKSTATION ICON (BESAR + LAMPU SIREN)
            ========================================================================== -->
         <section class="walkie-section" id="walkieSection">
             <div class="section-title-wrap">
@@ -1399,39 +1435,53 @@
                 </div>
             </div>
 
-            <!-- ===== IKON WORKSTATION (sudut kiri 15°) ===== -->
+            <!-- ===== IKON WORKSTATION — SAIZ BESAR + LAMPU SIREN ===== -->
             <div class="workstation-icon">
-                <svg viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+                <svg viewBox="0 0 500 420" xmlns="http://www.w3.org/2000/svg">
                     <g transform="skewY(-15deg)">
-                        <!-- Meja -->
-                        <rect x="20" y="120" width="200" height="15" fill="#8B5A2B" stroke="#5C3A1E" stroke-width="2" rx="2"/>
+                        <!-- Meja (lebih lebar & tinggi) -->
+                        <rect x="30" y="240" width="380" height="30" fill="#8B5A2B" stroke="#5C3A1E" stroke-width="3" rx="4"/>
                         <!-- Kaki meja kiri -->
-                        <rect x="30" y="135" width="10" height="40" fill="#6B4226" rx="1"/>
+                        <rect x="50" y="270" width="16" height="60" fill="#6B4226" rx="2"/>
                         <!-- Kaki meja kanan -->
-                        <rect x="200" y="135" width="10" height="40" fill="#6B4226" rx="1"/>
-                        <!-- Monitor - tapak -->
-                        <rect x="80" y="100" width="80" height="20" fill="#555" rx="2"/>
-                        <!-- Monitor - skrin (belakang) -->
-                        <rect x="85" y="40" width="70" height="60" fill="#333" rx="3"/>
+                        <rect x="374" y="270" width="16" height="60" fill="#6B4226" rx="2"/>
+                        <!-- Tapak monitor -->
+                        <rect x="130" y="200" width="140" height="40" fill="#555" rx="4"/>
+                        <!-- Skrin monitor (belakang) -->
+                        <rect x="140" y="80" width="120" height="120" fill="#333" rx="6"/>
                         <!-- Skrin (dalam) -->
-                        <rect x="88" y="43" width="64" height="54" fill="#1a1a2e" rx="2"/>
-                        <!-- Paparan skrin (simulasi kod) -->
-                        <rect x="92" y="47" width="56" height="46" fill="#0f3460" rx="1"/>
-                        <line x1="96" y1="55" x2="140" y2="55" stroke="#00ffcc" stroke-width="1.5" opacity="0.8"/>
-                        <line x1="96" y1="62" x2="130" y2="62" stroke="#00ffcc" stroke-width="1.5" opacity="0.6"/>
-                        <line x1="96" y1="69" x2="135" y2="69" stroke="#00ffcc" stroke-width="1.5" opacity="0.4"/>
-                        <line x1="96" y1="76" x2="125" y2="76" stroke="#00ffcc" stroke-width="1.5" opacity="0.25"/>
-                        <!-- Keyboard -->
-                        <rect x="70" y="130" width="100" height="12" fill="#444" rx="2"/>
+                        <rect x="146" y="86" width="108" height="108" fill="#1a1a2e" rx="4"/>
+                        <!-- Paparan kod pada skrin (lebih terperinci) -->
+                        <rect x="152" y="94" width="96" height="92" fill="#0f3460" rx="2"/>
+                        <line x1="158" y1="106" x2="230" y2="106" stroke="#00ffcc" stroke-width="2.5" opacity="0.9"/>
+                        <line x1="158" y1="118" x2="210" y2="118" stroke="#00ffcc" stroke-width="2.5" opacity="0.7"/>
+                        <line x1="158" y1="130" x2="220" y2="130" stroke="#00ffcc" stroke-width="2.5" opacity="0.5"/>
+                        <line x1="158" y1="142" x2="200" y2="142" stroke="#00ffcc" stroke-width="2.5" opacity="0.3"/>
+                        <line x1="158" y1="154" x2="215" y2="154" stroke="#00ffcc" stroke-width="2.5" opacity="0.2"/>
+                        <line x1="158" y1="166" x2="190" y2="166" stroke="#00ffcc" stroke-width="2.5" opacity="0.15"/>
+                        <!-- Keyboard (lebih besar) -->
+                        <rect x="110" y="250" width="180" height="20" fill="#444" rx="4"/>
                         <!-- Baris kekunci -->
-                        <rect x="74" y="132" width="92" height="3" fill="#666" rx="1"/>
-                        <rect x="74" y="136" width="92" height="3" fill="#666" rx="1"/>
+                        <rect x="116" y="253" width="168" height="6" fill="#666" rx="2"/>
+                        <rect x="116" y="261" width="168" height="6" fill="#666" rx="2"/>
                         <!-- Tetikus (di sebelah kanan keyboard) -->
-                        <ellipse cx="185" cy="133" rx="10" ry="6" fill="#555" stroke="#444" stroke-width="1"/>
-                        <path d="M185,127 L185,133" stroke="#444" stroke-width="1"/>
+                        <ellipse cx="320" cy="255" rx="18" ry="12" fill="#555" stroke="#444" stroke-width="2"/>
+                        <path d="M320,243 L320,255" stroke="#444" stroke-width="2"/>
+
+                        <!-- ===== LAMPU SIREN DI BAWAH MEJA ===== -->
+                        <!-- Tapak lampu siren -->
+                        <rect x="210" y="280" width="40" height="10" fill="#333" rx="2"/>
+                        <!-- Lampu siren (badan) -->
+                        <rect x="218" y="270" width="24" height="14" fill="#222" rx="2"/>
+                        <!-- Lampu berkelip (kiri & kanan) -->
+                        <circle cx="224" cy="274" r="6" class="siren-light" />
+                        <circle cx="236" cy="274" r="6" class="siren-light" style="animation-delay: 0.4s;" />
+                        <!-- Sorotan cahaya (effect glow) -->
+                        <ellipse cx="230" cy="280" rx="30" ry="6" fill="rgba(255, 60, 0, 0.15)" class="siren-glow" />
+                        <ellipse cx="230" cy="280" rx="40" ry="8" fill="rgba(0, 100, 255, 0.08)" class="siren-glow" style="animation-delay: 0.4s;" />
                     </g>
                 </svg>
-                <div class="workstation-label">DIGITAL WORKSPACE</div>
+                <div class="workstation-label">DIGITAL WORKSPACE · ACTIVE</div>
             </div>
         </section>
     </div>
