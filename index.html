@@ -79,9 +79,6 @@
             pointer-events: none;
         }
 
-        /* Digital Grid — DIBUANG SEPENUHNYA */
-        /* .digital-grid { ... }  tidak lagi wujud */
-
         .cursor-glow {
             position: fixed;
             width: 500px;
@@ -200,12 +197,13 @@
            ========================================================================== */
         .hero-section {
             text-align: center;
-            padding: 60px 0 40px;
-            min-height: 220px;
+            padding: 40px 0 30px;
+            min-height: 200px;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
+            width: 100%;
         }
 
         .greeting-container {
@@ -218,9 +216,23 @@
             flex-wrap: wrap;
             justify-content: center;
             text-shadow: none;
+            text-align: center;
+            width: 100%;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
-        .char-span {
+        /* Setiap perkataan dalam baris berasingan untuk ucapan selamat datang */
+        .greeting-line {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            width: 100%;
+            gap: 0 4px;
+        }
+
+        .greeting-line .char-span {
             display: inline-block;
             opacity: 0;
             transform: translateY(10px);
@@ -229,10 +241,18 @@
             white-space: pre;
         }
 
-        .char-span.visible {
+        .greeting-line .char-span.visible {
             opacity: 1;
             transform: translateY(0);
             filter: blur(0);
+        }
+
+        /* Pembahagian perkataan secara berbaris */
+        .greeting-word {
+            display: inline-flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin: 0 3px;
         }
 
         .hero-subtext {
@@ -244,6 +264,7 @@
             transition: opacity 1s ease 0.5s;
             font-weight: 400;
             letter-spacing: 1px;
+            text-align: center;
         }
 
         .hero-subtext.visible {
@@ -1065,15 +1086,44 @@
 
         @media (max-width: 768px) {
             .brand-title {
-                font-size: 1.6rem;
+                font-size: 1.4rem;
                 letter-spacing: 2px;
             }
-            .greeting-container {
-                font-size: 2.2rem;
-                letter-spacing: 3px;
+            .brand-subtitle {
+                font-size: 0.75rem;
+                letter-spacing: 2px;
             }
+            .header-top {
+                gap: 15px;
+            }
+            .logo-badge {
+                width: 48px;
+                height: 48px;
+            }
+            .logo-badge svg {
+                width: 22px;
+                height: 22px;
+            }
+
+            /* Saiz teks ucapan pada telefon - lebih kecil dan padat */
+            .greeting-container {
+                font-size: 2.4rem;
+                letter-spacing: 3px;
+                max-width: 100%;
+                padding: 0 10px;
+            }
+
+            .greeting-line {
+                gap: 0 2px;
+            }
+
+            .greeting-word {
+                margin: 0 2px;
+            }
+
             .hero-subtext {
-                font-size: 0.95rem;
+                font-size: 0.9rem;
+                padding: 0 15px;
             }
 
             .glass-cards-grid {
@@ -1130,6 +1180,46 @@
         }
 
         @media (max-width: 480px) {
+            .brand-title {
+                font-size: 1.1rem;
+                letter-spacing: 1px;
+            }
+            .brand-subtitle {
+                font-size: 0.6rem;
+                letter-spacing: 1px;
+            }
+            .header-top {
+                gap: 10px;
+            }
+            .logo-badge {
+                width: 38px;
+                height: 38px;
+            }
+            .logo-badge svg {
+                width: 18px;
+                height: 18px;
+            }
+
+            /* Saiz teks ucapan pada telefon kecil - lebih kecil */
+            .greeting-container {
+                font-size: 1.8rem;
+                letter-spacing: 2px;
+                padding: 0 5px;
+            }
+
+            .greeting-line {
+                gap: 0 1px;
+            }
+
+            .greeting-word {
+                margin: 0 1px;
+            }
+
+            .hero-subtext {
+                font-size: 0.8rem;
+                padding: 0 10px;
+            }
+
             .node-leader .avatar-wrapper {
                 width: 100px;
                 height: 100px;
@@ -1155,6 +1245,16 @@
             .footer-siren svg {
                 width: 50px;
                 height: 50px;
+            }
+            .section-title {
+                font-size: 1.5rem;
+            }
+            .card-body-text {
+                font-size: 1.1rem;
+            }
+            .msg-line {
+                font-size: 0.85rem;
+                letter-spacing: 2px;
             }
         }
 
@@ -1666,26 +1766,62 @@
 
         /* --------------------------------------------------------------------------
            3. ANIMASI SELAMAT DATANG (LETTER BY LETTER FADE + BLUR)
+              - Setiap perkataan dalam baris yang berasingan
+              - Dipusatkan dengan flex
            -------------------------------------------------------------------------- */
         function animateGreeting() {
             const container = document.getElementById('greetingContainer');
             const text = PROJECT_CONFIG.GREETING;
             container.innerHTML = '';
 
-            text.split('').forEach((char, index) => {
-                const span = document.createElement('span');
-                span.className = 'char-span';
-                span.textContent = char === ' ' ? '\u00A0' : char;
-                container.appendChild(span);
+            // Pisahkan perkataan mengikut ruang
+            const words = text.split(' ');
 
+            // Untuk setiap perkataan, buat div pembungkus baris
+            words.forEach((word, wordIndex) => {
+                const wordDiv = document.createElement('div');
+                wordDiv.className = 'greeting-line';
+
+                // Bungkus setiap perkataan dalam span untuk flex
+                const wordSpan = document.createElement('span');
+                wordSpan.className = 'greeting-word';
+
+                // Pecah perkataan kepada huruf
+                word.split('').forEach((char, charIndex) => {
+                    const span = document.createElement('span');
+                    span.className = 'char-span';
+                    span.textContent = char;
+                    span.dataset.wordIndex = wordIndex;
+                    span.dataset.charIndex = charIndex;
+                    wordSpan.appendChild(span);
+                });
+
+                wordDiv.appendChild(wordSpan);
+                container.appendChild(wordDiv);
+
+                // Tambah ruang selepas perkataan (kecuali perkataan terakhir)
+                if (wordIndex < words.length - 1) {
+                    const space = document.createElement('span');
+                    space.className = 'char-span';
+                    space.textContent = '\u00A0';
+                    space.style.width = '0.3em';
+                    space.style.display = 'inline-block';
+                    // Tambah ruang ke baris semasa
+                    wordDiv.appendChild(space);
+                }
+            });
+
+            // Kira semua span.char-span
+            const allChars = container.querySelectorAll('.char-span');
+            allChars.forEach((span, index) => {
                 setTimeout(() => {
                     span.classList.add('visible');
-                }, 1200 + index * 90);
+                }, 1200 + index * 70);
             });
 
             setTimeout(() => {
                 document.getElementById('heroSubtext').classList.add('visible');
-            }, 1200 + text.length * 90 + 300);
+            }, 1200 + allChars.length * 70 + 300);
         }
 
         /* --------------------------------------------------------------------------
