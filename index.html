@@ -1,1095 +1,1102 @@
 <!DOCTYPE html>
 <html lang="id">
-  <head>
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>BRAVO THE FUTURE — Projek Digitalisasi Bravo PGO Johor</title>
     <style>
-      /* ==========================================================================
+        /* ==========================================================================
            1. VARIAN CSS — JINGGA & PUTIH (ORANGE & WHITE THEME)
            ========================================================================== */
-      :root {
-        --bg-deep-navy: #ffffff;
-        --bg-dark-slate: #f8f4f0;
-        --bg-card: transparent;
+        :root {
+            --bg-deep-navy: #ffffff;
+            --bg-dark-slate: #f8f4f0;
+            --bg-card: transparent;
 
-        --accent-orange: #ff7b00;
-        --accent-orange-dark: #e06d00;
-        --accent-orange-light: #ffa355;
-        --accent-glow: rgba(255, 123, 0, 0.2);
-        --accent-glow-strong: rgba(255, 123, 0, 0.45);
+            --accent-orange: #ff7b00;
+            --accent-orange-dark: #e06d00;
+            --accent-orange-light: #ffa355;
+            --accent-glow: rgba(255, 123, 0, 0.2);
+            --accent-glow-strong: rgba(255, 123, 0, 0.45);
 
-        --text-main: #1a140e;
-        --text-muted: #7a6a5a;
-        --text-silver: #4a3f35;
+            --text-main: #1a140e;
+            --text-muted: #7a6a5a;
+            --text-silver: #4a3f35;
 
-        --border-light: rgba(255, 123, 0, 0.22);
-        --border-glow: rgba(255, 123, 0, 0.6);
+            --border-light: rgba(255, 123, 0, 0.22);
+            --border-glow: rgba(255, 123, 0, 0.6);
 
-        --skin-color: #f5d0b8;
-        --skin-stroke: #4a3f35;
-        --hair-color: #3d2b1f;
-        --pants-color: #3d3d3d;
-        --shoe-color: #2d2d2d;
+            --skin-color: #f5d0b8;
+            --skin-stroke: #4a3f35;
+            --hair-color: #3d2b1f;
+            --pants-color: #3d3d3d;
+            --shoe-color: #2d2d2d;
 
-        --font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
-          Roboto, 'Helvetica Neue', sans-serif;
-        --font-mono: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo,
-          Courier, monospace;
+            --font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
+                Roboto, 'Helvetica Neue', sans-serif;
+            --font-mono: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo,
+                Courier, monospace;
 
-        --transition-smooth: cubic-bezier(0.16, 1, 0.3, 1);
-        --transition-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
-      }
+            --transition-smooth: cubic-bezier(0.16, 1, 0.3, 1);
+            --transition-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
 
-      /* ==========================================================================
+        /* ==========================================================================
            2. RESET & LAYOUT ASAS — SEMUA BORDER & SHADOW DIBUANG
            ========================================================================== */
-      * {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-      }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
-      html {
-        scroll-behavior: smooth;
-        background-color: #ffffff;
-        color: var(--text-main);
-        font-family: var(--font-family);
-        overflow-x: hidden;
-      }
+        html {
+            scroll-behavior: smooth;
+            background-color: #ffffff;
+            color: var(--text-main);
+            font-family: var(--font-family);
+            overflow-x: hidden;
+        }
 
-      body {
-        min-height: 100vh;
-        position: relative;
-        background: #ffffff;
-        color: var(--text-main);
-        line-height: 1.6;
-      }
+        body {
+            min-height: 100vh;
+            position: relative;
+            background: #ffffff;
+            color: var(--text-main);
+            line-height: 1.6;
+        }
 
-      /* ==========================================================================
+        /* ==========================================================================
            3. LATAR BELAKANG CANVAS & GRID DIGITAL (Visual Effect sahaja)
            ========================================================================== */
-      #particle-canvas {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        z-index: 1;
-        pointer-events: none;
-      }
-
-      .digital-grid {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-image: linear-gradient(
-            to right,
-            rgba(255, 123, 0, 0.06) 1px,
-            transparent 1px
-          ),
-          linear-gradient(
-            to bottom,
-            rgba(255, 123, 0, 0.06) 1px,
-            transparent 1px
-          );
-        background-size: 50px 50px;
-        z-index: 2;
-        pointer-events: none;
-        animation: gridMove 40s linear infinite;
-      }
-
-      @keyframes gridMove {
-        0% {
-          background-position: 0 0;
+        #particle-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            pointer-events: none;
         }
-        100% {
-          background-position: 50px 50px;
+
+        .digital-grid {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: linear-gradient(to right, rgba(255, 123, 0, 0.06) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 123, 0, 0.06) 1px, transparent 1px);
+            background-size: 50px 50px;
+            z-index: 2;
+            pointer-events: none;
+            animation: gridMove 40s linear infinite;
         }
-      }
 
-      .cursor-glow {
-        position: fixed;
-        width: 500px;
-        height: 500px;
-        border-radius: 50%;
-        background: radial-gradient(
-          circle,
-          rgba(255, 123, 0, 0.07) 0%,
-          transparent 70%
-        );
-        pointer-events: none;
-        transform: translate(-50%, -50%);
-        z-index: 3;
-        transition: opacity 0.3s ease;
-      }
+        @keyframes gridMove {
+            0% {
+                background-position: 0 0;
+            }
+            100% {
+                background-position: 50px 50px;
+            }
+        }
 
-      .main-container {
-        position: relative;
-        z-index: 10;
-        max-width: 1300px;
-        margin: 0 auto;
-        padding: 0 24px;
-      }
+        .cursor-glow {
+            position: fixed;
+            width: 500px;
+            height: 500px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255, 123, 0, 0.07) 0%, transparent 70%);
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            z-index: 3;
+            transition: opacity 0.3s ease;
+        }
 
-      /* ==========================================================================
+        .main-container {
+            position: relative;
+            z-index: 10;
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ==========================================================================
            4. HEADER — DIGITAL IDENTITY (Tanpa Border)
            ========================================================================== */
-      .header-digital {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        padding: 40px 0 20px;
-        opacity: 0;
-        animation: fadeInHeader 1.2s var(--transition-smooth) forwards;
-      }
-
-      .header-top {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 30px;
-        width: 100%;
-      }
-
-      .logo-badge {
-        width: 64px;
-        height: 64px;
-        border-radius: 50%;
-        /* SEMUA BORDER & BOX-SHADOW DIBUANG */
-        border: none;
-        box-shadow: none;
-        background: transparent;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        position: relative;
-        opacity: 0;
-        animation: logoFade 1s var(--transition-smooth) 0.3s forwards;
-      }
-      .logo-badge::before {
-        display: none; /* Hilangkan gelung spin */
-      }
-      .logo-badge svg {
-        stroke: var(--accent-orange);
-      }
-
-      .brand-title-wrap {
-        text-align: center;
-        opacity: 0;
-        transform: translateY(20px);
-        animation: titleSlideUp 1s var(--transition-smooth) 0.6s forwards;
-      }
-
-      .brand-title {
-        font-size: 2.2rem;
-        font-weight: 800;
-        letter-spacing: 4px;
-        background: linear-gradient(
-          135deg,
-          #1a140e 0%,
-          var(--accent-orange) 100%
-        );
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        text-transform: uppercase;
-        text-shadow: none; /* Hilangkan shadow */
-      }
-
-      .brand-subtitle {
-        font-size: 0.95rem;
-        font-family: var(--font-mono);
-        color: var(--accent-orange);
-        letter-spacing: 3px;
-        margin-top: 6px;
-        text-transform: uppercase;
-        font-weight: 700;
-        opacity: 0;
-        animation: subtitleFade 1s var(--transition-smooth) 0.9s forwards;
-      }
-
-      @keyframes fadeInHeader {
-        to {
-          opacity: 1;
+        .header-digital {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px 0 20px;
+            opacity: 0;
+            animation: fadeInHeader 1.2s var(--transition-smooth) forwards;
         }
-      }
-      @keyframes logoFade {
-        to {
-          opacity: 1;
-        }
-      }
-      @keyframes titleSlideUp {
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-      @keyframes subtitleFade {
-        to {
-          opacity: 0.95;
-        }
-      }
 
-      /* ==========================================================================
+        .header-top {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 30px;
+            width: 100%;
+        }
+
+        .logo-badge {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            border: none;
+            box-shadow: none;
+            background: transparent;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            opacity: 0;
+            animation: logoFade 1s var(--transition-smooth) 0.3s forwards;
+        }
+        .logo-badge::before {
+            display: none;
+        }
+        .logo-badge svg {
+            stroke: var(--accent-orange);
+        }
+
+        .brand-title-wrap {
+            text-align: center;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: titleSlideUp 1s var(--transition-smooth) 0.6s forwards;
+        }
+
+        .brand-title {
+            font-size: 2.2rem;
+            font-weight: 800;
+            letter-spacing: 4px;
+            background: linear-gradient(135deg, #1a140e 0%, var(--accent-orange) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-transform: uppercase;
+            text-shadow: none;
+        }
+
+        .brand-subtitle {
+            font-size: 0.95rem;
+            font-family: var(--font-mono);
+            color: var(--accent-orange);
+            letter-spacing: 3px;
+            margin-top: 6px;
+            text-transform: uppercase;
+            font-weight: 700;
+            opacity: 0;
+            animation: subtitleFade 1s var(--transition-smooth) 0.9s forwards;
+        }
+
+        @keyframes fadeInHeader {
+            to {
+                opacity: 1;
+            }
+        }
+        @keyframes logoFade {
+            to {
+                opacity: 1;
+            }
+        }
+        @keyframes titleSlideUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        @keyframes subtitleFade {
+            to {
+                opacity: 0.95;
+            }
+        }
+
+        /* ==========================================================================
            5. HERO — GREETING & SUBTEXT
            ========================================================================== */
-      .hero-section {
-        text-align: center;
-        padding: 60px 0 40px;
-        min-height: 220px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-      }
+        .hero-section {
+            text-align: center;
+            padding: 60px 0 40px;
+            min-height: 220px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
 
-      .greeting-container {
-        font-size: 3.5rem;
-        font-weight: 900;
-        letter-spacing: 6px;
-        color: var(--text-main);
-        margin-bottom: 20px;
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        text-shadow: none;
-      }
+        .greeting-container {
+            font-size: 3.5rem;
+            font-weight: 900;
+            letter-spacing: 6px;
+            color: var(--text-main);
+            margin-bottom: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            text-shadow: none;
+        }
 
-      .char-span {
-        display: inline-block;
-        opacity: 0;
-        transform: translateY(10px);
-        filter: blur(4px);
-        transition: opacity 0.5s ease, transform 0.5s ease, filter 0.5s ease;
-        white-space: pre;
-      }
+        .char-span {
+            display: inline-block;
+            opacity: 0;
+            transform: translateY(10px);
+            filter: blur(4px);
+            transition: opacity 0.5s ease, transform 0.5s ease, filter 0.5s ease;
+            white-space: pre;
+        }
 
-      .char-span.visible {
-        opacity: 1;
-        transform: translateY(0);
-        filter: blur(0);
-      }
+        .char-span.visible {
+            opacity: 1;
+            transform: translateY(0);
+            filter: blur(0);
+        }
 
-      .hero-subtext {
-        font-size: 1.15rem;
-        color: var(--text-silver);
-        max-width: 650px;
-        margin: 0 auto;
-        opacity: 0;
-        transition: opacity 1s ease 0.5s;
-        font-weight: 400;
-        letter-spacing: 1px;
-      }
+        .hero-subtext {
+            font-size: 1.15rem;
+            color: var(--text-silver);
+            max-width: 650px;
+            margin: 0 auto;
+            opacity: 0;
+            transition: opacity 1s ease 0.5s;
+            font-weight: 400;
+            letter-spacing: 1px;
+        }
 
-      .hero-subtext.visible {
-        opacity: 0.95;
-      }
+        .hero-subtext.visible {
+            opacity: 0.95;
+        }
 
-      /* ==========================================================================
+        /* ==========================================================================
            6. TEAM EXPERIENCE — 5 PERSONNEL ARC COMPOSITION (Tanpa Border)
            ========================================================================== */
-      .team-section {
-        padding: 60px 0 100px;
-        position: relative;
-      }
-
-      .team-arc-container {
-        position: relative;
-        height: 480px;
-        max-width: 1100px;
-        margin: 0 auto;
-      }
-
-      /* Garis Sambungan SVG — jingga */
-      .connection-svg {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        pointer-events: none;
-        z-index: 5;
-      }
-
-      .connection-line {
-        stroke: rgba(255, 123, 0, 0.35);
-        stroke-width: 1.5;
-        stroke-dasharray: 6 6;
-        animation: dashTravel 20s linear infinite;
-      }
-
-      @keyframes dashTravel {
-        to {
-          stroke-dashoffset: -100;
+        .team-section {
+            padding: 60px 0 100px;
+            position: relative;
         }
-      }
 
-      /* Pembungkus Kad Anggota */
-      .team-node {
-        position: absolute;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        cursor: default;
-        z-index: 10;
-        transition: transform 0.4s var(--transition-bounce);
-      }
-
-      .team-node:hover {
-        transform: scale(1.05) translateY(-3px);
-        z-index: 20;
-      }
-
-      /* Posisi Arc Desktop */
-      .node-leader {
-        top: 10px;
-        left: 50%;
-        transform: translateX(-50%);
-      }
-      .node-member-1 {
-        top: 130px;
-        left: 25%;
-        transform: translateX(-50%);
-      }
-      .node-member-2 {
-        top: 240px;
-        left: 8%;
-        transform: translateX(-50%);
-      }
-      .node-member-3 {
-        top: 130px;
-        left: 75%;
-        transform: translateX(-50%);
-      }
-      .node-member-4 {
-        top: 240px;
-        left: 92%;
-        transform: translateX(-50%);
-      }
-
-      /* Avatar Styling — Tanpa Border & Shadow */
-      .avatar-wrapper {
-        position: relative;
-        border-radius: 50%;
-        background: transparent;
-        border: none;
-        box-shadow: none;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        overflow: hidden;
-        transition: transform 0.3s ease;
-      }
-
-      .node-leader .avatar-wrapper {
-        width: 130px;
-        height: 130px;
-      }
-
-      .node-member .avatar-wrapper {
-        width: 95px;
-        height: 95px;
-      }
-
-      .team-node:hover .avatar-wrapper {
-        transform: scale(1.02);
-      }
-
-      /* Ring Halo untuk Ketua — Dibuangkan border, guna opacity sahaja */
-      .leader-halo {
-        display: none;
-      }
-
-      .leader-badge-title {
-        position: absolute;
-        top: -28px;
-        background: transparent;
-        border: none;
-        color: var(--accent-orange);
-        padding: 2px 10px;
-        border-radius: 12px;
-        font-size: 0.7rem;
-        font-family: var(--font-mono);
-        font-weight: 700;
-        letter-spacing: 1px;
-        text-transform: uppercase;
-      }
-
-      .avatar-svg {
-        width: 80%;
-        height: 80%;
-      }
-
-      /* Label Info Anggota */
-      .member-info {
-        margin-top: 12px;
-        text-align: center;
-        pointer-events: none;
-      }
-
-      .member-name {
-        font-size: 1rem;
-        font-weight: 700;
-        color: var(--text-main);
-        letter-spacing: 0.5px;
-      }
-
-      .member-role {
-        font-size: 0.78rem;
-        color: var(--accent-orange);
-        font-family: var(--font-mono);
-        font-weight: 600;
-        margin-top: 2px;
-        opacity: 0.95;
-      }
-
-      /* Animasi Kemasukan Pasukan */
-      .node-leader {
-        opacity: 0;
-        transform: translate(-50%, 30px) scale(0.75);
-        transition: all 1s var(--transition-bounce);
-      }
-      .node-leader.entered {
-        opacity: 1;
-        transform: translate(-50%, 0) scale(1);
-      }
-
-      .node-member-1,
-      .node-member-2 {
-        opacity: 0;
-        transform: translate(-150px, 0);
-        transition: all 0.9s var(--transition-smooth);
-      }
-      .node-member-3,
-      .node-member-4 {
-        opacity: 0;
-        transform: translate(150px, 0);
-        transition: all 0.9s var(--transition-smooth);
-      }
-
-      .node-member.entered {
-        opacity: 1;
-      }
-      .node-member-1.entered {
-        transform: translateX(-50%);
-      }
-      .node-member-2.entered {
-        transform: translateX(-50%);
-      }
-      .node-member-3.entered {
-        transform: translateX(-50%);
-      }
-      .node-member-4.entered {
-        transform: translateX(-50%);
-      }
-
-      /* Floating Effect untuk Ketua */
-      .node-leader.entered {
-        animation: floatLeader 4s ease-in-out infinite alternate;
-      }
-      @keyframes floatLeader {
-        0% {
-          transform: translate(-50%, 0);
-        }
-        100% {
-          transform: translate(-50%, -8px);
-        }
-      }
-
-      /* ==========================================================================
-           7. SCROLL INDICATOR
-           ========================================================================== */
-      .scroll-indicator {
-        text-align: center;
-        margin-top: 20px;
-        opacity: 0.8;
-        transition: opacity 0.5s ease;
-      }
-
-      .scroll-text {
-        font-family: var(--font-mono);
-        font-size: 0.75rem;
-        letter-spacing: 2px;
-        color: var(--text-muted);
-        margin-bottom: 6px;
-        font-weight: 600;
-      }
-
-      .scroll-arrow {
-        font-size: 1.2rem;
-        color: var(--accent-orange);
-        animation: bounceArrow 1.8s infinite;
-      }
-
-      @keyframes bounceArrow {
-        0%,
-        20%,
-        50%,
-        80%,
-        100% {
-          transform: translateY(0);
-        }
-        40% {
-          transform: translateY(8px);
-        }
-        60% {
-          transform: translateY(4px);
-        }
-      }
-
-      /* ==========================================================================
-           8. VISION & MISSION SECTION — LANGSUNG DI ATAS BODY
-           ========================================================================== */
-      .vision-section {
-        padding: 90px 0;
-      }
-
-      .section-title-wrap {
-        text-align: center;
-        margin-bottom: 50px;
-      }
-
-      .section-tag {
-        font-family: var(--font-mono);
-        color: var(--accent-orange);
-        font-size: 0.85rem;
-        letter-spacing: 3px;
-        text-transform: uppercase;
-        font-weight: 700;
-      }
-
-      .section-title {
-        font-size: 2rem;
-        font-weight: 800;
-        letter-spacing: 2px;
-        margin-top: 6px;
-        color: var(--text-main);
-      }
-
-      .glass-cards-grid {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 30px;
-      }
-
-      .glass-card {
-        background: transparent;
-        backdrop-filter: none;
-        -webkit-backdrop-filter: none;
-        border: none;
-        border-radius: 0;
-        padding: 40px;
-        position: relative;
-        box-shadow: none;
-        opacity: 0;
-        transform: translateY(40px);
-        transition: opacity 0.8s var(--transition-smooth),
-          transform 0.8s var(--transition-smooth);
-      }
-
-      .glass-card.visible {
-        opacity: 1;
-        transform: translateY(0);
-      }
-
-      .glass-card:hover {
-        transform: translateY(-4px);
-      }
-
-      .card-icon {
-        width: 50px;
-        height: 50px;
-        border-radius: 0;
-        background: transparent;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin-bottom: 24px;
-        border: none;
-      }
-
-      .card-icon svg {
-        width: 26px;
-        height: 26px;
-        fill: var(--accent-orange);
-      }
-
-      .card-header-title {
-        font-size: 0.9rem;
-        font-family: var(--font-mono);
-        color: var(--accent-orange);
-        letter-spacing: 2px;
-        text-transform: uppercase;
-        margin-bottom: 8px;
-        font-weight: 700;
-      }
-
-      .card-body-text {
-        font-size: 1.4rem;
-        font-weight: 700;
-        color: var(--text-main);
-        line-height: 1.4;
-      }
-
-      /* ==========================================================================
-           9. WALKIE TALKIE — SIGNATURE ELEMENT (Tanpa Border)
-           ========================================================================== */
-      .walkie-section {
-        padding: 90px 0;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        position: relative;
-      }
-
-      .walkie-wrapper {
-        position: relative;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        margin: 40px 0;
-      }
-
-      .radio-waves {
-        position: absolute;
-        top: 40%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        width: 400px;
-        height: 400px;
-        pointer-events: none;
-        z-index: 1;
-      }
-
-      .wave-ring {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        width: 100%;
-        height: 100%;
-        border: 1px solid var(--accent-orange);
-        border-radius: 50%;
-        transform: translate(-50%, -50%) scale(0.2);
-        opacity: 0;
-        animation: wavePulse 4s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
-      }
-
-      .wave-ring:nth-child(2) {
-        animation-delay: 1.3s;
-      }
-      .wave-ring:nth-child(3) {
-        animation-delay: 2.6s;
-      }
-
-      @keyframes wavePulse {
-        0% {
-          transform: translate(-50%, -50%) scale(0.2);
-          opacity: 0.8;
-        }
-        100% {
-          transform: translate(-50%, -50%) scale(1.2);
-          opacity: 0;
-        }
-      }
-
-      .walkie-device {
-        position: relative;
-        z-index: 5;
-        width: 200px;
-        height: 340px;
-        background: linear-gradient(165deg, #1e293b 0%, #0f172a 100%);
-        border: none;
-        border-radius: 28px;
-        box-shadow: none;
-        padding: 20px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        animation: devicePulse 3s ease-in-out infinite alternate;
-      }
-
-      @keyframes devicePulse {
-        0% {
-          transform: scale(1);
-        }
-        100% {
-          transform: scale(1.02);
-        }
-      }
-
-      .walkie-antenna {
-        position: absolute;
-        top: -65px;
-        left: 40px;
-        width: 12px;
-        height: 70px;
-        background: linear-gradient(to right, #334155, #0f172a);
-        border-radius: 6px 6px 0 0;
-        border: none;
-      }
-      .walkie-antenna-tip {
-        position: absolute;
-        top: -8px;
-        left: -2px;
-        width: 16px;
-        height: 10px;
-        background: var(--accent-orange);
-        border-radius: 4px;
-        box-shadow: none;
-      }
-
-      .walkie-knob {
-        position: absolute;
-        top: -20px;
-        right: 40px;
-        width: 24px;
-        height: 22px;
-        background: #334155;
-        border-radius: 4px 4px 0 0;
-        border: none;
-      }
-
-      .walkie-screen {
-        width: 100%;
-        height: 90px;
-        background: #0f0c08;
-        border: none;
-        border-radius: 12px;
-        margin-top: 15px;
-        position: relative;
-        overflow: hidden;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        box-shadow: inset 0 0 15px rgba(255, 123, 0, 0.3);
-      }
-
-      .walkie-screen::before {
-        content: '';
-        position: absolute;
-        inset: 0;
-        background: linear-gradient(
-          rgba(18, 16, 16, 0) 50%,
-          rgba(0, 0, 0, 0.25) 50%
-        );
-        background-size: 100% 4px;
-        pointer-events: none;
-        z-index: 2;
-      }
-
-      .screen-text {
-        font-family: var(--font-mono);
-        color: #ff8c00;
-        font-weight: 700;
-        font-size: 0.95rem;
-        letter-spacing: 2px;
-        text-align: center;
-        text-shadow: 0 0 8px rgba(255, 140, 0, 0.7);
-        z-index: 3;
-        animation: microFlicker 2s infinite;
-      }
-
-      .screen-status {
-        font-size: 0.65rem;
-        color: #b8a898;
-        margin-top: 4px;
-        letter-spacing: 1px;
-        z-index: 3;
-      }
-
-      @keyframes microFlicker {
-        0%,
-        100% {
-          opacity: 1;
-        }
-        50% {
-          opacity: 0.85;
-        }
-        52% {
-          opacity: 1;
-        }
-        54% {
-          opacity: 0.4;
-        }
-        56% {
-          opacity: 1;
-        }
-      }
-
-      .walkie-speaker {
-        width: 100%;
-        margin-top: 25px;
-        display: flex;
-        flex-direction: column;
-        gap: 6px;
-        align-items: center;
-      }
-
-      .speaker-line {
-        height: 4px;
-        background: rgba(255, 123, 0, 0.25);
-        border-radius: 2px;
-        border: none;
-      }
-      .speaker-line:nth-child(1) {
-        width: 80%;
-      }
-      .speaker-line:nth-child(2) {
-        width: 90%;
-      }
-      .speaker-line:nth-child(3) {
-        width: 75%;
-      }
-      .speaker-line:nth-child(4) {
-        width: 85%;
-      }
-      .speaker-line:nth-child(5) {
-        width: 60%;
-      }
-
-      .walkie-light {
-        width: 10px;
-        height: 10px;
-        border-radius: 50%;
-        background: var(--accent-orange);
-        box-shadow: 0 0 12px var(--accent-orange);
-        margin-top: 20px;
-        animation: blinkLight 1.5s ease-in-out infinite alternate;
-      }
-
-      @keyframes blinkLight {
-        0% {
-          opacity: 0.3;
-        }
-        100% {
-          opacity: 1;
-        }
-      }
-
-      .digital-message {
-        text-align: center;
-        margin-top: 30px;
-      }
-
-      .msg-line {
-        font-family: var(--font-mono);
-        font-size: 1.1rem;
-        color: var(--text-silver);
-        letter-spacing: 3px;
-        margin: 8px 0;
-        opacity: 0;
-        transform: translateY(15px);
-        transition: all 0.6s var(--transition-smooth);
-      }
-
-      .msg-line.visible {
-        opacity: 1;
-        transform: translateY(0);
-      }
-
-      .msg-line-highlight {
-        color: var(--accent-orange);
-        font-weight: 700;
-      }
-
-      /* ==========================================================================
-           10. FOOTER — TANPA SEMPADAN, LANGSUNG DI ATAS BODY
-           ========================================================================== */
-      .footer-digital {
-        margin-top: 100px;
-        padding: 40px 0 35px;
-        border-top: none;
-        background: transparent;
-      }
-
-      .footer-content {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        flex-wrap: wrap;
-        gap: 20px;
-      }
-
-      .footer-email {
-        font-family: var(--font-mono);
-        font-size: 0.9rem;
-        color: var(--text-silver);
-        font-weight: 500;
-        letter-spacing: 0.5px;
-      }
-
-      .footer-email a {
-        color: var(--accent-orange);
-        text-decoration: none;
-        font-weight: 600;
-        transition: color 0.3s ease;
-      }
-      .footer-email a:hover {
-        color: var(--accent-orange-dark);
-        text-decoration: underline;
-      }
-
-      .footer-copyright {
-        font-size: 0.85rem;
-        color: var(--text-muted);
-        font-family: var(--font-mono);
-        font-weight: 500;
-        text-align: center;
-      }
-
-      .social-links {
-        display: flex;
-        gap: 16px;
-      }
-
-      .social-icon {
-        width: 40px;
-        height: 40px;
-        border-radius: 50%;
-        background: transparent;
-        border: none;
-        box-shadow: none;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        transition: transform 0.3s var(--transition-bounce);
-        text-decoration: none;
-      }
-
-      .social-icon svg {
-        width: 20px;
-        height: 20px;
-        fill: var(--text-silver);
-        transition: fill 0.3s ease;
-      }
-
-      .social-icon:hover {
-        transform: translateY(-4px) scale(1.1);
-        background: transparent;
-        box-shadow: none;
-      }
-
-      .social-icon:hover svg {
-        fill: var(--accent-orange);
-      }
-
-      /* ==========================================================================
-           11. REKA BENTUK RESPONSIF (TABLET & MOBILE)
-           ========================================================================== */
-      @media (max-width: 1024px) {
         .team-arc-container {
-          height: 520px;
+            position: relative;
+            height: 480px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        /* Garis Sambungan SVG — jingga */
+        .connection-svg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 5;
+        }
+
+        .connection-line {
+            stroke: rgba(255, 123, 0, 0.35);
+            stroke-width: 1.5;
+            stroke-dasharray: 6 6;
+            animation: dashTravel 20s linear infinite;
+        }
+
+        @keyframes dashTravel {
+            to {
+                stroke-dashoffset: -100;
+            }
+        }
+
+        /* Pembungkus Kad Anggota */
+        .team-node {
+            position: absolute;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            cursor: default;
+            z-index: 10;
+            transition: transform 0.4s var(--transition-bounce);
+        }
+
+        .team-node:hover {
+            transform: scale(1.05) translateY(-3px);
+            z-index: 20;
+        }
+
+        /* Posisi Arc Desktop */
+        .node-leader {
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .node-member-1 {
+            top: 130px;
+            left: 25%;
+            transform: translateX(-50%);
         }
         .node-member-2 {
-          left: 10%;
+            top: 240px;
+            left: 8%;
+            transform: translateX(-50%);
+        }
+        .node-member-3 {
+            top: 130px;
+            left: 75%;
+            transform: translateX(-50%);
         }
         .node-member-4 {
-          left: 90%;
+            top: 240px;
+            left: 92%;
+            transform: translateX(-50%);
         }
-      }
 
-      @media (max-width: 768px) {
-        .brand-title {
-          font-size: 1.6rem;
-          letter-spacing: 2px;
+        /* Avatar Styling — Tanpa Border & Shadow */
+        .avatar-wrapper {
+            position: relative;
+            border-radius: 50%;
+            background: transparent;
+            border: none;
+            box-shadow: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            transition: transform 0.3s ease;
         }
-        .greeting-container {
-          font-size: 2.2rem;
-          letter-spacing: 3px;
+
+        .node-leader .avatar-wrapper {
+            width: 130px;
+            height: 130px;
         }
-        .hero-subtext {
-          font-size: 0.95rem;
+
+        .node-member .avatar-wrapper {
+            width: 95px;
+            height: 95px;
+        }
+
+        .team-node:hover .avatar-wrapper {
+            transform: scale(1.02);
+        }
+
+        .leader-halo {
+            display: none;
+        }
+
+        .leader-badge-title {
+            position: absolute;
+            top: -28px;
+            background: transparent;
+            border: none;
+            color: var(--accent-orange);
+            padding: 2px 10px;
+            border-radius: 12px;
+            font-size: 0.7rem;
+            font-family: var(--font-mono);
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .avatar-svg {
+            width: 80%;
+            height: 80%;
+        }
+
+        .member-info {
+            margin-top: 12px;
+            text-align: center;
+            pointer-events: none;
+        }
+
+        .member-name {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--text-main);
+            letter-spacing: 0.5px;
+        }
+
+        .member-role {
+            font-size: 0.78rem;
+            color: var(--accent-orange);
+            font-family: var(--font-mono);
+            font-weight: 600;
+            margin-top: 2px;
+            opacity: 0.95;
+        }
+
+        /* Animasi Kemasukan Pasukan */
+        .node-leader {
+            opacity: 0;
+            transform: translate(-50%, 30px) scale(0.75);
+            transition: all 1s var(--transition-bounce);
+        }
+        .node-leader.entered {
+            opacity: 1;
+            transform: translate(-50%, 0) scale(1);
+        }
+
+        .node-member-1,
+        .node-member-2 {
+            opacity: 0;
+            transform: translate(-150px, 0);
+            transition: all 0.9s var(--transition-smooth);
+        }
+        .node-member-3,
+        .node-member-4 {
+            opacity: 0;
+            transform: translate(150px, 0);
+            transition: all 0.9s var(--transition-smooth);
+        }
+
+        .node-member.entered {
+            opacity: 1;
+        }
+        .node-member-1.entered {
+            transform: translateX(-50%);
+        }
+        .node-member-2.entered {
+            transform: translateX(-50%);
+        }
+        .node-member-3.entered {
+            transform: translateX(-50%);
+        }
+        .node-member-4.entered {
+            transform: translateX(-50%);
+        }
+
+        .node-leader.entered {
+            animation: floatLeader 4s ease-in-out infinite alternate;
+        }
+        @keyframes floatLeader {
+            0% {
+                transform: translate(-50%, 0);
+            }
+            100% {
+                transform: translate(-50%, -8px);
+            }
+        }
+
+        /* ==========================================================================
+           7. SCROLL INDICATOR
+           ========================================================================== */
+        .scroll-indicator {
+            text-align: center;
+            margin-top: 20px;
+            opacity: 0.8;
+            transition: opacity 0.5s ease;
+        }
+
+        .scroll-text {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+            color: var(--text-muted);
+            margin-bottom: 6px;
+            font-weight: 600;
+        }
+
+        .scroll-arrow {
+            font-size: 1.2rem;
+            color: var(--accent-orange);
+            animation: bounceArrow 1.8s infinite;
+        }
+
+        @keyframes bounceArrow {
+            0%,
+            20%,
+            50%,
+            80%,
+            100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(8px);
+            }
+            60% {
+                transform: translateY(4px);
+            }
+        }
+
+        /* ==========================================================================
+           8. VISION & MISSION SECTION — LANGSUNG DI ATAS BODY
+           ========================================================================== */
+        .vision-section {
+            padding: 90px 0;
+        }
+
+        .section-title-wrap {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-tag {
+            font-family: var(--font-mono);
+            color: var(--accent-orange);
+            font-size: 0.85rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            font-weight: 700;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 800;
+            letter-spacing: 2px;
+            margin-top: 6px;
+            color: var(--text-main);
         }
 
         .glass-cards-grid {
-          grid-template-columns: 1fr;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
         }
 
-        .team-arc-container {
-          height: auto;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          gap: 25px;
+        .glass-card {
+            background: transparent;
+            backdrop-filter: none;
+            -webkit-backdrop-filter: none;
+            border: none;
+            border-radius: 0;
+            padding: 40px;
+            position: relative;
+            box-shadow: none;
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s var(--transition-smooth),
+                transform 0.8s var(--transition-smooth);
         }
 
-        .connection-svg {
-          display: none;
+        .glass-card.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
 
-        .team-node {
-          position: relative !important;
-          top: auto !important;
-          left: auto !important;
-          transform: none !important;
+        .glass-card:hover {
+            transform: translateY(-4px);
         }
 
-        .node-leader.entered,
-        .node-member.entered {
-          transform: none !important;
-          opacity: 1;
+        .card-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 0;
+            background: transparent;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 24px;
+            border: none;
+        }
+
+        .card-icon svg {
+            width: 26px;
+            height: 26px;
+            fill: var(--accent-orange);
+        }
+
+        .card-header-title {
+            font-size: 0.9rem;
+            font-family: var(--font-mono);
+            color: var(--accent-orange);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+            font-weight: 700;
+        }
+
+        .card-body-text {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--text-main);
+            line-height: 1.4;
+        }
+
+        /* ==========================================================================
+           9. WALKIE TALKIE + WORKSTATION ICON
+           ========================================================================== */
+        .walkie-section {
+            padding: 90px 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+        }
+
+        .walkie-wrapper {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 40px 0;
+        }
+
+        .radio-waves {
+            position: absolute;
+            top: 40%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 400px;
+            height: 400px;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .wave-ring {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 100%;
+            height: 100%;
+            border: 1px solid var(--accent-orange);
+            border-radius: 50%;
+            transform: translate(-50%, -50%) scale(0.2);
+            opacity: 0;
+            animation: wavePulse 4s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+        }
+
+        .wave-ring:nth-child(2) {
+            animation-delay: 1.3s;
+        }
+        .wave-ring:nth-child(3) {
+            animation-delay: 2.6s;
+        }
+
+        @keyframes wavePulse {
+            0% {
+                transform: translate(-50%, -50%) scale(0.2);
+                opacity: 0.8;
+            }
+            100% {
+                transform: translate(-50%, -50%) scale(1.2);
+                opacity: 0;
+            }
+        }
+
+        .walkie-device {
+            position: relative;
+            z-index: 5;
+            width: 200px;
+            height: 340px;
+            background: linear-gradient(165deg, #1e293b 0%, #0f172a 100%);
+            border: none;
+            border-radius: 28px;
+            box-shadow: none;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            animation: devicePulse 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes devicePulse {
+            0% {
+                transform: scale(1);
+            }
+            100% {
+                transform: scale(1.02);
+            }
+        }
+
+        .walkie-antenna {
+            position: absolute;
+            top: -65px;
+            left: 40px;
+            width: 12px;
+            height: 70px;
+            background: linear-gradient(to right, #334155, #0f172a);
+            border-radius: 6px 6px 0 0;
+            border: none;
+        }
+        .walkie-antenna-tip {
+            position: absolute;
+            top: -8px;
+            left: -2px;
+            width: 16px;
+            height: 10px;
+            background: var(--accent-orange);
+            border-radius: 4px;
+            box-shadow: none;
+        }
+
+        .walkie-knob {
+            position: absolute;
+            top: -20px;
+            right: 40px;
+            width: 24px;
+            height: 22px;
+            background: #334155;
+            border-radius: 4px 4px 0 0;
+            border: none;
+        }
+
+        .walkie-screen {
+            width: 100%;
+            height: 90px;
+            background: #0f0c08;
+            border: none;
+            border-radius: 12px;
+            margin-top: 15px;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            box-shadow: inset 0 0 15px rgba(255, 123, 0, 0.3);
+        }
+
+        .walkie-screen::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%);
+            background-size: 100% 4px;
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        .screen-text {
+            font-family: var(--font-mono);
+            color: #ff8c00;
+            font-weight: 700;
+            font-size: 0.95rem;
+            letter-spacing: 2px;
+            text-align: center;
+            text-shadow: 0 0 8px rgba(255, 140, 0, 0.7);
+            z-index: 3;
+            animation: microFlicker 2s infinite;
+        }
+
+        .screen-status {
+            font-size: 0.65rem;
+            color: #b8a898;
+            margin-top: 4px;
+            letter-spacing: 1px;
+            z-index: 3;
+        }
+
+        @keyframes microFlicker {
+            0%,
+            100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.85;
+            }
+            52% {
+                opacity: 1;
+            }
+            54% {
+                opacity: 0.4;
+            }
+            56% {
+                opacity: 1;
+            }
+        }
+
+        .walkie-speaker {
+            width: 100%;
+            margin-top: 25px;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            align-items: center;
+        }
+
+        .speaker-line {
+            height: 4px;
+            background: rgba(255, 123, 0, 0.25);
+            border-radius: 2px;
+            border: none;
+        }
+        .speaker-line:nth-child(1) {
+            width: 80%;
+        }
+        .speaker-line:nth-child(2) {
+            width: 90%;
+        }
+        .speaker-line:nth-child(3) {
+            width: 75%;
+        }
+        .speaker-line:nth-child(4) {
+            width: 85%;
+        }
+        .speaker-line:nth-child(5) {
+            width: 60%;
+        }
+
+        .walkie-light {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--accent-orange);
+            box-shadow: 0 0 12px var(--accent-orange);
+            margin-top: 20px;
+            animation: blinkLight 1.5s ease-in-out infinite alternate;
+        }
+
+        @keyframes blinkLight {
+            0% {
+                opacity: 0.3;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        .digital-message {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .msg-line {
+            font-family: var(--font-mono);
+            font-size: 1.1rem;
+            color: var(--text-silver);
+            letter-spacing: 3px;
+            margin: 8px 0;
+            opacity: 0;
+            transform: translateY(15px);
+            transition: all 0.6s var(--transition-smooth);
+        }
+
+        .msg-line.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .msg-line-highlight {
+            color: var(--accent-orange);
+            font-weight: 700;
+        }
+
+        /* ----- WORKSTATION ICON (sudut kiri 15°) ----- */
+        .workstation-icon {
+            margin-top: 50px;
+            text-align: center;
+        }
+
+        .workstation-icon svg {
+            max-width: 280px;
+            width: 100%;
+            height: auto;
+            display: inline-block;
+        }
+
+        .workstation-label {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            letter-spacing: 3px;
+            color: var(--text-muted);
+            margin-top: 12px;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        /* ==========================================================================
+           10. FOOTER — TANPA SEMPADAN, LANGSUNG DI ATAS BODY
+           ========================================================================== */
+        .footer-digital {
+            margin-top: 100px;
+            padding: 40px 0 35px;
+            border-top: none;
+            background: transparent;
         }
 
         .footer-content {
-          flex-direction: column;
-          text-align: center;
-          gap: 14px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
         }
+
         .footer-email {
-          order: 2;
+            font-family: var(--font-mono);
+            font-size: 0.9rem;
+            color: var(--text-silver);
+            font-weight: 500;
+            letter-spacing: 0.5px;
         }
+
+        .footer-email a {
+            color: var(--accent-orange);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+        .footer-email a:hover {
+            color: var(--accent-orange-dark);
+            text-decoration: underline;
+        }
+
         .footer-copyright {
-          order: 1;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            font-family: var(--font-mono);
+            font-weight: 500;
+            text-align: center;
         }
+
         .social-links {
-          order: 3;
+            display: flex;
+            gap: 16px;
         }
-      }
 
-      @media (max-width: 480px) {
-        .node-leader .avatar-wrapper {
-          width: 100px;
-          height: 100px;
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: transparent;
+            border: none;
+            box-shadow: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s var(--transition-bounce);
+            text-decoration: none;
         }
-        .node-member .avatar-wrapper {
-          width: 75px;
-          height: 75px;
-        }
-        .member-name {
-          font-size: 0.85rem;
-        }
-        .member-role {
-          font-size: 0.65rem;
-        }
-        .leader-badge-title {
-          font-size: 0.6rem;
-          top: -24px;
-          padding: 1px 8px;
-        }
-      }
 
-      /* ACCESSIBILITY: REDUCED MOTION */
-      @media (prefers-reduced-motion: reduce) {
-        *,
-        ::before,
-        ::after {
-          animation-duration: 0.01ms !important;
-          animation-iteration-count: 1 !important;
-          transition-duration: 0.01ms !important;
-          scroll-behavior: auto !important;
+        .social-icon svg {
+            width: 20px;
+            height: 20px;
+            fill: var(--text-silver);
+            transition: fill 0.3s ease;
         }
-        #particle-canvas,
-        .cursor-glow,
-        .radio-waves {
-          display: none !important;
+
+        .social-icon:hover {
+            transform: translateY(-4px) scale(1.1);
+            background: transparent;
+            box-shadow: none;
         }
-      }
+
+        .social-icon:hover svg {
+            fill: var(--accent-orange);
+        }
+
+        /* ==========================================================================
+           11. REKA BENTUK RESPONSIF (TABLET & MOBILE)
+           ========================================================================== */
+        @media (max-width: 1024px) {
+            .team-arc-container {
+                height: 520px;
+            }
+            .node-member-2 {
+                left: 10%;
+            }
+            .node-member-4 {
+                left: 90%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .brand-title {
+                font-size: 1.6rem;
+                letter-spacing: 2px;
+            }
+            .greeting-container {
+                font-size: 2.2rem;
+                letter-spacing: 3px;
+            }
+            .hero-subtext {
+                font-size: 0.95rem;
+            }
+
+            .glass-cards-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .team-arc-container {
+                height: auto;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 25px;
+            }
+
+            .connection-svg {
+                display: none;
+            }
+
+            .team-node {
+                position: relative !important;
+                top: auto !important;
+                left: auto !important;
+                transform: none !important;
+            }
+
+            .node-leader.entered,
+            .node-member.entered {
+                transform: none !important;
+                opacity: 1;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+                gap: 14px;
+            }
+            .footer-email {
+                order: 2;
+            }
+            .footer-copyright {
+                order: 1;
+            }
+            .social-links {
+                order: 3;
+            }
+
+            .workstation-icon svg {
+                max-width: 220px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .node-leader .avatar-wrapper {
+                width: 100px;
+                height: 100px;
+            }
+            .node-member .avatar-wrapper {
+                width: 75px;
+                height: 75px;
+            }
+            .member-name {
+                font-size: 0.85rem;
+            }
+            .member-role {
+                font-size: 0.65rem;
+            }
+            .leader-badge-title {
+                font-size: 0.6rem;
+                top: -24px;
+                padding: 1px 8px;
+            }
+            .workstation-icon svg {
+                max-width: 180px;
+            }
+        }
+
+        /* ACCESSIBILITY: REDUCED MOTION */
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            ::before,
+            ::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+            #particle-canvas,
+            .cursor-glow,
+            .radio-waves {
+                display: none !important;
+            }
+        }
     </style>
-  </head>
-  <body>
+</head>
+<body>
     <!-- Latar Belakang Zarah Canvas -->
     <canvas id="particle-canvas"></canvas>
 
@@ -1100,1192 +1107,710 @@
     <div class="cursor-glow" id="cursorGlow"></div>
 
     <div class="main-container">
-      <!-- ==========================================================================
+        <!-- ==========================================================================
              HEADER — DIGITAL IDENTITY
              ========================================================================== -->
-      <header class="header-digital">
-        <div class="header-top">
-          <!-- Logo Left -->
-          <div class="logo-badge" id="logo-left" aria-label="Logo Kiri">
-            <svg
-              width="28"
-              height="28"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="var(--accent-orange)"
-              stroke-width="2"
-            >
-              <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
-              <polyline points="2 17 12 22 22 17"></polyline>
-              <polyline points="2 12 12 17 22 12"></polyline>
-            </svg>
-          </div>
+        <header class="header-digital">
+            <div class="header-top">
+                <!-- Logo Left -->
+                <div class="logo-badge" id="logo-left" aria-label="Logo Kiri">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--accent-orange)" stroke-width="2">
+                        <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                        <polyline points="2 17 12 22 22 17"></polyline>
+                        <polyline points="2 12 12 17 22 12"></polyline>
+                    </svg>
+                </div>
 
-          <!-- Tajuk Utama -->
-          <div class="brand-title-wrap">
-            <h1 class="brand-title" id="brandTitle">BRAVO THE FUTURE</h1>
-            <div class="brand-subtitle" id="brandSubtitle">
-              PROJEK DIGITALISASI BRAVO PGO JOHOR
+                <!-- Tajuk Utama -->
+                <div class="brand-title-wrap">
+                    <h1 class="brand-title" id="brandTitle">BRAVO THE FUTURE</h1>
+                    <div class="brand-subtitle" id="brandSubtitle">
+                        PROJEK DIGITALISASI BRAVO PGO JOHOR
+                    </div>
+                </div>
+
+                <!-- Logo Right -->
+                <div class="logo-badge" id="logo-right" aria-label="Logo Kanan">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--accent-orange)" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"></path>
+                        <path d="M2 12h20"></path>
+                    </svg>
+                </div>
             </div>
-          </div>
+        </header>
 
-          <!-- Logo Right -->
-          <div class="logo-badge" id="logo-right" aria-label="Logo Kanan">
-            <svg
-              width="28"
-              height="28"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="var(--accent-orange)"
-              stroke-width="2"
-            >
-              <circle cx="12" cy="12" r="10"></circle>
-              <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"></path>
-              <path d="M2 12h20"></path>
-            </svg>
-          </div>
-        </div>
-      </header>
-
-      <!-- ==========================================================================
+        <!-- ==========================================================================
              HERO — SELAMAT DATANG & SUBTEXT
              ========================================================================== -->
-      <section class="hero-section">
-        <div
-          class="greeting-container"
-          id="greetingContainer"
-          aria-label="Selamat Datang"
-        ></div>
-        <p class="hero-subtext" id="heroSubtext"></p>
-      </section>
+        <section class="hero-section">
+            <div class="greeting-container" id="greetingContainer" aria-label="Selamat Datang"></div>
+            <p class="hero-subtext" id="heroSubtext"></p>
+        </section>
 
-      <!-- ==========================================================================
+        <!-- ==========================================================================
              TEAM EXPERIENCE — 5 PERSONNEL ARC COMPOSITION
              ========================================================================== -->
-      <section class="team-section" id="teamSection">
-        <div class="team-arc-container" id="teamArcContainer">
-          <!-- SVG Connecting Lines -->
-          <svg class="connection-svg" id="connectionSvg"></svg>
+        <section class="team-section" id="teamSection">
+            <div class="team-arc-container" id="teamArcContainer">
+                <!-- SVG Connecting Lines -->
+                <svg class="connection-svg" id="connectionSvg"></svg>
 
-          <!-- ===== KETUA PASUKAN — BER PELUK TUBUH (ARM CROSSED) ===== -->
-          <div class="team-node node-leader" id="nodeLeader" data-index="0">
-            <div class="leader-badge-title">Ketua Pasukan</div>
-            <div class="avatar-wrapper">
-              <div class="leader-halo"></div>
-              <svg
-                class="avatar-svg"
-                viewBox="0 0 100 100"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <!-- Kepala -->
-                <circle
-                  cx="50"
-                  cy="20"
-                  r="13"
-                  fill="var(--skin-color)"
-                  stroke="var(--skin-stroke)"
-                  stroke-width="1.2"
-                />
-                <!-- Rambut -->
-                <path
-                  d="M37,18 Q50,3 63,18 Q65,20 63,22 Q50,9 37,22 Q35,20 37,18Z"
-                  fill="var(--hair-color)"
-                  stroke="var(--skin-stroke)"
-                  stroke-width="0.8"
-                />
-                <!-- Mata -->
-                <circle cx="45" cy="19" r="1.8" fill="var(--skin-stroke)" />
-                <circle cx="55" cy="19" r="1.8" fill="var(--skin-stroke)" />
-                <!-- Senyuman -->
-                <path
-                  d="M46,24 Q50,27 54,24"
-                  stroke="var(--skin-stroke)"
-                  stroke-width="1.2"
-                  fill="none"
-                  stroke-linecap="round"
-                />
-                <!-- Badan -->
-                <rect
-                  x="35"
-                  y="33"
-                  width="30"
-                  height="28"
-                  rx="4"
-                  fill="var(--accent-orange)"
-                  stroke="var(--skin-stroke)"
-                  stroke-width="1.2"
-                />
-                <!-- Kolar baju -->
-                <path
-                  d="M42,33 L50,28 L58,33"
-                  fill="var(--accent-orange-dark)"
-                  stroke="var(--skin-stroke)"
-                  stroke-width="0.8"
-                />
-                <!-- Tali pinggang -->
-                <rect
-                  x="35"
-                  y="54"
-                  width="30"
-                  height="3"
-                  fill="var(--accent-orange-dark)"
-                  stroke="var(--skin-stroke)"
-                  stroke-width="0.8"
-                />
-                <!-- Lengan kiri — berpeluk (cross) -->
-                <path
-                  d="M35,36 Q26,44 33,52"
-                  stroke="var(--skin-color)"
-                  stroke-width="6"
-                  fill="none"
-                  stroke-linecap="round"
-                />
-                <path
-                  d="M33,52 Q37,50 41,48"
-                  stroke="var(--skin-color)"
-                  stroke-width="5"
-                  fill="none"
-                  stroke-linecap="round"
-                />
-                <!-- Lengan kanan — berpeluk (cross) -->
-                <path
-                  d="M65,36 Q74,44 67,52"
-                  stroke="var(--skin-color)"
-                  stroke-width="6"
-                  fill="none"
-                  stroke-linecap="round"
-                />
-                <path
-                  d="M67,52 Q63,50 59,48"
-                  stroke="var(--skin-color)"
-                  stroke-width="5"
-                  fill="none"
-                  stroke-linecap="round"
-                />
-                <!-- Kaki kiri -->
-                <rect
-                  x="39"
-                  y="61"
-                  width="8"
-                  height="18"
-                  rx="3"
-                  fill="var(--pants-color)"
-                  stroke="var(--skin-stroke)"
-                  stroke-width="1.2"
-                />
-                <!-- Kaki kanan -->
-                <rect
-                  x="53"
-                  y="61"
-                  width="8"
-                  height="18"
-                  rx="3"
-                  fill="var(--pants-color)"
-                  stroke="var(--skin-stroke)"
-                  stroke-width="1.2"
-                />
-                <!-- Kasut kiri -->
-                <ellipse
-                  cx="43"
-                  cy="81"
-                  rx="7"
-                  ry="3.5"
-                  fill="var(--shoe-color)"
-                  stroke="var(--skin-stroke)"
-                  stroke-width="0.8"
-                />
-                <!-- Kasut kanan -->
-                <ellipse
-                  cx="57"
-                  cy="81"
-                  rx="7"
-                  ry="3.5"
-                  fill="var(--shoe-color)"
-                  stroke="var(--skin-stroke)"
-                  stroke-width="0.8"
-                />
-              </svg>
-            </div>
-            <div class="member-info">
-              <div class="member-name">NAME_LEADER</div>
-              <div class="member-role">ROLE_LEADER</div>
-            </div>
-          </div>
+                <!-- ===== KETUA PASUKAN — BER PELUK TUBUH (ARM CROSSED) ===== -->
+                <div class="team-node node-leader" id="nodeLeader" data-index="0">
+                    <div class="leader-badge-title">Ketua Pasukan</div>
+                    <div class="avatar-wrapper">
+                        <div class="leader-halo"></div>
+                        <svg class="avatar-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Kepala -->
+                            <circle cx="50" cy="20" r="13" fill="var(--skin-color)" stroke="var(--skin-stroke)" stroke-width="1.2"/>
+                            <!-- Rambut -->
+                            <path d="M37,18 Q50,3 63,18 Q65,20 63,22 Q50,9 37,22 Q35,20 37,18Z" fill="var(--hair-color)" stroke="var(--skin-stroke)" stroke-width="0.8"/>
+                            <!-- Mata -->
+                            <circle cx="45" cy="19" r="1.8" fill="var(--skin-stroke)"/>
+                            <circle cx="55" cy="19" r="1.8" fill="var(--skin-stroke)"/>
+                            <!-- Senyuman -->
+                            <path d="M46,24 Q50,27 54,24" stroke="var(--skin-stroke)" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+                            <!-- Badan -->
+                            <rect x="35" y="33" width="30" height="28" rx="4" fill="var(--accent-orange)" stroke="var(--skin-stroke)" stroke-width="1.2"/>
+                            <!-- Kolar baju -->
+                            <path d="M42,33 L50,28 L58,33" fill="var(--accent-orange-dark)" stroke="var(--skin-stroke)" stroke-width="0.8"/>
+                            <!-- Tali pinggang -->
+                            <rect x="35" y="54" width="30" height="3" fill="var(--accent-orange-dark)" stroke="var(--skin-stroke)" stroke-width="0.8"/>
+                            <!-- Lengan kiri — berpeluk (cross) -->
+                            <path d="M35,36 Q26,44 33,52" stroke="var(--skin-color)" stroke-width="6" fill="none" stroke-linecap="round"/>
+                            <path d="M33,52 Q37,50 41,48" stroke="var(--skin-color)" stroke-width="5" fill="none" stroke-linecap="round"/>
+                            <!-- Lengan kanan — berpeluk (cross) -->
+                            <path d="M65,36 Q74,44 67,52" stroke="var(--skin-color)" stroke-width="6" fill="none" stroke-linecap="round"/>
+                            <path d="M67,52 Q63,50 59,48" stroke="var(--skin-color)" stroke-width="5" fill="none" stroke-linecap="round"/>
+                            <!-- Kaki kiri -->
+                            <rect x="39" y="61" width="8" height="18" rx="3" fill="var(--pants-color)" stroke="var(--skin-stroke)" stroke-width="1.2"/>
+                            <!-- Kaki kanan -->
+                            <rect x="53" y="61" width="8" height="18" rx="3" fill="var(--pants-color)" stroke="var(--skin-stroke)" stroke-width="1.2"/>
+                            <!-- Kasut kiri -->
+                            <ellipse cx="43" cy="81" rx="7" ry="3.5" fill="var(--shoe-color)" stroke="var(--skin-stroke)" stroke-width="0.8"/>
+                            <!-- Kasut kanan -->
+                            <ellipse cx="57" cy="81" rx="7" ry="3.5" fill="var(--shoe-color)" stroke="var(--skin-stroke)" stroke-width="0.8"/>
+                        </svg>
+                    </div>
+                    <div class="member-info">
+                        <div class="member-name">NAME_LEADER</div>
+                        <div class="member-role">ROLE_LEADER</div>
+                    </div>
+                </div>
 
-          <!-- ===== ANGGOTA 1 — BERDIRI (KIRI DALAM) ===== -->
-          <div
-            class="team-node node-member node-member-1"
-            id="nodeMember1"
-            data-index="1"
-          >
-            <div class="avatar-wrapper">
-              <svg
-                class="avatar-svg"
-                viewBox="0 0 100 100"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <circle
-                  cx="50"
-                  cy="20"
-                  r="13"
-                  fill="var(--skin-color)"
-                  stroke="var(--skin-stroke)"
-                  stroke-width="1.2"
-                />
-                <path
-                  d="M37,18 Q50,3 63,18 Q65,20 63,22 Q50,9 37,22 Q35,20 37,18Z"
-                  fill="var(--hair-color)"
-                  stroke="var(--skin-stroke)"
-                  stroke-width="0.8"
-                />
-                <circle cx="45" cy="19" r="1.8" fill="var(--skin-stroke)" />
-                <circle cx="55" cy="19" r="1.8" fill="var(--skin-stroke)" />
-                <path
-                  d="M46,24 Q50,27 54,24"
-                  stroke="var(--skin-stroke)"
-                  stroke-width="1.2"
-                  fill="none"
-                  stroke-linecap="round"
-                />
-                <rect
-                  x="35"
-                  y="33"
-                  width="30"
-                  height="28"
-                  rx="4"
-                  fill="var(--accent-orange)"
-                  stroke="var(--skin-stroke)"
-                  stroke-width="1.2"
-                />
-                <path
-                  d="M42,33 L50,28 L58,33"
-                  fill="var(--accent-orange-dark)"
-                  stroke="var(--skin-stroke)"
-                  stroke-width="0.8"
-                />
-                <rect
-                  x="35"
-                  y="54"
-                  width="30"
-                  height="3"
-                  fill="var(--accent-orange-dark)"
-                  stroke="var(--skin-stroke)"
-                  stroke-width="0.8"
-                />
-                <!-- Lengan kiri — turun -->
-                <path
-                  d="M35,36 Q28,48 30,60"
-                  stroke="var(--skin-color)"
-                  stroke-width="6"
-                  fill="none"
-                  stroke-linecap="round"
-                />
-                <!-- Lengan kanan — turun -->
-                <path
-                  d="M65,36 Q72,48 70,60"
-                  stroke="var(--skin-color)"
-                  stroke-width="6"
-                  fill="none"
-                  stroke-linecap="round"
-                />
-                <rect
-                  x="39"
-                  y="61"
-                  width="8"
-                  height="18"
-                  rx="3"
-                  fill="var(--pants-color)"
-                  stroke="var(--skin-stroke)"
-                  stroke-width="1.2"
-                />
-                <rect
-                  x="53"
-                  y="61"
-                  width="8"
-                  height="18"
-                  rx="3"
-                  fill="var(--pants-color)"
-                  stroke="var(--skin-stroke)"
-                  stroke-width="1.2"
-                />
-                <ellipse
-                  cx="43"
-                  cy="81"
-                  rx="7"
-                  ry="3.5"
-                  fill="var(--shoe-color)"
-                  stroke="var(--skin-stroke)"
-                  stroke-width="0.8"
-                />
-                <ellipse
-                  cx="57"
-                  cy="81"
-                  rx="7"
-                  ry="3.5"
-                  fill="var(--shoe-color)"
-                  stroke="var(--skin-stroke)"
-                  stroke-width="0.8"
-                />
-              </svg>
-            </div>
-            <div class="member-info">
-              <div class="member-name">NAME_01</div>
-              <div class="member-role">ROLE_01</div>
-            </div>
-          </div>
+                <!-- ===== ANGGOTA 1 — BERDIRI (KIRI DALAM) ===== -->
+                <div class="team-node node-member node-member-1" id="nodeMember1" data-index="1">
+                    <div class="avatar-wrapper">
+                        <svg class="avatar-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="50" cy="20" r="13" fill="var(--skin-color)" stroke="var(--skin-stroke)" stroke-width="1.2"/>
+                            <path d="M37,18 Q50,3 63,18 Q65,20 63,22 Q50,9 37,22 Q35,20 37,18Z" fill="var(--hair-color)" stroke="var(--skin-stroke)" stroke-width="0.8"/>
+                            <circle cx="45" cy="19" r="1.8" fill="var(--skin-stroke)"/>
+                            <circle cx="55" cy="19" r="1.8" fill="var(--skin-stroke)"/>
+                            <path d="M46,24 Q50,27 54,24" stroke="var(--skin-stroke)" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+                            <rect x="35" y="33" width="30" height="28" rx="4" fill="var(--accent-orange)" stroke="var(--skin-stroke)" stroke-width="1.2"/>
+                            <path d="M42,33 L50,28 L58,33" fill="var(--accent-orange-dark)" stroke="var(--skin-stroke)" stroke-width="0.8"/>
+                            <rect x="35" y="54" width="30" height="3" fill="var(--accent-orange-dark)" stroke="var(--skin-stroke)" stroke-width="0.8"/>
+                            <!-- Lengan kiri — turun -->
+                            <path d="M35,36 Q28,48 30,60" stroke="var(--skin-color)" stroke-width="6" fill="none" stroke-linecap="round"/>
+                            <!-- Lengan kanan — turun -->
+                            <path d="M65,36 Q72,48 70,60" stroke="var(--skin-color)" stroke-width="6" fill="none" stroke-linecap="round"/>
+                            <rect x="39" y="61" width="8" height="18" rx="3" fill="var(--pants-color)" stroke="var(--skin-stroke)" stroke-width="1.2"/>
+                            <rect x="53" y="61" width="8" height="18" rx="3" fill="var(--pants-color)" stroke="var(--skin-stroke)" stroke-width="1.2"/>
+                            <ellipse cx="43" cy="81" rx="7" ry="3.5" fill="var(--shoe-color)" stroke="var(--skin-stroke)" stroke-width="0.8"/>
+                            <ellipse cx="57" cy="81" rx="7" ry="3.5" fill="var(--shoe-color)" stroke="var(--skin-stroke)" stroke-width="0.8"/>
+                        </svg>
+                    </div>
+                    <div class="member-info">
+                        <div class="member-name">NAME_01</div>
+                        <div class="member-role">ROLE_01</div>
+                    </div>
+                </div>
 
-          <!-- ===== ANGGOTA 2 — BERDIRI (KIRI LUAR) ===== -->
-          <div
-            class="team-node node-member node-member-2"
-            id="nodeMember2"
-            data-index="2"
-          >
-            <div class="avatar-wrapper">
-              <svg
-                class="avatar-svg"
-                viewBox="0 0 100 100"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <circle
-                  cx="50"
-                  cy="20"
-                  r="13"
-                  fill="var(--skin-color)"
-                  stroke="var(--skin-stroke)"
-                  stroke-width="1.2"
-                />
-                <path
-                  d="M37,18 Q50,3 63,18 Q65,20 63,22 Q50,9 37,22 Q35,20 37,18Z"
-                  fill="var(--hair-color)"
-                  stroke="var(--skin-stroke)"
-                  stroke-width="0.8"
-                />
-                <circle cx="45" cy="19" r="1.8" fill="var(--skin-stroke)" />
-                <circle cx="55" cy="19" r="1.8" fill="var(--skin-stroke)" />
-                <path
-                  d="M46,24 Q50,27 54,24"
-                  stroke="var(--skin-stroke)"
-                  stroke-width="1.2"
-                  fill="none"
-                  stroke-linecap="round"
-                />
-                <rect
-                  x="35"
-                  y="33"
-                  width="30"
-                  height="28"
-                  rx="4"
-                  fill="var(--accent-orange)"
-                  stroke="var(--skin-stroke)"
-                  stroke-width="1.2"
-                />
-                <path
-                  d="M42,33 L50,28 L58,33"
-                  fill="var(--accent-orange-dark)"
-                  stroke="var(--skin-stroke)"
-                  stroke-width="0.8"
-                />
-                <rect
-                  x="35"
-                  y="54"
-                  width="30"
-                  height="3"
-                  fill="var(--accent-orange-dark)"
-                  stroke="var(--skin-stroke)"
-                  stroke-width="0.8"
-                />
-                <path
-                  d="M35,36 Q28,48 30,60"
-                  stroke="var(--skin-color)"
-                  stroke-width="6"
-                  fill="none"
-                  stroke-linecap="round"
-                />
-                <path
-                  d="M65,36 Q72,48 70,60"
-                  stroke="var(--skin-color)"
-                  stroke-width="6"
-                  fill="none"
-                  stroke-linecap="round"
-                />
-                <rect
-                  x="39"
-                  y="61"
-                  width="8"
-                  height="18"
-                  rx="3"
-                  fill="var(--pants-color)"
-                  stroke="var(--skin-stroke)"
-                  stroke-width="1.2"
-                />
-                <rect
-                  x="53"
-                  y="61"
-                  width="8"
-                  height="18"
-                  rx="3"
-                  fill="var(--pants-color)"
-                  stroke="var(--skin-stroke)"
-                  stroke-width="1.2"
-                />
-                <ellipse
-                  cx="43"
-                  cy="81"
-                  rx="7"
-                  ry="3.5"
-                  fill="var(--shoe-color)"
-                  stroke="var(--skin-stroke)"
-                  stroke-width="0.8"
-                />
-                <ellipse
-                  cx="57"
-                  cy="81"
-                  rx="7"
-                  ry="3.5"
-                  fill="var(--shoe-color)"
-                  stroke="var(--skin-stroke)"
-                  stroke-width="0.8"
-                />
-              </svg>
-            </div>
-            <div class="member-info">
-              <div class="member-name">NAME_02</div>
-              <div class="member-role">ROLE_02</div>
-            </div>
-          </div>
+                <!-- ===== ANGGOTA 2 — BERDIRI (KIRI LUAR) ===== -->
+                <div class="team-node node-member node-member-2" id="nodeMember2" data-index="2">
+                    <div class="avatar-wrapper">
+                        <svg class="avatar-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="50" cy="20" r="13" fill="var(--skin-color)" stroke="var(--skin-stroke)" stroke-width="1.2"/>
+                            <path d="M37,18 Q50,3 63,18 Q65,20 63,22 Q50,9 37,22 Q35,20 37,18Z" fill="var(--hair-color)" stroke="var(--skin-stroke)" stroke-width="0.8"/>
+                            <circle cx="45" cy="19" r="1.8" fill="var(--skin-stroke)"/>
+                            <circle cx="55" cy="19" r="1.8" fill="var(--skin-stroke)"/>
+                            <path d="M46,24 Q50,27 54,24" stroke="var(--skin-stroke)" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+                            <rect x="35" y="33" width="30" height="28" rx="4" fill="var(--accent-orange)" stroke="var(--skin-stroke)" stroke-width="1.2"/>
+                            <path d="M42,33 L50,28 L58,33" fill="var(--accent-orange-dark)" stroke="var(--skin-stroke)" stroke-width="0.8"/>
+                            <rect x="35" y="54" width="30" height="3" fill="var(--accent-orange-dark)" stroke="var(--skin-stroke)" stroke-width="0.8"/>
+                            <path d="M35,36 Q28,48 30,60" stroke="var(--skin-color)" stroke-width="6" fill="none" stroke-linecap="round"/>
+                            <path d="M65,36 Q72,48 70,60" stroke="var(--skin-color)" stroke-width="6" fill="none" stroke-linecap="round"/>
+                            <rect x="39" y="61" width="8" height="18" rx="3" fill="var(--pants-color)" stroke="var(--skin-stroke)" stroke-width="1.2"/>
+                            <rect x="53" y="61" width="8" height="18" rx="3" fill="var(--pants-color)" stroke="var(--skin-stroke)" stroke-width="1.2"/>
+                            <ellipse cx="43" cy="81" rx="7" ry="3.5" fill="var(--shoe-color)" stroke="var(--skin-stroke)" stroke-width="0.8"/>
+                            <ellipse cx="57" cy="81" rx="7" ry="3.5" fill="var(--shoe-color)" stroke="var(--skin-stroke)" stroke-width="0.8"/>
+                        </svg>
+                    </div>
+                    <div class="member-info">
+                        <div class="member-name">NAME_02</div>
+                        <div class="member-role">ROLE_02</div>
+                    </div>
+                </div>
 
-          <!-- ===== ANGGOTA 3 — BERDIRI (KANAN DALAM) ===== -->
-          <div
-            class="team-node node-member node-member-3"
-            id="nodeMember3"
-            data-index="3"
-          >
-            <div class="avatar-wrapper">
-              <svg
-                class="avatar-svg"
-                viewBox="0 0 100 100"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <circle
-                  cx="50"
-                  cy="20"
-                  r="13"
-                  fill="var(--skin-color)"
-                  stroke="var(--skin-stroke)"
-                  stroke-width="1.2"
-                />
-                <path
-                  d="M37,18 Q50,3 63,18 Q65,20 63,22 Q50,9 37,22 Q35,20 37,18Z"
-                  fill="var(--hair-color)"
-                  stroke="var(--skin-stroke)"
-                  stroke-width="0.8"
-                />
-                <circle cx="45" cy="19" r="1.8" fill="var(--skin-stroke)" />
-                <circle cx="55" cy="19" r="1.8" fill="var(--skin-stroke)" />
-                <path
-                  d="M46,24 Q50,27 54,24"
-                  stroke="var(--skin-stroke)"
-                  stroke-width="1.2"
-                  fill="none"
-                  stroke-linecap="round"
-                />
-                <rect
-                  x="35"
-                  y="33"
-                  width="30"
-                  height="28"
-                  rx="4"
-                  fill="var(--accent-orange)"
-                  stroke="var(--skin-stroke)"
-                  stroke-width="1.2"
-                />
-                <path
-                  d="M42,33 L50,28 L58,33"
-                  fill="var(--accent-orange-dark)"
-                  stroke="var(--skin-stroke)"
-                  stroke-width="0.8"
-                />
-                <rect
-                  x="35"
-                  y="54"
-                  width="30"
-                  height="3"
-                  fill="var(--accent-orange-dark)"
-                  stroke="var(--skin-stroke)"
-                  stroke-width="0.8"
-                />
-                <path
-                  d="M35,36 Q28,48 30,60"
-                  stroke="var(--skin-color)"
-                  stroke-width="6"
-                  fill="none"
-                  stroke-linecap="round"
-                />
-                <path
-                  d="M65,36 Q72,48 70,60"
-                  stroke="var(--skin-color)"
-                  stroke-width="6"
-                  fill="none"
-                  stroke-linecap="round"
-                />
-                <rect
-                  x="39"
-                  y="61"
-                  width="8"
-                  height="18"
-                  rx="3"
-                  fill="var(--pants-color)"
-                  stroke="var(--skin-stroke)"
-                  stroke-width="1.2"
-                />
-                <rect
-                  x="53"
-                  y="61"
-                  width="8"
-                  height="18"
-                  rx="3"
-                  fill="var(--pants-color)"
-                  stroke="var(--skin-stroke)"
-                  stroke-width="1.2"
-                />
-                <ellipse
-                  cx="43"
-                  cy="81"
-                  rx="7"
-                  ry="3.5"
-                  fill="var(--shoe-color)"
-                  stroke="var(--skin-stroke)"
-                  stroke-width="0.8"
-                />
-                <ellipse
-                  cx="57"
-                  cy="81"
-                  rx="7"
-                  ry="3.5"
-                  fill="var(--shoe-color)"
-                  stroke="var(--skin-stroke)"
-                  stroke-width="0.8"
-                />
-              </svg>
-            </div>
-            <div class="member-info">
-              <div class="member-name">NAME_03</div>
-              <div class="member-role">ROLE_03</div>
-            </div>
-          </div>
+                <!-- ===== ANGGOTA 3 — BERDIRI (KANAN DALAM) ===== -->
+                <div class="team-node node-member node-member-3" id="nodeMember3" data-index="3">
+                    <div class="avatar-wrapper">
+                        <svg class="avatar-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="50" cy="20" r="13" fill="var(--skin-color)" stroke="var(--skin-stroke)" stroke-width="1.2"/>
+                            <path d="M37,18 Q50,3 63,18 Q65,20 63,22 Q50,9 37,22 Q35,20 37,18Z" fill="var(--hair-color)" stroke="var(--skin-stroke)" stroke-width="0.8"/>
+                            <circle cx="45" cy="19" r="1.8" fill="var(--skin-stroke)"/>
+                            <circle cx="55" cy="19" r="1.8" fill="var(--skin-stroke)"/>
+                            <path d="M46,24 Q50,27 54,24" stroke="var(--skin-stroke)" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+                            <rect x="35" y="33" width="30" height="28" rx="4" fill="var(--accent-orange)" stroke="var(--skin-stroke)" stroke-width="1.2"/>
+                            <path d="M42,33 L50,28 L58,33" fill="var(--accent-orange-dark)" stroke="var(--skin-stroke)" stroke-width="0.8"/>
+                            <rect x="35" y="54" width="30" height="3" fill="var(--accent-orange-dark)" stroke="var(--skin-stroke)" stroke-width="0.8"/>
+                            <path d="M35,36 Q28,48 30,60" stroke="var(--skin-color)" stroke-width="6" fill="none" stroke-linecap="round"/>
+                            <path d="M65,36 Q72,48 70,60" stroke="var(--skin-color)" stroke-width="6" fill="none" stroke-linecap="round"/>
+                            <rect x="39" y="61" width="8" height="18" rx="3" fill="var(--pants-color)" stroke="var(--skin-stroke)" stroke-width="1.2"/>
+                            <rect x="53" y="61" width="8" height="18" rx="3" fill="var(--pants-color)" stroke="var(--skin-stroke)" stroke-width="1.2"/>
+                            <ellipse cx="43" cy="81" rx="7" ry="3.5" fill="var(--shoe-color)" stroke="var(--skin-stroke)" stroke-width="0.8"/>
+                            <ellipse cx="57" cy="81" rx="7" ry="3.5" fill="var(--shoe-color)" stroke="var(--skin-stroke)" stroke-width="0.8"/>
+                        </svg>
+                    </div>
+                    <div class="member-info">
+                        <div class="member-name">NAME_03</div>
+                        <div class="member-role">ROLE_03</div>
+                    </div>
+                </div>
 
-          <!-- ===== ANGGOTA 4 — BERDIRI (KANAN LUAR) ===== -->
-          <div
-            class="team-node node-member node-member-4"
-            id="nodeMember4"
-            data-index="4"
-          >
-            <div class="avatar-wrapper">
-              <svg
-                class="avatar-svg"
-                viewBox="0 0 100 100"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <circle
-                  cx="50"
-                  cy="20"
-                  r="13"
-                  fill="var(--skin-color)"
-                  stroke="var(--skin-stroke)"
-                  stroke-width="1.2"
-                />
-                <path
-                  d="M37,18 Q50,3 63,18 Q65,20 63,22 Q50,9 37,22 Q35,20 37,18Z"
-                  fill="var(--hair-color)"
-                  stroke="var(--skin-stroke)"
-                  stroke-width="0.8"
-                />
-                <circle cx="45" cy="19" r="1.8" fill="var(--skin-stroke)" />
-                <circle cx="55" cy="19" r="1.8" fill="var(--skin-stroke)" />
-                <path
-                  d="M46,24 Q50,27 54,24"
-                  stroke="var(--skin-stroke)"
-                  stroke-width="1.2"
-                  fill="none"
-                  stroke-linecap="round"
-                />
-                <rect
-                  x="35"
-                  y="33"
-                  width="30"
-                  height="28"
-                  rx="4"
-                  fill="var(--accent-orange)"
-                  stroke="var(--skin-stroke)"
-                  stroke-width="1.2"
-                />
-                <path
-                  d="M42,33 L50,28 L58,33"
-                  fill="var(--accent-orange-dark)"
-                  stroke="var(--skin-stroke)"
-                  stroke-width="0.8"
-                />
-                <rect
-                  x="35"
-                  y="54"
-                  width="30"
-                  height="3"
-                  fill="var(--accent-orange-dark)"
-                  stroke="var(--skin-stroke)"
-                  stroke-width="0.8"
-                />
-                <path
-                  d="M35,36 Q28,48 30,60"
-                  stroke="var(--skin-color)"
-                  stroke-width="6"
-                  fill="none"
-                  stroke-linecap="round"
-                />
-                <path
-                  d="M65,36 Q72,48 70,60"
-                  stroke="var(--skin-color)"
-                  stroke-width="6"
-                  fill="none"
-                  stroke-linecap="round"
-                />
-                <rect
-                  x="39"
-                  y="61"
-                  width="8"
-                  height="18"
-                  rx="3"
-                  fill="var(--pants-color)"
-                  stroke="var(--skin-stroke)"
-                  stroke-width="1.2"
-                />
-                <rect
-                  x="53"
-                  y="61"
-                  width="8"
-                  height="18"
-                  rx="3"
-                  fill="var(--pants-color)"
-                  stroke="var(--skin-stroke)"
-                  stroke-width="1.2"
-                />
-                <ellipse
-                  cx="43"
-                  cy="81"
-                  rx="7"
-                  ry="3.5"
-                  fill="var(--shoe-color)"
-                  stroke="var(--skin-stroke)"
-                  stroke-width="0.8"
-                />
-                <ellipse
-                  cx="57"
-                  cy="81"
-                  rx="7"
-                  ry="3.5"
-                  fill="var(--shoe-color)"
-                  stroke="var(--skin-stroke)"
-                  stroke-width="0.8"
-                />
-              </svg>
+                <!-- ===== ANGGOTA 4 — BERDIRI (KANAN LUAR) ===== -->
+                <div class="team-node node-member node-member-4" id="nodeMember4" data-index="4">
+                    <div class="avatar-wrapper">
+                        <svg class="avatar-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="50" cy="20" r="13" fill="var(--skin-color)" stroke="var(--skin-stroke)" stroke-width="1.2"/>
+                            <path d="M37,18 Q50,3 63,18 Q65,20 63,22 Q50,9 37,22 Q35,20 37,18Z" fill="var(--hair-color)" stroke="var(--skin-stroke)" stroke-width="0.8"/>
+                            <circle cx="45" cy="19" r="1.8" fill="var(--skin-stroke)"/>
+                            <circle cx="55" cy="19" r="1.8" fill="var(--skin-stroke)"/>
+                            <path d="M46,24 Q50,27 54,24" stroke="var(--skin-stroke)" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+                            <rect x="35" y="33" width="30" height="28" rx="4" fill="var(--accent-orange)" stroke="var(--skin-stroke)" stroke-width="1.2"/>
+                            <path d="M42,33 L50,28 L58,33" fill="var(--accent-orange-dark)" stroke="var(--skin-stroke)" stroke-width="0.8"/>
+                            <rect x="35" y="54" width="30" height="3" fill="var(--accent-orange-dark)" stroke="var(--skin-stroke)" stroke-width="0.8"/>
+                            <path d="M35,36 Q28,48 30,60" stroke="var(--skin-color)" stroke-width="6" fill="none" stroke-linecap="round"/>
+                            <path d="M65,36 Q72,48 70,60" stroke="var(--skin-color)" stroke-width="6" fill="none" stroke-linecap="round"/>
+                            <rect x="39" y="61" width="8" height="18" rx="3" fill="var(--pants-color)" stroke="var(--skin-stroke)" stroke-width="1.2"/>
+                            <rect x="53" y="61" width="8" height="18" rx="3" fill="var(--pants-color)" stroke="var(--skin-stroke)" stroke-width="1.2"/>
+                            <ellipse cx="43" cy="81" rx="7" ry="3.5" fill="var(--shoe-color)" stroke="var(--skin-stroke)" stroke-width="0.8"/>
+                            <ellipse cx="57" cy="81" rx="7" ry="3.5" fill="var(--shoe-color)" stroke="var(--skin-stroke)" stroke-width="0.8"/>
+                        </svg>
+                    </div>
+                    <div class="member-info">
+                        <div class="member-name">NAME_04</div>
+                        <div class="member-role">ROLE_04</div>
+                    </div>
+                </div>
             </div>
-            <div class="member-info">
-              <div class="member-name">NAME_04</div>
-              <div class="member-role">ROLE_04</div>
+
+            <!-- Scroll Indicator -->
+            <div class="scroll-indicator" id="scrollIndicator">
+                <div class="scroll-text">SCROLL TO DISCOVER</div>
+                <div class="scroll-arrow">↓</div>
             </div>
-          </div>
-        </div>
+        </section>
 
-        <!-- Scroll Indicator -->
-        <div class="scroll-indicator" id="scrollIndicator">
-          <div class="scroll-text">SCROLL TO DISCOVER</div>
-          <div class="scroll-arrow">↓</div>
-        </div>
-      </section>
-
-      <!-- ==========================================================================
+        <!-- ==========================================================================
              VISION & MISSION — OUR DIRECTION (Text Direct Atas Body)
            ========================================================================== -->
-      <section class="vision-section" id="visionSection">
-        <div class="section-title-wrap">
-          <div class="section-tag">STRATEGIK</div>
-          <h2 class="section-title">OUR DIRECTION</h2>
-        </div>
+        <section class="vision-section" id="visionSection">
+            <div class="section-title-wrap">
+                <div class="section-tag">STRATEGIK</div>
+                <h2 class="section-title">OUR DIRECTION</h2>
+            </div>
 
-        <div class="glass-cards-grid">
-          <!-- Kad Visi -->
-          <div class="glass-card" id="cardVision">
-            <div class="card-icon">
-              <svg viewBox="0 0 24 24">
-                <path
-                  d="M9 21c0 .55.45 1 1 1h4c.55 0 1-.45 1-1v-1H9v1zm3-19C8.14 2 5 5.14 5 9c0 2.38 1.19 4.47 3 5.74V17c0 .55.45 1 1 1h6c.55 0 1-.45 1-1v-2.26c1.81-1.27 3-3.36 3-5.74 0-3.86-3.14-7-7-7zm2.85 11.1l-.85.6V16h-4v-3.3l-.85-.6A4.996 4.996 0 0 1 7 9c0-2.76 2.24-5 5-5s5 2.24 5 5c0 1.63-.8 3.16-2.15 4.1z"
-                />
-              </svg>
-            </div>
-            <div class="card-header-title">VISI PROJEK</div>
-            <div class="card-body-text" id="visionText">
-              INOVASI SELARAS GENERASI
-            </div>
-          </div>
+            <div class="glass-cards-grid">
+                <!-- Kad Visi -->
+                <div class="glass-card" id="cardVision">
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M9 21c0 .55.45 1 1 1h4c.55 0 1-.45 1-1v-1H9v1zm3-19C8.14 2 5 5.14 5 9c0 2.38 1.19 4.47 3 5.74V17c0 .55.45 1 1 1h6c.55 0 1-.45 1-1v-2.26c1.81-1.27 3-3.36 3-5.74 0-3.86-3.14-7-7-7zm2.85 11.1l-.85.6V16h-4v-3.3l-.85-.6A4.996 4.996 0 0 1 7 9c0-2.76 2.24-5 5-5s5 2.24 5 5c0 1.63-.8 3.16-2.15 4.1z"/>
+                        </svg>
+                    </div>
+                    <div class="card-header-title">VISI PROJEK</div>
+                    <div class="card-body-text" id="visionText">
+                        INOVASI SELARAS GENERASI
+                    </div>
+                </div>
 
-          <!-- Kad Misi -->
-          <div class="glass-card" id="cardMission">
-            <div class="card-icon">
-              <svg viewBox="0 0 24 24">
-                <path
-                  d="M12 2C6.49 2 2 6.49 2 12s4.49 10 10 10 10-4.49 10-10S17.51 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm3-8c0 1.66-1.34 3-3 3s-3-1.34-3-3 1.34-3 3-3 3 1.34 3 3z"
-                />
-              </svg>
+                <!-- Kad Misi -->
+                <div class="glass-card" id="cardMission">
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M12 2C6.49 2 2 6.49 2 12s4.49 10 10 10 10-4.49 10-10S17.51 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm3-8c0 1.66-1.34 3-3 3s-3-1.34-3-3 1.34-3 3-3 3 1.34 3 3z"/>
+                        </svg>
+                    </div>
+                    <div class="card-header-title">MISI PROJEK</div>
+                    <div class="card-body-text" id="missionText">
+                        MEREALISASIKAN GAYA KERJA YANG SISTEMATIK DAN MODEN
+                    </div>
+                </div>
             </div>
-            <div class="card-header-title">MISI PROJEK</div>
-            <div class="card-body-text" id="missionText">
-              MEREALISASIKAN GAYA KERJA YANG SISTEMATIK DAN MODEN
-            </div>
-          </div>
-        </div>
-      </section>
+        </section>
 
-      <!-- ==========================================================================
-             WALKIE TALKIE — SIGNATURE VISUAL ELEMENT
+        <!-- ==========================================================================
+             WALKIE TALKIE + WORKSTATION ICON
            ========================================================================== -->
-      <section class="walkie-section" id="walkieSection">
-        <div class="section-title-wrap">
-          <div class="section-tag">KOMUNIKASI DIGITAL</div>
-          <h2 class="section-title">COMMAND SYSTEM</h2>
-        </div>
-
-        <div class="walkie-wrapper">
-          <div class="radio-waves">
-            <div class="wave-ring"></div>
-            <div class="wave-ring"></div>
-            <div class="wave-ring"></div>
-          </div>
-
-          <div class="walkie-device">
-            <div class="walkie-antenna">
-              <div class="walkie-antenna-tip"></div>
+        <section class="walkie-section" id="walkieSection">
+            <div class="section-title-wrap">
+                <div class="section-tag">KOMUNIKASI DIGITAL</div>
+                <h2 class="section-title">COMMAND SYSTEM</h2>
             </div>
-            <div class="walkie-knob"></div>
-            <div class="walkie-screen">
-              <div class="screen-text">BRAVO<br />THE FUTURE</div>
-              <div class="screen-status">ONLINE // 100%</div>
-            </div>
-            <div class="walkie-speaker">
-              <div class="speaker-line"></div>
-              <div class="speaker-line"></div>
-              <div class="speaker-line"></div>
-              <div class="speaker-line"></div>
-              <div class="speaker-line"></div>
-            </div>
-            <div class="walkie-light"></div>
-          </div>
-        </div>
 
-        <div class="digital-message" id="digitalMessage">
-          <div class="msg-line">
-            CONNECTING <span class="msg-line-highlight">PEOPLE</span>.
-          </div>
-          <div class="msg-line">
-            CONNECTING <span class="msg-line-highlight">IDEAS</span>.
-          </div>
-          <div class="msg-line">
-            BUILDING THE <span class="msg-line-highlight">FUTURE</span>.
-          </div>
-        </div>
-      </section>
+            <div class="walkie-wrapper">
+                <div class="radio-waves">
+                    <div class="wave-ring"></div>
+                    <div class="wave-ring"></div>
+                    <div class="wave-ring"></div>
+                </div>
+
+                <div class="walkie-device">
+                    <div class="walkie-antenna">
+                        <div class="walkie-antenna-tip"></div>
+                    </div>
+                    <div class="walkie-knob"></div>
+                    <div class="walkie-screen">
+                        <div class="screen-text">BRAVO<br />THE FUTURE</div>
+                        <div class="screen-status">ONLINE // 100%</div>
+                    </div>
+                    <div class="walkie-speaker">
+                        <div class="speaker-line"></div>
+                        <div class="speaker-line"></div>
+                        <div class="speaker-line"></div>
+                        <div class="speaker-line"></div>
+                        <div class="speaker-line"></div>
+                    </div>
+                    <div class="walkie-light"></div>
+                </div>
+            </div>
+
+            <div class="digital-message" id="digitalMessage">
+                <div class="msg-line">
+                    CONNECTING <span class="msg-line-highlight">PEOPLE</span>.
+                </div>
+                <div class="msg-line">
+                    CONNECTING <span class="msg-line-highlight">IDEAS</span>.
+                </div>
+                <div class="msg-line">
+                    BUILDING THE <span class="msg-line-highlight">FUTURE</span>.
+                </div>
+            </div>
+
+            <!-- ===== IKON WORKSTATION (sudut kiri 15°) ===== -->
+            <div class="workstation-icon">
+                <svg viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+                    <g transform="skewY(-15deg)">
+                        <!-- Meja -->
+                        <rect x="20" y="120" width="200" height="15" fill="#8B5A2B" stroke="#5C3A1E" stroke-width="2" rx="2"/>
+                        <!-- Kaki meja kiri -->
+                        <rect x="30" y="135" width="10" height="40" fill="#6B4226" rx="1"/>
+                        <!-- Kaki meja kanan -->
+                        <rect x="200" y="135" width="10" height="40" fill="#6B4226" rx="1"/>
+                        <!-- Monitor - tapak -->
+                        <rect x="80" y="100" width="80" height="20" fill="#555" rx="2"/>
+                        <!-- Monitor - skrin (belakang) -->
+                        <rect x="85" y="40" width="70" height="60" fill="#333" rx="3"/>
+                        <!-- Skrin (dalam) -->
+                        <rect x="88" y="43" width="64" height="54" fill="#1a1a2e" rx="2"/>
+                        <!-- Paparan skrin (simulasi kod) -->
+                        <rect x="92" y="47" width="56" height="46" fill="#0f3460" rx="1"/>
+                        <line x1="96" y1="55" x2="140" y2="55" stroke="#00ffcc" stroke-width="1.5" opacity="0.8"/>
+                        <line x1="96" y1="62" x2="130" y2="62" stroke="#00ffcc" stroke-width="1.5" opacity="0.6"/>
+                        <line x1="96" y1="69" x2="135" y2="69" stroke="#00ffcc" stroke-width="1.5" opacity="0.4"/>
+                        <line x1="96" y1="76" x2="125" y2="76" stroke="#00ffcc" stroke-width="1.5" opacity="0.25"/>
+                        <!-- Keyboard -->
+                        <rect x="70" y="130" width="100" height="12" fill="#444" rx="2"/>
+                        <!-- Baris kekunci -->
+                        <rect x="74" y="132" width="92" height="3" fill="#666" rx="1"/>
+                        <rect x="74" y="136" width="92" height="3" fill="#666" rx="1"/>
+                        <!-- Tetikus (di sebelah kanan keyboard) -->
+                        <ellipse cx="185" cy="133" rx="10" ry="6" fill="#555" stroke="#444" stroke-width="1"/>
+                        <path d="M185,127 L185,133" stroke="#444" stroke-width="1"/>
+                    </g>
+                </svg>
+                <div class="workstation-label">DIGITAL WORKSPACE</div>
+            </div>
+        </section>
     </div>
 
     <!-- ==========================================================================
        FOOTER — EMAIL KIRI · COPYRIGHT TENGAH · SOSMED KANAN
        ========================================================================== -->
     <footer class="footer-digital">
-      <div class="main-container">
-        <div class="footer-content">
-          <!-- Kiri: Alamat Email -->
-          <div class="footer-email" id="footerEmail">
-            ✉
-            <a href="mailto:hello@digitalisasibravopgo.com"
-              >hello@digitalisasibravopgo.com</a
-            >
-          </div>
+        <div class="main-container">
+            <div class="footer-content">
+                <!-- Kiri: Alamat Email -->
+                <div class="footer-email" id="footerEmail">
+                    ✉ <a href="mailto:hello@digitalisasibravopgo.com">hello@digitalisasibravopgo.com</a>
+                </div>
 
-          <!-- Tengah: Copyright -->
-          <div class="footer-copyright" id="footerCopyright">
-            © 2035 BRAVO THE FUTURE — ALL RIGHTS RESERVED
-          </div>
+                <!-- Tengah: Copyright -->
+                <div class="footer-copyright" id="footerCopyright">
+                    © 2035 BRAVO THE FUTURE — ALL RIGHTS RESERVED
+                </div>
 
-          <!-- Kanan: Ikon Media Sosial -->
-          <div class="social-links">
-            <a href="#" class="social-icon" aria-label="Facebook">
-              <svg viewBox="0 0 24 24">
-                <path
-                  d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"
-                />
-              </svg>
-            </a>
-            <a href="#" class="social-icon" aria-label="Instagram">
-              <svg viewBox="0 0 24 24">
-                <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
-                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
-                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
-              </svg>
-            </a>
-            <a href="#" class="social-icon" aria-label="YouTube">
-              <svg viewBox="0 0 24 24">
-                <path
-                  d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"
-                />
-                <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" />
-              </svg>
-            </a>
-            <a href="#" class="social-icon" aria-label="TikTok">
-              <svg viewBox="0 0 24 24">
-                <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5" />
-              </svg>
-            </a>
-          </div>
+                <!-- Kanan: Ikon Media Sosial -->
+                <div class="social-links">
+                    <a href="#" class="social-icon" aria-label="Facebook">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+                        </svg>
+                    </a>
+                    <a href="#" class="social-icon" aria-label="Instagram">
+                        <svg viewBox="0 0 24 24">
+                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+                        </svg>
+                    </a>
+                    <a href="#" class="social-icon" aria-label="YouTube">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"/>
+                            <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"/>
+                        </svg>
+                    </a>
+                    <a href="#" class="social-icon" aria-label="TikTok">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
         </div>
-      </div>
     </footer>
 
     <!-- ==========================================================================
        JAVASCRIPT ARCHITECTURE & LOGIK INTERAKSI
        ========================================================================== -->
     <script>
-      /* --------------------------------------------------------------------------
+        /* --------------------------------------------------------------------------
            1. KONFIGURASI KANDUNGAN BOLEH DISUNTING (PROJECT_CONFIG)
            -------------------------------------------------------------------------- */
-      const PROJECT_CONFIG = {
-        PROJECT_NAME: 'BRAVO THE FUTURE',
-        PROJECT_SUBTITLE: 'PROJEK DIGITALISASI BRAVO PGO JOHOR',
-        GREETING: 'SELAMAT DATANG',
-        SUBTEXT: 'Membina cara kerja yang lebih sistematik, pantas dan moden.',
-        VISION: 'INOVASI SELARAS GENERASI',
-        MISSION: 'MEREALISASIKAN GAYA KERJA YANG SISTEMATIK DAN MODEN',
-        TAGLINE: [
-          'CONNECTING PEOPLE.',
-          'CONNECTING IDEAS.',
-          'BUILDING THE FUTURE.',
-        ],
-        WEBSITE: 'WWW.DIGITALISASIBRAVOPGO.COM',
-        FOOTER: '© 2035 BRAVO THE FUTURE — ALL RIGHTS RESERVED',
-        TEAM_MEMBERS: [
-          { name: 'ANGGOTA KETUA', role: 'KETUA PASUKAN / LEAD ARCHITECT' },
-          { name: 'ANGGOTA 01', role: 'DIGITAL DEVELOPMENT' },
-          { name: 'ANGGOTA 02', role: 'SYSTEM STRATEGIST' },
-          { name: 'ANGGOTA 03', role: 'UI/UX INNOVATOR' },
-          { name: 'ANGGOTA 04', role: 'DATA INTEGRATION' },
-        ],
-      };
-
-      /* --------------------------------------------------------------------------
-           2. PENERAPAN KANDUNGAN KE DALAM DOM
-           -------------------------------------------------------------------------- */
-      function initContent() {
-        document.getElementById('brandTitle').textContent =
-          PROJECT_CONFIG.PROJECT_NAME;
-        document.getElementById('brandSubtitle').textContent =
-          PROJECT_CONFIG.PROJECT_SUBTITLE;
-        document.getElementById('heroSubtext').textContent =
-          PROJECT_CONFIG.SUBTEXT;
-        document.getElementById('visionText').textContent =
-          PROJECT_CONFIG.VISION;
-        document.getElementById('missionText').textContent =
-          PROJECT_CONFIG.MISSION;
-        document.getElementById('footerCopyright').textContent =
-          PROJECT_CONFIG.FOOTER;
-
-        // Isi Data Pasukan
-        const nodes = [
-          document.getElementById('nodeLeader'),
-          document.getElementById('nodeMember1'),
-          document.getElementById('nodeMember2'),
-          document.getElementById('nodeMember3'),
-          document.getElementById('nodeMember4'),
-        ];
-
-        nodes.forEach((node, i) => {
-          if (node && PROJECT_CONFIG.TEAM_MEMBERS[i]) {
-            const nameEl = node.querySelector('.member-name');
-            const roleEl = node.querySelector('.member-role');
-            if (nameEl)
-              nameEl.textContent = PROJECT_CONFIG.TEAM_MEMBERS[i].name;
-            if (roleEl)
-              roleEl.textContent = PROJECT_CONFIG.TEAM_MEMBERS[i].role;
-          }
-        });
-      }
-
-      /* --------------------------------------------------------------------------
-           3. ANIMASI SELAMAT DATANG (LETTER BY LETTER FADE + BLUR)
-           -------------------------------------------------------------------------- */
-      function animateGreeting() {
-        const container = document.getElementById('greetingContainer');
-        const text = PROJECT_CONFIG.GREETING;
-        container.innerHTML = '';
-
-        text.split('').forEach((char, index) => {
-          const span = document.createElement('span');
-          span.className = 'char-span';
-          span.textContent = char === ' ' ? '\u00A0' : char;
-          container.appendChild(span);
-
-          setTimeout(() => {
-            span.classList.add('visible');
-          }, 1200 + index * 90);
-        });
-
-        setTimeout(() => {
-          document.getElementById('heroSubtext').classList.add('visible');
-        }, 1200 + text.length * 90 + 300);
-      }
-
-      /* --------------------------------------------------------------------------
-           4. DRAWING GARIS SAMBUNGAN DIGITAL PASUKAN (SVG)
-           -------------------------------------------------------------------------- */
-      function drawTeamConnections() {
-        const svg = document.getElementById('connectionSvg');
-        const container = document.getElementById('teamArcContainer');
-        if (!svg || !container || window.innerWidth < 768) return;
-
-        svg.innerHTML = '';
-        const containerRect = container.getBoundingClientRect();
-
-        const leader = document.getElementById('nodeLeader');
-        const members = [
-          document.getElementById('nodeMember1'),
-          document.getElementById('nodeMember2'),
-          document.getElementById('nodeMember3'),
-          document.getElementById('nodeMember4'),
-        ];
-
-        const getCenter = (el) => {
-          const rect = el.getBoundingClientRect();
-          return {
-            x: rect.left + rect.width / 2 - containerRect.left,
-            y: rect.top + rect.height / 2 - containerRect.top,
-          };
+        const PROJECT_CONFIG = {
+            PROJECT_NAME: 'BRAVO THE FUTURE',
+            PROJECT_SUBTITLE: 'PROJEK DIGITALISASI BRAVO PGO JOHOR',
+            GREETING: 'SELAMAT DATANG',
+            SUBTEXT: 'Membina cara kerja yang lebih sistematik, pantas dan moden.',
+            VISION: 'INOVASI SELARAS GENERASI',
+            MISSION: 'MEREALISASIKAN GAYA KERJA YANG SISTEMATIK DAN MODEN',
+            TAGLINE: [
+                'CONNECTING PEOPLE.',
+                'CONNECTING IDEAS.',
+                'BUILDING THE FUTURE.',
+            ],
+            WEBSITE: 'WWW.DIGITALISASIBRAVOPGO.COM',
+            FOOTER: '© 2035 BRAVO THE FUTURE — ALL RIGHTS RESERVED',
+            TEAM_MEMBERS: [
+                { name: 'ANGGOTA KETUA', role: 'KETUA PASUKAN / LEAD ARCHITECT' },
+                { name: 'ANGGOTA 01', role: 'DIGITAL DEVELOPMENT' },
+                { name: 'ANGGOTA 02', role: 'SYSTEM STRATEGIST' },
+                { name: 'ANGGOTA 03', role: 'UI/UX INNOVATOR' },
+                { name: 'ANGGOTA 04', role: 'DATA INTEGRATION' },
+            ],
         };
 
-        const leaderCenter = getCenter(leader);
-
-        members.forEach((member) => {
-          const memberCenter = getCenter(member);
-          const line = document.createElementNS(
-            'http://www.w3.org/2000/svg',
-            'line'
-          );
-          line.setAttribute('x1', leaderCenter.x);
-          line.setAttribute('y1', leaderCenter.y);
-          line.setAttribute('x2', memberCenter.x);
-          line.setAttribute('y2', memberCenter.y);
-          line.setAttribute('class', 'connection-line');
-          svg.appendChild(line);
-        });
-      }
-
-      /* --------------------------------------------------------------------------
-           5. SCROLL REVEAL OBSERVER (INTERSECTION OBSERVER)
+        /* --------------------------------------------------------------------------
+           2. PENERAPAN KANDUNGAN KE DALAM DOM
            -------------------------------------------------------------------------- */
-      function initScrollReveals() {
-        const observerOptions = { threshold: 0.25 };
+        function initContent() {
+            document.getElementById('brandTitle').textContent =
+                PROJECT_CONFIG.PROJECT_NAME;
+            document.getElementById('brandSubtitle').textContent =
+                PROJECT_CONFIG.PROJECT_SUBTITLE;
+            document.getElementById('heroSubtext').textContent =
+                PROJECT_CONFIG.SUBTEXT;
+            document.getElementById('visionText').textContent =
+                PROJECT_CONFIG.VISION;
+            document.getElementById('missionText').textContent =
+                PROJECT_CONFIG.MISSION;
+            document.getElementById('footerCopyright').textContent =
+                PROJECT_CONFIG.FOOTER;
 
-        // Observer Pasukan
-        const teamObserver = new IntersectionObserver((entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              // Ketua masuk
-              setTimeout(() => {
-                document.getElementById('nodeLeader').classList.add('entered');
-              }, 200);
-
-              // Anggota masuk serentak kiri & kanan
-              const leftMembers = [
+            // Isi Data Pasukan
+            const nodes = [
+                document.getElementById('nodeLeader'),
                 document.getElementById('nodeMember1'),
                 document.getElementById('nodeMember2'),
-              ];
-              const rightMembers = [
                 document.getElementById('nodeMember3'),
                 document.getElementById('nodeMember4'),
-              ];
+            ];
 
-              const enterDelay = 600;
-              leftMembers.forEach((el) => {
-                setTimeout(() => el.classList.add('entered'), enterDelay);
-              });
-              rightMembers.forEach((el) => {
-                setTimeout(() => el.classList.add('entered'), enterDelay);
-              });
+            nodes.forEach((node, i) => {
+                if (node && PROJECT_CONFIG.TEAM_MEMBERS[i]) {
+                    const nameEl = node.querySelector('.member-name');
+                    const roleEl = node.querySelector('.member-role');
+                    if (nameEl)
+                        nameEl.textContent = PROJECT_CONFIG.TEAM_MEMBERS[i].name;
+                    if (roleEl)
+                        roleEl.textContent = PROJECT_CONFIG.TEAM_MEMBERS[i].role;
+                }
+            });
+        }
 
-              setTimeout(drawTeamConnections, 1400);
-              teamObserver.unobserve(entry.target);
-            }
-          });
-        }, observerOptions);
+        /* --------------------------------------------------------------------------
+           3. ANIMASI SELAMAT DATANG (LETTER BY LETTER FADE + BLUR)
+           -------------------------------------------------------------------------- */
+        function animateGreeting() {
+            const container = document.getElementById('greetingContainer');
+            const text = PROJECT_CONFIG.GREETING;
+            container.innerHTML = '';
 
-        const teamSec = document.getElementById('teamSection');
-        if (teamSec) teamObserver.observe(teamSec);
+            text.split('').forEach((char, index) => {
+                const span = document.createElement('span');
+                span.className = 'char-span';
+                span.textContent = char === ' ' ? '\u00A0' : char;
+                container.appendChild(span);
 
-        // Observer Scroll Indicator Fadeout
-        const scrollIndicator = document.getElementById('scrollIndicator');
-        window.addEventListener('scroll', () => {
-          if (window.scrollY > 150) {
-            scrollIndicator.style.opacity = '0';
-          } else {
-            scrollIndicator.style.opacity = '0.8';
-          }
-        });
-
-        // Observer Visi & Misi Cards
-        const visionObserver = new IntersectionObserver((entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              setTimeout(
-                () =>
-                  document
-                    .getElementById('cardVision')
-                    .classList.add('visible'),
-                200
-              );
-              setTimeout(
-                () =>
-                  document
-                    .getElementById('cardMission')
-                    .classList.add('visible'),
-                500
-              );
-              visionObserver.unobserve(entry.target);
-            }
-          });
-        }, observerOptions);
-
-        const visionSec = document.getElementById('visionSection');
-        if (visionSec) visionObserver.observe(visionSec);
-
-        // Observer Walkie Talkie & Digital Message
-        const walkieObserver = new IntersectionObserver((entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              const lines = document.querySelectorAll('.msg-line');
-              lines.forEach((line, idx) => {
                 setTimeout(() => {
-                  line.classList.add('visible');
-                }, 400 + idx * 300);
-              });
-              walkieObserver.unobserve(entry.target);
-            }
-          });
-        }, observerOptions);
+                    span.classList.add('visible');
+                }, 1200 + index * 90);
+            });
 
-        const walkieSec = document.getElementById('walkieSection');
-        if (walkieSec) walkieObserver.observe(walkieSec);
-      }
+            setTimeout(() => {
+                document.getElementById('heroSubtext').classList.add('visible');
+            }, 1200 + text.length * 90 + 300);
+        }
 
-      /* --------------------------------------------------------------------------
+        /* --------------------------------------------------------------------------
+           4. DRAWING GARIS SAMBUNGAN DIGITAL PASUKAN (SVG)
+           -------------------------------------------------------------------------- */
+        function drawTeamConnections() {
+            const svg = document.getElementById('connectionSvg');
+            const container = document.getElementById('teamArcContainer');
+            if (!svg || !container || window.innerWidth < 768) return;
+
+            svg.innerHTML = '';
+            const containerRect = container.getBoundingClientRect();
+
+            const leader = document.getElementById('nodeLeader');
+            const members = [
+                document.getElementById('nodeMember1'),
+                document.getElementById('nodeMember2'),
+                document.getElementById('nodeMember3'),
+                document.getElementById('nodeMember4'),
+            ];
+
+            const getCenter = (el) => {
+                const rect = el.getBoundingClientRect();
+                return {
+                    x: rect.left + rect.width / 2 - containerRect.left,
+                    y: rect.top + rect.height / 2 - containerRect.top,
+                };
+            };
+
+            const leaderCenter = getCenter(leader);
+
+            members.forEach((member) => {
+                const memberCenter = getCenter(member);
+                const line = document.createElementNS(
+                    'http://www.w3.org/2000/svg',
+                    'line'
+                );
+                line.setAttribute('x1', leaderCenter.x);
+                line.setAttribute('y1', leaderCenter.y);
+                line.setAttribute('x2', memberCenter.x);
+                line.setAttribute('y2', memberCenter.y);
+                line.setAttribute('class', 'connection-line');
+                svg.appendChild(line);
+            });
+        }
+
+        /* --------------------------------------------------------------------------
+           5. SCROLL REVEAL OBSERVER (INTERSECTION OBSERVER)
+           -------------------------------------------------------------------------- */
+        function initScrollReveals() {
+            const observerOptions = { threshold: 0.25 };
+
+            // Observer Pasukan
+            const teamObserver = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        // Ketua masuk
+                        setTimeout(() => {
+                            document.getElementById('nodeLeader').classList.add('entered');
+                        }, 200);
+
+                        // Anggota masuk serentak kiri & kanan
+                        const leftMembers = [
+                            document.getElementById('nodeMember1'),
+                            document.getElementById('nodeMember2'),
+                        ];
+                        const rightMembers = [
+                            document.getElementById('nodeMember3'),
+                            document.getElementById('nodeMember4'),
+                        ];
+
+                        const enterDelay = 600;
+                        leftMembers.forEach(el => {
+                            setTimeout(() => el.classList.add('entered'), enterDelay);
+                        });
+                        rightMembers.forEach(el => {
+                            setTimeout(() => el.classList.add('entered'), enterDelay);
+                        });
+
+                        setTimeout(drawTeamConnections, 1400);
+                        teamObserver.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            const teamSec = document.getElementById('teamSection');
+            if (teamSec) teamObserver.observe(teamSec);
+
+            // Observer Scroll Indicator Fadeout
+            const scrollIndicator = document.getElementById('scrollIndicator');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 150) {
+                    scrollIndicator.style.opacity = '0';
+                } else {
+                    scrollIndicator.style.opacity = '0.8';
+                }
+            });
+
+            // Observer Visi & Misi Cards
+            const visionObserver = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        setTimeout(() =>
+                            document.getElementById('cardVision').classList.add('visible'),
+                            200
+                        );
+                        setTimeout(() =>
+                            document.getElementById('cardMission').classList.add('visible'),
+                            500
+                        );
+                        visionObserver.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            const visionSec = document.getElementById('visionSection');
+            if (visionSec) visionObserver.observe(visionSec);
+
+            // Observer Walkie Talkie & Digital Message
+            const walkieObserver = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        const lines = document.querySelectorAll('.msg-line');
+                        lines.forEach((line, idx) => {
+                            setTimeout(() => {
+                                line.classList.add('visible');
+                            }, 400 + idx * 300);
+                        });
+                        walkieObserver.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            const walkieSec = document.getElementById('walkieSection');
+            if (walkieSec) walkieObserver.observe(walkieSec);
+        }
+
+        /* --------------------------------------------------------------------------
            6. CANVAS BACKGROUND PARTICLE SYSTEM — jingga
            -------------------------------------------------------------------------- */
-      function initParticleCanvas() {
-        const canvas = document.getElementById('particle-canvas');
-        const ctx = canvas.getContext('2d');
+        function initParticleCanvas() {
+            const canvas = document.getElementById('particle-canvas');
+            const ctx = canvas.getContext('2d');
 
-        let width = (canvas.width = window.innerWidth);
-        let height = (canvas.height = window.innerHeight);
+            let width = canvas.width = window.innerWidth;
+            let height = canvas.height = window.innerHeight;
 
-        const particleCount = window.innerWidth < 768 ? 15 : 35;
-        const particles = [];
+            const particleCount = window.innerWidth < 768 ? 15 : 35;
+            const particles = [];
 
-        class Particle {
-          constructor() {
-            this.x = Math.random() * width;
-            this.y = Math.random() * height;
-            this.vx = (Math.random() - 0.5) * 0.4;
-            this.vy = (Math.random() - 0.5) * 0.4;
-            this.radius = Math.random() * 1.5 + 1;
-            this.alpha = Math.random() * 0.4 + 0.3;
-          }
+            class Particle {
+                constructor() {
+                    this.x = Math.random() * width;
+                    this.y = Math.random() * height;
+                    this.vx = (Math.random() - 0.5) * 0.4;
+                    this.vy = (Math.random() - 0.5) * 0.4;
+                    this.radius = Math.random() * 1.5 + 1;
+                    this.alpha = Math.random() * 0.4 + 0.3;
+                }
 
-          update() {
-            this.x += this.vx;
-            this.y += this.vy;
-            if (this.x < 0 || this.x > width) this.vx *= -1;
-            if (this.y < 0 || this.y > height) this.vy *= -1;
-          }
+                update() {
+                    this.x += this.vx;
+                    this.y += this.vy;
+                    if (this.x < 0 || this.x > width) this.vx *= -1;
+                    if (this.y < 0 || this.y > height) this.vy *= -1;
+                }
 
-          draw() {
-            ctx.beginPath();
-            ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-            ctx.fillStyle = `rgba(255, 123, 0, ${this.alpha})`;
-            ctx.shadowBlur = 6;
-            ctx.shadowColor = 'rgba(255, 123, 0, 0.4)';
-            ctx.fill();
-          }
-        }
-
-        for (let i = 0; i < particleCount; i++) {
-          particles.push(new Particle());
-        }
-
-        function connectParticles() {
-          for (let i = 0; i < particles.length; i++) {
-            for (let j = i + 1; j < particles.length; j++) {
-              const dx = particles[i].x - particles[j].x;
-              const dy = particles[i].y - particles[j].y;
-              const dist = Math.sqrt(dx * dx + dy * dy);
-              if (dist < 130) {
-                ctx.beginPath();
-                ctx.moveTo(particles[i].x, particles[i].y);
-                ctx.lineTo(particles[j].x, particles[j].y);
-                ctx.strokeStyle = `rgba(255, 123, 0, ${
-                  0.18 * (1 - dist / 130)
-                })`;
-                ctx.lineWidth = 0.8;
-                ctx.stroke();
-              }
+                draw() {
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+                    ctx.fillStyle = `rgba(255, 123, 0, ${this.alpha})`;
+                    ctx.shadowBlur = 6;
+                    ctx.shadowColor = 'rgba(255, 123, 0, 0.4)';
+                    ctx.fill();
+                }
             }
-          }
+
+            for (let i = 0; i < particleCount; i++) {
+                particles.push(new Particle());
+            }
+
+            function connectParticles() {
+                for (let i = 0; i < particles.length; i++) {
+                    for (let j = i + 1; j < particles.length; j++) {
+                        const dx = particles[i].x - particles[j].x;
+                        const dy = particles[i].y - particles[j].y;
+                        const dist = Math.sqrt(dx * dx + dy * dy);
+                        if (dist < 130) {
+                            ctx.beginPath();
+                            ctx.moveTo(particles[i].x, particles[i].y);
+                            ctx.lineTo(particles[j].x, particles[j].y);
+                            ctx.strokeStyle = `rgba(255, 123, 0, ${0.18 * (1 - dist / 130)})`;
+                            ctx.lineWidth = 0.8;
+                            ctx.stroke();
+                        }
+                    }
+                }
+            }
+
+            function animate() {
+                ctx.clearRect(0, 0, width, height);
+                particles.forEach(p => { p.update();
+                    p.draw(); });
+                connectParticles();
+                requestAnimationFrame(animate);
+            }
+
+            animate();
+
+            window.addEventListener('resize', () => {
+                width = canvas.width = window.innerWidth;
+                height = canvas.height = window.innerHeight;
+                drawTeamConnections();
+            });
         }
 
-        function animate() {
-          ctx.clearRect(0, 0, width, height);
-          particles.forEach((p) => {
-            p.update();
-            p.draw();
-          });
-          connectParticles();
-          requestAnimationFrame(animate);
-        }
-
-        animate();
-
-        window.addEventListener('resize', () => {
-          width = canvas.width = window.innerWidth;
-          height = canvas.height = window.innerHeight;
-          drawTeamConnections();
-        });
-      }
-
-      /* --------------------------------------------------------------------------
+        /* --------------------------------------------------------------------------
            7. CURSOR GLOW EFFECT (DESKTOP ONLY)
            -------------------------------------------------------------------------- */
-      function initCursorGlow() {
-        const glow = document.getElementById('cursorGlow');
-        if (!glow || window.innerWidth < 768) return;
+        function initCursorGlow() {
+            const glow = document.getElementById('cursorGlow');
+            if (!glow || window.innerWidth < 768) return;
 
-        window.addEventListener('mousemove', (e) => {
-          glow.style.left = `${e.clientX}px`;
-          glow.style.top = `${e.clientY}px`;
-        });
-      }
+            window.addEventListener('mousemove', (e) => {
+                glow.style.left = `${e.clientX}px`;
+                glow.style.top = `${e.clientY}px`;
+            });
+        }
 
-      /* --------------------------------------------------------------------------
+        /* --------------------------------------------------------------------------
            8. INITIALIZATION ON DOM READY
            -------------------------------------------------------------------------- */
-      document.addEventListener('DOMContentLoaded', () => {
-        initContent();
-        animateGreeting();
-        initScrollReveals();
-        initParticleCanvas();
-        initCursorGlow();
-      });
+        document.addEventListener('DOMContentLoaded', () => {
+            initContent();
+            animateGreeting();
+            initScrollReveals();
+            initParticleCanvas();
+            initCursorGlow();
+        });
     </script>
-  </body>
+</body>
 </html>
