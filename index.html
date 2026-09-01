@@ -879,6 +879,7 @@
             font-weight: 700;
         }
 
+        /* ===== WORKSTATION ICON — DENGAN SIREN DI ATAS MEJA & KOMPUTER DI TENGAH ===== */
         .workstation-icon {
             margin-top: 50px;
             text-align: center;
@@ -1579,35 +1580,55 @@
                 </div>
             </div>
 
+            <!-- ===== WORKSTATION ICON — SIREN DI ATAS MEJA & KOMPUTER DI TENGAH ===== -->
             <div class="workstation-icon">
-                <svg viewBox="0 0 500 450" xmlns="http://www.w3.org/2000/svg">
+                <svg viewBox="0 0 500 480" xmlns="http://www.w3.org/2000/svg">
                     <g transform="skewY(-10deg)">
-                        <rect x="20" y="240" width="420" height="35" fill="#8B5A2B" stroke="#5C3A1E" stroke-width="3" rx="4"/>
-                        <rect x="40" y="275" width="20" height="70" fill="#6B4226" rx="2"/>
-                        <rect x="400" y="275" width="20" height="70" fill="#6B4226" rx="2"/>
-                        <rect x="120" y="200" width="160" height="40" fill="#555" rx="4"/>
-                        <rect x="130" y="70" width="140" height="130" fill="#333" rx="6"/>
-                        <rect x="136" y="76" width="128" height="118" fill="#1a1a2e" rx="4"/>
-                        <rect x="142" y="84" width="116" height="102" fill="#0f3460" rx="2"/>
-                        <line x1="148" y1="98" x2="240" y2="98" stroke="#00ffcc" stroke-width="2.5" opacity="0.9"/>
-                        <line x1="148" y1="110" x2="220" y2="110" stroke="#00ffcc" stroke-width="2.5" opacity="0.7"/>
-                        <line x1="148" y1="122" x2="230" y2="122" stroke="#00ffcc" stroke-width="2.5" opacity="0.5"/>
-                        <line x1="148" y1="134" x2="210" y2="134" stroke="#00ffcc" stroke-width="2.5" opacity="0.3"/>
-                        <line x1="148" y1="146" x2="225" y2="146" stroke="#00ffcc" stroke-width="2.5" opacity="0.2"/>
-                        <line x1="148" y1="158" x2="200" y2="158" stroke="#00ffcc" stroke-width="2.5" opacity="0.15"/>
-                        <line x1="148" y1="170" x2="215" y2="170" stroke="#00ffcc" stroke-width="2.5" opacity="0.1"/>
-                        <rect x="100" y="245" width="200" height="25" fill="#444" rx="4"/>
-                        <rect x="108" y="249" width="184" height="7" fill="#666" rx="2"/>
-                        <rect x="108" y="259" width="184" height="7" fill="#666" rx="2"/>
-                        <ellipse cx="330" cy="250" rx="22" ry="15" fill="#555" stroke="#444" stroke-width="2"/>
-                        <path d="M330,235 L330,250" stroke="#444" stroke-width="2.5"/>
+                        <!-- Meja (lebih lebar) -->
+                        <rect x="20" y="320" width="420" height="35" fill="#8B5A2B" stroke="#5C3A1E" stroke-width="3" rx="4"/>
+                        <!-- Kaki meja kiri -->
+                        <rect x="40" y="355" width="20" height="70" fill="#6B4226" rx="2"/>
+                        <!-- Kaki meja kanan -->
+                        <rect x="400" y="355" width="20" height="70" fill="#6B4226" rx="2"/>
 
-                        <rect x="200" y="286" width="50" height="12" fill="#333" rx="3"/>
-                        <rect x="208" y="270" width="34" height="20" fill="#222" rx="4"/>
-                        <circle cx="220" cy="275" r="9" class="siren-light" />
-                        <circle cx="230" cy="275" r="9" class="siren-light" style="animation-delay: 0.4s;" />
-                        <ellipse cx="225" cy="286" rx="45" ry="10" fill="rgba(255, 60, 0, 0.15)" class="siren-glow" />
-                        <ellipse cx="225" cy="286" rx="55" ry="12" fill="rgba(0, 100, 255, 0.08)" class="siren-glow" style="animation-delay: 0.4s;" />
+                        <!-- ===== SIREN DI ATAS MEJA (SEBELAH KIRI) ===== -->
+                        <!-- Tapak siren -->
+                        <rect x="60" y="300" width="40" height="20" fill="#333" rx="3"/>
+                        <!-- Badan siren -->
+                        <rect x="68" y="260" width="24" height="42" fill="#222" rx="4"/>
+                        <!-- Lampu siren kiri -->
+                        <circle cx="74" cy="268" r="8" class="siren-light" />
+                        <!-- Lampu siren kanan -->
+                        <circle cx="86" cy="268" r="8" class="siren-light" style="animation-delay: 0.4s;" />
+                        <!-- Sorotan cahaya siren -->
+                        <ellipse cx="80" cy="300" rx="35" ry="8" fill="rgba(255, 60, 0, 0.15)" class="siren-glow" />
+                        <ellipse cx="80" cy="300" rx="45" ry="10" fill="rgba(0, 100, 255, 0.08)" class="siren-glow" style="animation-delay: 0.4s;" />
+
+                        <!-- ===== KOMPUTER DI TENGAH-TENGAH MEJA ===== -->
+                        <!-- Tapak monitor (dipusatkan) -->
+                        <rect x="155" y="280" width="150" height="40" fill="#555" rx="4"/>
+                        <!-- Skrin monitor (belakang) - dipusatkan -->
+                        <rect x="165" y="150" width="130" height="130" fill="#333" rx="6"/>
+                        <!-- Skrin (dalam) -->
+                        <rect x="171" y="156" width="118" height="118" fill="#1a1a2e" rx="4"/>
+                        <!-- Paparan kod pada skrin -->
+                        <rect x="177" y="164" width="106" height="102" fill="#0f3460" rx="2"/>
+                        <line x1="183" y1="178" x2="260" y2="178" stroke="#00ffcc" stroke-width="2.5" opacity="0.9"/>
+                        <line x1="183" y1="190" x2="240" y2="190" stroke="#00ffcc" stroke-width="2.5" opacity="0.7"/>
+                        <line x1="183" y1="202" x2="250" y2="202" stroke="#00ffcc" stroke-width="2.5" opacity="0.5"/>
+                        <line x1="183" y1="214" x2="230" y2="214" stroke="#00ffcc" stroke-width="2.5" opacity="0.3"/>
+                        <line x1="183" y1="226" x2="245" y2="226" stroke="#00ffcc" stroke-width="2.5" opacity="0.2"/>
+                        <line x1="183" y1="238" x2="220" y2="238" stroke="#00ffcc" stroke-width="2.5" opacity="0.15"/>
+                        <line x1="183" y1="250" x2="235" y2="250" stroke="#00ffcc" stroke-width="2.5" opacity="0.1"/>
+
+                        <!-- Keyboard (di bawah monitor) - dipusatkan -->
+                        <rect x="145" y="325" width="170" height="25" fill="#444" rx="4"/>
+                        <rect x="153" y="329" width="154" height="7" fill="#666" rx="2"/>
+                        <rect x="153" y="339" width="154" height="7" fill="#666" rx="2"/>
+
+                        <!-- Tetikus (di sebelah kanan keyboard) -->
+                        <ellipse cx="340" cy="330" rx="22" ry="15" fill="#555" stroke="#444" stroke-width="2"/>
+                        <path d="M340,315 L340,330" stroke="#444" stroke-width="2.5"/>
                     </g>
                 </svg>
                 <div class="workstation-label">DIGITAL WORKSPACE · ACTIVE</div>
