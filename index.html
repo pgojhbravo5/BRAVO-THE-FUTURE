@@ -1213,6 +1213,19 @@
             transition: all 0.3s ease;
         }
 
+        .social-icon svg.icon-outline {
+            fill: none;
+            stroke: var(--text-silver);
+            stroke-width: 1.8;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .social-icon:hover svg.icon-outline {
+            stroke: var(--accent-orange);
+            fill: none;
+        }
+
         .social-icon:hover {
             transform: translateY(-6px) scale(1.15);
             background: transparent;
@@ -1498,32 +1511,48 @@
             <div class="team-arc-container" id="teamArcContainer">
                 <svg class="connection-svg" id="connectionSvg"></svg>
 
+                <!-- NODE LEADER -->
                 <div class="team-node node-leader" id="nodeLeader" data-index="0">
                     <div class="leader-badge-title">Ketua Pasukan</div>
                     <div class="avatar-wrapper">
                         <div class="leader-halo"></div>
                         <svg class="avatar-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Kepala -->
                             <circle cx="50" cy="20" r="13" fill="var(--skin-color)" stroke="var(--skin-stroke)" stroke-width="1.2"/>
-                            <path d="M37,18 Q50,3 63,18 Q65,20 63,22 Q50,9 37,22 Q35,20 37,18Z" fill="var(--hair-color)" stroke="var(--skin-stroke)" stroke-width="0.8"/>
+                            <!-- Mata -->
                             <circle cx="45" cy="19" r="1.8" fill="var(--skin-stroke)"/>
                             <circle cx="55" cy="19" r="1.8" fill="var(--skin-stroke)"/>
+                            <!-- Mulut -->
                             <path d="M46,24 Q50,27 54,24" stroke="var(--skin-stroke)" stroke-width="1.2" fill="none" stroke-linecap="round"/>
-                            <rect x="35" y="33" width="30" height="28" rx="4" fill="var(--blazer-color)" stroke="var(--skin-stroke)" stroke-width="1.2"/>
-                            <path d="M35,33 L44,33 L47,41 L35,46 Z" fill="var(--blazer-color-dark)" stroke="var(--skin-stroke)" stroke-width="0.6"/>
-                            <path d="M65,33 L56,33 L53,41 L65,46 Z" fill="var(--blazer-color-dark)" stroke="var(--skin-stroke)" stroke-width="0.6"/>
-                            <path d="M44,33 L50,41 L56,33 Z" fill="var(--shirt-color)" stroke="var(--skin-stroke)" stroke-width="0.5"/>
-                            <path d="M48,34 L52,34 L51,44 L50,47 L49,44 Z" fill="var(--tie-color)" stroke="var(--skin-stroke)" stroke-width="0.4"/>
-                            <rect x="35" y="55" width="30" height="2" fill="var(--blazer-color-dark)"/>
-                            <path d="M35,36 Q26,44 33,52" stroke="var(--blazer-color)" stroke-width="6" fill="none" stroke-linecap="round"/>
-                            <path d="M33,52 Q37,50 41,48" stroke="var(--blazer-color)" stroke-width="5" fill="none" stroke-linecap="round"/>
-                            <circle cx="40" cy="49" r="3" fill="var(--skin-color)" stroke="var(--skin-stroke)" stroke-width="0.6"/>
-                            <path d="M65,36 Q74,44 67,52" stroke="var(--blazer-color)" stroke-width="6" fill="none" stroke-linecap="round"/>
-                            <path d="M67,52 Q63,50 59,48" stroke="var(--blazer-color)" stroke-width="5" fill="none" stroke-linecap="round"/>
-                            <circle cx="60" cy="49" r="3" fill="var(--skin-color)" stroke="var(--skin-stroke)" stroke-width="0.6"/>
-                            <rect x="39" y="61" width="8" height="18" rx="3" fill="var(--pants-color)" stroke="var(--skin-stroke)" stroke-width="1.2"/>
-                            <rect x="53" y="61" width="8" height="18" rx="3" fill="var(--pants-color)" stroke="var(--skin-stroke)" stroke-width="1.2"/>
-                            <ellipse cx="43" cy="81" rx="7" ry="3.5" fill="var(--shoe-color)" stroke="var(--skin-stroke)" stroke-width="0.8"/>
-                            <ellipse cx="57" cy="81" rx="7" ry="3.5" fill="var(--shoe-color)" stroke="var(--skin-stroke)" stroke-width="0.8"/>
+                            <!-- Topi pemadam (helmet) -->
+                            <path d="M32,15 L68,15 Q70,15 70,17 L68,22 L32,22 L30,17 Q30,15 32,15Z" fill="#ffcc00" stroke="#b38600" stroke-width="0.8"/>
+                            <path d="M35,15 Q50,0 65,15 Z" fill="#ffcc00" stroke="#b38600" stroke-width="0.8"/>
+                            <path d="M30,15 L24,10 L28,8 L35,12 Z" fill="#ffcc00" stroke="#b38600" stroke-width="0.8"/>
+                            <path d="M70,15 L76,10 L72,8 L65,12 Z" fill="#ffcc00" stroke="#b38600" stroke-width="0.8"/>
+                            <path d="M37,13 Q50,6 63,13" stroke="#ffffff" stroke-width="1.5" fill="none"/>
+                            <!-- Visor -->
+                            <path d="M33,18 L67,18 Q68,22 65,24 L35,24 Q32,22 33,18Z" fill="rgba(0,0,0,0.25)" stroke="#333" stroke-width="0.5"/>
+                            <!-- Baju api (turnout coat) -->
+                            <rect x="33" y="33" width="34" height="28" rx="3" fill="var(--accent-orange)" stroke="#cc6200" stroke-width="1.2"/>
+                            <rect x="33" y="42" width="34" height="4" fill="#cccccc" stroke="#999" stroke-width="0.5"/>
+                            <path d="M38,33 L44,28 L50,33 L56,28 L62,33" fill="var(--accent-orange)" stroke="#cc6200" stroke-width="0.8"/>
+                            <line x1="50" y1="33" x2="50" y2="42" stroke="#cc6200" stroke-width="1"/>
+                            <!-- Lengan kiri -->
+                            <path d="M33,36 Q24,44 27,54" stroke="var(--accent-orange)" stroke-width="8" fill="none" stroke-linecap="round"/>
+                            <path d="M33,36 Q24,44 27,54" stroke="#cccccc" stroke-width="1.5" fill="none" stroke-dasharray="2 2" transform="translate(0,4)"/>
+                            <circle cx="27" cy="56" r="3" fill="var(--skin-color)" stroke="var(--skin-stroke)" stroke-width="0.6"/>
+                            <!-- Lengan kanan -->
+                            <path d="M67,36 Q76,44 73,54" stroke="var(--accent-orange)" stroke-width="8" fill="none" stroke-linecap="round"/>
+                            <path d="M67,36 Q76,44 73,54" stroke="#cccccc" stroke-width="1.5" fill="none" stroke-dasharray="2 2" transform="translate(0,4)"/>
+                            <circle cx="73" cy="56" r="3" fill="var(--skin-color)" stroke="var(--skin-stroke)" stroke-width="0.6"/>
+                            <!-- Seluar -->
+                            <rect x="39" y="61" width="8" height="18" rx="2" fill="#d97a00" stroke="#b86200" stroke-width="1.2"/>
+                            <rect x="53" y="61" width="8" height="18" rx="2" fill="#d97a00" stroke="#b86200" stroke-width="1.2"/>
+                            <rect x="39" y="68" width="8" height="2" fill="#cccccc"/>
+                            <rect x="53" y="68" width="8" height="2" fill="#cccccc"/>
+                            <!-- But -->
+                            <ellipse cx="43" cy="81" rx="7" ry="3.5" fill="#333" stroke="#222" stroke-width="0.8"/>
+                            <ellipse cx="57" cy="81" rx="7" ry="3.5" fill="#333" stroke="#222" stroke-width="0.8"/>
                         </svg>
                     </div>
                     <div class="member-info">
@@ -1532,28 +1561,36 @@
                     </div>
                 </div>
 
+                <!-- NODE MEMBER 1 -->
                 <div class="team-node node-member node-member-1" id="nodeMember1" data-index="1">
                     <div class="avatar-wrapper">
                         <svg class="avatar-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
                             <circle cx="50" cy="20" r="13" fill="var(--skin-color)" stroke="var(--skin-stroke)" stroke-width="1.2"/>
-                            <path d="M37,18 Q50,3 63,18 Q65,20 63,22 Q50,9 37,22 Q35,20 37,18Z" fill="var(--hair-color)" stroke="var(--skin-stroke)" stroke-width="0.8"/>
                             <circle cx="45" cy="19" r="1.8" fill="var(--skin-stroke)"/>
                             <circle cx="55" cy="19" r="1.8" fill="var(--skin-stroke)"/>
                             <path d="M46,24 Q50,27 54,24" stroke="var(--skin-stroke)" stroke-width="1.2" fill="none" stroke-linecap="round"/>
-                            <rect x="35" y="33" width="30" height="28" rx="4" fill="var(--blazer-color)" stroke="var(--skin-stroke)" stroke-width="1.2"/>
-                            <path d="M35,33 L44,33 L47,41 L35,46 Z" fill="var(--blazer-color-dark)" stroke="var(--skin-stroke)" stroke-width="0.6"/>
-                            <path d="M65,33 L56,33 L53,41 L65,46 Z" fill="var(--blazer-color-dark)" stroke="var(--skin-stroke)" stroke-width="0.6"/>
-                            <path d="M44,33 L50,41 L56,33 Z" fill="var(--shirt-color)" stroke="var(--skin-stroke)" stroke-width="0.5"/>
-                            <path d="M48,34 L52,34 L51,44 L50,47 L49,44 Z" fill="var(--tie-color)" stroke="var(--skin-stroke)" stroke-width="0.4"/>
-                            <rect x="35" y="55" width="30" height="2" fill="var(--blazer-color-dark)"/>
-                            <path d="M35,36 Q28,48 30,60" stroke="var(--blazer-color)" stroke-width="6" fill="none" stroke-linecap="round"/>
-                            <circle cx="30" cy="60" r="3" fill="var(--skin-color)" stroke="var(--skin-stroke)" stroke-width="0.6"/>
-                            <path d="M65,36 Q72,48 70,60" stroke="var(--blazer-color)" stroke-width="6" fill="none" stroke-linecap="round"/>
-                            <circle cx="70" cy="60" r="3" fill="var(--skin-color)" stroke="var(--skin-stroke)" stroke-width="0.6"/>
-                            <rect x="39" y="61" width="8" height="18" rx="3" fill="var(--pants-color)" stroke="var(--skin-stroke)" stroke-width="1.2"/>
-                            <rect x="53" y="61" width="8" height="18" rx="3" fill="var(--pants-color)" stroke="var(--skin-stroke)" stroke-width="1.2"/>
-                            <ellipse cx="43" cy="81" rx="7" ry="3.5" fill="var(--shoe-color)" stroke="var(--skin-stroke)" stroke-width="0.8"/>
-                            <ellipse cx="57" cy="81" rx="7" ry="3.5" fill="var(--shoe-color)" stroke="var(--skin-stroke)" stroke-width="0.8"/>
+                            <path d="M32,15 L68,15 Q70,15 70,17 L68,22 L32,22 L30,17 Q30,15 32,15Z" fill="#ffcc00" stroke="#b38600" stroke-width="0.8"/>
+                            <path d="M35,15 Q50,0 65,15 Z" fill="#ffcc00" stroke="#b38600" stroke-width="0.8"/>
+                            <path d="M30,15 L24,10 L28,8 L35,12 Z" fill="#ffcc00" stroke="#b38600" stroke-width="0.8"/>
+                            <path d="M70,15 L76,10 L72,8 L65,12 Z" fill="#ffcc00" stroke="#b38600" stroke-width="0.8"/>
+                            <path d="M37,13 Q50,6 63,13" stroke="#ffffff" stroke-width="1.5" fill="none"/>
+                            <path d="M33,18 L67,18 Q68,22 65,24 L35,24 Q32,22 33,18Z" fill="rgba(0,0,0,0.25)" stroke="#333" stroke-width="0.5"/>
+                            <rect x="33" y="33" width="34" height="28" rx="3" fill="var(--accent-orange)" stroke="#cc6200" stroke-width="1.2"/>
+                            <rect x="33" y="42" width="34" height="4" fill="#cccccc" stroke="#999" stroke-width="0.5"/>
+                            <path d="M38,33 L44,28 L50,33 L56,28 L62,33" fill="var(--accent-orange)" stroke="#cc6200" stroke-width="0.8"/>
+                            <line x1="50" y1="33" x2="50" y2="42" stroke="#cc6200" stroke-width="1"/>
+                            <path d="M33,36 Q24,44 27,54" stroke="var(--accent-orange)" stroke-width="8" fill="none" stroke-linecap="round"/>
+                            <path d="M33,36 Q24,44 27,54" stroke="#cccccc" stroke-width="1.5" fill="none" stroke-dasharray="2 2" transform="translate(0,4)"/>
+                            <circle cx="27" cy="56" r="3" fill="var(--skin-color)" stroke="var(--skin-stroke)" stroke-width="0.6"/>
+                            <path d="M67,36 Q76,44 73,54" stroke="var(--accent-orange)" stroke-width="8" fill="none" stroke-linecap="round"/>
+                            <path d="M67,36 Q76,44 73,54" stroke="#cccccc" stroke-width="1.5" fill="none" stroke-dasharray="2 2" transform="translate(0,4)"/>
+                            <circle cx="73" cy="56" r="3" fill="var(--skin-color)" stroke="var(--skin-stroke)" stroke-width="0.6"/>
+                            <rect x="39" y="61" width="8" height="18" rx="2" fill="#d97a00" stroke="#b86200" stroke-width="1.2"/>
+                            <rect x="53" y="61" width="8" height="18" rx="2" fill="#d97a00" stroke="#b86200" stroke-width="1.2"/>
+                            <rect x="39" y="68" width="8" height="2" fill="#cccccc"/>
+                            <rect x="53" y="68" width="8" height="2" fill="#cccccc"/>
+                            <ellipse cx="43" cy="81" rx="7" ry="3.5" fill="#333" stroke="#222" stroke-width="0.8"/>
+                            <ellipse cx="57" cy="81" rx="7" ry="3.5" fill="#333" stroke="#222" stroke-width="0.8"/>
                         </svg>
                     </div>
                     <div class="member-info">
@@ -1562,28 +1599,36 @@
                     </div>
                 </div>
 
+                <!-- NODE MEMBER 2 -->
                 <div class="team-node node-member node-member-2" id="nodeMember2" data-index="2">
                     <div class="avatar-wrapper">
                         <svg class="avatar-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
                             <circle cx="50" cy="20" r="13" fill="var(--skin-color)" stroke="var(--skin-stroke)" stroke-width="1.2"/>
-                            <path d="M37,18 Q50,3 63,18 Q65,20 63,22 Q50,9 37,22 Q35,20 37,18Z" fill="var(--hair-color)" stroke="var(--skin-stroke)" stroke-width="0.8"/>
                             <circle cx="45" cy="19" r="1.8" fill="var(--skin-stroke)"/>
                             <circle cx="55" cy="19" r="1.8" fill="var(--skin-stroke)"/>
                             <path d="M46,24 Q50,27 54,24" stroke="var(--skin-stroke)" stroke-width="1.2" fill="none" stroke-linecap="round"/>
-                            <rect x="35" y="33" width="30" height="28" rx="4" fill="var(--blazer-color)" stroke="var(--skin-stroke)" stroke-width="1.2"/>
-                            <path d="M35,33 L44,33 L47,41 L35,46 Z" fill="var(--blazer-color-dark)" stroke="var(--skin-stroke)" stroke-width="0.6"/>
-                            <path d="M65,33 L56,33 L53,41 L65,46 Z" fill="var(--blazer-color-dark)" stroke="var(--skin-stroke)" stroke-width="0.6"/>
-                            <path d="M44,33 L50,41 L56,33 Z" fill="var(--shirt-color)" stroke="var(--skin-stroke)" stroke-width="0.5"/>
-                            <path d="M48,34 L52,34 L51,44 L50,47 L49,44 Z" fill="var(--tie-color)" stroke="var(--skin-stroke)" stroke-width="0.4"/>
-                            <rect x="35" y="55" width="30" height="2" fill="var(--blazer-color-dark)"/>
-                            <path d="M35,36 Q28,48 30,60" stroke="var(--blazer-color)" stroke-width="6" fill="none" stroke-linecap="round"/>
-                            <circle cx="30" cy="60" r="3" fill="var(--skin-color)" stroke="var(--skin-stroke)" stroke-width="0.6"/>
-                            <path d="M65,36 Q72,48 70,60" stroke="var(--blazer-color)" stroke-width="6" fill="none" stroke-linecap="round"/>
-                            <circle cx="70" cy="60" r="3" fill="var(--skin-color)" stroke="var(--skin-stroke)" stroke-width="0.6"/>
-                            <rect x="39" y="61" width="8" height="18" rx="3" fill="var(--pants-color)" stroke="var(--skin-stroke)" stroke-width="1.2"/>
-                            <rect x="53" y="61" width="8" height="18" rx="3" fill="var(--pants-color)" stroke="var(--skin-stroke)" stroke-width="1.2"/>
-                            <ellipse cx="43" cy="81" rx="7" ry="3.5" fill="var(--shoe-color)" stroke="var(--skin-stroke)" stroke-width="0.8"/>
-                            <ellipse cx="57" cy="81" rx="7" ry="3.5" fill="var(--shoe-color)" stroke="var(--skin-stroke)" stroke-width="0.8"/>
+                            <path d="M32,15 L68,15 Q70,15 70,17 L68,22 L32,22 L30,17 Q30,15 32,15Z" fill="#ffcc00" stroke="#b38600" stroke-width="0.8"/>
+                            <path d="M35,15 Q50,0 65,15 Z" fill="#ffcc00" stroke="#b38600" stroke-width="0.8"/>
+                            <path d="M30,15 L24,10 L28,8 L35,12 Z" fill="#ffcc00" stroke="#b38600" stroke-width="0.8"/>
+                            <path d="M70,15 L76,10 L72,8 L65,12 Z" fill="#ffcc00" stroke="#b38600" stroke-width="0.8"/>
+                            <path d="M37,13 Q50,6 63,13" stroke="#ffffff" stroke-width="1.5" fill="none"/>
+                            <path d="M33,18 L67,18 Q68,22 65,24 L35,24 Q32,22 33,18Z" fill="rgba(0,0,0,0.25)" stroke="#333" stroke-width="0.5"/>
+                            <rect x="33" y="33" width="34" height="28" rx="3" fill="var(--accent-orange)" stroke="#cc6200" stroke-width="1.2"/>
+                            <rect x="33" y="42" width="34" height="4" fill="#cccccc" stroke="#999" stroke-width="0.5"/>
+                            <path d="M38,33 L44,28 L50,33 L56,28 L62,33" fill="var(--accent-orange)" stroke="#cc6200" stroke-width="0.8"/>
+                            <line x1="50" y1="33" x2="50" y2="42" stroke="#cc6200" stroke-width="1"/>
+                            <path d="M33,36 Q24,44 27,54" stroke="var(--accent-orange)" stroke-width="8" fill="none" stroke-linecap="round"/>
+                            <path d="M33,36 Q24,44 27,54" stroke="#cccccc" stroke-width="1.5" fill="none" stroke-dasharray="2 2" transform="translate(0,4)"/>
+                            <circle cx="27" cy="56" r="3" fill="var(--skin-color)" stroke="var(--skin-stroke)" stroke-width="0.6"/>
+                            <path d="M67,36 Q76,44 73,54" stroke="var(--accent-orange)" stroke-width="8" fill="none" stroke-linecap="round"/>
+                            <path d="M67,36 Q76,44 73,54" stroke="#cccccc" stroke-width="1.5" fill="none" stroke-dasharray="2 2" transform="translate(0,4)"/>
+                            <circle cx="73" cy="56" r="3" fill="var(--skin-color)" stroke="var(--skin-stroke)" stroke-width="0.6"/>
+                            <rect x="39" y="61" width="8" height="18" rx="2" fill="#d97a00" stroke="#b86200" stroke-width="1.2"/>
+                            <rect x="53" y="61" width="8" height="18" rx="2" fill="#d97a00" stroke="#b86200" stroke-width="1.2"/>
+                            <rect x="39" y="68" width="8" height="2" fill="#cccccc"/>
+                            <rect x="53" y="68" width="8" height="2" fill="#cccccc"/>
+                            <ellipse cx="43" cy="81" rx="7" ry="3.5" fill="#333" stroke="#222" stroke-width="0.8"/>
+                            <ellipse cx="57" cy="81" rx="7" ry="3.5" fill="#333" stroke="#222" stroke-width="0.8"/>
                         </svg>
                     </div>
                     <div class="member-info">
@@ -1592,28 +1637,36 @@
                     </div>
                 </div>
 
+                <!-- NODE MEMBER 3 -->
                 <div class="team-node node-member node-member-3" id="nodeMember3" data-index="3">
                     <div class="avatar-wrapper">
                         <svg class="avatar-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
                             <circle cx="50" cy="20" r="13" fill="var(--skin-color)" stroke="var(--skin-stroke)" stroke-width="1.2"/>
-                            <path d="M37,18 Q50,3 63,18 Q65,20 63,22 Q50,9 37,22 Q35,20 37,18Z" fill="var(--hair-color)" stroke="var(--skin-stroke)" stroke-width="0.8"/>
                             <circle cx="45" cy="19" r="1.8" fill="var(--skin-stroke)"/>
                             <circle cx="55" cy="19" r="1.8" fill="var(--skin-stroke)"/>
                             <path d="M46,24 Q50,27 54,24" stroke="var(--skin-stroke)" stroke-width="1.2" fill="none" stroke-linecap="round"/>
-                            <rect x="35" y="33" width="30" height="28" rx="4" fill="var(--blazer-color)" stroke="var(--skin-stroke)" stroke-width="1.2"/>
-                            <path d="M35,33 L44,33 L47,41 L35,46 Z" fill="var(--blazer-color-dark)" stroke="var(--skin-stroke)" stroke-width="0.6"/>
-                            <path d="M65,33 L56,33 L53,41 L65,46 Z" fill="var(--blazer-color-dark)" stroke="var(--skin-stroke)" stroke-width="0.6"/>
-                            <path d="M44,33 L50,41 L56,33 Z" fill="var(--shirt-color)" stroke="var(--skin-stroke)" stroke-width="0.5"/>
-                            <path d="M48,34 L52,34 L51,44 L50,47 L49,44 Z" fill="var(--tie-color)" stroke="var(--skin-stroke)" stroke-width="0.4"/>
-                            <rect x="35" y="55" width="30" height="2" fill="var(--blazer-color-dark)"/>
-                            <path d="M35,36 Q28,48 30,60" stroke="var(--blazer-color)" stroke-width="6" fill="none" stroke-linecap="round"/>
-                            <circle cx="30" cy="60" r="3" fill="var(--skin-color)" stroke="var(--skin-stroke)" stroke-width="0.6"/>
-                            <path d="M65,36 Q72,48 70,60" stroke="var(--blazer-color)" stroke-width="6" fill="none" stroke-linecap="round"/>
-                            <circle cx="70" cy="60" r="3" fill="var(--skin-color)" stroke="var(--skin-stroke)" stroke-width="0.6"/>
-                            <rect x="39" y="61" width="8" height="18" rx="3" fill="var(--pants-color)" stroke="var(--skin-stroke)" stroke-width="1.2"/>
-                            <rect x="53" y="61" width="8" height="18" rx="3" fill="var(--pants-color)" stroke="var(--skin-stroke)" stroke-width="1.2"/>
-                            <ellipse cx="43" cy="81" rx="7" ry="3.5" fill="var(--shoe-color)" stroke="var(--skin-stroke)" stroke-width="0.8"/>
-                            <ellipse cx="57" cy="81" rx="7" ry="3.5" fill="var(--shoe-color)" stroke="var(--skin-stroke)" stroke-width="0.8"/>
+                            <path d="M32,15 L68,15 Q70,15 70,17 L68,22 L32,22 L30,17 Q30,15 32,15Z" fill="#ffcc00" stroke="#b38600" stroke-width="0.8"/>
+                            <path d="M35,15 Q50,0 65,15 Z" fill="#ffcc00" stroke="#b38600" stroke-width="0.8"/>
+                            <path d="M30,15 L24,10 L28,8 L35,12 Z" fill="#ffcc00" stroke="#b38600" stroke-width="0.8"/>
+                            <path d="M70,15 L76,10 L72,8 L65,12 Z" fill="#ffcc00" stroke="#b38600" stroke-width="0.8"/>
+                            <path d="M37,13 Q50,6 63,13" stroke="#ffffff" stroke-width="1.5" fill="none"/>
+                            <path d="M33,18 L67,18 Q68,22 65,24 L35,24 Q32,22 33,18Z" fill="rgba(0,0,0,0.25)" stroke="#333" stroke-width="0.5"/>
+                            <rect x="33" y="33" width="34" height="28" rx="3" fill="var(--accent-orange)" stroke="#cc6200" stroke-width="1.2"/>
+                            <rect x="33" y="42" width="34" height="4" fill="#cccccc" stroke="#999" stroke-width="0.5"/>
+                            <path d="M38,33 L44,28 L50,33 L56,28 L62,33" fill="var(--accent-orange)" stroke="#cc6200" stroke-width="0.8"/>
+                            <line x1="50" y1="33" x2="50" y2="42" stroke="#cc6200" stroke-width="1"/>
+                            <path d="M33,36 Q24,44 27,54" stroke="var(--accent-orange)" stroke-width="8" fill="none" stroke-linecap="round"/>
+                            <path d="M33,36 Q24,44 27,54" stroke="#cccccc" stroke-width="1.5" fill="none" stroke-dasharray="2 2" transform="translate(0,4)"/>
+                            <circle cx="27" cy="56" r="3" fill="var(--skin-color)" stroke="var(--skin-stroke)" stroke-width="0.6"/>
+                            <path d="M67,36 Q76,44 73,54" stroke="var(--accent-orange)" stroke-width="8" fill="none" stroke-linecap="round"/>
+                            <path d="M67,36 Q76,44 73,54" stroke="#cccccc" stroke-width="1.5" fill="none" stroke-dasharray="2 2" transform="translate(0,4)"/>
+                            <circle cx="73" cy="56" r="3" fill="var(--skin-color)" stroke="var(--skin-stroke)" stroke-width="0.6"/>
+                            <rect x="39" y="61" width="8" height="18" rx="2" fill="#d97a00" stroke="#b86200" stroke-width="1.2"/>
+                            <rect x="53" y="61" width="8" height="18" rx="2" fill="#d97a00" stroke="#b86200" stroke-width="1.2"/>
+                            <rect x="39" y="68" width="8" height="2" fill="#cccccc"/>
+                            <rect x="53" y="68" width="8" height="2" fill="#cccccc"/>
+                            <ellipse cx="43" cy="81" rx="7" ry="3.5" fill="#333" stroke="#222" stroke-width="0.8"/>
+                            <ellipse cx="57" cy="81" rx="7" ry="3.5" fill="#333" stroke="#222" stroke-width="0.8"/>
                         </svg>
                     </div>
                     <div class="member-info">
@@ -1622,28 +1675,36 @@
                     </div>
                 </div>
 
+                <!-- NODE MEMBER 4 -->
                 <div class="team-node node-member node-member-4" id="nodeMember4" data-index="4">
                     <div class="avatar-wrapper">
                         <svg class="avatar-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
                             <circle cx="50" cy="20" r="13" fill="var(--skin-color)" stroke="var(--skin-stroke)" stroke-width="1.2"/>
-                            <path d="M37,18 Q50,3 63,18 Q65,20 63,22 Q50,9 37,22 Q35,20 37,18Z" fill="var(--hair-color)" stroke="var(--skin-stroke)" stroke-width="0.8"/>
                             <circle cx="45" cy="19" r="1.8" fill="var(--skin-stroke)"/>
                             <circle cx="55" cy="19" r="1.8" fill="var(--skin-stroke)"/>
                             <path d="M46,24 Q50,27 54,24" stroke="var(--skin-stroke)" stroke-width="1.2" fill="none" stroke-linecap="round"/>
-                            <rect x="35" y="33" width="30" height="28" rx="4" fill="var(--blazer-color)" stroke="var(--skin-stroke)" stroke-width="1.2"/>
-                            <path d="M35,33 L44,33 L47,41 L35,46 Z" fill="var(--blazer-color-dark)" stroke="var(--skin-stroke)" stroke-width="0.6"/>
-                            <path d="M65,33 L56,33 L53,41 L65,46 Z" fill="var(--blazer-color-dark)" stroke="var(--skin-stroke)" stroke-width="0.6"/>
-                            <path d="M44,33 L50,41 L56,33 Z" fill="var(--shirt-color)" stroke="var(--skin-stroke)" stroke-width="0.5"/>
-                            <path d="M48,34 L52,34 L51,44 L50,47 L49,44 Z" fill="var(--tie-color)" stroke="var(--skin-stroke)" stroke-width="0.4"/>
-                            <rect x="35" y="55" width="30" height="2" fill="var(--blazer-color-dark)"/>
-                            <path d="M35,36 Q28,48 30,60" stroke="var(--blazer-color)" stroke-width="6" fill="none" stroke-linecap="round"/>
-                            <circle cx="30" cy="60" r="3" fill="var(--skin-color)" stroke="var(--skin-stroke)" stroke-width="0.6"/>
-                            <path d="M65,36 Q72,48 70,60" stroke="var(--blazer-color)" stroke-width="6" fill="none" stroke-linecap="round"/>
-                            <circle cx="70" cy="60" r="3" fill="var(--skin-color)" stroke="var(--skin-stroke)" stroke-width="0.6"/>
-                            <rect x="39" y="61" width="8" height="18" rx="3" fill="var(--pants-color)" stroke="var(--skin-stroke)" stroke-width="1.2"/>
-                            <rect x="53" y="61" width="8" height="18" rx="3" fill="var(--pants-color)" stroke="var(--skin-stroke)" stroke-width="1.2"/>
-                            <ellipse cx="43" cy="81" rx="7" ry="3.5" fill="var(--shoe-color)" stroke="var(--skin-stroke)" stroke-width="0.8"/>
-                            <ellipse cx="57" cy="81" rx="7" ry="3.5" fill="var(--shoe-color)" stroke="var(--skin-stroke)" stroke-width="0.8"/>
+                            <path d="M32,15 L68,15 Q70,15 70,17 L68,22 L32,22 L30,17 Q30,15 32,15Z" fill="#ffcc00" stroke="#b38600" stroke-width="0.8"/>
+                            <path d="M35,15 Q50,0 65,15 Z" fill="#ffcc00" stroke="#b38600" stroke-width="0.8"/>
+                            <path d="M30,15 L24,10 L28,8 L35,12 Z" fill="#ffcc00" stroke="#b38600" stroke-width="0.8"/>
+                            <path d="M70,15 L76,10 L72,8 L65,12 Z" fill="#ffcc00" stroke="#b38600" stroke-width="0.8"/>
+                            <path d="M37,13 Q50,6 63,13" stroke="#ffffff" stroke-width="1.5" fill="none"/>
+                            <path d="M33,18 L67,18 Q68,22 65,24 L35,24 Q32,22 33,18Z" fill="rgba(0,0,0,0.25)" stroke="#333" stroke-width="0.5"/>
+                            <rect x="33" y="33" width="34" height="28" rx="3" fill="var(--accent-orange)" stroke="#cc6200" stroke-width="1.2"/>
+                            <rect x="33" y="42" width="34" height="4" fill="#cccccc" stroke="#999" stroke-width="0.5"/>
+                            <path d="M38,33 L44,28 L50,33 L56,28 L62,33" fill="var(--accent-orange)" stroke="#cc6200" stroke-width="0.8"/>
+                            <line x1="50" y1="33" x2="50" y2="42" stroke="#cc6200" stroke-width="1"/>
+                            <path d="M33,36 Q24,44 27,54" stroke="var(--accent-orange)" stroke-width="8" fill="none" stroke-linecap="round"/>
+                            <path d="M33,36 Q24,44 27,54" stroke="#cccccc" stroke-width="1.5" fill="none" stroke-dasharray="2 2" transform="translate(0,4)"/>
+                            <circle cx="27" cy="56" r="3" fill="var(--skin-color)" stroke="var(--skin-stroke)" stroke-width="0.6"/>
+                            <path d="M67,36 Q76,44 73,54" stroke="var(--accent-orange)" stroke-width="8" fill="none" stroke-linecap="round"/>
+                            <path d="M67,36 Q76,44 73,54" stroke="#cccccc" stroke-width="1.5" fill="none" stroke-dasharray="2 2" transform="translate(0,4)"/>
+                            <circle cx="73" cy="56" r="3" fill="var(--skin-color)" stroke="var(--skin-stroke)" stroke-width="0.6"/>
+                            <rect x="39" y="61" width="8" height="18" rx="2" fill="#d97a00" stroke="#b86200" stroke-width="1.2"/>
+                            <rect x="53" y="61" width="8" height="18" rx="2" fill="#d97a00" stroke="#b86200" stroke-width="1.2"/>
+                            <rect x="39" y="68" width="8" height="2" fill="#cccccc"/>
+                            <rect x="53" y="68" width="8" height="2" fill="#cccccc"/>
+                            <ellipse cx="43" cy="81" rx="7" ry="3.5" fill="#333" stroke="#222" stroke-width="0.8"/>
+                            <ellipse cx="57" cy="81" rx="7" ry="3.5" fill="#333" stroke="#222" stroke-width="0.8"/>
                         </svg>
                     </div>
                     <div class="member-info">
@@ -1873,7 +1934,7 @@
                         </svg>
                     </a>
                     <a href="#" class="social-icon" aria-label="Instagram">
-                        <svg viewBox="0 0 24 24">
+                        <svg class="icon-outline" viewBox="0 0 24 24">
                             <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
                             <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
                             <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
@@ -1887,7 +1948,9 @@
                     </a>
                     <a href="#" class="social-icon" aria-label="TikTok">
                         <svg viewBox="0 0 24 24">
-                            <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/>
+                            <circle cx="9" cy="17.3" r="3.3"/>
+                            <path d="M11.3 2h2.4v15.3a3.3 3.3 0 0 1-.02.4h-2.4a3.3 3.3 0 0 0 .02-.4z"/>
+                            <path d="M13.7 2c.35 3.05 2.45 5.35 5.3 5.75v2.55c-1.95-.15-3.75-.85-5.3-2V2z"/>
                         </svg>
                     </a>
                 </div>
