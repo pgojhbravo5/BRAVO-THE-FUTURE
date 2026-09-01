@@ -637,6 +637,7 @@
             flex-direction: column;
             align-items: center;
             margin: 40px auto;
+            width: 100%;
         }
 
         .radio-waves {
@@ -695,6 +696,7 @@
             flex-direction: column;
             align-items: center;
             animation: devicePulse 3s ease-in-out infinite alternate;
+            margin: 0 auto;
         }
 
         @keyframes devicePulse {
@@ -1088,7 +1090,7 @@
         }
 
         /* ==========================================================================
-           11. REKA BENTUK RESPONSIF (TABLET & MOBILE) — DENGAN MARGIN 10%
+           11. REKA BENTUK RESPONSIF (TABLET & MOBILE) — DENGAN MARGIN 20%
            ========================================================================== */
         @media (max-width: 1024px) {
             .team-arc-container {
@@ -1112,9 +1114,9 @@
         }
 
         @media (max-width: 768px) {
-            /* MARGIN 10% UNTUK MOBILE */
+            /* MARGIN 20% UNTUK MOBILE - LEBIH RUANG */
             .main-container {
-                padding: 0 10%;
+                padding: 0 20%;
             }
 
             .brand-title {
@@ -1168,7 +1170,8 @@
                 flex-direction: column;
                 align-items: center;
                 gap: 25px;
-                padding: 0 10px;
+                padding: 0;
+                width: 100%;
             }
 
             .connection-svg {
@@ -1181,13 +1184,22 @@
                 left: auto !important;
                 transform: none !important;
                 width: 100%;
-                max-width: 300px;
+                max-width: 280px;
+                margin: 0 auto;
             }
 
             .node-leader.entered,
             .node-member.entered {
                 transform: none !important;
                 opacity: 1;
+            }
+
+            /* Pastikan node leader tidak terapung */
+            .node-leader {
+                transform: none !important;
+            }
+            .node-leader.entered {
+                transform: none !important;
             }
 
             .footer-content {
@@ -1212,12 +1224,28 @@
             .footer-siren-wrapper {
                 width: 140px;
             }
+
+            /* Pastikan semua elemen dalam walkie-section dipusatkan */
+            .walkie-section {
+                padding: 60px 0;
+            }
+            .walkie-wrapper {
+                width: 100%;
+                display: flex;
+                justify-content: center;
+            }
+            .walkie-device {
+                margin: 0 auto;
+            }
+            .digital-message {
+                padding: 0 10px;
+            }
         }
 
         @media (max-width: 480px) {
-            /* MARGIN 10% UNTUK TELEFON KECIL */
+            /* MARGIN 20% UNTUK TELEFON KECIL - LEBIH RUANG */
             .main-container {
-                padding: 0 10%;
+                padding: 0 20%;
             }
 
             .brand-title {
@@ -1299,6 +1327,11 @@
             }
             .glass-card {
                 padding: 25px 15px;
+            }
+
+            /* Pastikan team node tidak melebihi lebar */
+            .team-node {
+                max-width: 240px;
             }
         }
 
