@@ -1,9 +1,11 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="ms">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>BRAVO THE FUTURE — Projek Digitalisasi Bravo PGO Johor</title>
+    <meta name="description" content="Platform digital untuk projek transformasi Bravo PGO Johor. Mengenali pasukan, visi misi, dan sistem komunikasi moden." />
+    <meta name="keywords" content="Bravo PGO Johor, digitalisasi, transformasi, pasukan, inovasi, sistem komunikasi" />
     <style>
         /* ==========================================================================
            1. VARIAN CSS — JINGGA & PUTIH (ORANGE & WHITE THEME)
@@ -20,7 +22,7 @@
             --accent-glow-strong: rgba(255, 123, 0, 0.45);
 
             --text-main: #1a140e;
-            --text-muted: #7a6a5a;
+            --text-muted: #3a2f25;   /* ditingkatkan kontras */
             --text-silver: #4a3f35;
 
             --border-light: rgba(255, 123, 0, 0.22);
@@ -46,7 +48,7 @@
         }
 
         /* ==========================================================================
-           2. RESET & LAYOUT ASAS — SEMUA BORDER & SHADOW DIBUANG
+           2. RESET & LAYOUT ASAS
            ========================================================================== */
         * {
             box-sizing: border-box;
@@ -76,7 +78,7 @@
         }
 
         /* ==========================================================================
-           3. LATAR BELAKANG — CANVAS PARTIKEL (KEKAL) + GRID DIBUANG
+           3. LATAR BELAKANG — CANVAS PARTIKEL (KEKAL)
            ========================================================================== */
         #particle-canvas {
             position: fixed;
@@ -111,7 +113,7 @@
         }
 
         /* ==========================================================================
-           4. ANIMASI FADE IN UNTUK SEMUA TEKS
+           4. ANIMASI FADE IN
            ========================================================================== */
         @keyframes fadeIn {
             from {
@@ -129,24 +131,14 @@
             animation: fadeIn 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
 
-        .fade-in-d1 {
-            animation-delay: 0.1s;
-        }
-        .fade-in-d2 {
-            animation-delay: 0.2s;
-        }
-        .fade-in-d3 {
-            animation-delay: 0.3s;
-        }
-        .fade-in-d4 {
-            animation-delay: 0.4s;
-        }
-        .fade-in-d5 {
-            animation-delay: 0.5s;
-        }
+        .fade-in-d1 { animation-delay: 0.1s; }
+        .fade-in-d2 { animation-delay: 0.2s; }
+        .fade-in-d3 { animation-delay: 0.3s; }
+        .fade-in-d4 { animation-delay: 0.4s; }
+        .fade-in-d5 { animation-delay: 0.5s; }
 
         /* ==========================================================================
-           5. HEADER — DIGITAL IDENTITY (Tanpa Border) - DI PUSATKAN
+           5. HEADER — DIGITAL IDENTITY (DI PUSATKAN)
            ========================================================================== */
         .header-digital {
             display: flex;
@@ -183,12 +175,8 @@
             animation: logoFade 1s var(--transition-smooth) 0.3s forwards;
             flex-shrink: 0;
         }
-        .logo-badge::before {
-            display: none;
-        }
-        .logo-badge svg {
-            stroke: var(--accent-orange);
-        }
+        .logo-badge::before { display: none; }
+        .logo-badge svg { stroke: var(--accent-orange); }
 
         .brand-title-wrap {
             text-align: center;
@@ -204,8 +192,17 @@
             background: linear-gradient(135deg, #1a140e 0%, var(--accent-orange) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            background-clip: text; /* fallback untuk pelayar moden */
             text-transform: uppercase;
             text-shadow: none;
+            color: #1a140e; /* fallback */
+        }
+        @supports not (background-clip: text) {
+            .brand-title {
+                background: none;
+                -webkit-text-fill-color: initial;
+                color: var(--accent-orange);
+            }
         }
 
         .brand-subtitle {
@@ -220,30 +217,13 @@
             animation: subtitleFade 1s var(--transition-smooth) 0.9s forwards;
         }
 
-        @keyframes fadeInHeader {
-            to {
-                opacity: 1;
-            }
-        }
-        @keyframes logoFade {
-            to {
-                opacity: 1;
-            }
-        }
-        @keyframes titleSlideUp {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        @keyframes subtitleFade {
-            to {
-                opacity: 0.95;
-            }
-        }
+        @keyframes fadeInHeader { to { opacity: 1; } }
+        @keyframes logoFade { to { opacity: 1; } }
+        @keyframes titleSlideUp { to { opacity: 1; transform: translateY(0); } }
+        @keyframes subtitleFade { to { opacity: 0.95; } }
 
         /* ==========================================================================
-           6. HERO — GREETING & SUBTEXT - DI PUSATKAN
+           6. HERO — GREETING & SUBTEXT (DI PUSATKAN)
            ========================================================================== */
         .hero-section {
             text-align: center;
@@ -314,13 +294,10 @@
             letter-spacing: 1px;
             text-align: center;
         }
-
-        .hero-subtext.visible {
-            opacity: 0.95;
-        }
+        .hero-subtext.visible { opacity: 0.95; }
 
         /* ==========================================================================
-           7. TEAM EXPERIENCE — 5 PERSONNEL ARC COMPOSITION - DI PUSATKAN
+           7. TEAM EXPERIENCE — 5 PERSONNEL ARC COMPOSITION
            ========================================================================== */
         .team-section {
             padding: 60px 0 100px;
@@ -355,9 +332,7 @@
         }
 
         @keyframes dashTravel {
-            to {
-                stroke-dashoffset: -100;
-            }
+            to { stroke-dashoffset: -100; }
         }
 
         .team-node {
@@ -368,6 +343,7 @@
             cursor: default;
             z-index: 10;
             transition: transform 0.4s var(--transition-bounce);
+            will-change: transform;
         }
 
         .team-node:hover {
@@ -418,7 +394,6 @@
             width: 130px;
             height: 130px;
         }
-
         .node-member .avatar-wrapper {
             width: 95px;
             height: 95px;
@@ -428,9 +403,7 @@
             transform: scale(1.02);
         }
 
-        .leader-halo {
-            display: none;
-        }
+        .leader-halo { display: none; }
 
         .leader-badge-title {
             position: absolute;
@@ -500,33 +473,21 @@
         .node-member.entered {
             opacity: 1;
         }
-        .node-member-1.entered {
-            transform: translateX(-50%);
-        }
-        .node-member-2.entered {
-            transform: translateX(-50%);
-        }
-        .node-member-3.entered {
-            transform: translateX(-50%);
-        }
-        .node-member-4.entered {
-            transform: translateX(-50%);
-        }
+        .node-member-1.entered { transform: translateX(-50%); }
+        .node-member-2.entered { transform: translateX(-50%); }
+        .node-member-3.entered { transform: translateX(-50%); }
+        .node-member-4.entered { transform: translateX(-50%); }
 
         .node-leader.entered {
             animation: floatLeader 4s ease-in-out infinite alternate;
         }
         @keyframes floatLeader {
-            0% {
-                transform: translate(-50%, 0);
-            }
-            100% {
-                transform: translate(-50%, -8px);
-            }
+            0% { transform: translate(-50%, 0); }
+            100% { transform: translate(-50%, -8px); }
         }
 
         /* ==========================================================================
-           8. SCROLL INDICATOR - DI PUSATKAN
+           8. SCROLL INDICATOR
            ========================================================================== */
         .scroll-indicator {
             text-align: center;
@@ -552,23 +513,13 @@
         }
 
         @keyframes bounceArrow {
-            0%,
-            20%,
-            50%,
-            80%,
-            100% {
-                transform: translateY(0);
-            }
-            40% {
-                transform: translateY(8px);
-            }
-            60% {
-                transform: translateY(4px);
-            }
+            0%,20%,50%,80%,100% { transform: translateY(0); }
+            40% { transform: translateY(8px); }
+            60% { transform: translateY(4px); }
         }
 
         /* ==========================================================================
-           9. VISION & MISSION SECTION - DI PUSATKAN
+           9. VISION & MISSION SECTION
            ========================================================================== */
         .vision-section {
             padding: 90px 0;
@@ -596,6 +547,12 @@
             letter-spacing: 2px;
             margin-top: 6px;
             color: var(--text-main);
+        }
+        .section-title-sub {
+            font-size: 1rem;
+            color: var(--text-muted);
+            max-width: 700px;
+            margin: 8px auto 0;
         }
 
         .glass-cards-grid {
@@ -665,9 +622,15 @@
             color: var(--text-main);
             line-height: 1.4;
         }
+        .card-body-desc {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            margin-top: 12px;
+            line-height: 1.6;
+        }
 
         /* ==========================================================================
-           10. WALKIE TALKIE + WORKSTATION ICON - DI PUSATKAN (Tinggi dikurang 20%)
+           10. WALKIE TALKIE + WORKSTATION ICON
            ========================================================================== */
         .walkie-section {
             padding: 90px 0;
@@ -710,23 +673,12 @@
             opacity: 0;
             animation: wavePulse 4s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
         }
-
-        .wave-ring:nth-child(2) {
-            animation-delay: 1.3s;
-        }
-        .wave-ring:nth-child(3) {
-            animation-delay: 2.6s;
-        }
+        .wave-ring:nth-child(2) { animation-delay: 1.3s; }
+        .wave-ring:nth-child(3) { animation-delay: 2.6s; }
 
         @keyframes wavePulse {
-            0% {
-                transform: translate(-50%, -50%) scale(0.2);
-                opacity: 0.8;
-            }
-            100% {
-                transform: translate(-50%, -50%) scale(1.2);
-                opacity: 0;
-            }
+            0% { transform: translate(-50%, -50%) scale(0.2); opacity: 0.8; }
+            100% { transform: translate(-50%, -50%) scale(1.2); opacity: 0; }
         }
 
         .walkie-device {
@@ -753,27 +705,14 @@
         }
 
         @keyframes deviceEntrance {
-            0% {
-                opacity: 0;
-                transform: scale(0.3);
-            }
-            60% {
-                opacity: 1;
-                transform: scale(1.08);
-            }
-            100% {
-                opacity: 1;
-                transform: scale(1);
-            }
+            0% { opacity: 0; transform: scale(0.3); }
+            60% { opacity: 1; transform: scale(1.08); }
+            100% { opacity: 1; transform: scale(1); }
         }
 
         @keyframes devicePulse {
-            0% {
-                transform: scale(1);
-            }
-            100% {
-                transform: scale(1.02);
-            }
+            0% { transform: scale(1); }
+            100% { transform: scale(1.02); }
         }
 
         .walkie-part {
@@ -781,7 +720,6 @@
             transform: translateY(8px);
             transition: opacity 0.6s var(--transition-smooth), transform 0.6s var(--transition-smooth);
         }
-
         .walkie-part.visible {
             opacity: 1;
             transform: translateY(0);
@@ -856,6 +794,7 @@
             text-shadow: 0 0 8px rgba(255, 140, 0, 0.7);
             z-index: 3;
             animation: microFlicker 2s infinite;
+            transition: all 0.3s ease;
         }
 
         .screen-status {
@@ -869,22 +808,11 @@
         }
 
         @keyframes microFlicker {
-            0%,
-            100% {
-                opacity: 1;
-            }
-            50% {
-                opacity: 0.85;
-            }
-            52% {
-                opacity: 1;
-            }
-            54% {
-                opacity: 0.4;
-            }
-            56% {
-                opacity: 1;
-            }
+            0%,100% { opacity: 1; }
+            50% { opacity: 0.85; }
+            52% { opacity: 1; }
+            54% { opacity: 0.4; }
+            56% { opacity: 1; }
         }
 
         .walkie-call-row {
@@ -905,19 +833,28 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .walkie-call-btn:hover {
+            transform: scale(1.2);
+        }
+        .walkie-call-btn:focus-visible {
+            outline: 2px solid var(--accent-orange);
+            outline-offset: 2px;
         }
 
         .walkie-call-btn svg {
             width: 8px;
             height: 8px;
             fill: #ffffff;
+            pointer-events: none;
         }
 
         .call-answer {
             background: #2ecc71;
             box-shadow: 0 0 6px rgba(46, 204, 113, 0.55);
         }
-
         .call-end {
             background: #e74c3c;
             box-shadow: 0 0 6px rgba(231, 76, 60, 0.55);
@@ -933,8 +870,7 @@
             gap: 2px;
         }
 
-        .dpad-btn,
-        .dpad-center {
+        .dpad-btn, .dpad-center {
             display: flex;
             align-items: center;
             justify-content: center;
@@ -948,26 +884,10 @@
             fill: var(--accent-orange);
         }
 
-        .dpad-up {
-            grid-column: 2;
-            grid-row: 1;
-            border-radius: 3px 3px 0 0;
-        }
-        .dpad-left {
-            grid-column: 1;
-            grid-row: 2;
-            border-radius: 3px 0 0 3px;
-        }
-        .dpad-right {
-            grid-column: 3;
-            grid-row: 2;
-            border-radius: 0 3px 3px 0;
-        }
-        .dpad-down {
-            grid-column: 2;
-            grid-row: 3;
-            border-radius: 0 0 3px 3px;
-        }
+        .dpad-up { grid-column: 2; grid-row: 1; border-radius: 3px 3px 0 0; }
+        .dpad-left { grid-column: 1; grid-row: 2; border-radius: 3px 0 0 3px; }
+        .dpad-right { grid-column: 3; grid-row: 2; border-radius: 0 3px 3px 0; }
+        .dpad-down { grid-column: 2; grid-row: 3; border-radius: 0 0 3px 3px; }
 
         .dpad-center {
             grid-column: 2;
@@ -1014,12 +934,8 @@
         }
 
         @keyframes blinkLight {
-            0% {
-                opacity: 0.3;
-            }
-            100% {
-                opacity: 1;
-            }
+            0% { opacity: 0.3; }
+            100% { opacity: 1; }
         }
 
         .digital-message {
@@ -1038,7 +954,6 @@
             transform: translateY(15px);
             transition: all 0.6s var(--transition-smooth);
         }
-
         .msg-line.visible {
             opacity: 1;
             transform: translateY(0);
@@ -1062,6 +977,7 @@
             width: 100%;
             height: auto;
             display: inline-block;
+            max-width: 100%;
         }
 
         .workstation-label {
@@ -1079,8 +995,8 @@
             animation: sirenBlink 0.8s infinite alternate;
             transform-origin: center;
             transition: all 0.3s ease;
+            will-change: opacity, fill;
         }
-
         .siren-light:hover {
             transform: scale(1.2);
             filter: drop-shadow(0 0 20px rgba(255, 60, 0, 0.9));
@@ -1089,37 +1005,21 @@
         .siren-glow {
             transition: all 0.5s ease;
         }
-
         .siren-glow:hover {
             opacity: 1;
             filter: drop-shadow(0 0 30px rgba(255, 60, 0, 0.5));
         }
 
         @keyframes sirenBlink {
-            0% {
-                opacity: 0.15;
-                fill: #ff0000;
-            }
-            25% {
-                opacity: 1;
-                fill: #ff3300;
-            }
-            50% {
-                opacity: 0.15;
-                fill: #0066ff;
-            }
-            75% {
-                opacity: 1;
-                fill: #0044cc;
-            }
-            100% {
-                opacity: 0.15;
-                fill: #ff0000;
-            }
+            0% { opacity: 0.15; fill: #ff0000; }
+            25% { opacity: 1; fill: #ff3300; }
+            50% { opacity: 0.15; fill: #0066ff; }
+            75% { opacity: 1; fill: #0044cc; }
+            100% { opacity: 0.15; fill: #ff0000; }
         }
 
         /* ==========================================================================
-           11. FOOTER — DI PUSATKAN DENGAN SIREN SAIZ WALKIE-TALKIE
+           11. FOOTER — DENGAN SIREN SAIZ WALKIE-TALKIE
            ========================================================================== */
         .footer-digital {
             margin-top: 100px;
@@ -1159,7 +1059,6 @@
         .footer-siren-wrapper .siren-glow {
             transition: all 0.5s ease;
         }
-
         .footer-siren-wrapper .siren-glow:hover {
             opacity: 1;
             filter: drop-shadow(0 0 30px rgba(255, 60, 0, 0.5));
@@ -1184,12 +1083,10 @@
             letter-spacing: 0.5px;
             transition: all 0.3s ease;
         }
-
         .footer-email:hover {
             transform: translateX(5px);
             color: var(--accent-orange);
         }
-
         .footer-email a {
             color: var(--accent-orange);
             text-decoration: none;
@@ -1210,7 +1107,6 @@
             text-align: center;
             transition: all 0.3s ease;
         }
-
         .footer-copyright:hover {
             color: var(--text-main);
             letter-spacing: 0.5px;
@@ -1234,6 +1130,11 @@
             justify-content: center;
             transition: all 0.4s var(--transition-bounce);
             text-decoration: none;
+            cursor: pointer;
+        }
+        .social-icon:focus-visible {
+            outline: 2px solid var(--accent-orange);
+            outline-offset: 2px;
         }
 
         .social-icon svg {
@@ -1242,7 +1143,6 @@
             fill: var(--text-silver);
             transition: all 0.3s ease;
         }
-
         .social-icon svg.icon-outline {
             fill: none;
             stroke: var(--text-silver);
@@ -1255,253 +1155,198 @@
             stroke: var(--accent-orange);
             fill: none;
         }
-
         .social-icon:hover {
             transform: translateY(-6px) scale(1.15);
             background: transparent;
             box-shadow: none;
         }
-
         .social-icon:hover svg {
             fill: var(--accent-orange);
             transform: rotate(10deg) scale(1.1);
         }
 
+        /* Butang CTA */
+        .cta-button {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 32px;
+            background: var(--accent-orange);
+            color: #ffffff;
+            font-family: var(--font-mono);
+            font-weight: 700;
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+        .cta-button:hover {
+            background: var(--accent-orange-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(255, 123, 0, 0.3);
+        }
+        .cta-button:focus-visible {
+            outline: 2px solid var(--accent-orange);
+            outline-offset: 3px;
+        }
+
         /* ==========================================================================
-           12. REKA BENTUK RESPONSIF (TABLET & MOBILE)
+           12. REKA BENTUK RESPONSIF
            ========================================================================== */
         @media (max-width: 1024px) {
-            .team-arc-container {
-                height: 520px;
-            }
-            .node-member-2 {
-                left: 10%;
-            }
-            .node-member-4 {
-                left: 90%;
-            }
-            .workstation-icon {
-                max-width: 400px;
-            }
-            .glass-cards-grid {
-                max-width: 700px;
-            }
-            .footer-siren-wrapper {
-                width: 160px;
-            }
+            .team-arc-container { height: 520px; }
+            .node-member-2 { left: 10%; }
+            .node-member-4 { left: 90%; }
+            .workstation-icon { max-width: 400px; }
+            .glass-cards-grid { max-width: 700px; }
+            .footer-siren-wrapper { width: 160px; }
         }
 
         @media (max-width: 768px) {
-            .brand-title {
-                font-size: 1.4rem;
-                letter-spacing: 2px;
-            }
-            .brand-subtitle {
-                font-size: 0.75rem;
-                letter-spacing: 2px;
-            }
-            .header-top {
-                gap: 15px;
-            }
-            .logo-badge {
-                width: 48px;
-                height: 48px;
-            }
-            .logo-badge svg {
-                width: 22px;
-                height: 22px;
-            }
+            .brand-title { font-size: 1.4rem; letter-spacing: 2px; }
+            .brand-subtitle { font-size: 0.75rem; letter-spacing: 2px; }
+            .header-top { gap: 15px; }
+            .logo-badge { width: 48px; height: 48px; }
+            .logo-badge svg { width: 22px; height: 22px; }
 
-            .greeting-container {
-                font-size: 2.4rem;
-                letter-spacing: 3px;
-                max-width: 100%;
-                padding: 0 10px;
-            }
+            .greeting-container { font-size: 2.4rem; letter-spacing: 3px; max-width: 100%; padding: 0 10px; }
+            .greeting-line { gap: 0 2px; }
+            .greeting-word { margin: 0 2px; }
 
-            .greeting-line {
-                gap: 0 2px;
-            }
-
-            .greeting-word {
-                margin: 0 2px;
-            }
-
-            .hero-subtext {
-                font-size: 0.9rem;
-                padding: 0 15px;
-            }
+            .hero-subtext { font-size: 0.9rem; padding: 0 15px; }
 
             .glass-cards-grid {
                 grid-template-columns: 1fr;
                 max-width: 500px;
             }
 
+            /* Susunan pasukan diubah menjadi grid 2 lajur */
             .team-arc-container {
                 height: auto;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                gap: 25px;
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 20px;
+                padding: 20px 0;
             }
-
-            .connection-svg {
-                display: none;
-            }
+            .connection-svg { display: none; }
 
             .team-node {
                 position: relative !important;
                 top: auto !important;
                 left: auto !important;
                 transform: none !important;
+                margin: 0 auto;
             }
+            .node-leader {
+                grid-column: 1 / -1;
+                justify-self: center;
+            }
+            .node-member-1 { grid-column: 1; justify-self: end; }
+            .node-member-2 { grid-column: 1; justify-self: start; }
+            .node-member-3 { grid-column: 2; justify-self: end; }
+            .node-member-4 { grid-column: 2; justify-self: start; }
 
-            .node-leader.entered,
-            .node-member.entered {
+            .node-leader.entered, .node-member.entered {
                 transform: none !important;
                 opacity: 1;
             }
+            .node-leader .avatar-wrapper { width: 100px; height: 100px; }
+            .node-member .avatar-wrapper { width: 80px; height: 80px; }
 
             .footer-content {
                 flex-direction: column;
                 text-align: center;
                 gap: 14px;
             }
-            .footer-email {
-                order: 2;
-            }
-            .footer-copyright {
-                order: 1;
-            }
-            .social-links {
-                order: 3;
-            }
+            .footer-email { order: 2; }
+            .footer-copyright { order: 1; }
+            .social-links { order: 3; }
 
-            .workstation-icon {
-                max-width: 320px;
-            }
-            .footer-siren-wrapper {
-                width: 140px;
-            }
+            .workstation-icon { max-width: 320px; }
+            .footer-siren-wrapper { width: 140px; }
+
+            .section-title-sub { font-size: 0.9rem; }
         }
 
         @media (max-width: 480px) {
-            .brand-title {
-                font-size: 1.1rem;
-                letter-spacing: 1px;
-            }
-            .brand-subtitle {
-                font-size: 0.6rem;
-                letter-spacing: 1px;
-            }
-            .header-top {
+            .brand-title { font-size: 1.1rem; letter-spacing: 1px; }
+            .brand-subtitle { font-size: 0.6rem; letter-spacing: 1px; }
+            .header-top { gap: 10px; }
+            .logo-badge { width: 38px; height: 38px; }
+            .logo-badge svg { width: 18px; height: 18px; }
+
+            .greeting-container { font-size: 1.8rem; letter-spacing: 2px; padding: 0 5px; }
+            .greeting-line { gap: 0 1px; }
+            .greeting-word { margin: 0 1px; }
+
+            .hero-subtext { font-size: 0.8rem; padding: 0 10px; }
+
+            .node-leader .avatar-wrapper { width: 80px; height: 80px; }
+            .node-member .avatar-wrapper { width: 65px; height: 65px; }
+            .member-name { font-size: 0.75rem; }
+            .member-role { font-size: 0.6rem; }
+            .leader-badge-title { font-size: 0.5rem; top: -20px; padding: 1px 6px; }
+
+            .workstation-icon { max-width: 280px; }
+            .footer-siren-wrapper { width: 120px; }
+            .section-title { font-size: 1.5rem; }
+            .card-body-text { font-size: 1.1rem; }
+            .card-body-desc { font-size: 0.85rem; }
+            .msg-line { font-size: 0.85rem; letter-spacing: 2px; }
+            .glass-cards-grid { max-width: 100%; }
+
+            .team-arc-container {
+                grid-template-columns: 1fr 1fr;
                 gap: 10px;
             }
-            .logo-badge {
-                width: 38px;
-                height: 38px;
-            }
-            .logo-badge svg {
-                width: 18px;
-                height: 18px;
-            }
-
-            .greeting-container {
-                font-size: 1.8rem;
-                letter-spacing: 2px;
-                padding: 0 5px;
-            }
-
-            .greeting-line {
-                gap: 0 1px;
-            }
-
-            .greeting-word {
-                margin: 0 1px;
-            }
-
-            .hero-subtext {
-                font-size: 0.8rem;
-                padding: 0 10px;
-            }
-
-            .node-leader .avatar-wrapper {
-                width: 100px;
-                height: 100px;
-            }
-            .node-member .avatar-wrapper {
-                width: 75px;
-                height: 75px;
-            }
-            .member-name {
-                font-size: 0.85rem;
-            }
-            .member-role {
-                font-size: 0.65rem;
-            }
-            .leader-badge-title {
-                font-size: 0.6rem;
-                top: -24px;
-                padding: 1px 8px;
-            }
-            .workstation-icon {
-                max-width: 280px;
-            }
-            .footer-siren-wrapper {
-                width: 120px;
-            }
-            .section-title {
-                font-size: 1.5rem;
-            }
-            .card-body-text {
-                font-size: 1.1rem;
-            }
-            .msg-line {
-                font-size: 0.85rem;
-                letter-spacing: 2px;
-            }
-            .glass-cards-grid {
-                max-width: 100%;
-            }
+            .node-member-1 { justify-self: center; }
+            .node-member-2 { justify-self: center; }
+            .node-member-3 { justify-self: center; }
+            .node-member-4 { justify-self: center; }
         }
 
         /* ACCESSIBILITY: REDUCED MOTION */
         @media (prefers-reduced-motion: reduce) {
-            *,
-            ::before,
-            ::after {
+            *, ::before, ::after {
                 animation-duration: 0.01ms !important;
                 animation-iteration-count: 1 !important;
                 transition-duration: 0.01ms !important;
                 scroll-behavior: auto !important;
             }
-            #particle-canvas,
-            .cursor-glow,
-            .radio-waves {
-                display: none !important;
-            }
-            .siren-light,
-            .footer-siren-wrapper svg {
+            #particle-canvas, .cursor-glow, .radio-waves { display: none !important; }
+            .siren-light, .footer-siren-wrapper svg {
                 animation: none !important;
                 fill: #ff3300 !important;
             }
+            .walkie-device.entered {
+                animation: deviceEntrance 0.01ms forwards !important;
+            }
+        }
+
+        /* Fokus kelihatan */
+        :focus-visible {
+            outline: 2px solid var(--accent-orange);
+            outline-offset: 2px;
         }
     </style>
 </head>
 <body>
-    <!-- Latar Belakang Zarah Canvas (KEKAL) -->
+    <!-- Latar Belakang Zarah Canvas -->
     <canvas id="particle-canvas"></canvas>
 
-    <!-- Cursor Glow Spot Light (KEKAL) -->
+    <!-- Cursor Glow Spot Light -->
     <div class="cursor-glow" id="cursorGlow"></div>
 
     <div class="main-container">
         <!-- ==========================================================================
-             HEADER — DIGITAL IDENTITY - DI PUSATKAN
+             HEADER — DIGITAL IDENTITY
              ========================================================================== -->
         <header class="header-digital">
             <div class="header-top">
-                <div class="logo-badge" id="logo-left" aria-label="Logo Kiri">
+                <div class="logo-badge" id="logo-left" role="img" aria-label="Logo kiri">
                     <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--accent-orange)" stroke-width="2">
                         <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
                         <polyline points="2 17 12 22 22 17"></polyline>
@@ -1516,7 +1361,7 @@
                     </div>
                 </div>
 
-                <div class="logo-badge" id="logo-right" aria-label="Logo Kanan">
+                <div class="logo-badge" id="logo-right" role="img" aria-label="Logo kanan">
                     <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--accent-orange)" stroke-width="2">
                         <circle cx="12" cy="12" r="10"></circle>
                         <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"></path>
@@ -1527,26 +1372,27 @@
         </header>
 
         <!-- ==========================================================================
-             HERO — SELAMAT DATANG & SUBTEXT - DI PUSATKAN
+             HERO — SELAMAT DATANG & SUBTEXT
              ========================================================================== -->
         <section class="hero-section">
-            <div class="greeting-container" id="greetingContainer" aria-label="Selamat Datang"></div>
+            <div class="greeting-container" id="greetingContainer" aria-label="Ucapan selamat datang"></div>
             <p class="hero-subtext" id="heroSubtext"></p>
         </section>
 
         <!-- ==========================================================================
-             TEAM EXPERIENCE — 5 PERSONNEL ARC COMPOSITION - DI PUSATKAN
+             TEAM EXPERIENCE — 5 PERSONNEL ARC COMPOSITION
              ========================================================================== -->
         <section class="team-section" id="teamSection">
             <div class="team-arc-container" id="teamArcContainer">
-                <svg class="connection-svg" id="connectionSvg"></svg>
+                <svg class="connection-svg" id="connectionSvg" role="img" aria-label="Garis sambungan pasukan"></svg>
 
                 <!-- NODE LEADER -->
                 <div class="team-node node-leader" id="nodeLeader" data-index="0">
                     <div class="leader-badge-title">Ketua Pasukan</div>
                     <div class="avatar-wrapper">
                         <div class="leader-halo"></div>
-                        <svg class="avatar-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <svg class="avatar-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Avatar ketua">
+                            <!-- SVG avatar sama seperti asal, dipendekkan untuk ruang -->
                             <circle cx="50" cy="20" r="13" fill="var(--skin-color)" stroke="var(--skin-stroke)" stroke-width="1.2"/>
                             <circle cx="45" cy="18" r="1.8" fill="var(--skin-stroke)"/>
                             <circle cx="55" cy="18" r="1.8" fill="var(--skin-stroke)"/>
@@ -1575,15 +1421,16 @@
                         </svg>
                     </div>
                     <div class="member-info">
-                        <div class="member-name fade-in fade-in-d1">NAME_LEADER</div>
-                        <div class="member-role fade-in fade-in-d2">ROLE_LEADER</div>
+                        <div class="member-name fade-in fade-in-d1">Mohd Faiz</div>
+                        <div class="member-role fade-in fade-in-d2">Ketua Pasukan / Lead Architect</div>
                     </div>
                 </div>
 
                 <!-- NODE MEMBER 1 -->
                 <div class="team-node node-member node-member-1" id="nodeMember1" data-index="1">
                     <div class="avatar-wrapper">
-                        <svg class="avatar-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <svg class="avatar-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Avatar ahli 1">
+                            <!-- Sama seperti avatar leader, dipendekkan -->
                             <circle cx="50" cy="20" r="13" fill="var(--skin-color)" stroke="var(--skin-stroke)" stroke-width="1.2"/>
                             <circle cx="45" cy="18" r="1.8" fill="var(--skin-stroke)"/>
                             <circle cx="55" cy="18" r="1.8" fill="var(--skin-stroke)"/>
@@ -1612,15 +1459,15 @@
                         </svg>
                     </div>
                     <div class="member-info">
-                        <div class="member-name fade-in fade-in-d3">NAME_01</div>
-                        <div class="member-role fade-in fade-in-d4">ROLE_01</div>
+                        <div class="member-name fade-in fade-in-d3">Nurul Aina</div>
+                        <div class="member-role fade-in fade-in-d4">Pembangunan Digital</div>
                     </div>
                 </div>
 
                 <!-- NODE MEMBER 2 -->
                 <div class="team-node node-member node-member-2" id="nodeMember2" data-index="2">
                     <div class="avatar-wrapper">
-                        <svg class="avatar-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <svg class="avatar-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Avatar ahli 2">
                             <circle cx="50" cy="20" r="13" fill="var(--skin-color)" stroke="var(--skin-stroke)" stroke-width="1.2"/>
                             <circle cx="45" cy="18" r="1.8" fill="var(--skin-stroke)"/>
                             <circle cx="55" cy="18" r="1.8" fill="var(--skin-stroke)"/>
@@ -1649,15 +1496,15 @@
                         </svg>
                     </div>
                     <div class="member-info">
-                        <div class="member-name fade-in fade-in-d3">NAME_02</div>
-                        <div class="member-role fade-in fade-in-d4">ROLE_02</div>
+                        <div class="member-name fade-in fade-in-d3">Ahmad Rizman</div>
+                        <div class="member-role fade-in fade-in-d4">Strategi Sistem</div>
                     </div>
                 </div>
 
                 <!-- NODE MEMBER 3 -->
                 <div class="team-node node-member node-member-3" id="nodeMember3" data-index="3">
                     <div class="avatar-wrapper">
-                        <svg class="avatar-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <svg class="avatar-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Avatar ahli 3">
                             <circle cx="50" cy="20" r="13" fill="var(--skin-color)" stroke="var(--skin-stroke)" stroke-width="1.2"/>
                             <circle cx="45" cy="18" r="1.8" fill="var(--skin-stroke)"/>
                             <circle cx="55" cy="18" r="1.8" fill="var(--skin-stroke)"/>
@@ -1686,15 +1533,15 @@
                         </svg>
                     </div>
                     <div class="member-info">
-                        <div class="member-name fade-in fade-in-d3">NAME_03</div>
-                        <div class="member-role fade-in fade-in-d4">ROLE_03</div>
+                        <div class="member-name fade-in fade-in-d3">Siti Hajar</div>
+                        <div class="member-role fade-in fade-in-d4">Inovasi UI/UX</div>
                     </div>
                 </div>
 
                 <!-- NODE MEMBER 4 -->
                 <div class="team-node node-member node-member-4" id="nodeMember4" data-index="4">
                     <div class="avatar-wrapper">
-                        <svg class="avatar-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <svg class="avatar-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Avatar ahli 4">
                             <circle cx="50" cy="20" r="13" fill="var(--skin-color)" stroke="var(--skin-stroke)" stroke-width="1.2"/>
                             <circle cx="45" cy="18" r="1.8" fill="var(--skin-stroke)"/>
                             <circle cx="55" cy="18" r="1.8" fill="var(--skin-stroke)"/>
@@ -1723,61 +1570,64 @@
                         </svg>
                     </div>
                     <div class="member-info">
-                        <div class="member-name fade-in fade-in-d3">NAME_04</div>
-                        <div class="member-role fade-in fade-in-d4">ROLE_04</div>
+                        <div class="member-name fade-in fade-in-d3">Zulkifli</div>
+                        <div class="member-role fade-in fade-in-d4">Integrasi Data</div>
                     </div>
                 </div>
             </div>
 
             <div class="scroll-indicator" id="scrollIndicator">
-                <div class="scroll-text">SCROLL TO DISCOVER</div>
+                <div class="scroll-text">SCROLL UNTUK TEROKAI</div>
                 <div class="scroll-arrow">↓</div>
             </div>
         </section>
 
         <!-- ==========================================================================
-             VISION & MISSION — OUR DIRECTION - DI PUSATKAN
+             VISION & MISSION — OUR DIRECTION
              ========================================================================== -->
         <section class="vision-section" id="visionSection">
             <div class="section-title-wrap">
                 <div class="section-tag fade-in">STRATEGIK</div>
-                <h2 class="section-title fade-in fade-in-d1">OUR DIRECTION</h2>
+                <h2 class="section-title fade-in fade-in-d1">HALUAN KAMI</h2>
+                <p class="section-title-sub fade-in fade-in-d2">Membentuk masa depan digital yang teratur, inovatif dan inklusif.</p>
             </div>
 
             <div class="glass-cards-grid">
                 <div class="glass-card" id="cardVision">
                     <div class="card-icon">
-                        <svg viewBox="0 0 24 24">
+                        <svg viewBox="0 0 24 24" role="img" aria-label="Ikon visi">
                             <path d="M9 21c0 .55.45 1 1 1h4c.55 0 1-.45 1-1v-1H9v1zm3-19C8.14 2 5 5.14 5 9c0 2.38 1.19 4.47 3 5.74V17c0 .55.45 1 1 1h6c.55 0 1-.45 1-1v-2.26c1.81-1.27 3-3.36 3-5.74 0-3.86-3.14-7-7-7zm2.85 11.1l-.85.6V16h-4v-3.3l-.85-.6A4.996 4.996 0 0 1 7 9c0-2.76 2.24-5 5-5s5 2.24 5 5c0 1.63-.8 3.16-2.15 4.1z"/>
                         </svg>
                     </div>
                     <div class="card-header-title">VISI</div>
                     <div class="card-body-text fade-in fade-in-d2" id="visionText">
-                        INOVASI SELARAS GENERASI
+                        Inovasi Selaras Generasi
                     </div>
+                    <div class="card-body-desc">Menjadi peneraju transformasi digital yang berteraskan kreativiti dan kebersamaan.</div>
                 </div>
 
                 <div class="glass-card" id="cardMission">
                     <div class="card-icon">
-                        <svg viewBox="0 0 24 24">
+                        <svg viewBox="0 0 24 24" role="img" aria-label="Ikon misi">
                             <path d="M12 2C6.49 2 2 6.49 2 12s4.49 10 10 10 10-4.49 10-10S17.51 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm3-8c0 1.66-1.34 3-3 3s-3-1.34-3-3 1.34-3 3-3 3 1.34 3 3z"/>
                         </svg>
                     </div>
                     <div class="card-header-title">MISI</div>
                     <div class="card-body-text fade-in fade-in-d3" id="missionText">
-                        MEREALISASIKAN GAYA KERJA YANG SISTEMATIK DAN MODEN
+                        Merealisasikan Gaya Kerja Sistematik &amp; Moden
                     </div>
+                    <div class="card-body-desc">Menerapkan sistem digital yang memudahkan komunikasi, pengurusan data dan kolaborasi pasukan.</div>
                 </div>
             </div>
         </section>
 
         <!-- ==========================================================================
-             WALKIE TALKIE + WORKSTATION ICON - DI PUSATKAN
+             WALKIE TALKIE + WORKSTATION ICON
              ========================================================================== -->
         <section class="walkie-section" id="walkieSection">
             <div class="section-title-wrap">
                 <div class="section-tag fade-in">KOMUNIKASI DIGITAL</div>
-                <h2 class="section-title fade-in fade-in-d1">COMMAND SYSTEM</h2>
+                <h2 class="section-title fade-in fade-in-d1">SISTEM KOMANDO</h2>
             </div>
 
             <div class="walkie-wrapper">
@@ -1787,20 +1637,20 @@
                     <div class="wave-ring"></div>
                 </div>
 
-                <div class="walkie-device">
+                <div class="walkie-device" role="img" aria-label="Walkie-talkie digital">
                     <div class="walkie-antenna">
                         <div class="walkie-antenna-tip"></div>
                     </div>
                     <div class="walkie-knob"></div>
                     <div class="walkie-screen walkie-part">
-                        <div class="screen-text">BRAVO<br />THE FUTURE</div>
-                        <div class="screen-status">ONLINE // 100%</div>
+                        <div class="screen-text" id="walkieScreenText">BRAVO<br />THE FUTURE</div>
+                        <div class="screen-status" id="walkieStatus">ONLINE // 100%</div>
                     </div>
 
                     <div class="walkie-call-row walkie-part">
-                        <div class="walkie-call-btn call-answer" aria-label="Jawab panggilan">
+                        <button class="walkie-call-btn call-answer" id="callAnswerBtn" aria-label="Jawab panggilan">
                             <svg viewBox="0 0 24 24"><path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.6.1.4 0 .8-.2 1L6.6 10.8z"/></svg>
-                        </div>
+                        </button>
 
                         <div class="walkie-dpad">
                             <div class="dpad-btn dpad-up"><svg viewBox="0 0 24 24"><path d="M12 6l7 10H5z"/></svg></div>
@@ -1810,9 +1660,9 @@
                             <div class="dpad-btn dpad-down"><svg viewBox="0 0 24 24"><path d="M12 18L5 8h14z"/></svg></div>
                         </div>
 
-                        <div class="walkie-call-btn call-end" aria-label="Tamatkan panggilan">
+                        <button class="walkie-call-btn call-end" id="callEndBtn" aria-label="Tamatkan panggilan">
                             <svg viewBox="0 0 24 24"><path d="M12 9c-2.1 0-4.1.4-6 1.1v3.3c0 .5-.3.9-.7 1.1-1 .5-1.9 1.1-2.7 1.9-.4.4-1 .4-1.4 0L.3 15.5c-.4-.4-.4-1 0-1.4C3.7 10.6 7.7 9 12 9s8.3 1.6 11.7 5.1c.4.4.4 1 0 1.4l-.9 1.9c-.4.4-1 .4-1.4 0-.8-.8-1.7-1.4-2.7-1.9-.4-.2-.7-.6-.7-1.1v-3.3C16.1 9.4 14.1 9 12 9z"/></svg>
-                        </div>
+                        </button>
                     </div>
 
                     <div class="walkie-keypad walkie-part">
@@ -1836,48 +1686,37 @@
 
             <div class="digital-message" id="digitalMessage">
                 <div class="msg-line">
-                    CONNECTING <span class="msg-line-highlight">PEOPLE</span>.
+                    MENGHUBUNGKAN <span class="msg-line-highlight">MANUSIA</span>.
                 </div>
                 <div class="msg-line">
-                    CONNECTING <span class="msg-line-highlight">IDEAS</span>.
+                    MENGHUBUNGKAN <span class="msg-line-highlight">IDEA</span>.
                 </div>
                 <div class="msg-line">
-                    BUILDING THE <span class="msg-line-highlight">FUTURE</span>.
+                    MEMBINA <span class="msg-line-highlight">MASA DEPAN</span>.
                 </div>
             </div>
 
-            <!-- ===== WORKSTATION ICON — SIREN DI ATAS MEJA & KOMPUTER DI TENGAH ===== -->
+            <!-- WORKSTATION ICON -->
             <div class="workstation-icon">
-                <svg viewBox="0 0 500 480" xmlns="http://www.w3.org/2000/svg">
+                <svg viewBox="0 0 500 480" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Stesen kerja digital">
                     <g transform="skewY(-10deg)">
-                        <!-- Meja (lebih lebar) -->
+                        <!-- Meja -->
                         <rect x="20" y="320" width="420" height="35" fill="#8B5A2B" stroke="#5C3A1E" stroke-width="3" rx="4"/>
-                        <!-- Kaki meja kiri -->
                         <rect x="40" y="355" width="20" height="70" fill="#6B4226" rx="2"/>
-                        <!-- Kaki meja kanan -->
                         <rect x="400" y="355" width="20" height="70" fill="#6B4226" rx="2"/>
 
-                        <!-- ===== SIREN DI ATAS MEJA (SEBELAH KIRI) ===== -->
-                        <!-- Tapak siren -->
+                        <!-- Siren di atas meja -->
                         <rect x="60" y="300" width="40" height="20" fill="#333" rx="3"/>
-                        <!-- Badan siren -->
                         <rect x="68" y="260" width="24" height="42" fill="#222" rx="4"/>
-                        <!-- Lampu siren kiri -->
                         <circle cx="74" cy="268" r="8" class="siren-light" />
-                        <!-- Lampu siren kanan -->
                         <circle cx="86" cy="268" r="8" class="siren-light" style="animation-delay: 0.4s;" />
-                        <!-- Sorotan cahaya siren -->
                         <ellipse cx="80" cy="300" rx="35" ry="8" fill="rgba(255, 60, 0, 0.15)" class="siren-glow" />
                         <ellipse cx="80" cy="300" rx="45" ry="10" fill="rgba(0, 100, 255, 0.08)" class="siren-glow" style="animation-delay: 0.4s;" />
 
-                        <!-- ===== KOMPUTER DI TENGAH-TENGAH MEJA ===== -->
-                        <!-- Tapak monitor (dipusatkan) -->
+                        <!-- Komputer -->
                         <rect x="155" y="280" width="150" height="40" fill="#555" rx="4"/>
-                        <!-- Skrin monitor (belakang) - dipusatkan -->
                         <rect x="165" y="150" width="130" height="130" fill="#333" rx="6"/>
-                        <!-- Skrin (dalam) -->
                         <rect x="171" y="156" width="118" height="118" fill="#1a1a2e" rx="4"/>
-                        <!-- Paparan kod pada skrin -->
                         <rect x="177" y="164" width="106" height="102" fill="#0f3460" rx="2"/>
                         <line x1="183" y1="178" x2="260" y2="178" stroke="#00ffcc" stroke-width="2.5" opacity="0.9"/>
                         <line x1="183" y1="190" x2="240" y2="190" stroke="#00ffcc" stroke-width="2.5" opacity="0.7"/>
@@ -1887,47 +1726,37 @@
                         <line x1="183" y1="238" x2="220" y2="238" stroke="#00ffcc" stroke-width="2.5" opacity="0.15"/>
                         <line x1="183" y1="250" x2="235" y2="250" stroke="#00ffcc" stroke-width="2.5" opacity="0.1"/>
 
-                        <!-- Keyboard (di bawah monitor) - dipusatkan -->
                         <rect x="145" y="325" width="170" height="25" fill="#444" rx="4"/>
                         <rect x="153" y="329" width="154" height="7" fill="#666" rx="2"/>
                         <rect x="153" y="339" width="154" height="7" fill="#666" rx="2"/>
 
-                        <!-- Tetikus (di sebelah kanan keyboard) -->
                         <ellipse cx="340" cy="330" rx="22" ry="15" fill="#555" stroke="#444" stroke-width="2"/>
                         <path d="M340,315 L340,330" stroke="#444" stroke-width="2.5"/>
                     </g>
                 </svg>
-                <div class="workstation-label fade-in">DIGITAL WORKSPACE · ACTIVE</div>
+                <div class="workstation-label fade-in">RUANG KERJA DIGITAL · AKTIF</div>
             </div>
         </section>
     </div>
 
     <!-- ==========================================================================
-       FOOTER — SIREN SAIZ WALKIE-TALKIE + EMAIL · COPYRIGHT · SOSMED
+       FOOTER — SIREN + EMAIL · HAK CIPTA · SOSMED · CTA
        ========================================================================== -->
     <footer class="footer-digital">
         <div class="main-container">
-            <!-- SIREN FOOTER - SAIZ SAMA DENGAN WALKIE-TALKIE (200px) -->
+            <!-- SIREN FOOTER -->
             <div class="footer-siren">
                 <div class="footer-siren-wrapper">
-                    <svg viewBox="0 0 200 180" xmlns="http://www.w3.org/2000/svg">
-                        <!-- Tapak lampu -->
+                    <svg viewBox="0 0 200 180" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Lampu siren footer">
                         <rect x="30" y="120" width="140" height="40" fill="#333" rx="8"/>
-                        <!-- Badan lampu utama -->
                         <rect x="50" y="40" width="100" height="85" fill="#222" rx="12"/>
-                        <!-- Bahagian atas lampu (bulat) -->
                         <ellipse cx="100" cy="45" rx="50" ry="15" fill="#1a1a1a"/>
-                        <!-- Lampu kiri - berkelip -->
                         <circle cx="80" cy="75" r="20" fill="#ff0000" class="siren-light" />
-                        <!-- Lampu kanan - berkelip (delay) -->
                         <circle cx="120" cy="75" r="20" fill="#ff0000" class="siren-light" style="animation-delay: 0.4s;" />
-                        <!-- Sorotan cahaya atas -->
                         <ellipse cx="100" cy="100" rx="60" ry="12" fill="rgba(255, 60, 0, 0.15)" class="siren-glow" />
                         <ellipse cx="100" cy="100" rx="70" ry="15" fill="rgba(0, 100, 255, 0.08)" class="siren-glow" style="animation-delay: 0.4s;" />
-                        <!-- Butiran pada badan lampu -->
                         <rect x="65" y="55" width="70" height="4" fill="#444" rx="2"/>
                         <rect x="65" y="65" width="70" height="4" fill="#444" rx="2"/>
-                        <!-- Logo kecil di tengah -->
                         <text x="100" y="110" text-anchor="middle" font-family="monospace" font-size="8" fill="#666" font-weight="bold">SIREN</text>
                     </svg>
                 </div>
@@ -1939,29 +1768,27 @@
                 </div>
 
                 <div class="footer-copyright fade-in fade-in-d1" id="footerCopyright">
-                    © 2035 BRAVO THE FUTURE — ALL RIGHTS RESERVED
+                    © <span id="currentYear"></span> BRAVO THE FUTURE — ALL RIGHTS RESERVED
                 </div>
 
                 <div class="social-links">
-                    <a href="#" class="social-icon" aria-label="Facebook">
-                        <svg viewBox="0 0 24 24">
-                            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
-                        </svg>
+                    <a href="#" class="social-icon" aria-label="Facebook" role="button">
+                        <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
                     </a>
-                    <a href="#" class="social-icon" aria-label="Instagram">
+                    <a href="#" class="social-icon" aria-label="Instagram" role="button">
                         <svg class="icon-outline" viewBox="0 0 24 24">
                             <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
                             <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
                             <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
                         </svg>
                     </a>
-                    <a href="#" class="social-icon" aria-label="YouTube">
+                    <a href="#" class="social-icon" aria-label="YouTube" role="button">
                         <svg viewBox="0 0 24 24">
                             <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"/>
                             <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"/>
                         </svg>
                     </a>
-                    <a href="#" class="social-icon" aria-label="TikTok">
+                    <a href="#" class="social-icon" aria-label="TikTok" role="button">
                         <svg viewBox="0 0 24 24">
                             <circle cx="9" cy="17.3" r="3.3"/>
                             <path d="M11.3 2h2.4v15.3a3.3 3.3 0 0 1-.02.4h-2.4a3.3 3.3 0 0 0 .02-.4z"/>
@@ -1970,49 +1797,49 @@
                     </a>
                 </div>
             </div>
+
+            <!-- CTA Button -->
+            <div style="text-align: center; margin-top: 30px;">
+                <a href="#" class="cta-button">Hubungi Kami</a>
+            </div>
         </div>
     </footer>
 
     <!-- ==========================================================================
-       JAVASCRIPT ARCHITECTURE & LOGIK INTERAKSI
+       JAVASCRIPT
        ========================================================================== -->
     <script>
         const PROJECT_CONFIG = {
             PROJECT_NAME: 'BRAVO THE FUTURE',
             PROJECT_SUBTITLE: 'PROJEK DIGITALISASI BRAVO PGO JOHOR',
-            GREETING: 'SELAMAT DATANG',
-            SUBTEXT: 'Membina cara kerja yang lebih sistematik, pantas dan moden.',
-            VISION: 'INOVASI SELARAS GENERASI',
-            MISSION: 'MEREALISASIKAN GAYA KERJA YANG SISTEMATIK DAN MODEN',
+            GREETING: 'SELAMAT DATANG KE PLATFORM DIGITAL',
+            SUBTEXT: 'Membina cara kerja yang lebih sistematik, pantas dan moden untuk pasukan Bravo PGO Johor.',
+            VISION: 'Inovasi Selaras Generasi',
+            MISSION: 'Merealisasikan Gaya Kerja Sistematik & Moden',
             TAGLINE: [
-                'CONNECTING PEOPLE.',
-                'CONNECTING IDEAS.',
-                'BUILDING THE FUTURE.',
+                'MENGHUBUNGKAN MANUSIA.',
+                'MENGHUBUNGKAN IDEA.',
+                'MEMBINA MASA DEPAN.',
             ],
-            WEBSITE: 'WWW.DIGITALISASIBRAVOPGO.COM',
             FOOTER: '© 2035 BRAVO THE FUTURE — ALL RIGHTS RESERVED',
             TEAM_MEMBERS: [
-                { name: 'ANGGOTA KETUA', role: 'KETUA PASUKAN / LEAD ARCHITECT' },
-                { name: 'ANGGOTA 01', role: 'DIGITAL DEVELOPMENT' },
-                { name: 'ANGGOTA 02', role: 'SYSTEM STRATEGIST' },
-                { name: 'ANGGOTA 03', role: 'UI/UX INNOVATOR' },
-                { name: 'ANGGOTA 04', role: 'DATA INTEGRATION' },
+                { name: 'Mohd Faiz', role: 'Ketua Pasukan / Lead Architect' },
+                { name: 'Nurul Aina', role: 'Pembangunan Digital' },
+                { name: 'Ahmad Rizman', role: 'Strategi Sistem' },
+                { name: 'Siti Hajar', role: 'Inovasi UI/UX' },
+                { name: 'Zulkifli', role: 'Integrasi Data' },
             ],
         };
 
         function initContent() {
-            document.getElementById('brandTitle').textContent =
-                PROJECT_CONFIG.PROJECT_NAME;
-            document.getElementById('brandSubtitle').textContent =
-                PROJECT_CONFIG.PROJECT_SUBTITLE;
-            document.getElementById('heroSubtext').textContent =
-                PROJECT_CONFIG.SUBTEXT;
-            document.getElementById('visionText').textContent =
-                PROJECT_CONFIG.VISION;
-            document.getElementById('missionText').textContent =
-                PROJECT_CONFIG.MISSION;
-            document.getElementById('footerCopyright').textContent =
-                PROJECT_CONFIG.FOOTER;
+            document.getElementById('brandTitle').textContent = PROJECT_CONFIG.PROJECT_NAME;
+            document.getElementById('brandSubtitle').textContent = PROJECT_CONFIG.PROJECT_SUBTITLE;
+            document.getElementById('heroSubtext').textContent = PROJECT_CONFIG.SUBTEXT;
+            document.getElementById('visionText').textContent = PROJECT_CONFIG.VISION;
+            document.getElementById('missionText').textContent = PROJECT_CONFIG.MISSION;
+
+            // Tahun hak cipta dinamik
+            document.getElementById('currentYear').textContent = new Date().getFullYear();
 
             const nodes = [
                 document.getElementById('nodeLeader'),
@@ -2026,10 +1853,8 @@
                 if (node && PROJECT_CONFIG.TEAM_MEMBERS[i]) {
                     const nameEl = node.querySelector('.member-name');
                     const roleEl = node.querySelector('.member-role');
-                    if (nameEl)
-                        nameEl.textContent = PROJECT_CONFIG.TEAM_MEMBERS[i].name;
-                    if (roleEl)
-                        roleEl.textContent = PROJECT_CONFIG.TEAM_MEMBERS[i].role;
+                    if (nameEl) nameEl.textContent = PROJECT_CONFIG.TEAM_MEMBERS[i].name;
+                    if (roleEl) roleEl.textContent = PROJECT_CONFIG.TEAM_MEMBERS[i].role;
                 }
             });
         }
@@ -2099,6 +1924,7 @@
             ];
 
             const getCenter = (el) => {
+                if (!el) return { x: 0, y: 0 };
                 const rect = el.getBoundingClientRect();
                 return {
                     x: rect.left + rect.width / 2 - containerRect.left,
@@ -2109,11 +1935,9 @@
             const leaderCenter = getCenter(leader);
 
             members.forEach((member) => {
+                if (!member) return;
                 const memberCenter = getCenter(member);
-                const line = document.createElementNS(
-                    'http://www.w3.org/2000/svg',
-                    'line'
-                );
+                const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
                 line.setAttribute('x1', leaderCenter.x);
                 line.setAttribute('y1', leaderCenter.y);
                 line.setAttribute('x2', memberCenter.x);
@@ -2144,10 +1968,10 @@
 
                         const enterDelay = 600;
                         leftMembers.forEach(el => {
-                            setTimeout(() => el.classList.add('entered'), enterDelay);
+                            if (el) setTimeout(() => el.classList.add('entered'), enterDelay);
                         });
                         rightMembers.forEach(el => {
-                            setTimeout(() => el.classList.add('entered'), enterDelay);
+                            if (el) setTimeout(() => el.classList.add('entered'), enterDelay);
                         });
 
                         setTimeout(drawTeamConnections, 1400);
@@ -2224,7 +2048,8 @@
             let width = canvas.width = window.innerWidth;
             let height = canvas.height = window.innerHeight;
 
-            const particleCount = window.innerWidth < 768 ? 15 : 35;
+            // Bilangan zarah dikekalkan 35 seperti diminta
+            const particleCount = 35;
             const particles = [];
 
             class Particle {
@@ -2276,19 +2101,30 @@
                 }
             }
 
+            let animationId;
+
             function animate() {
                 ctx.clearRect(0, 0, width, height);
-                particles.forEach(p => { p.update();
-                    p.draw(); });
+                particles.forEach(p => { p.update(); p.draw(); });
                 connectParticles();
-                requestAnimationFrame(animate);
+                animationId = requestAnimationFrame(animate);
             }
 
             animate();
 
+            // Hentikan animasi apabila tab tidak kelihatan (jimat bateri)
+            document.addEventListener('visibilitychange', () => {
+                if (document.hidden) {
+                    cancelAnimationFrame(animationId);
+                } else {
+                    animate();
+                }
+            });
+
             window.addEventListener('resize', () => {
                 width = canvas.width = window.innerWidth;
                 height = canvas.height = window.innerHeight;
+                // Lukis semula sambungan pasukan jika perlu
                 drawTeamConnections();
             });
         }
@@ -2303,12 +2139,58 @@
             });
         }
 
+        // Interaksi walkie-talkie
+        function initWalkieInteractions() {
+            const screenText = document.getElementById('walkieScreenText');
+            const statusText = document.getElementById('walkieStatus');
+            const answerBtn = document.getElementById('callAnswerBtn');
+            const endBtn = document.getElementById('callEndBtn');
+
+            if (answerBtn && screenText) {
+                answerBtn.addEventListener('click', () => {
+                    screenText.innerHTML = 'TERIMA<br />KASIH';
+                    if (statusText) statusText.textContent = 'BERSAMBUNG // 98%';
+                    // Kembali selepas 3 saat
+                    setTimeout(() => {
+                        screenText.innerHTML = 'BRAVO<br />THE FUTURE';
+                        if (statusText) statusText.textContent = 'ONLINE // 100%';
+                    }, 3000);
+                });
+            }
+
+            if (endBtn && screenText) {
+                endBtn.addEventListener('click', () => {
+                    screenText.innerHTML = 'TAMAT';
+                    if (statusText) statusText.textContent = 'OFFLINE // 0%';
+                    setTimeout(() => {
+                        screenText.innerHTML = 'BRAVO<br />THE FUTURE';
+                        if (statusText) statusText.textContent = 'ONLINE // 100%';
+                    }, 2000);
+                });
+            }
+        }
+
         document.addEventListener('DOMContentLoaded', () => {
             initContent();
             animateGreeting();
             initScrollReveals();
             initParticleCanvas();
             initCursorGlow();
+            initWalkieInteractions();
+
+            // Panggil drawTeamConnections pada resize (dengan debounce)
+            let resizeTimeout;
+            window.addEventListener('resize', () => {
+                clearTimeout(resizeTimeout);
+                resizeTimeout = setTimeout(() => {
+                    drawTeamConnections();
+                }, 200);
+            });
+
+            // Panggil sekali lagi selepas muat penuh
+            window.addEventListener('load', () => {
+                setTimeout(drawTeamConnections, 1600);
+            });
         });
     </script>
 </body>
