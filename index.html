@@ -708,7 +708,28 @@
             flex-direction: column;
             align-items: center;
             font-family: var(--font-mono);
-            animation: devicePulse 3s ease-in-out infinite alternate;
+            opacity: 0;
+            transform: scale(0.3);
+        }
+
+        .walkie-device.entered {
+            animation: deviceEntrance 0.8s var(--transition-bounce) forwards,
+                devicePulse 3s ease-in-out infinite alternate 0.8s;
+        }
+
+        @keyframes deviceEntrance {
+            0% {
+                opacity: 0;
+                transform: scale(0.3);
+            }
+            60% {
+                opacity: 1;
+                transform: scale(1.08);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
         }
 
         @keyframes devicePulse {
@@ -718,6 +739,18 @@
             100% {
                 transform: scale(1.02);
             }
+        }
+
+        /* ===== FADE IN BERTURUTAN UNTUK SETIAP KOMPONEN DEVICE ===== */
+        .walkie-part {
+            opacity: 0;
+            transform: translateY(8px);
+            transition: opacity 0.6s var(--transition-smooth), transform 0.6s var(--transition-smooth);
+        }
+
+        .walkie-part.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         .walkie-antenna {
@@ -1683,12 +1716,12 @@
                         <div class="walkie-antenna-tip"></div>
                     </div>
                     <div class="walkie-knob"></div>
-                    <div class="walkie-screen">
+                    <div class="walkie-screen walkie-part">
                         <div class="screen-text">BRAVO<br />THE FUTURE</div>
                         <div class="screen-status">ONLINE // 100%</div>
                     </div>
 
-                    <div class="walkie-call-row">
+                    <div class="walkie-call-row walkie-part">
                         <div class="walkie-call-btn call-answer" aria-label="Jawab panggilan">
                             <svg viewBox="0 0 24 24"><path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.6.1.4 0 .8-.2 1L6.6 10.8z"/></svg>
                         </div>
@@ -1706,7 +1739,7 @@
                         </div>
                     </div>
 
-                    <div class="walkie-keypad">
+                    <div class="walkie-keypad walkie-part">
                         <div class="keypad-key">1</div>
                         <div class="keypad-key">2</div>
                         <div class="keypad-key">3</div>
@@ -1721,7 +1754,7 @@
                         <div class="keypad-key">#</div>
                     </div>
 
-                    <div class="walkie-light"></div>
+                    <div class="walkie-light walkie-part"></div>
                 </div>
             </div>
 
@@ -2079,11 +2112,23 @@
             const walkieObserver = new IntersectionObserver((entries) => {
                 entries.forEach((entry) => {
                     if (entry.isIntersecting) {
+                        const device = document.querySelector('.walkie-device');
+                        if (device) {
+                            setTimeout(() => device.classList.add('entered'), 100);
+                        }
+
+                        const parts = document.querySelectorAll('.walkie-part');
+                        parts.forEach((part, idx) => {
+                            setTimeout(() => {
+                                part.classList.add('visible');
+                            }, 650 + idx * 200);
+                        });
+
                         const lines = document.querySelectorAll('.msg-line');
                         lines.forEach((line, idx) => {
                             setTimeout(() => {
                                 line.classList.add('visible');
-                            }, 400 + idx * 300);
+                            }, 650 + parts.length * 200 + 300 + idx * 300);
                         });
                         walkieObserver.unobserve(entry.target);
                     }
