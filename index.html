@@ -1374,16 +1374,37 @@
             transform-origin: bottom center;
             animation: flameFlicker 0.55s ease-in-out infinite;
         }
-        .flame-d1 { animation-delay: 0.1s; }
-        .flame-d2 { animation-delay: 0.22s; }
-        .flame-d3 { animation-delay: 0.35s; }
-        .flame-d4 { animation-delay: 0.48s; }
+        .flame-d1 {
+            animation-delay: 0.1s;
+        }
+        .flame-d2 {
+            animation-delay: 0.22s;
+        }
+        .flame-d3 {
+            animation-delay: 0.35s;
+        }
+        .flame-d4 {
+            animation-delay: 0.48s;
+        }
 
         @keyframes flameFlicker {
-            0%, 100% { transform: scale(1, 1) translateY(0); opacity: 0.95; }
-            25% { transform: scale(1.1, 0.92) translateY(-2px); opacity: 1; }
-            50% { transform: scale(0.9, 1.1) translateY(1px); opacity: 0.82; }
-            75% { transform: scale(1.06, 0.95) translateY(-1px); opacity: 1; }
+            0%,
+            100% {
+                transform: scale(1, 1) translateY(0);
+                opacity: 0.95;
+            }
+            25% {
+                transform: scale(1.1, 0.92) translateY(-2px);
+                opacity: 1;
+            }
+            50% {
+                transform: scale(0.9, 1.1) translateY(1px);
+                opacity: 0.82;
+            }
+            75% {
+                transform: scale(1.06, 0.95) translateY(-1px);
+                opacity: 1;
+            }
         }
 
         .smoke-puff {
@@ -1391,13 +1412,25 @@
             transform-origin: center;
             animation: smokeRise 2.8s ease-out infinite;
         }
-        .smoke-d1 { animation-delay: 0s; }
-        .smoke-d2 { animation-delay: 0.9s; }
-        .smoke-d3 { animation-delay: 1.8s; }
+        .smoke-d1 {
+            animation-delay: 0s;
+        }
+        .smoke-d2 {
+            animation-delay: 0.9s;
+        }
+        .smoke-d3 {
+            animation-delay: 1.8s;
+        }
 
         @keyframes smokeRise {
-            0% { transform: translateY(0) scale(0.6); opacity: 0.5; }
-            100% { transform: translateY(-46px) scale(1.5); opacity: 0; }
+            0% {
+                transform: translateY(0) scale(0.6);
+                opacity: 0.5;
+            }
+            100% {
+                transform: translateY(-46px) scale(1.5);
+                opacity: 0;
+            }
         }
 
         /* ----- air dari hos ----- */
@@ -1406,21 +1439,39 @@
             animation: waterJetFlow 0.4s linear infinite;
         }
         @keyframes waterJetFlow {
-            to { stroke-dashoffset: -40; }
+            to {
+                stroke-dashoffset: -40;
+            }
         }
 
         .water-drop {
             animation: waterDropFall 0.9s ease-in infinite;
         }
-        .water-d1 { animation-delay: 0s; }
-        .water-d2 { animation-delay: 0.22s; }
-        .water-d3 { animation-delay: 0.44s; }
-        .water-d4 { animation-delay: 0.66s; }
+        .water-d1 {
+            animation-delay: 0s;
+        }
+        .water-d2 {
+            animation-delay: 0.22s;
+        }
+        .water-d3 {
+            animation-delay: 0.44s;
+        }
+        .water-d4 {
+            animation-delay: 0.66s;
+        }
 
         @keyframes waterDropFall {
-            0% { opacity: 0; transform: translate(0, 0); }
-            15% { opacity: 1; }
-            100% { opacity: 0; transform: translate(-6px, 26px); }
+            0% {
+                opacity: 0;
+                transform: translate(0, 0);
+            }
+            15% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+                transform: translate(-6px, 26px);
+            }
         }
 
         /* ----- penyelamat & mangsa ----- */
@@ -1430,8 +1481,13 @@
             animation: rescueBob 0.7s ease-in-out infinite;
         }
         @keyframes rescueBob {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-3px); }
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-3px);
+            }
         }
 
         /* ----- lampu amaran hazard (kereta terlibat kemalangan) ----- */
@@ -1439,8 +1495,16 @@
             animation: hazardBlink 0.6s steps(1) infinite;
         }
         @keyframes hazardBlink {
-            0%, 49% { opacity: 1; fill: #ffb300; }
-            50%, 100% { opacity: 0.15; fill: #ff7b00; }
+            0%,
+            49% {
+                opacity: 1;
+                fill: #ffb300;
+            }
+            50%,
+            100% {
+                opacity: 0.15;
+                fill: #ff7b00;
+            }
         }
 
         .truck-sound-toggle {
@@ -1485,6 +1549,106 @@
         }
 
         /* ==========================================================================
+           11C. JENTERA BOMBA MENEGAK — TEPI KIRI (SCROLL-LINKED)
+           ========================================================================== */
+        .truck-rail-escort {
+            position: fixed;
+            left: 12px;
+            top: 0;
+            width: 64px;
+            height: 100vh;
+            z-index: 22;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.35s ease;
+        }
+        .truck-rail-escort.is-active {
+            opacity: 1;
+        }
+
+        .truck-rail-track {
+            position: absolute;
+            left: 31px;
+            top: 4%;
+            bottom: 4%;
+            width: 2px;
+            background: repeating-linear-gradient(
+                to bottom,
+                var(--accent-orange) 0px,
+                var(--accent-orange) 10px,
+                transparent 10px,
+                transparent 20px
+            );
+            opacity: 0.3;
+        }
+
+        /* penanda lokasi di sepanjang trek */
+        .truck-rail-marker {
+            position: absolute;
+            left: 0;
+            top: 0%;
+            width: 64px;
+            transform: translateY(-50%);
+            will-change: top, transform;
+            transition: top 0.08s linear;
+        }
+        .truck-rail-marker svg {
+            width: 58px;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+            filter: drop-shadow(0 6px 8px rgba(0, 0, 0, 0.25));
+            transition: filter 0.3s ease;
+        }
+        .truck-rail-marker svg:hover {
+            filter: drop-shadow(0 8px 16px rgba(255, 123, 0, 0.5));
+        }
+        .truck-rail-marker .speed-line {
+            opacity: 0;
+            transition: opacity 0.18s ease;
+        }
+        .truck-rail-marker .exhaust-puff {
+            opacity: 0;
+            animation: exhaustPuff 0.85s ease-out infinite;
+            animation-play-state: paused;
+        }
+        .truck-rail-marker.is-moving .exhaust-puff {
+            animation-play-state: running;
+        }
+        .exhaust-d2 {
+            animation-delay: 0.28s;
+        }
+        @keyframes exhaustPuff {
+            0% {
+                transform: translate(0, 0) scale(0.5);
+                opacity: 0.45;
+            }
+            100% {
+                transform: translate(-5px, -9px) scale(1.3);
+                opacity: 0;
+            }
+        }
+        .truck-rail-label {
+            margin-top: 4px;
+            text-align: center;
+            font-family: var(--font-mono);
+            font-size: 8px;
+            letter-spacing: 1px;
+            color: #ffffff;
+            font-weight: 700;
+            text-transform: uppercase;
+            background: var(--accent-orange);
+            border-radius: 4px;
+            padding: 2px 4px;
+            white-space: nowrap;
+            transition: background 0.3s ease;
+        }
+        .truck-rail-label.arrived {
+            background: #2ecc71;
+            box-shadow: 0 0 12px rgba(46, 204, 113, 0.5);
+        }
+
+        /* ==========================================================================
            12. REKA BENTUK RESPONSIF
            ========================================================================== */
         @media (max-width: 1024px) {
@@ -1509,6 +1673,23 @@
         }
 
         @media (max-width: 768px) {
+            .truck-rail-escort {
+                width: 44px;
+                left: 4px;
+            }
+            .truck-rail-track {
+                left: 21px;
+            }
+            .truck-rail-marker {
+                width: 44px;
+            }
+            .truck-rail-marker svg {
+                width: 38px;
+            }
+            .truck-rail-label {
+                font-size: 6.5px;
+                padding: 1px 2px;
+            }
             .truck-transition {
                 height: 130px;
             }
@@ -1604,7 +1785,6 @@
                 width: 100%;
             }
 
-            /* Leader — baris pertama, tengah atas */
             .node-leader {
                 grid-column: 1 / -1;
                 grid-row: 1;
@@ -1621,7 +1801,6 @@
                 top: -22px;
             }
 
-            /* Ahli — 2 di kiri, 2 di kanan, baris kedua & ketiga */
             .node-member-1 {
                 grid-column: 1;
                 grid-row: 2;
@@ -1652,7 +1831,6 @@
                 height: 80px;
             }
 
-            /* Matikan animasi translate untuk mobile (sudah pakai grid) */
             .node-member-1.entered,
             .node-member-2.entered,
             .node-member-3.entered,
@@ -1833,6 +2011,9 @@
             .hazard-light {
                 animation: none !important;
             }
+            .truck-rail-escort {
+                display: none !important;
+            }
             .walkie-device.entered {
                 animation: deviceEntrance 0.01ms forwards !important;
             }
@@ -1843,6 +2024,29 @@
             outline: 2px solid var(--accent-orange);
             outline-offset: 2px;
         }
+
+        /* ==========================================================================
+           13. ARRIVAL GLOW UNTUK JENTERA — TAMBAHAN
+           ========================================================================== */
+        @keyframes arriveGlow {
+            0% {
+                filter: drop-shadow(0 0 0px rgba(46, 204, 113, 0));
+            }
+            50% {
+                filter: drop-shadow(0 0 24px rgba(46, 204, 113, 0.7));
+            }
+            100% {
+                filter: drop-shadow(0 0 0px rgba(46, 204, 113, 0));
+            }
+        }
+        .truck-rail-marker.arrive-glow svg {
+            animation: arriveGlow 0.9s ease 2;
+        }
+        .truck-rail-marker.arrive-glow .truck-rail-label {
+            background: #2ecc71 !important;
+            box-shadow: 0 0 16px rgba(46, 204, 113, 0.6);
+            transition: background 0.3s ease, box-shadow 0.3s ease;
+        }
     </style>
 </head>
 <body>
@@ -1851,6 +2055,46 @@
 
     <!-- Cursor Glow Spot Light -->
     <div class="cursor-glow" id="cursorGlow"></div>
+
+    <!-- Jentera Bomba Menegak — Bergerak Mengikut Scroll di Tepi Kiri -->
+    <div class="truck-rail-escort" id="truckRailEscort" aria-hidden="true">
+        <div class="truck-rail-track"></div>
+        <div class="truck-rail-marker" id="truckRailMarker">
+            <svg viewBox="0 0 120 70" xmlns="http://www.w3.org/2000/svg" id="truckRailSvg">
+                <g class="speed-line" id="speedLines">
+                    <line x1="-4" y1="24" x2="-16" y2="24" stroke="var(--accent-orange)" stroke-width="2" stroke-linecap="round" />
+                    <line x1="-4" y1="32" x2="-20" y2="32" stroke="var(--accent-orange)" stroke-width="2" stroke-linecap="round" />
+                    <line x1="-4" y1="40" x2="-14" y2="40" stroke="var(--accent-orange)" stroke-width="2" stroke-linecap="round" />
+                </g>
+                <circle class="exhaust-puff" cx="3" cy="46" r="3" fill="#8a8a8a" />
+                <circle class="exhaust-puff exhaust-d2" cx="3" cy="46" r="3" fill="#8a8a8a" />
+                <rect x="6" y="22" width="70" height="26" rx="4" fill="#d81e05" />
+                <rect x="6" y="36" width="70" height="5" fill="#ffffff" />
+                <path d="M76 48 L76 26 Q76 20 82 20 L92 20 Q99 20 103 27 L108 40 L108 48 Z" fill="#c81a04" />
+                <path d="M83 26 L92 26 Q95 26 97 30 L100 38 L83 38 Z" fill="#bfe3ff" stroke="#7fb8de" stroke-width="1" />
+                <rect x="26" y="12" width="22" height="5" rx="2" fill="#2b2b2b" />
+                <circle cx="32" cy="14" r="3" class="siren-light" />
+                <circle cx="42" cy="14" r="3" class="siren-light" style="animation-delay: 0.4s;" />
+                <g class="truck-wheel" id="wheelRear">
+                    <circle cx="24" cy="52" r="8" fill="#1c1c1c" />
+                    <circle cx="24" cy="52" r="3" fill="#c9c9c9" />
+                    <line x1="24" y1="45" x2="24" y2="59" stroke="#6b6b6b" stroke-width="1.3" />
+                    <line x1="17" y1="52" x2="31" y2="52" stroke="#6b6b6b" stroke-width="1.3" />
+                    <line x1="19" y1="47" x2="29" y2="57" stroke="#6b6b6b" stroke-width="1.1" />
+                    <line x1="19" y1="57" x2="29" y2="47" stroke="#6b6b6b" stroke-width="1.1" />
+                </g>
+                <g class="truck-wheel" id="wheelFront">
+                    <circle cx="90" cy="52" r="8" fill="#1c1c1c" />
+                    <circle cx="90" cy="52" r="3" fill="#c9c9c9" />
+                    <line x1="90" y1="45" x2="90" y2="59" stroke="#6b6b6b" stroke-width="1.3" />
+                    <line x1="83" y1="52" x2="97" y2="52" stroke="#6b6b6b" stroke-width="1.3" />
+                    <line x1="85" y1="47" x2="95" y2="57" stroke="#6b6b6b" stroke-width="1.1" />
+                    <line x1="85" y1="57" x2="95" y2="47" stroke="#6b6b6b" stroke-width="1.1" />
+                </g>
+            </svg>
+            <div class="truck-rail-label" id="truckRailLabel">Mula</div>
+        </div>
+    </div>
 
     <div class="main-container">
         <!-- ==========================================================================
@@ -1894,7 +2138,7 @@
         <!-- ==========================================================================
              JAMBATAN TRANSITION 1 — OPERASI PEMADAMAN API RUMAH
              ========================================================================== -->
-        <div class="truck-transition" data-truck-transition>
+        <div class="truck-transition" data-truck-transition id="transitionHouseFire">
             <div class="truck-road" aria-hidden="true"></div>
             <div class="scene-label" aria-hidden="true">Operasi Pemadaman Api Rumah</div>
             <button type="button" class="truck-sound-toggle" data-truck-sound aria-pressed="false" aria-label="Hidupkan bunyi siren operasi pemadaman api rumah">
@@ -2183,10 +2427,10 @@
         </section>
 
 
-<!-- ==========================================================================
+        <!-- ==========================================================================
              JAMBATAN TRANSITION 2 — PEMADAMAN KEBAKARAN KENDERAAN
              ========================================================================== -->
-        <div class="truck-transition" data-truck-transition>
+        <div class="truck-transition" data-truck-transition id="transitionVehicleFire">
             <div class="truck-road" aria-hidden="true"></div>
             <div class="scene-label" aria-hidden="true">Pemadaman Kebakaran Kenderaan</div>
             <button type="button" class="truck-sound-toggle" data-truck-sound aria-pressed="false" aria-label="Hidupkan bunyi siren operasi pemadaman kebakaran kenderaan">
@@ -2305,10 +2549,10 @@
             </div>
         </section>
 
-<!-- ==========================================================================
+        <!-- ==========================================================================
              JAMBATAN TRANSITION 3 — PENYELAMAT MANGSA KEMALANGAN JALAN RAYA
              ========================================================================== -->
-        <div class="truck-transition" data-truck-transition>
+        <div class="truck-transition" data-truck-transition id="transitionRescue">
             <div class="truck-road" aria-hidden="true"></div>
             <div class="scene-label" aria-hidden="true">Penyelamat Mangsa Kemalangan Jalan Raya</div>
             <button type="button" class="truck-sound-toggle" data-truck-sound aria-pressed="false" aria-label="Hidupkan bunyi siren operasi menyelamat mangsa kemalangan">
@@ -3021,6 +3265,181 @@
             });
         }
 
+        /* ==========================================================================
+           JENTERA BOMBA MENEGAK — TEPI KIRI (SCROLL-LINKED)
+           ========================================================================== */
+        function initTruckRailEscort() {
+            const rail = document.getElementById('truckRailEscort');
+            const track = document.querySelector('.truck-rail-track');
+            const marker = document.getElementById('truckRailMarker');
+            const label = document.getElementById('truckRailLabel');
+            const wheelRear = document.getElementById('wheelRear');
+            const wheelFront = document.getElementById('wheelFront');
+            const speedLines = document.getElementById('speedLines');
+            const svgEl = document.getElementById('truckRailSvg');
+
+            // Tiga titik operasi
+            const op1 = document.getElementById('transitionHouseFire');
+            const op2 = document.getElementById('transitionVehicleFire');
+            const op3 = document.getElementById('transitionRescue');
+            if (!rail || !marker || !op1 || !op2 || !op3) return;
+
+            const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            if (reduceMotion) return; // rail is hidden entirely via CSS in this mode
+
+            let pStart = 0,
+                pMid = 0,
+                pEnd = 0;
+            let trackHeightPx = 400;
+
+            // Label untuk setiap operasi
+            const labels = ['Rumah', 'Kenderaan', 'Kemalangan'];
+
+            function measure() {
+                const sRect = op1.getBoundingClientRect();
+                const mRect = op2.getBoundingClientRect();
+                const eRect = op3.getBoundingClientRect();
+                // titik mula: bahagian atas op1 tolak 200px (sebelum operasi)
+                pStart = sRect.top + window.scrollY - 220;
+                pMid = mRect.top + window.scrollY - 120;
+                pEnd = eRect.bottom + window.scrollY + 80;
+                if (track) trackHeightPx = track.getBoundingClientRect().height || trackHeightPx;
+            }
+            measure();
+            window.addEventListener('resize', measure);
+            window.addEventListener('load', measure);
+
+            let targetTopPercent = 0;
+            let isActive = false;
+            let currentArrivalIndex = -1; // -1 = belum sampai mana-mana
+
+            function computeTarget() {
+                const refPoint = window.scrollY + window.innerHeight * 0.45;
+                isActive = refPoint >= pStart - 60 && refPoint <= pEnd + 60;
+                rail.classList.toggle('is-active', isActive);
+                if (!isActive) return;
+
+                let progress;
+                if (refPoint <= pStart) {
+                    progress = 0;
+                } else if (refPoint <= pMid) {
+                    progress = 0.5 * (refPoint - pStart) / Math.max(1, pMid - pStart);
+                } else if (refPoint <= pEnd) {
+                    progress = 0.5 + 0.5 * (refPoint - pMid) / Math.max(1, pEnd - pMid);
+                } else {
+                    progress = 1;
+                }
+                progress = Math.min(1, Math.max(0, progress));
+                targetTopPercent = 0 + progress * 92;
+
+                // Tentukan operasi mana yang sedang "dilawati"
+                let arrivalIdx = -1;
+                if (refPoint >= pStart && refPoint < pStart + (pMid - pStart) * 0.6) {
+                    arrivalIdx = 0;
+                } else if (refPoint >= pMid - (pMid - pStart) * 0.3 && refPoint < pMid + (pEnd - pMid) * 0.5) {
+                    arrivalIdx = 1;
+                } else if (refPoint >= pEnd - (pEnd - pMid) * 0.4) {
+                    arrivalIdx = 2;
+                }
+
+                // Kesan "sampai" — beri cahaya hijau pada label
+                if (arrivalIdx !== currentArrivalIndex && arrivalIdx !== -1) {
+                    currentArrivalIndex = arrivalIdx;
+                    // Play arrival glow
+                    marker.classList.remove('arrive-glow');
+                    void marker.offsetWidth; // trigger reflow
+                    marker.classList.add('arrive-glow');
+                    setTimeout(() => {
+                        marker.classList.remove('arrive-glow');
+                    }, 2000);
+
+                    if (label) {
+                        label.textContent = '✅ ' + labels[arrivalIdx];
+                        label.classList.add('arrived');
+                        setTimeout(() => {
+                            label.classList.remove('arrived');
+                        }, 1800);
+                    }
+                } else if (arrivalIdx === -1 && label) {
+                    if (refPoint < pStart) {
+                        label.textContent = 'Mula';
+                    } else if (refPoint > pEnd) {
+                        label.textContent = 'Selesai';
+                    } else {
+                        label.textContent = '...';
+                    }
+                    label.classList.remove('arrived');
+                }
+            }
+
+            let ticking = false;
+            window.addEventListener('scroll', () => {
+                if (!ticking) {
+                    requestAnimationFrame(() => {
+                        computeTarget();
+                        ticking = false;
+                    });
+                    ticking = true;
+                }
+            }, { passive: true });
+
+            // ----- Physics-driven render loop -----
+            let currentTopPercent = targetTopPercent;
+            let smoothedVelocity = 0;
+            let wheelAngle = 0;
+            let lastTs = null;
+
+            const WHEEL_RADIUS_SVG = 8;
+            const SVG_TO_PX_SCALE = 120 / 54;
+            const MAX_TILT_DEG = 7;
+            const BOUNCE_AMPLITUDE = 1.2;
+
+            function frame(ts) {
+                if (lastTs === null) lastTs = ts;
+                const dt = Math.min(48, ts - lastTs);
+                lastTs = ts;
+
+                const prevTopPercent = currentTopPercent;
+                currentTopPercent += (targetTopPercent - currentTopPercent) * 0.14;
+
+                const deltaPercent = currentTopPercent - prevTopPercent;
+                const deltaPx = (deltaPercent / 100) * trackHeightPx;
+                smoothedVelocity += (deltaPx - smoothedVelocity) * 0.38;
+
+                if (isActive) {
+                    const deltaSvgUnits = deltaPx * SVG_TO_PX_SCALE;
+                    wheelAngle += (deltaSvgUnits / (2 * Math.PI * WHEEL_RADIUS_SVG)) * 360;
+                    const wheelTransform = 'rotate(' + wheelAngle.toFixed(1) + ' ';
+                    if (wheelRear) wheelRear.setAttribute('transform', wheelTransform + '24 52)');
+                    if (wheelFront) wheelFront.setAttribute('transform', wheelTransform + '90 52)');
+
+                    const speed = Math.abs(smoothedVelocity);
+                    const activity = Math.min(1, speed / 2.8);
+                    const tilt = Math.max(-MAX_TILT_DEG, Math.min(MAX_TILT_DEG, smoothedVelocity * 2.8));
+                    const bounce = activity > 0.04 ? Math.sin(ts / 120) * BOUNCE_AMPLITUDE * activity : 0;
+
+                    marker.style.transform = 'translateY(-50%) translateY(' + bounce.toFixed(2) + 'px) rotate(' + tilt.toFixed(2) +
+                        'deg)';
+                    marker.classList.toggle('is-moving', activity > 0.06);
+                    if (speedLines) speedLines.style.opacity = String(activity.toFixed(2));
+
+                    marker.style.top = currentTopPercent + '%';
+
+                    // Skala sedikit apabila tiba
+                    const arrivalGlow = currentArrivalIndex !== -1 ? 1.04 : 1;
+                    const scale = 1 + (arrivalGlow - 1) * 0.5;
+                    svgEl.style.transform = 'scale(' + scale.toFixed(3) + ')';
+                }
+
+                requestAnimationFrame(frame);
+            }
+
+            computeTarget();
+            currentTopPercent = targetTopPercent;
+            marker.style.top = currentTopPercent + '%';
+            requestAnimationFrame(frame);
+        }
+
         document.addEventListener('DOMContentLoaded', () => {
             initContent();
             animateGreeting();
@@ -3029,6 +3448,7 @@
             initCursorGlow();
             initWalkieInteractions();
             initFireTruckSirens();
+            initTruckRailEscort();
 
             let resizeTimeout;
             window.addEventListener('resize', () => {
