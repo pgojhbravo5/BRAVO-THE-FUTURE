@@ -4,23 +4,49 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>BRAVO THE FUTURE — Projek Digitalisasi Bravo PGO Johor</title>
-    <meta name="description" content="Platform digital untuk projek transformasi Bravo PGO Johor." />
+    <meta name="description" content="Platform digital untuk projek transformasi Bravo PGO Johor. Mengenali pasukan, visi misi, dan sistem komunikasi moden." />
+    <meta name="keywords" content="Bravo PGO Johor, digitalisasi, transformasi, pasukan, inovasi, sistem komunikasi" />
     <style>
         /* ==========================================================================
-           RESET & VARIAN
+           1. VARIAN CSS — JINGGA & PUTIH (ORANGE & WHITE THEME)
            ========================================================================== */
         :root {
+            --bg-deep-navy: #ffffff;
+            --bg-dark-slate: #f8f4f0;
+            --bg-card: transparent;
+
             --accent-orange: #ff7b00;
             --accent-orange-dark: #e06d00;
+            --accent-orange-light: #ffa355;
+            --accent-glow: rgba(255, 123, 0, 0.2);
+            --accent-glow-strong: rgba(255, 123, 0, 0.45);
+
             --text-main: #1a140e;
             --text-muted: #3a2f25;
             --text-silver: #4a3f35;
+
+            --border-light: rgba(255, 123, 0, 0.22);
+            --border-glow: rgba(255, 123, 0, 0.6);
+
             --skin-color: #f5d0b8;
             --skin-stroke: #4a3f35;
-            --font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            --font-mono: 'SFMono-Regular', Consolas, monospace;
+            --hair-color: #3d2b1f;
+            --pants-color: #3d3d3d;
+            --shoe-color: #2d2d2d;
+            --blazer-color: #2f3b4c;
+            --blazer-color-dark: #232c38;
+            --shirt-color: #ffffff;
+            --tie-color: var(--accent-orange);
+
+            --font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
+                Roboto, 'Helvetica Neue', sans-serif;
+            --font-mono: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo,
+                Courier, monospace;
+
             --transition-smooth: cubic-bezier(0.16, 1, 0.3, 1);
             --transition-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+            /* ===== SKALA TIPOGRAFI SEKATA ===== */
             --fs-hero: 2.8rem;
             --fs-hero-sub: 1.05rem;
             --fs-brand: 2.2rem;
@@ -38,6 +64,9 @@
             --fs-small: 0.7rem;
         }
 
+        /* ==========================================================================
+           2. RESET & LAYOUT ASAS
+           ========================================================================== */
         * {
             box-sizing: border-box;
             margin: 0;
@@ -46,22 +75,27 @@
 
         html {
             scroll-behavior: smooth;
-            background: #ffffff;
+            background-color: #ffffff;
             color: var(--text-main);
             font-family: var(--font-family);
+            width: 100%;
+            max-width: 100%;
             overflow-x: hidden;
         }
 
         body {
             min-height: 100vh;
-            background: #ffffff;
+            width: 100%;
+            max-width: 100%;
+            position: relative;
+            background-color: #ffffff;
             color: var(--text-main);
             line-height: 1.6;
             overflow-x: hidden;
         }
 
         /* ==========================================================================
-           CANVAS PARTIKEL
+           3. LATAR BELAKANG — CANVAS PARTIKEL (KEKAL)
            ========================================================================== */
         #particle-canvas {
             position: fixed;
@@ -69,7 +103,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: 0;
+            z-index: 1;
             pointer-events: none;
         }
 
@@ -81,7 +115,8 @@
             background: radial-gradient(circle, rgba(255, 123, 0, 0.07) 0%, transparent 70%);
             pointer-events: none;
             transform: translate(-50%, -50%);
-            z-index: 1;
+            z-index: 3;
+            transition: opacity 0.3s ease;
         }
 
         .main-container {
@@ -91,10 +126,11 @@
             max-width: 1300px;
             margin: 0 auto;
             padding: 0 24px;
+            overflow-x: hidden;
         }
 
         /* ==========================================================================
-           FADE IN
+           4. ANIMASI FADE IN
            ========================================================================== */
         @keyframes fadeIn {
             from {
@@ -106,6 +142,7 @@
                 transform: translateY(0);
             }
         }
+
         .fade-in {
             opacity: 0;
             animation: fadeIn 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
@@ -122,9 +159,12 @@
         .fade-in-d4 {
             animation-delay: 0.4s;
         }
+        .fade-in-d5 {
+            animation-delay: 0.5s;
+        }
 
         /* ==========================================================================
-           HEADER
+           5. HEADER — DIGITAL IDENTITY (DI PUSATKAN)
            ========================================================================== */
         .header-digital {
             display: flex;
@@ -133,7 +173,9 @@
             padding: 40px 0 20px;
             opacity: 0;
             animation: fadeInHeader 1.2s var(--transition-smooth) forwards;
+            width: 100%;
         }
+
         .header-top {
             display: flex;
             align-items: center;
@@ -143,27 +185,36 @@
             max-width: 800px;
             margin: 0 auto;
         }
+
         .logo-badge {
             width: 64px;
             height: 64px;
             border-radius: 50%;
+            border: none;
+            box-shadow: none;
             background: transparent;
             display: flex;
             align-items: center;
             justify-content: center;
+            position: relative;
             opacity: 0;
             animation: logoFade 1s var(--transition-smooth) 0.3s forwards;
             flex-shrink: 0;
         }
+        .logo-badge::before {
+            display: none;
+        }
         .logo-badge svg {
             stroke: var(--accent-orange);
         }
+
         .brand-title-wrap {
             text-align: center;
             opacity: 0;
             transform: translateY(20px);
             animation: titleSlideUp 1s var(--transition-smooth) 0.6s forwards;
         }
+
         .brand-title {
             font-size: var(--fs-brand);
             font-weight: 800;
@@ -173,7 +224,17 @@
             -webkit-text-fill-color: transparent;
             background-clip: text;
             text-transform: uppercase;
+            text-shadow: none;
+            color: #1a140e;
         }
+        @supports not (background-clip: text) {
+            .brand-title {
+                background: none;
+                -webkit-text-fill-color: initial;
+                color: var(--accent-orange);
+            }
+        }
+
         .brand-subtitle {
             font-size: var(--fs-brand-sub);
             font-family: var(--font-mono);
@@ -209,7 +270,7 @@
         }
 
         /* ==========================================================================
-           HERO
+           6. HERO — GREETING & SUBTEXT (DI PUSATKAN)
            ========================================================================== */
         .hero-section {
             text-align: center;
@@ -219,7 +280,9 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
+            width: 100%;
         }
+
         .greeting-container {
             font-size: var(--fs-hero);
             font-weight: 900;
@@ -229,15 +292,22 @@
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
+            text-shadow: none;
+            text-align: center;
             width: 100%;
             max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
         }
+
         .greeting-line {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
+            width: 100%;
             gap: 0 4px;
         }
+
         .greeting-line .char-span {
             display: inline-block;
             opacity: 0;
@@ -246,17 +316,20 @@
             transition: opacity 0.5s ease, transform 0.5s ease, filter 0.5s ease;
             white-space: pre;
         }
+
         .greeting-line .char-span.visible {
             opacity: 1;
             transform: translateY(0);
             filter: blur(0);
         }
+
         .greeting-word {
             display: inline-flex;
             flex-wrap: wrap;
             justify-content: center;
             margin: 0 3px;
         }
+
         .hero-subtext {
             font-size: var(--fs-hero-sub);
             color: var(--text-silver);
@@ -266,303 +339,21 @@
             transition: opacity 1s ease 0.5s;
             font-weight: 400;
             letter-spacing: 1px;
+            text-align: center;
         }
         .hero-subtext.visible {
             opacity: 0.95;
         }
 
         /* ==========================================================================
-           FIRE SCENE — SATU SVG BESAR DENGAN JENTERA BERGERAK
-           ========================================================================== */
-        .fire-scene-wrapper {
-            position: relative;
-            width: 100%;
-            margin: 20px 0 10px;
-            overflow: visible;
-            min-height: 600px;
-        }
-
-        .fire-scene-svg {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-
-        /* ===== SCROLL-TRIGGERED ANIMATION ===== */
-        .fire-scene-wrapper .truck-group {
-            transition: transform 0.05s linear;
-            will-change: transform;
-        }
-
-        .fire-scene-wrapper .firefighter-group {
-            transition: transform 0.05s linear;
-            will-change: transform;
-        }
-
-        .fire-scene-wrapper .water-group {
-            transition: opacity 0.3s ease;
-            opacity: 0;
-            will-change: opacity;
-        }
-
-        .fire-scene-wrapper .house-fire-group {
-            transition: opacity 0.8s ease;
-            opacity: 1;
-            will-change: opacity;
-        }
-
-        .fire-scene-wrapper .car-fire-group {
-            transition: opacity 0.8s ease;
-            opacity: 0;
-            will-change: opacity;
-        }
-
-        .fire-scene-wrapper .car-crash-group {
-            transition: opacity 0.6s ease;
-            opacity: 0;
-            will-change: opacity;
-        }
-
-        /* ===== STATES ===== */
-        .fire-scene-wrapper.active .water-group {
-            opacity: 1;
-        }
-
-        .fire-scene-wrapper.house-done .house-fire-group {
-            opacity: 0;
-        }
-
-        .fire-scene-wrapper.house-done .water-group {
-            opacity: 0;
-        }
-
-        .fire-scene-wrapper.car-active .car-crash-group {
-            opacity: 1;
-        }
-
-        .fire-scene-wrapper.car-active .car-fire-group {
-            opacity: 1;
-        }
-
-        .fire-scene-wrapper.car-active .water-group {
-            opacity: 1;
-        }
-
-        .fire-scene-wrapper.car-done .car-fire-group {
-            opacity: 0;
-        }
-
-        .fire-scene-wrapper.car-done .water-group {
-            opacity: 0;
-        }
-
-        /* ===== JALAN ===== */
-        .road-line {
-            stroke: rgba(255, 123, 0, 0.3);
-            stroke-width: 2;
-            stroke-dasharray: 8 12;
-        }
-
-        /* ===== API & ASAP ===== */
-        .flame {
-            transform-box: fill-box;
-            transform-origin: bottom center;
-            animation: flameFlicker 0.55s ease-in-out infinite;
-        }
-        .flame-d1 {
-            animation-delay: 0.1s;
-        }
-        .flame-d2 {
-            animation-delay: 0.22s;
-        }
-        .flame-d3 {
-            animation-delay: 0.35s;
-        }
-        .flame-d4 {
-            animation-delay: 0.48s;
-        }
-
-        @keyframes flameFlicker {
-            0%,
-            100% {
-                transform: scale(1, 1) translateY(0);
-                opacity: 0.95;
-            }
-            25% {
-                transform: scale(1.1, 0.92) translateY(-2px);
-                opacity: 1;
-            }
-            50% {
-                transform: scale(0.9, 1.1) translateY(1px);
-                opacity: 0.82;
-            }
-            75% {
-                transform: scale(1.06, 0.95) translateY(-1px);
-                opacity: 1;
-            }
-        }
-
-        .smoke-puff {
-            transform-box: fill-box;
-            transform-origin: center;
-            animation: smokeRise 2.8s ease-out infinite;
-        }
-        .smoke-d1 {
-            animation-delay: 0s;
-        }
-        .smoke-d2 {
-            animation-delay: 0.9s;
-        }
-        .smoke-d3 {
-            animation-delay: 1.8s;
-        }
-
-        @keyframes smokeRise {
-            0% {
-                transform: translateY(0) scale(0.6);
-                opacity: 0.5;
-            }
-            100% {
-                transform: translateY(-46px) scale(1.5);
-                opacity: 0;
-            }
-        }
-
-        /* ===== PANCUTAN AIR ===== */
-        .water-jet {
-            stroke-dasharray: 6 6;
-            animation: waterJetFlow 0.4s linear infinite;
-        }
-        @keyframes waterJetFlow {
-            to {
-                stroke-dashoffset: -40;
-            }
-        }
-
-        .water-drop {
-            animation: waterDropFall 0.9s ease-in infinite;
-        }
-        .water-d1 {
-            animation-delay: 0s;
-        }
-        .water-d2 {
-            animation-delay: 0.22s;
-        }
-        .water-d3 {
-            animation-delay: 0.44s;
-        }
-        .water-d4 {
-            animation-delay: 0.66s;
-        }
-
-        @keyframes waterDropFall {
-            0% {
-                opacity: 0;
-                transform: translate(0, 0);
-            }
-            15% {
-                opacity: 1;
-            }
-            100% {
-                opacity: 0;
-                transform: translate(-6px, 26px);
-            }
-        }
-
-        /* ===== SIREN ===== */
-        .siren-light {
-            animation: sirenBlink 0.8s infinite alternate;
-            transform-origin: center;
-        }
-        @keyframes sirenBlink {
-            0% {
-                opacity: 0.15;
-                fill: #ff0000;
-            }
-            25% {
-                opacity: 1;
-                fill: #ff3300;
-            }
-            50% {
-                opacity: 0.15;
-                fill: #0066ff;
-            }
-            75% {
-                opacity: 1;
-                fill: #0044cc;
-            }
-            100% {
-                opacity: 0.15;
-                fill: #ff0000;
-            }
-        }
-
-        .hazard-light {
-            animation: hazardBlink 0.6s steps(1) infinite;
-        }
-        @keyframes hazardBlink {
-            0%,
-            49% {
-                opacity: 1;
-                fill: #ffb300;
-            }
-            50%,
-            100% {
-                opacity: 0.15;
-                fill: #ff7b00;
-            }
-        }
-
-        /* ===== SOUND TOGGLE ===== */
-        .truck-sound-toggle {
-            position: absolute;
-            top: 12px;
-            right: 16px;
-            z-index: 20;
-            width: 34px;
-            height: 34px;
-            border-radius: 50%;
-            border: 1px solid rgba(255, 123, 0, 0.22);
-            background: rgba(255, 255, 255, 0.85);
-            color: var(--accent-orange-dark);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            backdrop-filter: blur(4px);
-        }
-        .truck-sound-toggle:hover {
-            background: var(--accent-orange);
-            color: #fff;
-            transform: scale(1.08);
-        }
-        .truck-sound-toggle svg {
-            width: 16px;
-            height: 16px;
-        }
-        .truck-sound-toggle[aria-pressed="true"] {
-            background: var(--accent-orange);
-            color: #fff;
-            box-shadow: 0 0 0 4px rgba(255, 123, 0, 0.2);
-        }
-        .truck-sound-toggle .icon-on {
-            display: none;
-        }
-        .truck-sound-toggle[aria-pressed="true"] .icon-on {
-            display: block;
-        }
-        .truck-sound-toggle[aria-pressed="true"] .icon-off {
-            display: none;
-        }
-
-        /* ==========================================================================
-           TEAM SECTION
+           7. TEAM EXPERIENCE — 5 PERSONNEL ARC COMPOSITION
            ========================================================================== */
         .team-section {
-            padding: 60px 0 80px;
+            padding: 60px 0 100px;
             position: relative;
+            width: 100%;
         }
+
         .team-arc-container {
             position: relative;
             height: 480px;
@@ -571,6 +362,7 @@
             margin: 0 auto;
             overflow: hidden;
         }
+
         .connection-svg {
             position: absolute;
             top: 0;
@@ -580,12 +372,14 @@
             pointer-events: none;
             z-index: 5;
         }
+
         .connection-line {
             stroke: rgba(255, 123, 0, 0.35);
             stroke-width: 1.5;
             stroke-dasharray: 6 6;
             animation: dashTravel 20s linear infinite;
         }
+
         @keyframes dashTravel {
             to {
                 stroke-dashoffset: -100;
@@ -600,11 +394,14 @@
             cursor: default;
             z-index: 10;
             transition: transform 0.4s var(--transition-bounce);
+            will-change: transform;
         }
+
         .team-node:hover {
             transform: scale(1.05) translateY(-3px);
             z-index: 20;
         }
+
         .node-leader {
             top: 10px;
             left: 50%;
@@ -632,14 +429,18 @@
         }
 
         .avatar-wrapper {
+            position: relative;
             border-radius: 50%;
             background: transparent;
+            border: none;
+            box-shadow: none;
             display: flex;
             align-items: center;
             justify-content: center;
             overflow: hidden;
             transition: transform 0.3s ease;
         }
+
         .node-leader .avatar-wrapper {
             width: 130px;
             height: 130px;
@@ -648,37 +449,48 @@
             width: 95px;
             height: 95px;
         }
+
         .team-node:hover .avatar-wrapper {
             transform: scale(1.02);
+        }
+
+        .leader-halo {
+            display: none;
         }
 
         .leader-badge-title {
             position: absolute;
             top: -28px;
             background: transparent;
+            border: none;
             color: var(--accent-orange);
             padding: 2px 10px;
+            border-radius: 12px;
             font-size: var(--fs-small);
             font-family: var(--font-mono);
             font-weight: 700;
             letter-spacing: 1px;
             text-transform: uppercase;
         }
+
         .avatar-svg {
             width: 80%;
             height: 80%;
         }
+
         .member-info {
             margin-top: 12px;
             text-align: center;
             pointer-events: none;
         }
+
         .member-name {
             font-size: var(--fs-member-name);
             font-weight: 700;
             color: var(--text-main);
             letter-spacing: 0.5px;
         }
+
         .member-role {
             font-size: var(--fs-member-role);
             color: var(--accent-orange);
@@ -697,6 +509,7 @@
             opacity: 1;
             transform: translate(-50%, 0) scale(1);
         }
+
         .node-member-1,
         .node-member-2 {
             opacity: 0;
@@ -709,6 +522,7 @@
             transform: translate(150px, 0);
             transition: all 0.9s var(--transition-smooth);
         }
+
         .node-member.entered {
             opacity: 1;
         }
@@ -724,6 +538,7 @@
         .node-member-4.entered {
             transform: translateX(-50%);
         }
+
         .node-leader.entered {
             animation: floatLeader 4s ease-in-out infinite alternate;
         }
@@ -736,12 +551,17 @@
             }
         }
 
+        /* ==========================================================================
+           8. SCROLL INDICATOR
+           ========================================================================== */
         .scroll-indicator {
             text-align: center;
             margin-top: 20px;
             opacity: 0.8;
             transition: opacity 0.5s ease;
+            width: 100%;
         }
+
         .scroll-text {
             font-family: var(--font-mono);
             font-size: var(--fs-scroll);
@@ -750,11 +570,13 @@
             margin-bottom: 6px;
             font-weight: 600;
         }
+
         .scroll-arrow {
             font-size: 1.2rem;
             color: var(--accent-orange);
             animation: bounceArrow 1.8s infinite;
         }
+
         @keyframes bounceArrow {
             0%,
             20%,
@@ -772,16 +594,19 @@
         }
 
         /* ==========================================================================
-           VISION & MISSION
+           9. VISION & MISSION SECTION
            ========================================================================== */
         .vision-section {
-            padding: 80px 0 60px;
-            position: relative;
+            padding: 90px 0;
+            width: 100%;
         }
+
         .section-title-wrap {
             text-align: center;
             margin-bottom: 50px;
+            width: 100%;
         }
+
         .section-tag {
             font-family: var(--font-mono);
             color: var(--accent-orange);
@@ -790,6 +615,7 @@
             text-transform: uppercase;
             font-weight: 700;
         }
+
         .section-title {
             font-size: var(--fs-title);
             font-weight: 800;
@@ -811,36 +637,50 @@
             max-width: 900px;
             margin: 0 auto;
         }
+
         .glass-card {
             background: transparent;
+            backdrop-filter: none;
+            -webkit-backdrop-filter: none;
+            border: none;
+            border-radius: 0;
             padding: 40px;
             position: relative;
+            box-shadow: none;
             opacity: 0;
             transform: translateY(40px);
-            transition: opacity 0.8s var(--transition-smooth), transform 0.8s var(--transition-smooth);
+            transition: opacity 0.8s var(--transition-smooth),
+                transform 0.8s var(--transition-smooth);
             text-align: center;
         }
+
         .glass-card.visible {
             opacity: 1;
             transform: translateY(0);
         }
+
         .glass-card:hover {
             transform: translateY(-4px);
         }
+
         .card-icon {
             width: 50px;
             height: 50px;
+            border-radius: 0;
             background: transparent;
             display: flex;
             align-items: center;
             justify-content: center;
             margin: 0 auto 24px;
+            border: none;
         }
+
         .card-icon svg {
             width: 26px;
             height: 26px;
             fill: var(--accent-orange);
         }
+
         .card-header-title {
             font-size: var(--fs-tag);
             font-family: var(--font-mono);
@@ -850,6 +690,7 @@
             margin-bottom: 8px;
             font-weight: 700;
         }
+
         .card-body-text {
             font-size: var(--fs-card-title);
             font-weight: 700;
@@ -864,15 +705,17 @@
         }
 
         /* ==========================================================================
-           WALKIE TALKIE
+           10. WALKIE TALKIE + WORKSTATION ICON
            ========================================================================== */
         .walkie-section {
-            padding: 80px 0;
+            padding: 90px 0;
             display: flex;
             flex-direction: column;
             align-items: center;
             position: relative;
+            width: 100%;
         }
+
         .walkie-wrapper {
             position: relative;
             display: flex;
@@ -881,6 +724,7 @@
             margin: 40px auto;
             max-width: 100%;
         }
+
         .radio-waves {
             position: absolute;
             top: 40%;
@@ -891,6 +735,7 @@
             pointer-events: none;
             z-index: 1;
         }
+
         .wave-ring {
             position: absolute;
             top: 50%;
@@ -909,6 +754,7 @@
         .wave-ring:nth-child(3) {
             animation-delay: 2.6s;
         }
+
         @keyframes wavePulse {
             0% {
                 transform: translate(-50%, -50%) scale(0.2);
@@ -926,7 +772,9 @@
             width: 120px;
             height: auto;
             background: linear-gradient(165deg, #1e293b 0%, #0f172a 100%);
+            border: none;
             border-radius: 16px;
+            box-shadow: none;
             padding: 10px 12px 12px;
             display: flex;
             flex-direction: column;
@@ -935,9 +783,12 @@
             opacity: 0;
             transform: scale(0.3);
         }
+
         .walkie-device.entered {
-            animation: deviceEntrance 0.8s var(--transition-bounce) forwards, devicePulse 3s ease-in-out infinite alternate 0.8s;
+            animation: deviceEntrance 0.8s var(--transition-bounce) forwards,
+                devicePulse 3s ease-in-out infinite alternate 0.8s;
         }
+
         @keyframes deviceEntrance {
             0% {
                 opacity: 0;
@@ -952,6 +803,7 @@
                 transform: scale(1);
             }
         }
+
         @keyframes devicePulse {
             0% {
                 transform: scale(1);
@@ -979,6 +831,7 @@
             height: 38px;
             background: linear-gradient(to right, #334155, #0f172a);
             border-radius: 3px 3px 0 0;
+            border: none;
         }
         .walkie-antenna-tip {
             position: absolute;
@@ -988,7 +841,9 @@
             height: 5px;
             background: var(--accent-orange);
             border-radius: 2px;
+            box-shadow: none;
         }
+
         .walkie-knob {
             position: absolute;
             top: -11px;
@@ -997,11 +852,14 @@
             height: 12px;
             background: #334155;
             border-radius: 2px 2px 0 0;
+            border: none;
         }
+
         .walkie-screen {
             width: 100%;
             height: 42px;
             background: #0f0c08;
+            border: none;
             border-radius: 6px;
             margin-top: 8px;
             position: relative;
@@ -1012,6 +870,7 @@
             justify-content: center;
             box-shadow: inset 0 0 15px rgba(255, 123, 0, 0.3);
         }
+
         .walkie-screen::before {
             content: '';
             position: absolute;
@@ -1021,6 +880,7 @@
             pointer-events: none;
             z-index: 2;
         }
+
         .screen-text {
             font-family: var(--font-mono);
             color: #ff8c00;
@@ -1032,7 +892,9 @@
             text-shadow: 0 0 8px rgba(255, 140, 0, 0.7);
             z-index: 3;
             animation: microFlicker 2s infinite;
+            transition: all 0.3s ease;
         }
+
         .screen-status {
             font-family: var(--font-mono);
             font-size: 0.35rem;
@@ -1042,6 +904,7 @@
             letter-spacing: 0.8px;
             z-index: 3;
         }
+
         @keyframes microFlicker {
             0%,
             100% {
@@ -1069,6 +932,7 @@
             margin-top: 8px;
             gap: 3px;
         }
+
         .walkie-call-btn {
             width: 18px;
             height: 18px;
@@ -1084,12 +948,18 @@
         .walkie-call-btn:hover {
             transform: scale(1.2);
         }
+        .walkie-call-btn:focus-visible {
+            outline: 2px solid var(--accent-orange);
+            outline-offset: 2px;
+        }
+
         .walkie-call-btn svg {
             width: 8px;
             height: 8px;
             fill: #ffffff;
             pointer-events: none;
         }
+
         .call-answer {
             background: #2ecc71;
             box-shadow: 0 0 6px rgba(46, 204, 113, 0.55);
@@ -1108,6 +978,7 @@
             grid-template-rows: repeat(3, 1fr);
             gap: 2px;
         }
+
         .dpad-btn,
         .dpad-center {
             display: flex;
@@ -1116,11 +987,13 @@
             background: #334155;
             border-radius: 3px;
         }
+
         .dpad-btn svg {
             width: 6px;
             height: 6px;
             fill: var(--accent-orange);
         }
+
         .dpad-up {
             grid-column: 2;
             grid-row: 1;
@@ -1141,6 +1014,7 @@
             grid-row: 3;
             border-radius: 0 0 3px 3px;
         }
+
         .dpad-center {
             grid-column: 2;
             grid-row: 2;
@@ -1160,6 +1034,7 @@
             grid-template-columns: repeat(3, 1fr);
             gap: 3px;
         }
+
         .keypad-key {
             aspect-ratio: 1 / 1;
             background: #334155;
@@ -1183,6 +1058,7 @@
             margin-top: 10px;
             animation: blinkLight 1.5s ease-in-out infinite alternate;
         }
+
         @keyframes blinkLight {
             0% {
                 opacity: 0.3;
@@ -1197,6 +1073,7 @@
             margin-top: 30px;
             width: 100%;
         }
+
         .msg-line {
             font-family: var(--font-mono);
             font-size: var(--fs-msg);
@@ -1211,6 +1088,7 @@
             opacity: 1;
             transform: translateY(0);
         }
+
         .msg-line-highlight {
             color: var(--accent-orange);
             font-weight: 700;
@@ -1224,12 +1102,14 @@
             margin-left: auto;
             margin-right: auto;
         }
+
         .workstation-icon svg {
             width: 100%;
             height: auto;
             display: inline-block;
             max-width: 100%;
         }
+
         .workstation-label {
             font-family: var(--font-mono);
             font-size: var(--fs-tag);
@@ -1241,26 +1121,73 @@
             text-align: center;
         }
 
+        .siren-light {
+            animation: sirenBlink 0.8s infinite alternate;
+            transform-origin: center;
+            transition: all 0.3s ease;
+            will-change: opacity, fill;
+        }
+        .siren-light:hover {
+            transform: scale(1.2);
+            filter: drop-shadow(0 0 20px rgba(255, 60, 0, 0.9));
+        }
+
+        .siren-glow {
+            transition: all 0.5s ease;
+        }
+        .siren-glow:hover {
+            opacity: 1;
+            filter: drop-shadow(0 0 30px rgba(255, 60, 0, 0.5));
+        }
+
+        @keyframes sirenBlink {
+            0% {
+                opacity: 0.15;
+                fill: #ff0000;
+            }
+            25% {
+                opacity: 1;
+                fill: #ff3300;
+            }
+            50% {
+                opacity: 0.15;
+                fill: #0066ff;
+            }
+            75% {
+                opacity: 1;
+                fill: #0044cc;
+            }
+            100% {
+                opacity: 0.15;
+                fill: #ff0000;
+            }
+        }
+
         /* ==========================================================================
-           FOOTER
+           11. FOOTER — DENGAN SIREN SAIZ WALKIE-TALKIE
            ========================================================================== */
         .footer-digital {
-            margin-top: 80px;
+            margin-top: 100px;
             padding: 40px 0 35px;
             border-top: none;
             background: transparent;
             position: relative;
+            width: 100%;
         }
+
         .footer-siren {
             text-align: center;
             margin-bottom: 30px;
+            width: 100%;
         }
+
         .footer-siren-wrapper {
             display: inline-block;
             width: 200px;
             max-width: 100%;
             position: relative;
         }
+
         .footer-siren-wrapper svg {
             width: 100%;
             height: auto;
@@ -1268,9 +1195,18 @@
             animation: sirenBlink 0.8s infinite alternate;
             transition: all 0.4s ease;
         }
+
         .footer-siren-wrapper svg:hover {
             transform: scale(1.05);
             filter: drop-shadow(0 0 30px rgba(255, 60, 0, 0.8));
+        }
+
+        .footer-siren-wrapper .siren-glow {
+            transition: all 0.5s ease;
+        }
+        .footer-siren-wrapper .siren-glow:hover {
+            opacity: 1;
+            filter: drop-shadow(0 0 30px rgba(255, 60, 0, 0.5));
         }
 
         .footer-content {
@@ -1283,6 +1219,7 @@
             margin: 0 auto;
             text-align: center;
         }
+
         .footer-email {
             font-family: var(--font-mono);
             font-size: var(--fs-footer);
@@ -1306,6 +1243,7 @@
             text-decoration: underline;
             letter-spacing: 1px;
         }
+
         .footer-copyright {
             font-size: var(--fs-footer);
             color: var(--text-muted);
@@ -1324,12 +1262,14 @@
             gap: 16px;
             justify-content: center;
         }
+
         .social-icon {
             width: 40px;
             height: 40px;
             border-radius: 50%;
             background: transparent;
             border: none;
+            box-shadow: none;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -1337,6 +1277,11 @@
             text-decoration: none;
             cursor: pointer;
         }
+        .social-icon:focus-visible {
+            outline: 2px solid var(--accent-orange);
+            outline-offset: 2px;
+        }
+
         .social-icon svg {
             width: 20px;
             height: 20px;
@@ -1350,6 +1295,7 @@
             stroke-linecap: round;
             stroke-linejoin: round;
         }
+
         .social-icon:hover svg.icon-outline {
             stroke: var(--accent-orange);
             fill: none;
@@ -1357,6 +1303,7 @@
         .social-icon:hover {
             transform: translateY(-6px) scale(1.15);
             background: transparent;
+            box-shadow: none;
         }
         .social-icon:hover svg {
             fill: var(--accent-orange);
@@ -1364,7 +1311,181 @@
         }
 
         /* ==========================================================================
-           RESPONSIF
+           11B. JAMBATAN TRANSITION — ADEGAN OPERASI BOMBA
+           ========================================================================== */
+        .truck-transition {
+            position: relative;
+            width: 100%;
+            height: 170px;
+            margin: 10px 0 20px;
+            overflow: hidden;
+            z-index: 5;
+        }
+
+        .truck-transition .truck-road {
+            position: absolute;
+            left: 0;
+            bottom: 18px;
+            width: 100%;
+            height: 3px;
+            background: repeating-linear-gradient(
+                90deg,
+                var(--accent-orange) 0px,
+                var(--accent-orange) 26px,
+                transparent 26px,
+                transparent 52px
+            );
+            opacity: 0.45;
+        }
+
+        .scene-label {
+            position: absolute;
+            top: 12px;
+            left: 24px;
+            z-index: 6;
+            font-family: var(--font-mono);
+            color: var(--accent-orange);
+            font-size: var(--fs-tag);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-weight: 700;
+        }
+
+        .scene-wrap {
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 14px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .scene-wrap svg {
+            width: 100%;
+            max-width: 560px;
+            height: auto;
+            display: block;
+            filter: drop-shadow(0 8px 10px rgba(0, 0, 0, 0.16));
+        }
+
+        /* ----- api & asap ----- */
+        .flame {
+            transform-box: fill-box;
+            transform-origin: bottom center;
+            animation: flameFlicker 0.55s ease-in-out infinite;
+        }
+        .flame-d1 { animation-delay: 0.1s; }
+        .flame-d2 { animation-delay: 0.22s; }
+        .flame-d3 { animation-delay: 0.35s; }
+        .flame-d4 { animation-delay: 0.48s; }
+
+        @keyframes flameFlicker {
+            0%, 100% { transform: scale(1, 1) translateY(0); opacity: 0.95; }
+            25% { transform: scale(1.1, 0.92) translateY(-2px); opacity: 1; }
+            50% { transform: scale(0.9, 1.1) translateY(1px); opacity: 0.82; }
+            75% { transform: scale(1.06, 0.95) translateY(-1px); opacity: 1; }
+        }
+
+        .smoke-puff {
+            transform-box: fill-box;
+            transform-origin: center;
+            animation: smokeRise 2.8s ease-out infinite;
+        }
+        .smoke-d1 { animation-delay: 0s; }
+        .smoke-d2 { animation-delay: 0.9s; }
+        .smoke-d3 { animation-delay: 1.8s; }
+
+        @keyframes smokeRise {
+            0% { transform: translateY(0) scale(0.6); opacity: 0.5; }
+            100% { transform: translateY(-46px) scale(1.5); opacity: 0; }
+        }
+
+        /* ----- air dari hos ----- */
+        .water-jet {
+            stroke-dasharray: 6 6;
+            animation: waterJetFlow 0.4s linear infinite;
+        }
+        @keyframes waterJetFlow {
+            to { stroke-dashoffset: -40; }
+        }
+
+        .water-drop {
+            animation: waterDropFall 0.9s ease-in infinite;
+        }
+        .water-d1 { animation-delay: 0s; }
+        .water-d2 { animation-delay: 0.22s; }
+        .water-d3 { animation-delay: 0.44s; }
+        .water-d4 { animation-delay: 0.66s; }
+
+        @keyframes waterDropFall {
+            0% { opacity: 0; transform: translate(0, 0); }
+            15% { opacity: 1; }
+            100% { opacity: 0; transform: translate(-6px, 26px); }
+        }
+
+        /* ----- penyelamat & mangsa ----- */
+        .rescue-bob {
+            transform-box: fill-box;
+            transform-origin: center;
+            animation: rescueBob 0.7s ease-in-out infinite;
+        }
+        @keyframes rescueBob {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-3px); }
+        }
+
+        /* ----- lampu amaran hazard (kereta terlibat kemalangan) ----- */
+        .hazard-light {
+            animation: hazardBlink 0.6s steps(1) infinite;
+        }
+        @keyframes hazardBlink {
+            0%, 49% { opacity: 1; fill: #ffb300; }
+            50%, 100% { opacity: 0.15; fill: #ff7b00; }
+        }
+
+        .truck-sound-toggle {
+            position: absolute;
+            top: 10px;
+            right: 24px;
+            z-index: 6;
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            border: 1px solid var(--border-light);
+            background: rgba(255, 255, 255, 0.75);
+            color: var(--accent-orange-dark);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .truck-sound-toggle:hover {
+            background: var(--accent-orange);
+            color: #fff;
+            transform: scale(1.08);
+        }
+        .truck-sound-toggle svg {
+            width: 16px;
+            height: 16px;
+        }
+        .truck-sound-toggle[aria-pressed="true"] {
+            background: var(--accent-orange);
+            color: #fff;
+            box-shadow: 0 0 0 4px var(--accent-glow);
+        }
+        .truck-sound-toggle .icon-on {
+            display: none;
+        }
+        .truck-sound-toggle[aria-pressed="true"] .icon-on {
+            display: block;
+        }
+        .truck-sound-toggle[aria-pressed="true"] .icon-off {
+            display: none;
+        }
+
+        /* ==========================================================================
+           12. REKA BENTUK RESPONSIF
            ========================================================================== */
         @media (max-width: 1024px) {
             .team-arc-container {
@@ -1388,6 +1509,23 @@
         }
 
         @media (max-width: 768px) {
+            .truck-transition {
+                height: 130px;
+            }
+            .scene-wrap svg {
+                max-width: 380px;
+            }
+            .scene-label {
+                left: 14px;
+                top: 8px;
+            }
+            .truck-sound-toggle {
+                width: 30px;
+                height: 30px;
+                right: 12px;
+            }
+
+            /* ===== SKALA TIPOGRAFI MOBILE ===== */
             :root {
                 --fs-hero: 2rem;
                 --fs-hero-sub: 0.9rem;
@@ -1405,6 +1543,7 @@
                 --fs-footer: 0.8rem;
                 --fs-small: 0.6rem;
             }
+
             .brand-title {
                 letter-spacing: 2px;
             }
@@ -1422,8 +1561,10 @@
                 width: 22px;
                 height: 22px;
             }
+
             .greeting-container {
                 letter-spacing: 3px;
+                max-width: 100%;
                 padding: 0 10px;
             }
             .greeting-line {
@@ -1432,6 +1573,7 @@
             .greeting-word {
                 margin: 0 2px;
             }
+
             .hero-subtext {
                 padding: 0 15px;
             }
@@ -1441,6 +1583,7 @@
                 max-width: 500px;
             }
 
+            /* ===== SUSUNAN PASUKAN MOBILE: LEADER ATAS, 2 KIRI + 2 KANAN ===== */
             .team-arc-container {
                 height: auto;
                 display: grid;
@@ -1451,6 +1594,7 @@
             .connection-svg {
                 display: none;
             }
+
             .team-node {
                 position: relative !important;
                 top: auto !important;
@@ -1459,6 +1603,8 @@
                 margin: 0;
                 width: 100%;
             }
+
+            /* Leader — baris pertama, tengah atas */
             .node-leader {
                 grid-column: 1 / -1;
                 grid-row: 1;
@@ -1474,6 +1620,8 @@
                 font-size: var(--fs-small);
                 top: -22px;
             }
+
+            /* Ahli — 2 di kiri, 2 di kanan, baris kedua & ketiga */
             .node-member-1 {
                 grid-column: 1;
                 grid-row: 2;
@@ -1498,10 +1646,13 @@
                 justify-self: start;
                 align-self: center;
             }
+
             .node-member .avatar-wrapper {
                 width: 80px;
                 height: 80px;
             }
+
+            /* Matikan animasi translate untuk mobile (sudah pakai grid) */
             .node-member-1.entered,
             .node-member-2.entered,
             .node-member-3.entered,
@@ -1521,6 +1672,7 @@
                     transform: translateY(-6px);
                 }
             }
+
             .member-name {
                 font-size: var(--fs-member-name);
             }
@@ -1542,24 +1694,12 @@
             .social-links {
                 order: 3;
             }
+
             .workstation-icon {
                 max-width: 320px;
             }
             .footer-siren-wrapper {
                 width: 140px;
-            }
-            .fire-scene-wrapper {
-                min-height: 400px;
-            }
-            .truck-sound-toggle {
-                width: 28px;
-                height: 28px;
-                top: 8px;
-                right: 10px;
-            }
-            .truck-sound-toggle svg {
-                width: 14px;
-                height: 14px;
             }
         }
 
@@ -1581,6 +1721,7 @@
                 --fs-footer: 0.7rem;
                 --fs-small: 0.5rem;
             }
+
             .brand-title {
                 letter-spacing: 1px;
             }
@@ -1598,6 +1739,7 @@
                 width: 18px;
                 height: 18px;
             }
+
             .greeting-container {
                 letter-spacing: 2px;
                 padding: 0 5px;
@@ -1608,9 +1750,11 @@
             .greeting-word {
                 margin: 0 1px;
             }
+
             .hero-subtext {
                 padding: 0 10px;
             }
+
             .node-leader .avatar-wrapper {
                 width: 80px;
                 height: 80px;
@@ -1630,6 +1774,7 @@
                 top: -18px;
                 padding: 1px 6px;
             }
+
             .workstation-icon {
                 max-width: 280px;
             }
@@ -1639,10 +1784,12 @@
             .glass-cards-grid {
                 max-width: 100%;
             }
+
             .team-arc-container {
                 gap: 10px 12px;
                 padding: 12px 6px;
             }
+
             .msg-line {
                 letter-spacing: 2px;
             }
@@ -1655,22 +1802,9 @@
             .workstation-label {
                 letter-spacing: 2px;
             }
-            .fire-scene-wrapper {
-                min-height: 300px;
-            }
-            .truck-sound-toggle {
-                width: 24px;
-                height: 24px;
-                top: 6px;
-                right: 8px;
-            }
-            .truck-sound-toggle svg {
-                width: 12px;
-                height: 12px;
-            }
         }
 
-        /* ===== REDUCED MOTION ===== */
+        /* ACCESSIBILITY: REDUCED MOTION */
         @media (prefers-reduced-motion: reduce) {
             *,
             ::before,
@@ -1690,22 +1824,21 @@
                 animation: none !important;
                 fill: #ff3300 !important;
             }
+            .truck-wheel,
             .flame,
             .smoke-puff,
             .water-jet,
             .water-drop,
+            .rescue-bob,
             .hazard-light {
                 animation: none !important;
             }
             .walkie-device.entered {
                 animation: deviceEntrance 0.01ms forwards !important;
             }
-            .fire-scene-wrapper .truck-group,
-            .fire-scene-wrapper .firefighter-group {
-                transition: none !important;
-            }
         }
 
+        /* Fokus kelihatan */
         :focus-visible {
             outline: 2px solid var(--accent-orange);
             outline-offset: 2px;
@@ -1713,26 +1846,34 @@
     </style>
 </head>
 <body>
-    <!-- Canvas -->
+    <!-- Latar Belakang Zarah Canvas -->
     <canvas id="particle-canvas"></canvas>
+
+    <!-- Cursor Glow Spot Light -->
     <div class="cursor-glow" id="cursorGlow"></div>
 
     <div class="main-container">
-        <!-- HEADER -->
+        <!-- ==========================================================================
+             HEADER — DIGITAL IDENTITY
+             ========================================================================== -->
         <header class="header-digital">
             <div class="header-top">
-                <div class="logo-badge" role="img" aria-label="Logo kiri">
+                <div class="logo-badge" id="logo-left" role="img" aria-label="Logo kiri">
                     <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--accent-orange)" stroke-width="2">
                         <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
                         <polyline points="2 17 12 22 22 17"></polyline>
                         <polyline points="2 12 12 17 22 12"></polyline>
                     </svg>
                 </div>
+
                 <div class="brand-title-wrap">
                     <h1 class="brand-title" id="brandTitle">BRAVO THE FUTURE</h1>
-                    <div class="brand-subtitle" id="brandSubtitle">PROJEK DIGITALISASI BRAVO PGO JOHOR</div>
+                    <div class="brand-subtitle" id="brandSubtitle">
+                        PROJEK DIGITALISASI BRAVO PGO JOHOR
+                    </div>
                 </div>
-                <div class="logo-badge" role="img" aria-label="Logo kanan">
+
+                <div class="logo-badge" id="logo-right" role="img" aria-label="Logo kanan">
                     <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--accent-orange)" stroke-width="2">
                         <circle cx="12" cy="12" r="10"></circle>
                         <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"></path>
@@ -1742,213 +1883,117 @@
             </div>
         </header>
 
-        <!-- HERO -->
+        <!-- ==========================================================================
+             HERO — SELAMAT DATANG & SUBTEXT
+             ========================================================================== -->
         <section class="hero-section">
-            <div class="greeting-container" id="greetingContainer"></div>
+            <div class="greeting-container" id="greetingContainer" aria-label="Ucapan selamat datang"></div>
             <p class="hero-subtext" id="heroSubtext"></p>
         </section>
 
-        <!-- ============================================================
-             FIRE SCENE — SATU JENTERA, DUA LOKASI KEBAKARAN
-             ============================================================ -->
-        <div class="fire-scene-wrapper" id="fireScene">
-            <button type="button" class="truck-sound-toggle" data-truck-sound aria-pressed="false" aria-label="Hidupkan bunyi siren">
+        <!-- ==========================================================================
+             JAMBATAN TRANSITION 1 — OPERASI PEMADAMAN API RUMAH
+             ========================================================================== -->
+        <div class="truck-transition" data-truck-transition>
+            <div class="truck-road" aria-hidden="true"></div>
+            <div class="scene-label" aria-hidden="true">Operasi Pemadaman Api Rumah</div>
+            <button type="button" class="truck-sound-toggle" data-truck-sound aria-pressed="false" aria-label="Hidupkan bunyi siren operasi pemadaman api rumah">
                 <svg class="icon-off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M4 9v6h4l5 5V4L8 9H4z" fill="currentColor" stroke="none"/>
-                    <line x1="16" y1="9" x2="22" y2="15"/>
-                    <line x1="22" y1="9" x2="16" y2="15"/>
+                    <path d="M4 9v6h4l5 5V4L8 9H4z" fill="currentColor" stroke="none" />
+                    <line x1="16" y1="9" x2="22" y2="15" />
+                    <line x1="22" y1="9" x2="16" y2="15" />
                 </svg>
                 <svg class="icon-on" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M4 9v6h4l5 5V4L8 9H4z" fill="currentColor" stroke="none"/>
-                    <path d="M16 8a5 5 0 0 1 0 8"/>
-                    <path d="M18.5 5.5a9 9 0 0 1 0 13"/>
+                    <path d="M4 9v6h4l5 5V4L8 9H4z" fill="currentColor" stroke="none" />
+                    <path d="M16 8a5 5 0 0 1 0 8" />
+                    <path d="M18.5 5.5a9 9 0 0 1 0 13" />
                 </svg>
             </button>
-
-            <svg class="fire-scene-svg" viewBox="0 0 1200 700" xmlns="http://www.w3.org/2000/svg">
-                <defs>
-                    <filter id="glow">
-                        <feGaussianBlur stdDeviation="2" result="blur"/>
-                        <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
-                    </filter>
-                </defs>
-
-                <!-- ===== JALAN ===== -->
-                <!-- Jalan utama (atas) -->
-                <rect x="0" y="180" width="1200" height="18" fill="#555" rx="0"/>
-                <line class="road-line" x1="0" y1="189" x2="1200" y2="189"/>
-
-                <!-- Jalan menurun ke kanan (ke bawah) -->
-                <path d="M900 189 L1050 320 L1200 450" stroke="#555" stroke-width="18" fill="none" stroke-linecap="round"/>
-                <path d="M900 189 L1050 320 L1200 450" stroke="rgba(255,123,0,0.3)" stroke-width="2" stroke-dasharray="8 12" fill="none" stroke-linecap="round" transform="translate(0, 4)"/>
-
-                <!-- Jalan bawah (kebakaran kereta) -->
-                <rect x="200" y="460" width="600" height="18" fill="#555" rx="0"/>
-                <line class="road-line" x1="200" y1="469" x2="800" y2="469"/>
-
-                <!-- ===== RUMAH (atas) ===== -->
-                <g class="house-group">
-                    <polygon points="430,130 530,70 630,130" fill="#b23b2e"/>
-                    <rect x="448" y="130" width="164" height="50" fill="#f4ede4" stroke="#d8cab8" stroke-width="1.5"/>
-                    <rect x="515" y="155" width="30" height="25" fill="#6b4a30"/>
-                    <rect x="562" y="143" width="32" height="22" fill="#bfe3ff" stroke="#7fb8de" stroke-width="1.5"/>
-                    <rect x="464" y="143" width="32" height="22" fill="#3a2416" stroke="#8a6a40" stroke-width="1.5"/>
-
-                    <!-- API RUMAH -->
-                    <g class="house-fire-group">
-                        <path class="flame flame-d1" d="M466 168 Q461 150 476 134 Q491 150 484 168 Q479 156 476 168 Q473 156 466 168 Z" fill="#ff3b0f" filter="url(#glow)"/>
-                        <path class="flame flame-d2" d="M469 168 Q467 154 476 142 Q485 154 482 168 Z" fill="#ff7b00" filter="url(#glow)"/>
-                        <path class="flame flame-d3" d="M472 168 Q471 158 476 150 Q481 158 479 168 Z" fill="#ffce54" filter="url(#glow)"/>
-                        <!-- API BUMBUNG -->
-                        <path class="flame flame-d2" d="M518 70 Q511 50 530 34 Q549 50 542 70 Q535 56 530 70 Q525 56 518 70 Z" fill="#ff3b0f" filter="url(#glow)"/>
-                        <path class="flame flame-d3" d="M521 70 Q518 52 530 39 Q542 52 539 70 Z" fill="#ff7b00" filter="url(#glow)"/>
-                        <path class="flame flame-d4" d="M524 70 Q522 56 530 47 Q538 56 536 70 Z" fill="#ffce54" filter="url(#glow)"/>
-                        <!-- ASAP -->
-                        <circle class="smoke-puff smoke-d1" cx="530" cy="24" r="9" fill="rgba(70,70,70,0.4)"/>
-                        <circle class="smoke-puff smoke-d2" cx="522" cy="28" r="8" fill="rgba(70,70,70,0.35)"/>
-                        <circle class="smoke-puff smoke-d3" cx="538" cy="26" r="8" fill="rgba(70,70,70,0.35)"/>
-                    </g>
-                </g>
-
-                <!-- ===== KERETA (bawah) ===== -->
-                <g class="car-crash-group">
-                    <path d="M480 470 Q520 466 560 470" stroke="#555" stroke-width="3" fill="none" stroke-dasharray="4 4" opacity="0.4"/>
-                    <g transform="rotate(-5 530 500)">
-                        <path d="M450 510 L450 490 Q452 480 465 478 L490 466 Q500 462 515 462 L553 462 Q567 462 575 472 L593 490 L593 510 Z" fill="#6b7785" stroke="#4a545e" stroke-width="1.5"/>
-                        <path d="M489 474 L553 474 L575 490 L489 490 Z" fill="#a8b6bf" opacity="0.85"/>
-                        <path d="M503 476 L511 484 L505 488 L515 492" stroke="#f2f5f6" stroke-width="1.4" fill="none"/>
-                        <circle cx="485" cy="512" r="12" fill="#1c1c1c"/><circle cx="485" cy="512" r="4" fill="#c9c9c9"/>
-                        <circle cx="565" cy="512" r="12" fill="#1c1c1c"/><circle cx="565" cy="512" r="4" fill="#c9c9c9"/>
-                        <circle cx="453" cy="500" r="3" class="hazard-light" fill="#ffb300"/>
-                        <circle cx="590" cy="500" r="3" class="hazard-light" fill="#ffb300" style="animation-delay:0.3s"/>
-                    </g>
-
-                    <!-- API KERETA -->
-                    <g class="car-fire-group">
-                        <path class="flame flame-d1" d="M480 488 Q472 468 490 450 Q508 468 500 488 Q493 476 490 488 Q487 476 480 488 Z" fill="#ff3b0f" filter="url(#glow)"/>
-                        <path class="flame flame-d2" d="M484 488 Q480 472 490 458 Q500 472 496 488 Z" fill="#ff7b00" filter="url(#glow)"/>
-                        <path class="flame flame-d3" d="M487 488 Q485 476 490 466 Q495 476 493 488 Z" fill="#ffce54" filter="url(#glow)"/>
-                        <circle class="smoke-puff smoke-d1" cx="490" cy="444" r="8" fill="rgba(70,70,70,0.4)"/>
-                        <circle class="smoke-puff smoke-d2" cx="482" cy="448" r="7" fill="rgba(70,70,70,0.35)"/>
-                        <circle class="smoke-puff smoke-d3" cx="498" cy="446" r="7" fill="rgba(70,70,70,0.35)"/>
-                    </g>
-
-                    <!-- Segitiga amaran -->
-                    <polygon points="625 490 608 526 642 526" fill="none" stroke="#ff7b00" stroke-width="4" stroke-linejoin="round"/>
-                    <polygon points="625 498 614 522 636 522" fill="#fff8ee"/>
-                    <rect x="623" y="504" width="4" height="10" fill="#ff7b00"/>
-                    <circle cx="625" cy="519" r="2.5" fill="#ff7b00"/>
-                </g>
-
-                <!-- ===== JENTERA & BOMBA (BERGERAK) ===== -->
-                <!-- JENTERA atas (ke rumah) -->
-                <g class="truck-group truck-top" style="transform: translateX(0px);">
-                    <rect x="20" y="178" width="100" height="6" rx="2" fill="#c0c0c0"/>
-                    <rect x="20" y="190" width="100" height="6" rx="2" fill="#c0c0c0"/>
+            <div class="scene-wrap" aria-hidden="true">
+                <svg viewBox="0 0 480 160" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Petugas bomba memadamkan kebakaran rumah dengan jentera bomba">
+                    <!-- jentera bomba -->
+                    <rect x="18" y="26" width="120" height="5" rx="2" fill="#c0c0c0" />
+                    <rect x="18" y="37" width="120" height="5" rx="2" fill="#c0c0c0" />
                     <g stroke="#8a8a8a" stroke-width="2">
-                        <line x1="28" y1="178" x2="28" y2="196"/><line x1="40" y1="178" x2="40" y2="196"/>
-                        <line x1="52" y1="178" x2="52" y2="196"/><line x1="64" y1="178" x2="64" y2="196"/>
-                        <line x1="76" y1="178" x2="76" y2="196"/><line x1="88" y1="178" x2="88" y2="196"/>
-                        <line x1="100" y1="178" x2="100" y2="196"/><line x1="112" y1="178" x2="112" y2="196"/>
+                        <line x1="26" y1="26" x2="26" y2="42" /><line x1="38" y1="26" x2="38" y2="42" />
+                        <line x1="50" y1="26" x2="50" y2="42" /><line x1="62" y1="26" x2="62" y2="42" />
+                        <line x1="74" y1="26" x2="74" y2="42" /><line x1="86" y1="26" x2="86" y2="42" />
+                        <line x1="98" y1="26" x2="98" y2="42" /><line x1="110" y1="26" x2="110" y2="42" />
+                        <line x1="122" y1="26" x2="122" y2="42" /><line x1="134" y1="26" x2="134" y2="42" />
                     </g>
-                    <rect x="12" y="196" width="110" height="34" rx="6" fill="#d81e05"/>
-                    <rect x="12" y="214" width="110" height="6" fill="#ffffff"/>
-                    <text x="67" y="212" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="800" fill="#ffffff" letter-spacing="1">BOMBA</text>
-                    <path d="M122 230 L122 200 Q122 195 128 195 L142 195 Q150 195 154 202 L158 216 L158 230 Z" fill="#c81a04"/>
-                    <path d="M129 200 L142 200 Q145 200 147 204 L150 214 L129 214 Z" fill="#bfe3ff" stroke="#7fb8de" stroke-width="1"/>
-                    <rect x="158" y="220" width="5" height="5" rx="1" fill="#fff4c2"/>
-                    <rect x="40" y="182" width="34" height="7" rx="3" fill="#2b2b2b"/>
-                    <ellipse cx="49" cy="190" rx="18" ry="5" fill="rgba(255,60,0,0.15)" class="siren-glow"/>
-                    <ellipse cx="66" cy="190" rx="18" ry="5" fill="rgba(0,100,255,0.08)" class="siren-glow" style="animation-delay:0.4s"/>
-                    <circle cx="49" cy="187" r="4" class="siren-light"/>
-                    <circle cx="66" cy="187" r="4" class="siren-light" style="animation-delay:0.4s"/>
-                    <line x1="12" y1="196" x2="12" y2="230" stroke="#8a1200" stroke-width="1.5"/>
-                    <circle cx="34" cy="230" r="11" fill="#1c1c1c"/><circle cx="34" cy="230" r="4" fill="#c9c9c9"/>
-                    <circle cx="128" cy="230" r="11" fill="#1c1c1c"/><circle cx="128" cy="230" r="4" fill="#c9c9c9"/>
-                    <path class="hose-line" d="M116 208 Q140 214 162 228" stroke="#555" stroke-width="3" fill="none" stroke-linecap="round"/>
-                </g>
+                    <rect x="12" y="45" width="130" height="42" rx="6" fill="#d81e05" />
+                    <rect x="12" y="65" width="130" height="8" fill="#ffffff" />
+                    <text x="77" y="62" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" font-weight="800" fill="#ffffff" letter-spacing="1">BOMBA</text>
+                    <path d="M142 87 L142 52 Q142 45 149 45 L165 45 Q174 45 179 54 L186 72 L186 87 Z" fill="#c81a04" />
+                    <path d="M151 52 L165 52 Q168 52 171 57 L175 70 L151 70 Z" fill="#bfe3ff" stroke="#7fb8de" stroke-width="1" />
+                    <rect x="178" y="76" width="6" height="6" rx="1" fill="#fff4c2" />
+                    <rect x="46" y="32" width="40" height="8" rx="3" fill="#2b2b2b" />
+                    <ellipse cx="57" cy="40" rx="22" ry="6" fill="rgba(255,60,0,0.15)" class="siren-glow" />
+                    <ellipse cx="76" cy="40" rx="22" ry="6" fill="rgba(0,100,255,0.08)" class="siren-glow" style="animation-delay: 0.4s;" />
+                    <circle cx="57" cy="36" r="5" class="siren-light" />
+                    <circle cx="76" cy="36" r="5" class="siren-light" style="animation-delay: 0.4s;" />
+                    <line x1="12" y1="45" x2="12" y2="87" stroke="#8a1200" stroke-width="1.5" />
+                    <circle cx="40" cy="88" r="13" fill="#1c1c1c" /><circle cx="40" cy="88" r="5" fill="#c9c9c9" />
+                    <circle cx="150" cy="88" r="13" fill="#1c1c1c" /><circle cx="150" cy="88" r="5" fill="#c9c9c9" />
 
-                <!-- BOMBA atas -->
-                <g class="firefighter-group firefighter-top" style="transform: translateX(0px);">
-                    <circle cx="172" cy="208" r="8" fill="var(--skin-color)"/>
-                    <path d="M164 204 Q172 194 180 204 L180 207 L164 207 Z" fill="#c81a04"/>
-                    <rect x="165" y="216" width="14" height="28" rx="3" fill="#2f3b4c"/>
-                    <rect x="165" y="224" width="14" height="4" fill="#ff7b00"/>
-                    <rect x="166" y="244" width="5" height="14" fill="#3d3d3d"/>
-                    <rect x="173" y="244" width="5" height="14" fill="#3d3d3d"/>
-                    <line x1="178" y1="228" x2="194" y2="224" stroke="#2f3b4c" stroke-width="4" stroke-linecap="round"/>
-                </g>
+                    <!-- hos dari jentera ke petugas -->
+                    <path d="M138 60 Q168 70 196 88" stroke="#555" stroke-width="3.5" fill="none" stroke-linecap="round" />
 
-                <!-- PANCUTAN AIR atas -->
-                <g class="water-group water-top">
-                    <path class="water-jet" d="M194 224 Q230 210 256 228" stroke="#5ec8ff" stroke-width="3" fill="none" stroke-linecap="round"/>
-                    <path class="water-jet" d="M194 228 Q228 224 252 234" stroke="#8fdcff" stroke-width="2" fill="none" stroke-linecap="round" style="animation-delay:0.15s"/>
-                    <circle class="water-drop water-d1" cx="215" cy="216" r="2" fill="#7fd4ff"/>
-                    <circle class="water-drop water-d2" cx="228" cy="214" r="1.8" fill="#7fd4ff"/>
-                    <circle class="water-drop water-d3" cx="240" cy="220" r="2" fill="#7fd4ff"/>
-                    <circle class="water-drop water-d4" cx="248" cy="226" r="1.8" fill="#7fd4ff"/>
-                </g>
+                    <!-- petugas bomba -->
+                    <circle cx="205" cy="72" r="9" fill="var(--skin-color)" />
+                    <path d="M195 68 Q205 56 216 68 L216 71 L195 71 Z" fill="#c81a04" />
+                    <rect x="196" y="80" width="18" height="34" rx="4" fill="#2f3b4c" />
+                    <rect x="196" y="88" width="18" height="5" fill="#ff7b00" />
+                    <rect x="197" y="112" width="6" height="18" fill="#3d3d3d" />
+                    <rect x="207" y="112" width="6" height="18" fill="#3d3d3d" />
+                    <line x1="212" y1="92" x2="232" y2="88" stroke="#2f3b4c" stroke-width="5" stroke-linecap="round" />
 
-                <!-- ===== JENTERA BAWAH (akan muncul selepas turun) ===== -->
-                <!-- JENTERA bawah (ke kereta) -->
-                <g class="truck-group truck-bottom" style="transform: translateX(-400px); opacity:0; transition: transform 0.1s linear, opacity 0.3s ease;">
-                    <rect x="20" y="458" width="100" height="6" rx="2" fill="#c0c0c0"/>
-                    <rect x="20" y="470" width="100" height="6" rx="2" fill="#c0c0c0"/>
-                    <g stroke="#8a8a8a" stroke-width="2">
-                        <line x1="28" y1="458" x2="28" y2="476"/><line x1="40" y1="458" x2="40" y2="476"/>
-                        <line x1="52" y1="458" x2="52" y2="476"/><line x1="64" y1="458" x2="64" y2="476"/>
-                        <line x1="76" y1="458" x2="76" y2="476"/><line x1="88" y1="458" x2="88" y2="476"/>
-                        <line x1="100" y1="458" x2="100" y2="476"/><line x1="112" y1="458" x2="112" y2="476"/>
-                    </g>
-                    <rect x="12" y="476" width="110" height="34" rx="6" fill="#d81e05"/>
-                    <rect x="12" y="494" width="110" height="6" fill="#ffffff"/>
-                    <text x="67" y="492" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="800" fill="#ffffff" letter-spacing="1">BOMBA</text>
-                    <path d="M122 510 L122 480 Q122 475 128 475 L142 475 Q150 475 154 482 L158 496 L158 510 Z" fill="#c81a04"/>
-                    <path d="M129 480 L142 480 Q145 480 147 484 L150 494 L129 494 Z" fill="#bfe3ff" stroke="#7fb8de" stroke-width="1"/>
-                    <rect x="158" y="500" width="5" height="5" rx="1" fill="#fff4c2"/>
-                    <rect x="40" y="462" width="34" height="7" rx="3" fill="#2b2b2b"/>
-                    <ellipse cx="49" cy="470" rx="18" ry="5" fill="rgba(255,60,0,0.15)" class="siren-glow"/>
-                    <ellipse cx="66" cy="470" rx="18" ry="5" fill="rgba(0,100,255,0.08)" class="siren-glow" style="animation-delay:0.4s"/>
-                    <circle cx="49" cy="467" r="4" class="siren-light"/>
-                    <circle cx="66" cy="467" r="4" class="siren-light" style="animation-delay:0.4s"/>
-                    <line x1="12" y1="476" x2="12" y2="510" stroke="#8a1200" stroke-width="1.5"/>
-                    <circle cx="34" cy="510" r="11" fill="#1c1c1c"/><circle cx="34" cy="510" r="4" fill="#c9c9c9"/>
-                    <circle cx="128" cy="510" r="11" fill="#1c1c1c"/><circle cx="128" cy="510" r="4" fill="#c9c9c9"/>
-                    <path class="hose-line" d="M116 488 Q140 494 162 508" stroke="#555" stroke-width="3" fill="none" stroke-linecap="round"/>
-                </g>
+                    <!-- pancutan air ke rumah -->
+                    <path class="water-jet" d="M232 88 Q270 74 302 90" stroke="#5ec8ff" stroke-width="3" fill="none" stroke-linecap="round" />
+                    <path class="water-jet" d="M232 92 Q268 88 300 98" stroke="#8fdcff" stroke-width="2" fill="none" stroke-linecap="round" style="animation-delay: 0.15s;" />
+                    <circle class="water-drop water-d1" cx="255" cy="80" r="2.5" fill="#7fd4ff" />
+                    <circle class="water-drop water-d2" cx="270" cy="78" r="2" fill="#7fd4ff" />
+                    <circle class="water-drop water-d3" cx="285" cy="84" r="2.5" fill="#7fd4ff" />
+                    <circle class="water-drop water-d4" cx="295" cy="90" r="2" fill="#7fd4ff" />
 
-                <!-- BOMBA bawah -->
-                <g class="firefighter-group firefighter-bottom" style="transform: translateX(-400px); opacity:0; transition: transform 0.1s linear, opacity 0.3s ease;">
-                    <circle cx="172" cy="488" r="8" fill="var(--skin-color)"/>
-                    <path d="M164 484 Q172 474 180 484 L180 487 L164 487 Z" fill="#c81a04"/>
-                    <rect x="165" y="496" width="14" height="28" rx="3" fill="#2f3b4c"/>
-                    <rect x="165" y="504" width="14" height="4" fill="#ff7b00"/>
-                    <rect x="166" y="524" width="5" height="14" fill="#3d3d3d"/>
-                    <rect x="173" y="524" width="5" height="14" fill="#3d3d3d"/>
-                    <line x1="178" y1="508" x2="194" y2="504" stroke="#2f3b4c" stroke-width="4" stroke-linecap="round"/>
-                </g>
+                    <!-- rumah -->
+                    <polygon points="260,96 360,38 460,96" fill="#b23b2e" />
+                    <rect x="278" y="96" width="164" height="56" fill="#f4ede4" stroke="#d8cab8" stroke-width="1.5" />
+                    <rect x="345" y="122" width="30" height="30" fill="#6b4a30" />
+                    <rect x="392" y="110" width="32" height="24" fill="#bfe3ff" stroke="#7fb8de" stroke-width="1.5" />
 
-                <!-- PANCUTAN AIR bawah -->
-                <g class="water-group water-bottom" style="opacity:0;">
-                    <path class="water-jet" d="M194 504 Q230 490 256 508" stroke="#5ec8ff" stroke-width="3" fill="none" stroke-linecap="round"/>
-                    <path class="water-jet" d="M194 508 Q228 504 252 514" stroke="#8fdcff" stroke-width="2" fill="none" stroke-linecap="round" style="animation-delay:0.15s"/>
-                    <circle class="water-drop water-d1" cx="215" cy="496" r="2" fill="#7fd4ff"/>
-                    <circle class="water-drop water-d2" cx="228" cy="494" r="1.8" fill="#7fd4ff"/>
-                    <circle class="water-drop water-d3" cx="240" cy="500" r="2" fill="#7fd4ff"/>
-                    <circle class="water-drop water-d4" cx="248" cy="506" r="1.8" fill="#7fd4ff"/>
-                </g>
-            </svg>
+                    <!-- tingkap terbakar -->
+                    <rect x="294" y="110" width="32" height="24" fill="#3a2416" stroke="#8a6a40" stroke-width="1.5" />
+                    <path class="flame flame-d1" d="M296 134 Q291 116 306 100 Q321 116 314 134 Q309 122 306 134 Q303 122 296 134 Z" fill="#ff3b0f" />
+                    <path class="flame flame-d2" d="M299 134 Q297 120 306 108 Q315 120 312 134 Z" fill="#ff7b00" />
+                    <path class="flame flame-d3" d="M302 134 Q301 124 306 116 Q311 124 309 134 Z" fill="#ffce54" />
+
+                    <!-- api atas bumbung -->
+                    <path class="flame flame-d2" d="M348 38 Q341 18 360 2 Q379 18 372 38 Q365 24 360 38 Q355 24 348 38 Z" fill="#ff3b0f" />
+                    <path class="flame flame-d3" d="M351 38 Q348 20 360 7 Q372 20 369 38 Z" fill="#ff7b00" />
+                    <path class="flame flame-d4" d="M354 38 Q352 24 360 15 Q368 24 366 38 Z" fill="#ffce54" />
+
+                    <!-- asap -->
+                    <circle class="smoke-puff smoke-d1" cx="360" cy="6" r="7" fill="rgba(70,70,70,0.4)" />
+                    <circle class="smoke-puff smoke-d2" cx="352" cy="10" r="6" fill="rgba(70,70,70,0.35)" />
+                    <circle class="smoke-puff smoke-d3" cx="368" cy="8" r="6" fill="rgba(70,70,70,0.35)" />
+                </svg>
+            </div>
         </div>
 
-        <!-- ===== TEAM SECTION ===== -->
+        <!-- ==========================================================================
+             TEAM EXPERIENCE — 5 PERSONNEL ARC COMPOSITION
+             ========================================================================== -->
         <section class="team-section" id="teamSection">
             <div class="team-arc-container" id="teamArcContainer">
-                <svg class="connection-svg" id="connectionSvg"></svg>
+                <svg class="connection-svg" id="connectionSvg" role="img" aria-label="Garis sambungan pasukan"></svg>
 
-                <div class="team-node node-leader" id="nodeLeader">
+                <!-- NODE LEADER -->
+                <div class="team-node node-leader" id="nodeLeader" data-index="0">
                     <div class="leader-badge-title">Ketua Pasukan</div>
                     <div class="avatar-wrapper">
-                        <svg class="avatar-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <div class="leader-halo"></div>
+                        <svg class="avatar-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Avatar ketua">
                             <circle cx="50" cy="20" r="13" fill="var(--skin-color)" stroke="var(--skin-stroke)" stroke-width="1.2"/>
                             <circle cx="45" cy="18" r="1.8" fill="var(--skin-stroke)"/>
                             <circle cx="55" cy="18" r="1.8" fill="var(--skin-stroke)"/>
@@ -1982,9 +2027,10 @@
                     </div>
                 </div>
 
-                <div class="team-node node-member node-member-1" id="nodeMember1">
+                <!-- NODE MEMBER 1 -->
+                <div class="team-node node-member node-member-1" id="nodeMember1" data-index="1">
                     <div class="avatar-wrapper">
-                        <svg class="avatar-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <svg class="avatar-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Avatar ahli 1">
                             <circle cx="50" cy="20" r="13" fill="var(--skin-color)" stroke="var(--skin-stroke)" stroke-width="1.2"/>
                             <circle cx="45" cy="18" r="1.8" fill="var(--skin-stroke)"/>
                             <circle cx="55" cy="18" r="1.8" fill="var(--skin-stroke)"/>
@@ -2018,9 +2064,10 @@
                     </div>
                 </div>
 
-                <div class="team-node node-member node-member-2" id="nodeMember2">
+                <!-- NODE MEMBER 2 -->
+                <div class="team-node node-member node-member-2" id="nodeMember2" data-index="2">
                     <div class="avatar-wrapper">
-                        <svg class="avatar-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <svg class="avatar-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Avatar ahli 2">
                             <circle cx="50" cy="20" r="13" fill="var(--skin-color)" stroke="var(--skin-stroke)" stroke-width="1.2"/>
                             <circle cx="45" cy="18" r="1.8" fill="var(--skin-stroke)"/>
                             <circle cx="55" cy="18" r="1.8" fill="var(--skin-stroke)"/>
@@ -2054,9 +2101,10 @@
                     </div>
                 </div>
 
-                <div class="team-node node-member node-member-3" id="nodeMember3">
+                <!-- NODE MEMBER 3 -->
+                <div class="team-node node-member node-member-3" id="nodeMember3" data-index="3">
                     <div class="avatar-wrapper">
-                        <svg class="avatar-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <svg class="avatar-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Avatar ahli 3">
                             <circle cx="50" cy="20" r="13" fill="var(--skin-color)" stroke="var(--skin-stroke)" stroke-width="1.2"/>
                             <circle cx="45" cy="18" r="1.8" fill="var(--skin-stroke)"/>
                             <circle cx="55" cy="18" r="1.8" fill="var(--skin-stroke)"/>
@@ -2090,9 +2138,10 @@
                     </div>
                 </div>
 
-                <div class="team-node node-member node-member-4" id="nodeMember4">
+                <!-- NODE MEMBER 4 -->
+                <div class="team-node node-member node-member-4" id="nodeMember4" data-index="4">
                     <div class="avatar-wrapper">
-                        <svg class="avatar-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <svg class="avatar-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Avatar ahli 4">
                             <circle cx="50" cy="20" r="13" fill="var(--skin-color)" stroke="var(--skin-stroke)" stroke-width="1.2"/>
                             <circle cx="45" cy="18" r="1.8" fill="var(--skin-stroke)"/>
                             <circle cx="55" cy="18" r="1.8" fill="var(--skin-stroke)"/>
@@ -2133,56 +2182,241 @@
             </div>
         </section>
 
-        <!-- ===== VISION & MISSION ===== -->
+
+<!-- ==========================================================================
+             JAMBATAN TRANSITION 2 — PEMADAMAN KEBAKARAN KENDERAAN
+             ========================================================================== -->
+        <div class="truck-transition" data-truck-transition>
+            <div class="truck-road" aria-hidden="true"></div>
+            <div class="scene-label" aria-hidden="true">Pemadaman Kebakaran Kenderaan</div>
+            <button type="button" class="truck-sound-toggle" data-truck-sound aria-pressed="false" aria-label="Hidupkan bunyi siren operasi pemadaman kebakaran kenderaan">
+                <svg class="icon-off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M4 9v6h4l5 5V4L8 9H4z" fill="currentColor" stroke="none" />
+                    <line x1="16" y1="9" x2="22" y2="15" />
+                    <line x1="22" y1="9" x2="16" y2="15" />
+                </svg>
+                <svg class="icon-on" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M4 9v6h4l5 5V4L8 9H4z" fill="currentColor" stroke="none" />
+                    <path d="M16 8a5 5 0 0 1 0 8" />
+                    <path d="M18.5 5.5a9 9 0 0 1 0 13" />
+                </svg>
+            </button>
+            <div class="scene-wrap" aria-hidden="true">
+                <svg viewBox="0 0 480 160" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Petugas bomba memadamkan kebakaran kenderaan">
+                    <!-- jentera bomba -->
+                    <rect x="18" y="26" width="120" height="5" rx="2" fill="#c0c0c0" />
+                    <rect x="18" y="37" width="120" height="5" rx="2" fill="#c0c0c0" />
+                    <g stroke="#8a8a8a" stroke-width="2">
+                        <line x1="26" y1="26" x2="26" y2="42" /><line x1="38" y1="26" x2="38" y2="42" />
+                        <line x1="50" y1="26" x2="50" y2="42" /><line x1="62" y1="26" x2="62" y2="42" />
+                        <line x1="74" y1="26" x2="74" y2="42" /><line x1="86" y1="26" x2="86" y2="42" />
+                        <line x1="98" y1="26" x2="98" y2="42" /><line x1="110" y1="26" x2="110" y2="42" />
+                        <line x1="122" y1="26" x2="122" y2="42" /><line x1="134" y1="26" x2="134" y2="42" />
+                    </g>
+                    <rect x="12" y="45" width="130" height="42" rx="6" fill="#d81e05" />
+                    <rect x="12" y="65" width="130" height="8" fill="#ffffff" />
+                    <text x="77" y="62" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" font-weight="800" fill="#ffffff" letter-spacing="1">BOMBA</text>
+                    <path d="M142 87 L142 52 Q142 45 149 45 L165 45 Q174 45 179 54 L186 72 L186 87 Z" fill="#c81a04" />
+                    <path d="M151 52 L165 52 Q168 52 171 57 L175 70 L151 70 Z" fill="#bfe3ff" stroke="#7fb8de" stroke-width="1" />
+                    <rect x="178" y="76" width="6" height="6" rx="1" fill="#fff4c2" />
+                    <rect x="46" y="32" width="40" height="8" rx="3" fill="#2b2b2b" />
+                    <ellipse cx="57" cy="40" rx="22" ry="6" fill="rgba(255,60,0,0.15)" class="siren-glow" />
+                    <ellipse cx="76" cy="40" rx="22" ry="6" fill="rgba(0,100,255,0.08)" class="siren-glow" style="animation-delay: 0.4s;" />
+                    <circle cx="57" cy="36" r="5" class="siren-light" />
+                    <circle cx="76" cy="36" r="5" class="siren-light" style="animation-delay: 0.4s;" />
+                    <line x1="12" y1="45" x2="12" y2="87" stroke="#8a1200" stroke-width="1.5" />
+                    <circle cx="40" cy="88" r="13" fill="#1c1c1c" /><circle cx="40" cy="88" r="5" fill="#c9c9c9" />
+                    <circle cx="150" cy="88" r="13" fill="#1c1c1c" /><circle cx="150" cy="88" r="5" fill="#c9c9c9" />
+
+                    <!-- hos dari jentera ke petugas -->
+                    <path d="M138 60 Q168 70 196 88" stroke="#555" stroke-width="3.5" fill="none" stroke-linecap="round" />
+
+                    <!-- petugas bomba -->
+                    <circle cx="205" cy="72" r="9" fill="var(--skin-color)" />
+                    <path d="M195 68 Q205 56 216 68 L216 71 L195 71 Z" fill="#c81a04" />
+                    <rect x="196" y="80" width="18" height="34" rx="4" fill="#2f3b4c" />
+                    <rect x="196" y="88" width="18" height="5" fill="#ff7b00" />
+                    <rect x="197" y="112" width="6" height="18" fill="#3d3d3d" />
+                    <rect x="207" y="112" width="6" height="18" fill="#3d3d3d" />
+                    <line x1="212" y1="92" x2="232" y2="90" stroke="#2f3b4c" stroke-width="5" stroke-linecap="round" />
+
+                    <!-- pancutan air ke kenderaan -->
+                    <path class="water-jet" d="M232 90 Q250 78 270 92" stroke="#5ec8ff" stroke-width="3" fill="none" stroke-linecap="round" />
+                    <path class="water-jet" d="M232 94 Q248 92 268 102" stroke="#8fdcff" stroke-width="2" fill="none" stroke-linecap="round" style="animation-delay: 0.15s;" />
+                    <circle class="water-drop water-d1" cx="245" cy="82" r="2.5" fill="#7fd4ff" />
+                    <circle class="water-drop water-d2" cx="255" cy="80" r="2" fill="#7fd4ff" />
+                    <circle class="water-drop water-d3" cx="262" cy="88" r="2.5" fill="#7fd4ff" />
+                    <circle class="water-drop water-d4" cx="266" cy="96" r="2" fill="#7fd4ff" />
+
+                    <!-- kenderaan -->
+                    <path d="M255 128 L255 108 Q257 98 270 96 L295 84 Q305 80 320 80 L358 80 Q372 80 380 90 L398 108 L440 108 L440 128 Z" fill="#3a4a5c" stroke="#22303d" stroke-width="1.5" />
+                    <path d="M300 88 L320 88 Q328 88 333 94 L342 106 L300 106 Z" fill="#bfe3ff" stroke="#7fb8de" stroke-width="1" />
+                    <circle cx="290" cy="130" r="14" fill="#1c1c1c" /><circle cx="290" cy="130" r="5" fill="#c9c9c9" />
+                    <circle cx="410" cy="130" r="14" fill="#1c1c1c" /><circle cx="410" cy="130" r="5" fill="#c9c9c9" />
+
+                    <!-- api enjin -->
+                    <path class="flame flame-d1" d="M258 110 Q250 90 268 72 Q286 90 278 110 Q271 98 268 110 Q265 98 258 110 Z" fill="#ff3b0f" />
+                    <path class="flame flame-d2" d="M262 110 Q258 94 268 80 Q278 94 274 110 Z" fill="#ff7b00" />
+                    <path class="flame flame-d3" d="M265 110 Q263 98 268 88 Q273 98 271 110 Z" fill="#ffce54" />
+
+                    <!-- asap -->
+                    <circle class="smoke-puff smoke-d1" cx="268" cy="66" r="7" fill="rgba(70,70,70,0.4)" />
+                    <circle class="smoke-puff smoke-d2" cx="260" cy="70" r="6" fill="rgba(70,70,70,0.35)" />
+                    <circle class="smoke-puff smoke-d3" cx="276" cy="68" r="6" fill="rgba(70,70,70,0.35)" />
+                </svg>
+            </div>
+        </div>
+        <!-- ==========================================================================
+             VISION & MISSION — OUR DIRECTION
+             ========================================================================== -->
         <section class="vision-section" id="visionSection">
             <div class="section-title-wrap">
                 <div class="section-tag fade-in">STRATEGIK</div>
                 <h2 class="section-title fade-in fade-in-d1">HALUAN KAMI</h2>
                 <p class="section-title-sub fade-in fade-in-d2">Membentuk masa depan digital yang teratur, inovatif dan inklusif.</p>
             </div>
+
             <div class="glass-cards-grid">
                 <div class="glass-card" id="cardVision">
                     <div class="card-icon">
-                        <svg viewBox="0 0 24 24"><path d="M9 21c0 .55.45 1 1 1h4c.55 0 1-.45 1-1v-1H9v1zm3-19C8.14 2 5 5.14 5 9c0 2.38 1.19 4.47 3 5.74V17c0 .55.45 1 1 1h6c.55 0 1-.45 1-1v-2.26c1.81-1.27 3-3.36 3-5.74 0-3.86-3.14-7-7-7zm2.85 11.1l-.85.6V16h-4v-3.3l-.85-.6A4.996 4.996 0 0 1 7 9c0-2.76 2.24-5 5-5s5 2.24 5 5c0 1.63-.8 3.16-2.15 4.1z"/></svg>
+                        <svg viewBox="0 0 24 24" role="img" aria-label="Ikon visi">
+                            <path d="M9 21c0 .55.45 1 1 1h4c.55 0 1-.45 1-1v-1H9v1zm3-19C8.14 2 5 5.14 5 9c0 2.38 1.19 4.47 3 5.74V17c0 .55.45 1 1 1h6c.55 0 1-.45 1-1v-2.26c1.81-1.27 3-3.36 3-5.74 0-3.86-3.14-7-7-7zm2.85 11.1l-.85.6V16h-4v-3.3l-.85-.6A4.996 4.996 0 0 1 7 9c0-2.76 2.24-5 5-5s5 2.24 5 5c0 1.63-.8 3.16-2.15 4.1z"/>
+                        </svg>
                     </div>
                     <div class="card-header-title">VISI</div>
-                    <div class="card-body-text fade-in fade-in-d2" id="visionText">Inovasi Selaras Generasi</div>
+                    <div class="card-body-text fade-in fade-in-d2" id="visionText">
+                        Inovasi Selaras Generasi
+                    </div>
                     <div class="card-body-desc">Menjadi peneraju transformasi digital yang berteraskan kreativiti dan kebersamaan.</div>
                 </div>
+
                 <div class="glass-card" id="cardMission">
                     <div class="card-icon">
-                        <svg viewBox="0 0 24 24"><path d="M12 2C6.49 2 2 6.49 2 12s4.49 10 10 10 10-4.49 10-10S17.51 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm3-8c0 1.66-1.34 3-3 3s-3-1.34-3-3 1.34-3 3-3 3 1.34 3 3z"/></svg>
+                        <svg viewBox="0 0 24 24" role="img" aria-label="Ikon misi">
+                            <path d="M12 2C6.49 2 2 6.49 2 12s4.49 10 10 10 10-4.49 10-10S17.51 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm3-8c0 1.66-1.34 3-3 3s-3-1.34-3-3 1.34-3 3-3 3 1.34 3 3z"/>
+                        </svg>
                     </div>
                     <div class="card-header-title">MISI</div>
-                    <div class="card-body-text fade-in fade-in-d3" id="missionText">Merealisasikan Gaya Kerja Sistematik &amp; Moden</div>
+                    <div class="card-body-text fade-in fade-in-d3" id="missionText">
+                        Merealisasikan Gaya Kerja Sistematik &amp; Moden
+                    </div>
                     <div class="card-body-desc">Menerapkan sistem digital yang memudahkan komunikasi, pengurusan data dan kolaborasi pasukan.</div>
                 </div>
             </div>
         </section>
 
-        <!-- ===== WALKIE TALKIE ===== -->
+<!-- ==========================================================================
+             JAMBATAN TRANSITION 3 — PENYELAMAT MANGSA KEMALANGAN JALAN RAYA
+             ========================================================================== -->
+        <div class="truck-transition" data-truck-transition>
+            <div class="truck-road" aria-hidden="true"></div>
+            <div class="scene-label" aria-hidden="true">Penyelamat Mangsa Kemalangan Jalan Raya</div>
+            <button type="button" class="truck-sound-toggle" data-truck-sound aria-pressed="false" aria-label="Hidupkan bunyi siren operasi menyelamat mangsa kemalangan">
+                <svg class="icon-off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M4 9v6h4l5 5V4L8 9H4z" fill="currentColor" stroke="none" />
+                    <line x1="16" y1="9" x2="22" y2="15" />
+                    <line x1="22" y1="9" x2="16" y2="15" />
+                </svg>
+                <svg class="icon-on" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M4 9v6h4l5 5V4L8 9H4z" fill="currentColor" stroke="none" />
+                    <path d="M16 8a5 5 0 0 1 0 8" />
+                    <path d="M18.5 5.5a9 9 0 0 1 0 13" />
+                </svg>
+            </button>
+            <div class="scene-wrap" aria-hidden="true">
+                <svg viewBox="0 0 480 160" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Pasukan menyelamat mengangkat mangsa kemalangan jalan raya ke ambulans">
+                    <!-- tanda skid / kesan brek -->
+                    <path d="M8 144 Q40 140 74 144" stroke="#555" stroke-width="3" fill="none" stroke-dasharray="4 4" opacity="0.4" />
+
+                    <!-- kenderaan terlibat kemalangan (condong) -->
+                    <g transform="rotate(-5 95 118)">
+                        <path d="M25 128 L25 108 Q27 98 40 96 L65 84 Q75 80 90 80 L128 80 Q142 80 150 90 L168 108 L168 128 Z" fill="#6b7785" stroke="#4a545e" stroke-width="1.5" />
+                        <path d="M64 92 L128 92 L150 108 L64 108 Z" fill="#a8b6bf" opacity="0.85" />
+                        <path d="M78 94 L86 102 L80 106 L90 110" stroke="#f2f5f6" stroke-width="1.4" fill="none" />
+                        <circle cx="60" cy="130" r="13" fill="#1c1c1c" /><circle cx="60" cy="130" r="5" fill="#c9c9c9" />
+                        <circle cx="140" cy="130" r="13" fill="#1c1c1c" /><circle cx="140" cy="130" r="5" fill="#c9c9c9" />
+                        <circle cx="28" cy="118" r="3" class="hazard-light" fill="#ffb300" />
+                        <circle cx="165" cy="118" r="3" class="hazard-light" fill="#ffb300" style="animation-delay: 0.3s;" />
+                    </g>
+
+                    <!-- segitiga amaran -->
+                    <polygon points="195,112 178,148 212,148" fill="none" stroke="#ff7b00" stroke-width="4" stroke-linejoin="round" />
+                    <polygon points="195,120 184,144 206,144" fill="#fff8ee" />
+                    <rect x="193" y="126" width="4" height="12" fill="#ff7b00" />
+                    <circle cx="195" cy="141" r="2.4" fill="#ff7b00" />
+
+                    <!-- pasukan penyelamat mengangkat mangsa -->
+                    <g class="rescue-bob">
+                        <circle cx="222" cy="96" r="9" fill="var(--skin-color)" />
+                        <path d="M213 93 Q222 82 232 93 L232 96 L213 96 Z" fill="#ff7b00" />
+                        <rect x="213" y="104" width="18" height="30" rx="4" fill="#e8edf0" />
+                        <rect x="213" y="112" width="18" height="5" fill="#ff7b00" />
+                        <rect x="214" y="134" width="6" height="16" fill="#3d3d3d" />
+                        <rect x="224" y="134" width="6" height="16" fill="#3d3d3d" />
+
+                        <rect x="230" y="112" width="90" height="9" rx="3" fill="#cfd6dc" stroke="#9aa5ad" stroke-width="1" />
+                        <line x1="235" y1="121" x2="235" y2="130" stroke="#9aa5ad" stroke-width="2" />
+                        <line x1="315" y1="121" x2="315" y2="130" stroke="#9aa5ad" stroke-width="2" />
+
+                        <ellipse cx="275" cy="110" rx="34" ry="8" fill="var(--accent-orange-light)" />
+                        <circle cx="245" cy="108" r="7" fill="var(--skin-color)" />
+
+                        <circle cx="330" cy="96" r="9" fill="var(--skin-color)" />
+                        <path d="M321 93 Q330 82 340 93 L340 96 L321 96 Z" fill="#ff7b00" />
+                        <rect x="321" y="104" width="18" height="30" rx="4" fill="#e8edf0" />
+                        <rect x="321" y="112" width="18" height="5" fill="#ff7b00" />
+                        <rect x="322" y="134" width="6" height="16" fill="#3d3d3d" />
+                        <rect x="332" y="134" width="6" height="16" fill="#3d3d3d" />
+                    </g>
+
+                    <!-- ambulans / kenderaan penyelamat -->
+                    <rect x="326" y="90" width="104" height="44" rx="6" fill="#ffffff" stroke="#c9c9c9" stroke-width="1.5" />
+                    <rect x="326" y="108" width="104" height="8" fill="#d81e05" />
+                    <rect x="372" y="96" width="8" height="22" fill="var(--accent-orange)" />
+                    <rect x="364" y="104" width="24" height="8" fill="var(--accent-orange)" />
+                    <path d="M430 134 L430 100 Q430 92 437 92 L450 92 Q459 92 464 100 L470 116 L470 134 Z" fill="#e0e0e0" stroke="#b5b5b5" stroke-width="1" />
+                    <path d="M439 100 L450 100 Q453 100 456 104 L460 114 L439 114 Z" fill="#bfe3ff" stroke="#7fb8de" stroke-width="1" />
+                    <rect x="360" y="80" width="40" height="8" rx="3" fill="#2b2b2b" />
+                    <ellipse cx="371" cy="88" rx="22" ry="6" fill="rgba(255,60,0,0.15)" class="siren-glow" />
+                    <ellipse cx="390" cy="88" rx="22" ry="6" fill="rgba(0,100,255,0.08)" class="siren-glow" style="animation-delay: 0.4s;" />
+                    <circle cx="371" cy="84" r="5" class="siren-light" />
+                    <circle cx="390" cy="84" r="5" class="siren-light" style="animation-delay: 0.4s;" />
+                    <circle cx="350" cy="134" r="13" fill="#1c1c1c" /><circle cx="350" cy="134" r="5" fill="#c9c9c9" />
+                    <circle cx="445" cy="134" r="13" fill="#1c1c1c" /><circle cx="445" cy="134" r="5" fill="#c9c9c9" />
+                </svg>
+            </div>
+        </div>
+        <!-- ==========================================================================
+             WALKIE TALKIE + WORKSTATION ICON
+             ========================================================================== -->
         <section class="walkie-section" id="walkieSection">
             <div class="section-title-wrap">
                 <div class="section-tag fade-in">KOMUNIKASI DIGITAL</div>
                 <h2 class="section-title fade-in fade-in-d1">RANGKA KERJA PASUKAN</h2>
             </div>
+
             <div class="walkie-wrapper">
                 <div class="radio-waves">
                     <div class="wave-ring"></div>
                     <div class="wave-ring"></div>
                     <div class="wave-ring"></div>
                 </div>
-                <div class="walkie-device">
-                    <div class="walkie-antenna"><div class="walkie-antenna-tip"></div></div>
+
+                <div class="walkie-device" role="img" aria-label="Walkie-talkie digital">
+                    <div class="walkie-antenna">
+                        <div class="walkie-antenna-tip"></div>
+                    </div>
                     <div class="walkie-knob"></div>
                     <div class="walkie-screen walkie-part">
                         <div class="screen-text" id="walkieScreenText">BRAVO<br />THE FUTURE</div>
                         <div class="screen-status" id="walkieStatus">ONLINE // 100%</div>
                     </div>
+
                     <div class="walkie-call-row walkie-part">
                         <button class="walkie-call-btn call-answer" id="callAnswerBtn" aria-label="Jawab panggilan">
                             <svg viewBox="0 0 24 24"><path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.6.1.4 0 .8-.2 1L6.6 10.8z"/></svg>
                         </button>
+
                         <div class="walkie-dpad">
                             <div class="dpad-btn dpad-up"><svg viewBox="0 0 24 24"><path d="M12 6l7 10H5z"/></svg></div>
                             <div class="dpad-btn dpad-left"><svg viewBox="0 0 24 24"><path d="M15 5L5 12l10 7z"/></svg></div>
@@ -2190,36 +2424,61 @@
                             <div class="dpad-btn dpad-right"><svg viewBox="0 0 24 24"><path d="M9 5l10 7-10 7z"/></svg></div>
                             <div class="dpad-btn dpad-down"><svg viewBox="0 0 24 24"><path d="M12 18L5 8h14z"/></svg></div>
                         </div>
+
                         <button class="walkie-call-btn call-end" id="callEndBtn" aria-label="Tamatkan panggilan">
                             <svg viewBox="0 0 24 24"><path d="M12 9c-2.1 0-4.1.4-6 1.1v3.3c0 .5-.3.9-.7 1.1-1 .5-1.9 1.1-2.7 1.9-.4.4-1 .4-1.4 0L.3 15.5c-.4-.4-.4-1 0-1.4C3.7 10.6 7.7 9 12 9s8.3 1.6 11.7 5.1c.4.4.4 1 0 1.4l-.9 1.9c-.4.4-1 .4-1.4 0-.8-.8-1.7-1.4-2.7-1.9-.4-.2-.7-.6-.7-1.1v-3.3C16.1 9.4 14.1 9 12 9z"/></svg>
                         </button>
                     </div>
+
                     <div class="walkie-keypad walkie-part">
-                        <div class="keypad-key">1</div><div class="keypad-key">2</div><div class="keypad-key">3</div>
-                        <div class="keypad-key">4</div><div class="keypad-key">5</div><div class="keypad-key">6</div>
-                        <div class="keypad-key">7</div><div class="keypad-key">8</div><div class="keypad-key">9</div>
-                        <div class="keypad-key">*</div><div class="keypad-key">0</div><div class="keypad-key">#</div>
+                        <div class="keypad-key">1</div>
+                        <div class="keypad-key">2</div>
+                        <div class="keypad-key">3</div>
+                        <div class="keypad-key">4</div>
+                        <div class="keypad-key">5</div>
+                        <div class="keypad-key">6</div>
+                        <div class="keypad-key">7</div>
+                        <div class="keypad-key">8</div>
+                        <div class="keypad-key">9</div>
+                        <div class="keypad-key">*</div>
+                        <div class="keypad-key">0</div>
+                        <div class="keypad-key">#</div>
                     </div>
+
                     <div class="walkie-light walkie-part"></div>
                 </div>
             </div>
+
             <div class="digital-message" id="digitalMessage">
-                <div class="msg-line">MENGHUBUNGKAN <span class="msg-line-highlight">MANUSIA</span>.</div>
-                <div class="msg-line">MENGHUBUNGKAN <span class="msg-line-highlight">IDEA</span>.</div>
-                <div class="msg-line">MEMBINA <span class="msg-line-highlight">MASA DEPAN</span>.</div>
+                <div class="msg-line">
+                    MENGHUBUNGKAN <span class="msg-line-highlight">MANUSIA</span>.
+                </div>
+                <div class="msg-line">
+                    MENGHUBUNGKAN <span class="msg-line-highlight">IDEA</span>.
+                </div>
+                <div class="msg-line">
+                    MEMBINA <span class="msg-line-highlight">MASA DEPAN</span>.
+                </div>
             </div>
+
+            <!-- WORKSTATION ICON -->
             <div class="workstation-icon">
-                <svg viewBox="0 0 500 480" xmlns="http://www.w3.org/2000/svg">
+                <svg viewBox="0 0 500 480" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Stesen kerja digital">
                     <g transform="skewY(-10deg)">
+                        <!-- Meja -->
                         <rect x="20" y="320" width="420" height="35" fill="#8B5A2B" stroke="#5C3A1E" stroke-width="3" rx="4"/>
                         <rect x="40" y="355" width="20" height="70" fill="#6B4226" rx="2"/>
                         <rect x="400" y="355" width="20" height="70" fill="#6B4226" rx="2"/>
+
+                        <!-- Siren di atas meja -->
                         <rect x="60" y="300" width="40" height="20" fill="#333" rx="3"/>
                         <rect x="68" y="260" width="24" height="42" fill="#222" rx="4"/>
-                        <circle cx="74" cy="268" r="8" class="siren-light"/>
-                        <circle cx="86" cy="268" r="8" class="siren-light" style="animation-delay:0.4s"/>
-                        <ellipse cx="80" cy="300" rx="35" ry="8" fill="rgba(255,60,0,0.15)" class="siren-glow"/>
-                        <ellipse cx="80" cy="300" rx="45" ry="10" fill="rgba(0,100,255,0.08)" class="siren-glow" style="animation-delay:0.4s"/>
+                        <circle cx="74" cy="268" r="8" class="siren-light" />
+                        <circle cx="86" cy="268" r="8" class="siren-light" style="animation-delay: 0.4s;" />
+                        <ellipse cx="80" cy="300" rx="35" ry="8" fill="rgba(255, 60, 0, 0.15)" class="siren-glow" />
+                        <ellipse cx="80" cy="300" rx="45" ry="10" fill="rgba(0, 100, 255, 0.08)" class="siren-glow" style="animation-delay: 0.4s;" />
+
+                        <!-- Komputer -->
                         <rect x="155" y="280" width="150" height="40" fill="#555" rx="4"/>
                         <rect x="165" y="150" width="130" height="130" fill="#333" rx="6"/>
                         <rect x="171" y="156" width="118" height="118" fill="#1a1a2e" rx="4"/>
@@ -2231,9 +2490,11 @@
                         <line x1="183" y1="226" x2="245" y2="226" stroke="#00ffcc" stroke-width="2.5" opacity="0.2"/>
                         <line x1="183" y1="238" x2="220" y2="238" stroke="#00ffcc" stroke-width="2.5" opacity="0.15"/>
                         <line x1="183" y1="250" x2="235" y2="250" stroke="#00ffcc" stroke-width="2.5" opacity="0.1"/>
+
                         <rect x="145" y="325" width="170" height="25" fill="#444" rx="4"/>
                         <rect x="153" y="329" width="154" height="7" fill="#666" rx="2"/>
                         <rect x="153" y="339" width="154" height="7" fill="#666" rx="2"/>
+
                         <ellipse cx="340" cy="330" rx="22" ry="15" fill="#555" stroke="#444" stroke-width="2"/>
                         <path d="M340,315 L340,330" stroke="#444" stroke-width="2.5"/>
                     </g>
@@ -2243,38 +2504,70 @@
         </section>
     </div>
 
-    <!-- FOOTER -->
+    <!-- ==========================================================================
+       FOOTER — SIREN + EMAIL · HAK CIPTA · SOSMED
+       ========================================================================== -->
     <footer class="footer-digital">
         <div class="main-container">
+            <!-- SIREN FOOTER -->
             <div class="footer-siren">
                 <div class="footer-siren-wrapper">
-                    <svg viewBox="0 0 200 180" xmlns="http://www.w3.org/2000/svg">
+                    <svg viewBox="0 0 200 180" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Lampu siren footer">
                         <rect x="30" y="120" width="140" height="40" fill="#333" rx="8"/>
                         <rect x="50" y="40" width="100" height="85" fill="#222" rx="12"/>
                         <ellipse cx="100" cy="45" rx="50" ry="15" fill="#1a1a1a"/>
-                        <circle cx="80" cy="75" r="20" class="siren-light"/>
-                        <circle cx="120" cy="75" r="20" class="siren-light" style="animation-delay:0.4s"/>
-                        <ellipse cx="100" cy="100" rx="60" ry="12" fill="rgba(255,60,0,0.15)" class="siren-glow"/>
-                        <ellipse cx="100" cy="100" rx="70" ry="15" fill="rgba(0,100,255,0.08)" class="siren-glow" style="animation-delay:0.4s"/>
+                        <circle cx="80" cy="75" r="20" fill="#ff0000" class="siren-light" />
+                        <circle cx="120" cy="75" r="20" fill="#ff0000" class="siren-light" style="animation-delay: 0.4s;" />
+                        <ellipse cx="100" cy="100" rx="60" ry="12" fill="rgba(255, 60, 0, 0.15)" class="siren-glow" />
+                        <ellipse cx="100" cy="100" rx="70" ry="15" fill="rgba(0, 100, 255, 0.08)" class="siren-glow" style="animation-delay: 0.4s;" />
                         <rect x="65" y="55" width="70" height="4" fill="#444" rx="2"/>
                         <rect x="65" y="65" width="70" height="4" fill="#444" rx="2"/>
                         <text x="100" y="110" text-anchor="middle" font-family="monospace" font-size="8" fill="#666" font-weight="bold">SIREN</text>
                     </svg>
                 </div>
             </div>
+
             <div class="footer-content">
-                <div class="footer-email fade-in">✉ <a href="mailto:hello@digitalisasibravopgo.com">hello@digitalisasibravopgo.com</a></div>
-                <div class="footer-copyright fade-in fade-in-d1">© <span id="currentYear"></span> BRAVO THE FUTURE — ALL RIGHTS RESERVED</div>
+                <div class="footer-email fade-in" id="footerEmail">
+                    ✉ <a href="mailto:hello@digitalisasibravopgo.com">hello@digitalisasibravopgo.com</a>
+                </div>
+
+                <div class="footer-copyright fade-in fade-in-d1" id="footerCopyright">
+                    © <span id="currentYear"></span> BRAVO THE FUTURE — ALL RIGHTS RESERVED
+                </div>
+
                 <div class="social-links">
-                    <a href="#" class="social-icon"><svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
-                    <a href="#" class="social-icon"><svg class="icon-outline" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
-                    <a href="#" class="social-icon"><svg viewBox="0 0 24 24"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"/><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"/></svg></a>
-                    <a href="#" class="social-icon"><svg viewBox="0 0 24 24"><circle cx="9" cy="17.3" r="3.3"/><path d="M11.3 2h2.4v15.3a3.3 3.3 0 0 1-.02.4h-2.4a3.3 3.3 0 0 0 .02-.4z"/><path d="M13.7 2c.35 3.05 2.45 5.35 5.3 5.75v2.55c-1.95-.15-3.75-.85-5.3-2V2z"/></svg></a>
+                    <a href="#" class="social-icon" aria-label="Facebook" role="button">
+                        <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+                    </a>
+                    <a href="#" class="social-icon" aria-label="Instagram" role="button">
+                        <svg class="icon-outline" viewBox="0 0 24 24">
+                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+                        </svg>
+                    </a>
+                    <a href="#" class="social-icon" aria-label="YouTube" role="button">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"/>
+                            <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"/>
+                        </svg>
+                    </a>
+                    <a href="#" class="social-icon" aria-label="TikTok" role="button">
+                        <svg viewBox="0 0 24 24">
+                            <circle cx="9" cy="17.3" r="3.3"/>
+                            <path d="M11.3 2h2.4v15.3a3.3 3.3 0 0 1-.02.4h-2.4a3.3 3.3 0 0 0 .02-.4z"/>
+                            <path d="M13.7 2c.35 3.05 2.45 5.35 5.3 5.75v2.55c-1.95-.15-3.75-.85-5.3-2V2z"/>
+                        </svg>
+                    </a>
                 </div>
             </div>
         </div>
     </footer>
 
+    <!-- ==========================================================================
+       JAVASCRIPT
+       ========================================================================== -->
     <script>
         const PROJECT_CONFIG = {
             PROJECT_NAME: 'BRAVO THE FUTURE',
@@ -2283,6 +2576,12 @@
             SUBTEXT: 'Membina cara kerja yang lebih sistematik, pantas dan moden untuk pasukan Bravo PGO Johor.',
             VISION: 'Inovasi Selaras Generasi',
             MISSION: 'Merealisasikan Gaya Kerja Sistematik & Moden',
+            TAGLINE: [
+                'MENGHUBUNGKAN MANUSIA.',
+                'MENGHUBUNGKAN IDEA.',
+                'MEMBINA MASA DEPAN.',
+            ],
+            FOOTER: '© 2035 BRAVO THE FUTURE — ALL RIGHTS RESERVED',
             TEAM_MEMBERS: [
                 { name: 'Mohd Sudin', role: 'Ketua Pasukan / Lead Architect' },
                 { name: 'Ahmad Abdul', role: 'Pembangunan Digital' },
@@ -2292,128 +2591,13 @@
             ],
         };
 
-        /* ============================================================
-           SCROLL-TRIGGERED FIRE SCENE
-           ============================================================ */
-        function initFireScene() {
-            const scene = document.getElementById('fireScene');
-
-            // Elements
-            const truckTop = scene.querySelector('.truck-top');
-            const firefighterTop = scene.querySelector('.firefighter-top');
-            const waterTop = scene.querySelector('.water-top');
-            const houseFire = scene.querySelector('.house-fire-group');
-
-            const truckBottom = scene.querySelector('.truck-bottom');
-            const firefighterBottom = scene.querySelector('.firefighter-bottom');
-            const waterBottom = scene.querySelector('.water-bottom');
-            const carFire = scene.querySelector('.car-fire-group');
-            const carCrash = scene.querySelector('.car-crash-group');
-
-            let scene1Done = false;
-            let scene2Started = false;
-
-            // Observer untuk scene
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting && !scene1Done) {
-                        startScene1();
-                        observer.unobserve(scene);
-                    }
-                });
-            }, { threshold: 0.3 });
-
-            observer.observe(scene);
-
-            function startScene1() {
-                // Animate truck from left to house
-                let progress = 0;
-                const duration = 2000;
-                const startTime = performance.now();
-
-                function animateTruck1(time) {
-                    const elapsed = time - startTime;
-                    progress = Math.min(elapsed / duration, 1);
-                    const ease = progress < 0.5 ?
-                        2 * progress * progress :
-                        1 - Math.pow(-2 * progress + 2, 2) / 2;
-                    const targetX = ease * 390;
-
-                    truckTop.style.transform = `translateX(${targetX}px)`;
-                    firefighterTop.style.transform = `translateX(${targetX}px)`;
-
-                    if (progress < 1) {
-                        requestAnimationFrame(animateTruck1);
-                    } else {
-                        // Truck arrived, water active
-                        scene.classList.add('active');
-
-                        // After 3s, fire goes out
-                        setTimeout(() => {
-                            scene.classList.add('house-done');
-                            scene1Done = true;
-                            // Trigger scene 2 (car)
-                            startScene2();
-                        }, 3000);
-                    }
-                }
-                requestAnimationFrame(animateTruck1);
-            }
-
-            function startScene2() {
-                if (scene2Started) return;
-                scene2Started = true;
-
-                // Show car crash
-                scene.classList.add('car-active');
-
-                // Animate truck from left to car (bawah)
-                // Start from left, move to car position
-                let progress = 0;
-                const duration = 2200;
-                const startTime = performance.now();
-
-                // Make bottom truck visible
-                truckBottom.style.opacity = '1';
-                firefighterBottom.style.opacity = '1';
-
-                function animateTruck2(time) {
-                    const elapsed = time - startTime;
-                    progress = Math.min(elapsed / duration, 1);
-                    const ease = progress < 0.5 ?
-                        2 * progress * progress :
-                        1 - Math.pow(-2 * progress + 2, 2) / 2;
-                    // From -400 to ~220 (center of car)
-                    const targetX = -400 + ease * 620;
-
-                    truckBottom.style.transform = `translateX(${targetX}px)`;
-                    firefighterBottom.style.transform = `translateX(${targetX}px)`;
-
-                    if (progress < 1) {
-                        requestAnimationFrame(animateTruck2);
-                    } else {
-                        // Truck arrived, water active
-                        scene.classList.add('active');
-
-                        // After 3s, car fire goes out
-                        setTimeout(() => {
-                            scene.classList.add('car-done');
-                        }, 3000);
-                    }
-                }
-                requestAnimationFrame(animateTruck2);
-            }
-        }
-
-        /* ============================================================
-           KANDUNGAN
-           ============================================================ */
         function initContent() {
             document.getElementById('brandTitle').textContent = PROJECT_CONFIG.PROJECT_NAME;
             document.getElementById('brandSubtitle').textContent = PROJECT_CONFIG.PROJECT_SUBTITLE;
             document.getElementById('heroSubtext').textContent = PROJECT_CONFIG.SUBTEXT;
             document.getElementById('visionText').textContent = PROJECT_CONFIG.VISION;
             document.getElementById('missionText').textContent = PROJECT_CONFIG.MISSION;
+
             document.getElementById('currentYear').textContent = new Date().getFullYear();
 
             const nodes = [
@@ -2423,6 +2607,7 @@
                 document.getElementById('nodeMember3'),
                 document.getElementById('nodeMember4'),
             ];
+
             nodes.forEach((node, i) => {
                 if (node && PROJECT_CONFIG.TEAM_MEMBERS[i]) {
                     const nameEl = node.querySelector('.member-name');
@@ -2437,20 +2622,28 @@
             const container = document.getElementById('greetingContainer');
             const text = PROJECT_CONFIG.GREETING;
             container.innerHTML = '';
+
             const words = text.split(' ');
+
             words.forEach((word, wordIndex) => {
                 const wordDiv = document.createElement('div');
                 wordDiv.className = 'greeting-line';
+
                 const wordSpan = document.createElement('span');
                 wordSpan.className = 'greeting-word';
-                word.split('').forEach((char) => {
+
+                word.split('').forEach((char, charIndex) => {
                     const span = document.createElement('span');
                     span.className = 'char-span';
                     span.textContent = char;
+                    span.dataset.wordIndex = wordIndex;
+                    span.dataset.charIndex = charIndex;
                     wordSpan.appendChild(span);
                 });
+
                 wordDiv.appendChild(wordSpan);
                 container.appendChild(wordDiv);
+
                 if (wordIndex < words.length - 1) {
                     const space = document.createElement('span');
                     space.className = 'char-span';
@@ -2460,10 +2653,14 @@
                     wordDiv.appendChild(space);
                 }
             });
+
             const allChars = container.querySelectorAll('.char-span');
             allChars.forEach((span, index) => {
-                setTimeout(() => span.classList.add('visible'), 1200 + index * 70);
+                setTimeout(() => {
+                    span.classList.add('visible');
+                }, 1200 + index * 70);
             });
+
             setTimeout(() => {
                 document.getElementById('heroSubtext').classList.add('visible');
             }, 1200 + allChars.length * 70 + 300);
@@ -2476,8 +2673,10 @@
                 if (svg) svg.innerHTML = '';
                 return;
             }
+
             svg.innerHTML = '';
             const containerRect = container.getBoundingClientRect();
+
             const leader = document.getElementById('nodeLeader');
             const members = [
                 document.getElementById('nodeMember1'),
@@ -2485,6 +2684,7 @@
                 document.getElementById('nodeMember3'),
                 document.getElementById('nodeMember4'),
             ];
+
             const getCenter = (el) => {
                 if (!el) return { x: 0, y: 0 };
                 const rect = el.getBoundingClientRect();
@@ -2493,7 +2693,9 @@
                     y: rect.top + rect.height / 2 - containerRect.top,
                 };
             };
+
             const leaderCenter = getCenter(leader);
+
             members.forEach((member) => {
                 if (!member) return;
                 const memberCenter = getCenter(member);
@@ -2509,10 +2711,14 @@
 
         function initScrollReveals() {
             const observerOptions = { threshold: 0.25 };
+
             const teamObserver = new IntersectionObserver((entries) => {
                 entries.forEach((entry) => {
                     if (entry.isIntersecting) {
-                        setTimeout(() => document.getElementById('nodeLeader').classList.add('entered'), 200);
+                        setTimeout(() => {
+                            document.getElementById('nodeLeader').classList.add('entered');
+                        }, 200);
+
                         const leftMembers = [
                             document.getElementById('nodeMember1'),
                             document.getElementById('nodeMember2'),
@@ -2521,31 +2727,49 @@
                             document.getElementById('nodeMember3'),
                             document.getElementById('nodeMember4'),
                         ];
+
                         const enterDelay = 600;
-                        leftMembers.forEach(el => { if (el) setTimeout(() => el.classList.add('entered'), enterDelay); });
-                        rightMembers.forEach(el => { if (el) setTimeout(() => el.classList.add('entered'), enterDelay); });
+                        leftMembers.forEach(el => {
+                            if (el) setTimeout(() => el.classList.add('entered'), enterDelay);
+                        });
+                        rightMembers.forEach(el => {
+                            if (el) setTimeout(() => el.classList.add('entered'), enterDelay);
+                        });
+
                         setTimeout(drawTeamConnections, 1400);
                         teamObserver.unobserve(entry.target);
                     }
                 });
             }, observerOptions);
+
             const teamSec = document.getElementById('teamSection');
             if (teamSec) teamObserver.observe(teamSec);
 
             const scrollIndicator = document.getElementById('scrollIndicator');
             window.addEventListener('scroll', () => {
-                scrollIndicator.style.opacity = window.scrollY > 150 ? '0' : '0.8';
+                if (window.scrollY > 150) {
+                    scrollIndicator.style.opacity = '0';
+                } else {
+                    scrollIndicator.style.opacity = '0.8';
+                }
             });
 
             const visionObserver = new IntersectionObserver((entries) => {
                 entries.forEach((entry) => {
                     if (entry.isIntersecting) {
-                        setTimeout(() => document.getElementById('cardVision').classList.add('visible'), 200);
-                        setTimeout(() => document.getElementById('cardMission').classList.add('visible'), 500);
+                        setTimeout(() =>
+                            document.getElementById('cardVision').classList.add('visible'),
+                            200
+                        );
+                        setTimeout(() =>
+                            document.getElementById('cardMission').classList.add('visible'),
+                            500
+                        );
                         visionObserver.unobserve(entry.target);
                     }
                 });
             }, observerOptions);
+
             const visionSec = document.getElementById('visionSection');
             if (visionSec) visionObserver.observe(visionSec);
 
@@ -2553,19 +2777,28 @@
                 entries.forEach((entry) => {
                     if (entry.isIntersecting) {
                         const device = document.querySelector('.walkie-device');
-                        if (device) setTimeout(() => device.classList.add('entered'), 100);
+                        if (device) {
+                            setTimeout(() => device.classList.add('entered'), 100);
+                        }
+
                         const parts = document.querySelectorAll('.walkie-part');
                         parts.forEach((part, idx) => {
-                            setTimeout(() => part.classList.add('visible'), 650 + idx * 200);
+                            setTimeout(() => {
+                                part.classList.add('visible');
+                            }, 650 + idx * 200);
                         });
+
                         const lines = document.querySelectorAll('.msg-line');
                         lines.forEach((line, idx) => {
-                            setTimeout(() => line.classList.add('visible'), 650 + parts.length * 200 + 300 + idx * 300);
+                            setTimeout(() => {
+                                line.classList.add('visible');
+                            }, 650 + parts.length * 200 + 300 + idx * 300);
                         });
                         walkieObserver.unobserve(entry.target);
                     }
                 });
             }, observerOptions);
+
             const walkieSec = document.getElementById('walkieSection');
             if (walkieSec) walkieObserver.observe(walkieSec);
         }
@@ -2573,10 +2806,13 @@
         function initParticleCanvas() {
             const canvas = document.getElementById('particle-canvas');
             const ctx = canvas.getContext('2d');
+
             let width = canvas.width = window.innerWidth;
             let height = canvas.height = window.innerHeight;
+
             const particleCount = 35;
             const particles = [];
+
             class Particle {
                 constructor() {
                     this.x = Math.random() * width;
@@ -2586,12 +2822,14 @@
                     this.radius = Math.random() * 1.5 + 1;
                     this.alpha = Math.random() * 0.4 + 0.3;
                 }
+
                 update() {
                     this.x += this.vx;
                     this.y += this.vy;
                     if (this.x < 0 || this.x > width) this.vx *= -1;
                     if (this.y < 0 || this.y > height) this.vy *= -1;
                 }
+
                 draw() {
                     ctx.beginPath();
                     ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
@@ -2601,7 +2839,10 @@
                     ctx.fill();
                 }
             }
-            for (let i = 0; i < particleCount; i++) particles.push(new Particle());
+
+            for (let i = 0; i < particleCount; i++) {
+                particles.push(new Particle());
+            }
 
             function connectParticles() {
                 for (let i = 0; i < particles.length; i++) {
@@ -2620,6 +2861,7 @@
                     }
                 }
             }
+
             let animationId;
 
             function animate() {
@@ -2629,11 +2871,17 @@
                 connectParticles();
                 animationId = requestAnimationFrame(animate);
             }
+
             animate();
+
             document.addEventListener('visibilitychange', () => {
-                if (document.hidden) cancelAnimationFrame(animationId);
-                else animate();
+                if (document.hidden) {
+                    cancelAnimationFrame(animationId);
+                } else {
+                    animate();
+                }
             });
+
             window.addEventListener('resize', () => {
                 width = canvas.width = window.innerWidth;
                 height = canvas.height = window.innerHeight;
@@ -2644,6 +2892,7 @@
         function initCursorGlow() {
             const glow = document.getElementById('cursorGlow');
             if (!glow || window.innerWidth < 768) return;
+
             window.addEventListener('mousemove', (e) => {
                 glow.style.left = `${e.clientX}px`;
                 glow.style.top = `${e.clientY}px`;
@@ -2655,6 +2904,7 @@
             const statusText = document.getElementById('walkieStatus');
             const answerBtn = document.getElementById('callAnswerBtn');
             const endBtn = document.getElementById('callEndBtn');
+
             if (answerBtn && screenText) {
                 answerBtn.addEventListener('click', () => {
                     screenText.innerHTML = 'TERIMA<br />KASIH';
@@ -2665,6 +2915,7 @@
                     }, 3000);
                 });
             }
+
             if (endBtn && screenText) {
                 endBtn.addEventListener('click', () => {
                     screenText.innerHTML = 'TAMAT';
@@ -2677,6 +2928,9 @@
             }
         }
 
+        /* ==========================================================================
+           JENTERA BOMBA — SIREN AUDIO (WEB AUDIO API SINTETIK)
+           ========================================================================== */
         function initFireTruckSirens() {
             let audioCtx = null;
             const activeSirens = new Map();
@@ -2687,27 +2941,32 @@
                     if (!AudioCtor) return null;
                     audioCtx = new AudioCtor();
                 }
-                if (audioCtx.state === 'suspended') audioCtx.resume();
+                if (audioCtx.state === 'suspended') {
+                    audioCtx.resume();
+                }
                 return audioCtx;
             }
 
             function resetButton(btn) {
                 btn.setAttribute('aria-pressed', 'false');
-                btn.setAttribute('aria-label', 'Hidupkan bunyi siren');
+                btn.setAttribute('aria-label', 'Hidupkan bunyi siren jentera bomba');
             }
 
             function startSiren(btn) {
                 const ctx = getAudioCtx();
                 if (!ctx) return;
+
                 const osc = ctx.createOscillator();
                 const gain = ctx.createGain();
                 osc.type = 'sine';
                 gain.gain.value = 0.0001;
                 osc.connect(gain);
                 gain.connect(ctx.destination);
+
                 const now = ctx.currentTime;
                 osc.frequency.setValueAtTime(560, now);
                 gain.gain.linearRampToValueAtTime(0.07, now + 0.25);
+
                 let sweepUp = true;
                 const sweepInterval = setInterval(() => {
                     const t = ctx.currentTime;
@@ -2716,6 +2975,7 @@
                     osc.frequency.linearRampToValueAtTime(sweepUp ? 1100 : 560, t + 0.9);
                     sweepUp = !sweepUp;
                 }, 900);
+
                 osc.start();
                 activeSirens.set(btn, { osc, gain, sweepInterval });
             }
@@ -2731,23 +2991,32 @@
                     active.gain.gain.linearRampToValueAtTime(0.0001, now + 0.25);
                 }
                 clearInterval(active.sweepInterval);
-                setTimeout(() => { try { active.osc.stop(); } catch (e) { /* noop */ } }, 300);
+                setTimeout(() => {
+                    try { active.osc.stop(); } catch (e) { /* noop */ }
+                }, 300);
                 activeSirens.delete(btn);
             }
 
             document.querySelectorAll('[data-truck-sound]').forEach((btn) => {
                 btn.addEventListener('click', () => {
                     const isOn = btn.getAttribute('aria-pressed') === 'true';
-                    if (isOn) { stopSiren(btn);
-                        resetButton(btn); } else { startSiren(btn);
+                    if (isOn) {
+                        stopSiren(btn);
+                        resetButton(btn);
+                    } else {
+                        startSiren(btn);
                         btn.setAttribute('aria-pressed', 'true');
-                        btn.setAttribute('aria-label', 'Matikan bunyi siren'); }
+                        btn.setAttribute('aria-label', 'Matikan bunyi siren jentera bomba');
+                    }
                 });
             });
+
             document.addEventListener('visibilitychange', () => {
                 if (document.hidden) {
-                    activeSirens.forEach((_, btn) => { stopSiren(btn);
-                        resetButton(btn); });
+                    activeSirens.forEach((_, btn) => {
+                        stopSiren(btn);
+                        resetButton(btn);
+                    });
                 }
             });
         }
@@ -2760,14 +3029,18 @@
             initCursorGlow();
             initWalkieInteractions();
             initFireTruckSirens();
-            initFireScene();
 
             let resizeTimeout;
             window.addEventListener('resize', () => {
                 clearTimeout(resizeTimeout);
-                resizeTimeout = setTimeout(drawTeamConnections, 200);
+                resizeTimeout = setTimeout(() => {
+                    drawTeamConnections();
+                }, 200);
             });
-            window.addEventListener('load', () => setTimeout(drawTeamConnections, 1600));
+
+            window.addEventListener('load', () => {
+                setTimeout(drawTeamConnections, 1600);
+            });
         });
     </script>
 </body>
