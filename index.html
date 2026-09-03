@@ -95,7 +95,7 @@
         }
 
         /* ==========================================================================
-           3. LATAR BELAKANG — CANVAS PARTIKEL (KEKAL)
+           3. LATAR BELAKANG — CANVAS PARTIKEL
            ========================================================================== */
         #particle-canvas {
             position: fixed;
@@ -164,7 +164,7 @@
         }
 
         /* ==========================================================================
-           5. HEADER — DIGITAL IDENTITY (DI PUSATKAN)
+           5. HEADER — DIGITAL IDENTITY
            ========================================================================== */
         .header-digital {
             display: flex;
@@ -270,7 +270,7 @@
         }
 
         /* ==========================================================================
-           6. HERO — GREETING & SUBTEXT (DI PUSATKAN)
+           6. HERO — GREETING & SUBTEXT
            ========================================================================== */
         .hero-section {
             text-align: center;
@@ -594,11 +594,326 @@
         }
 
         /* ==========================================================================
-           9. VISION & MISSION SECTION
+           9. SCENE KEBAKARAN — JENTERA BERGERAK (SCROLL TRIGGER)
+           ========================================================================== */
+        .fire-scene-wrapper {
+            position: relative;
+            width: 100%;
+            margin: 30px 0 20px;
+            overflow: hidden;
+            border-radius: 12px;
+            background: linear-gradient(180deg, #f5f0eb 0%, #e8e0d8 100%);
+            min-height: 280px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.06);
+        }
+
+        .fire-scene-wrapper .scene-label {
+            position: absolute;
+            top: 14px;
+            left: 20px;
+            z-index: 20;
+            font-family: var(--font-mono);
+            color: var(--accent-orange);
+            font-size: var(--fs-tag);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-weight: 700;
+            background: rgba(255, 255, 255, 0.85);
+            padding: 4px 14px;
+            border-radius: 20px;
+            backdrop-filter: blur(4px);
+        }
+
+        .fire-scene-wrapper .truck-sound-toggle {
+            position: absolute;
+            top: 12px;
+            right: 16px;
+            z-index: 20;
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            border: 1px solid var(--border-light);
+            background: rgba(255, 255, 255, 0.85);
+            color: var(--accent-orange-dark);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(4px);
+        }
+        .fire-scene-wrapper .truck-sound-toggle:hover {
+            background: var(--accent-orange);
+            color: #fff;
+            transform: scale(1.08);
+        }
+        .fire-scene-wrapper .truck-sound-toggle svg {
+            width: 16px;
+            height: 16px;
+        }
+        .fire-scene-wrapper .truck-sound-toggle[aria-pressed="true"] {
+            background: var(--accent-orange);
+            color: #fff;
+            box-shadow: 0 0 0 4px var(--accent-glow);
+        }
+        .fire-scene-wrapper .truck-sound-toggle .icon-on {
+            display: none;
+        }
+        .fire-scene-wrapper .truck-sound-toggle[aria-pressed="true"] .icon-on {
+            display: block;
+        }
+        .fire-scene-wrapper .truck-sound-toggle[aria-pressed="true"] .icon-off {
+            display: none;
+        }
+
+        .fire-scene-svg {
+            width: 100%;
+            height: auto;
+            display: block;
+            min-height: 260px;
+        }
+
+        /* ===== SCROLL-TRIGGERED ANIMATIONS ===== */
+        .fire-scene-wrapper .fire-truck-group {
+            transition: transform 0.1s linear;
+        }
+
+        .fire-scene-wrapper .firefighter-group {
+            transition: transform 0.1s linear;
+        }
+
+        .fire-scene-wrapper .water-jet-group {
+            transition: opacity 0.3s ease;
+            opacity: 0;
+        }
+
+        .fire-scene-wrapper .house-fire-group {
+            transition: opacity 0.8s ease;
+            opacity: 1;
+        }
+
+        .fire-scene-wrapper .car-fire-group {
+            transition: opacity 0.8s ease;
+            opacity: 0;
+        }
+
+        .fire-scene-wrapper .car-crash-group {
+            transition: opacity 0.6s ease;
+            opacity: 0;
+        }
+
+        /* ===== STATES — AKTIF BILA SCROLL ===== */
+        .fire-scene-wrapper.active .water-jet-group {
+            opacity: 1;
+        }
+
+        .fire-scene-wrapper.house-done .house-fire-group {
+            opacity: 0;
+        }
+
+        .fire-scene-wrapper.house-done .water-jet-group {
+            opacity: 0;
+        }
+
+        .fire-scene-wrapper.car-active .car-crash-group {
+            opacity: 1;
+        }
+
+        .fire-scene-wrapper.car-active .car-fire-group {
+            opacity: 1;
+        }
+
+        .fire-scene-wrapper.car-active .water-jet-group {
+            opacity: 1;
+        }
+
+        .fire-scene-wrapper.car-done .car-fire-group {
+            opacity: 0;
+        }
+
+        .fire-scene-wrapper.car-done .water-jet-group {
+            opacity: 0;
+        }
+
+        /* ===== JALAN / TRACK ===== */
+        .fire-scene-wrapper .road-line {
+            stroke: rgba(255, 123, 0, 0.3);
+            stroke-width: 2;
+            stroke-dasharray: 8 12;
+        }
+
+        /* ===== API & ASAP (kekal) ===== */
+        .flame {
+            transform-box: fill-box;
+            transform-origin: bottom center;
+            animation: flameFlicker 0.55s ease-in-out infinite;
+        }
+        .flame-d1 {
+            animation-delay: 0.1s;
+        }
+        .flame-d2 {
+            animation-delay: 0.22s;
+        }
+        .flame-d3 {
+            animation-delay: 0.35s;
+        }
+        .flame-d4 {
+            animation-delay: 0.48s;
+        }
+
+        @keyframes flameFlicker {
+            0%,
+            100% {
+                transform: scale(1, 1) translateY(0);
+                opacity: 0.95;
+            }
+            25% {
+                transform: scale(1.1, 0.92) translateY(-2px);
+                opacity: 1;
+            }
+            50% {
+                transform: scale(0.9, 1.1) translateY(1px);
+                opacity: 0.82;
+            }
+            75% {
+                transform: scale(1.06, 0.95) translateY(-1px);
+                opacity: 1;
+            }
+        }
+
+        .smoke-puff {
+            transform-box: fill-box;
+            transform-origin: center;
+            animation: smokeRise 2.8s ease-out infinite;
+        }
+        .smoke-d1 {
+            animation-delay: 0s;
+        }
+        .smoke-d2 {
+            animation-delay: 0.9s;
+        }
+        .smoke-d3 {
+            animation-delay: 1.8s;
+        }
+
+        @keyframes smokeRise {
+            0% {
+                transform: translateY(0) scale(0.6);
+                opacity: 0.5;
+            }
+            100% {
+                transform: translateY(-46px) scale(1.5);
+                opacity: 0;
+            }
+        }
+
+        /* ===== PANCUTAN AIR ===== */
+        .water-jet {
+            stroke-dasharray: 6 6;
+            animation: waterJetFlow 0.4s linear infinite;
+        }
+        @keyframes waterJetFlow {
+            to {
+                stroke-dashoffset: -40;
+            }
+        }
+
+        .water-drop {
+            animation: waterDropFall 0.9s ease-in infinite;
+        }
+        .water-d1 {
+            animation-delay: 0s;
+        }
+        .water-d2 {
+            animation-delay: 0.22s;
+        }
+        .water-d3 {
+            animation-delay: 0.44s;
+        }
+        .water-d4 {
+            animation-delay: 0.66s;
+        }
+
+        @keyframes waterDropFall {
+            0% {
+                opacity: 0;
+                transform: translate(0, 0);
+            }
+            15% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+                transform: translate(-6px, 26px);
+            }
+        }
+
+        /* ===== SIREN LIGHT ===== */
+        .siren-light {
+            animation: sirenBlink 0.8s infinite alternate;
+            transform-origin: center;
+            transition: all 0.3s ease;
+            will-change: opacity, fill;
+        }
+        .siren-light:hover {
+            transform: scale(1.2);
+            filter: drop-shadow(0 0 20px rgba(255, 60, 0, 0.9));
+        }
+        .siren-glow {
+            transition: all 0.5s ease;
+        }
+        .siren-glow:hover {
+            opacity: 1;
+            filter: drop-shadow(0 0 30px rgba(255, 60, 0, 0.5));
+        }
+
+        @keyframes sirenBlink {
+            0% {
+                opacity: 0.15;
+                fill: #ff0000;
+            }
+            25% {
+                opacity: 1;
+                fill: #ff3300;
+            }
+            50% {
+                opacity: 0.15;
+                fill: #0066ff;
+            }
+            75% {
+                opacity: 1;
+                fill: #0044cc;
+            }
+            100% {
+                opacity: 0.15;
+                fill: #ff0000;
+            }
+        }
+
+        /* ===== HAZARD LIGHT ===== */
+        .hazard-light {
+            animation: hazardBlink 0.6s steps(1) infinite;
+        }
+        @keyframes hazardBlink {
+            0%,
+            49% {
+                opacity: 1;
+                fill: #ffb300;
+            }
+            50%,
+            100% {
+                opacity: 0.15;
+                fill: #ff7b00;
+            }
+        }
+
+        /* ==========================================================================
+           10. VISION & MISSION SECTION
            ========================================================================== */
         .vision-section {
-            padding: 90px 0;
+            padding: 90px 0 60px;
             width: 100%;
+            position: relative;
         }
 
         .section-title-wrap {
@@ -705,7 +1020,7 @@
         }
 
         /* ==========================================================================
-           10. WALKIE TALKIE + WORKSTATION ICON
+           11. WALKIE TALKIE + WORKSTATION ICON
            ========================================================================== */
         .walkie-section {
             padding: 90px 0;
@@ -1121,50 +1436,8 @@
             text-align: center;
         }
 
-        .siren-light {
-            animation: sirenBlink 0.8s infinite alternate;
-            transform-origin: center;
-            transition: all 0.3s ease;
-            will-change: opacity, fill;
-        }
-        .siren-light:hover {
-            transform: scale(1.2);
-            filter: drop-shadow(0 0 20px rgba(255, 60, 0, 0.9));
-        }
-
-        .siren-glow {
-            transition: all 0.5s ease;
-        }
-        .siren-glow:hover {
-            opacity: 1;
-            filter: drop-shadow(0 0 30px rgba(255, 60, 0, 0.5));
-        }
-
-        @keyframes sirenBlink {
-            0% {
-                opacity: 0.15;
-                fill: #ff0000;
-            }
-            25% {
-                opacity: 1;
-                fill: #ff3300;
-            }
-            50% {
-                opacity: 0.15;
-                fill: #0066ff;
-            }
-            75% {
-                opacity: 1;
-                fill: #0044cc;
-            }
-            100% {
-                opacity: 0.15;
-                fill: #ff0000;
-            }
-        }
-
         /* ==========================================================================
-           11. FOOTER — DENGAN SIREN SAIZ WALKIE-TALKIE
+           12. FOOTER
            ========================================================================== */
         .footer-digital {
             margin-top: 100px;
@@ -1311,247 +1584,7 @@
         }
 
         /* ==========================================================================
-           11B. JAMBATAN TRANSITION — JENTERA BERGERAK DARI KIRI KE KANAN
-           ========================================================================== */
-        .truck-transition {
-            position: relative;
-            width: 100%;
-            height: 170px;
-            margin: 10px 0 20px;
-            overflow: hidden;
-            z-index: 5;
-        }
-
-        .truck-transition .truck-road {
-            position: absolute;
-            left: 0;
-            bottom: 18px;
-            width: 100%;
-            height: 3px;
-            background: repeating-linear-gradient(
-                90deg,
-                var(--accent-orange) 0px,
-                var(--accent-orange) 26px,
-                transparent 26px,
-                transparent 52px
-            );
-            opacity: 0.45;
-        }
-
-        .scene-label {
-            position: absolute;
-            top: 12px;
-            left: 24px;
-            z-index: 6;
-            font-family: var(--font-mono);
-            color: var(--accent-orange);
-            font-size: var(--fs-tag);
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            font-weight: 700;
-        }
-
-        .scene-wrap {
-            position: absolute;
-            left: 0;
-            right: 0;
-            bottom: 14px;
-            display: flex;
-            justify-content: center;
-        }
-
-        .scene-wrap svg {
-            width: 100%;
-            max-width: 900px;
-            height: auto;
-            display: block;
-            filter: drop-shadow(0 8px 10px rgba(0, 0, 0, 0.16));
-        }
-
-        /* ===== ANIMASI JENTERA BERGERAK ===== */
-        @keyframes truckDrive {
-            0%   { transform: translateX(-30px); }
-            15%  { transform: translateX(30px); }   /* Berhenti di rumah */
-            55%  { transform: translateX(30px); }   /* Padam api rumah */
-            65%  { transform: translateX(280px); }  /* Gerak ke kereta */
-            90%  { transform: translateX(280px); }  /* Padam api kereta */
-            100% { transform: translateX(380px); }  /* Keluar ke kanan */
-        }
-
-        @keyframes firefighterMove {
-            0%   { transform: translateX(-30px); }
-            15%  { transform: translateX(30px); }
-            55%  { transform: translateX(30px); }
-            65%  { transform: translateX(280px); }
-            90%  { transform: translateX(280px); }
-            100% { transform: translateX(380px); }
-        }
-
-        @keyframes waterJetActive {
-            0%   { opacity: 0; }
-            15%  { opacity: 1; }
-            50%  { opacity: 1; }
-            55%  { opacity: 0; }
-            65%  { opacity: 0; }
-            75%  { opacity: 1; }
-            88%  { opacity: 1; }
-            100% { opacity: 0; }
-        }
-
-        @keyframes fireDie {
-            0%   { opacity: 1; }
-            45%  { opacity: 1; }
-            55%  { opacity: 0; }
-            100% { opacity: 0; }
-        }
-
-        @keyframes carAppear {
-            0%   { opacity: 0; }
-            55%  { opacity: 0; }
-            65%  { opacity: 1; }
-            100% { opacity: 1; }
-        }
-
-        @keyframes carFireAppear {
-            0%   { opacity: 0; }
-            65%  { opacity: 0; }
-            75%  { opacity: 1; }
-            100% { opacity: 1; }
-        }
-
-        @keyframes houseSmokeFade {
-            0%   { opacity: 0.4; }
-            45%  { opacity: 0.4; }
-            55%  { opacity: 0; }
-            100% { opacity: 0; }
-        }
-
-        .fire-truck,
-        .firefighter {
-            will-change: transform;
-        }
-
-        .water-jet-group {
-            will-change: opacity;
-        }
-
-        .house-fire {
-            will-change: opacity;
-        }
-        .car-fire {
-            will-change: opacity;
-        }
-        .house-smoke {
-            will-change: opacity;
-        }
-
-        /* ----- api & asap (kekal) ----- */
-        .flame {
-            transform-box: fill-box;
-            transform-origin: bottom center;
-            animation: flameFlicker 0.55s ease-in-out infinite;
-        }
-        .flame-d1 { animation-delay: 0.1s; }
-        .flame-d2 { animation-delay: 0.22s; }
-        .flame-d3 { animation-delay: 0.35s; }
-        .flame-d4 { animation-delay: 0.48s; }
-
-        @keyframes flameFlicker {
-            0%, 100% { transform: scale(1, 1) translateY(0); opacity: 0.95; }
-            25% { transform: scale(1.1, 0.92) translateY(-2px); opacity: 1; }
-            50% { transform: scale(0.9, 1.1) translateY(1px); opacity: 0.82; }
-            75% { transform: scale(1.06, 0.95) translateY(-1px); opacity: 1; }
-        }
-
-        .smoke-puff {
-            transform-box: fill-box;
-            transform-origin: center;
-            animation: smokeRise 2.8s ease-out infinite;
-        }
-        .smoke-d1 { animation-delay: 0s; }
-        .smoke-d2 { animation-delay: 0.9s; }
-        .smoke-d3 { animation-delay: 1.8s; }
-
-        @keyframes smokeRise {
-            0% { transform: translateY(0) scale(0.6); opacity: 0.5; }
-            100% { transform: translateY(-46px) scale(1.5); opacity: 0; }
-        }
-
-        /* ----- air dari hos ----- */
-        .water-jet {
-            stroke-dasharray: 6 6;
-            animation: waterJetFlow 0.4s linear infinite;
-        }
-        @keyframes waterJetFlow {
-            to { stroke-dashoffset: -40; }
-        }
-
-        .water-drop {
-            animation: waterDropFall 0.9s ease-in infinite;
-        }
-        .water-d1 { animation-delay: 0s; }
-        .water-d2 { animation-delay: 0.22s; }
-        .water-d3 { animation-delay: 0.44s; }
-        .water-d4 { animation-delay: 0.66s; }
-
-        @keyframes waterDropFall {
-            0% { opacity: 0; transform: translate(0, 0); }
-            15% { opacity: 1; }
-            100% { opacity: 0; transform: translate(-6px, 26px); }
-        }
-
-        /* ----- lampu amaran hazard ----- */
-        .hazard-light {
-            animation: hazardBlink 0.6s steps(1) infinite;
-        }
-        @keyframes hazardBlink {
-            0%, 49% { opacity: 1; fill: #ffb300; }
-            50%, 100% { opacity: 0.15; fill: #ff7b00; }
-        }
-
-        .truck-sound-toggle {
-            position: absolute;
-            top: 10px;
-            right: 24px;
-            z-index: 6;
-            width: 34px;
-            height: 34px;
-            border-radius: 50%;
-            border: 1px solid var(--border-light);
-            background: rgba(255, 255, 255, 0.75);
-            color: var(--accent-orange-dark);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        .truck-sound-toggle:hover {
-            background: var(--accent-orange);
-            color: #fff;
-            transform: scale(1.08);
-        }
-        .truck-sound-toggle svg {
-            width: 16px;
-            height: 16px;
-        }
-        .truck-sound-toggle[aria-pressed="true"] {
-            background: var(--accent-orange);
-            color: #fff;
-            box-shadow: 0 0 0 4px var(--accent-glow);
-        }
-        .truck-sound-toggle .icon-on {
-            display: none;
-        }
-        .truck-sound-toggle[aria-pressed="true"] .icon-on {
-            display: block;
-        }
-        .truck-sound-toggle[aria-pressed="true"] .icon-off {
-            display: none;
-        }
-
-        /* ==========================================================================
-           12. REKA BENTUK RESPONSIF
+           13. RESPONSIF
            ========================================================================== */
         @media (max-width: 1024px) {
             .team-arc-container {
@@ -1572,30 +1605,9 @@
             .footer-siren-wrapper {
                 width: 160px;
             }
-            .scene-wrap svg {
-                max-width: 700px;
-            }
         }
 
         @media (max-width: 768px) {
-            .truck-transition {
-                height: 130px;
-            }
-            .scene-wrap svg {
-                max-width: 480px;
-            }
-            .scene-label {
-                left: 14px;
-                top: 8px;
-                font-size: 0.55rem;
-            }
-            .truck-sound-toggle {
-                width: 30px;
-                height: 30px;
-                right: 12px;
-            }
-
-            /* ===== SKALA TIPOGRAFI MOBILE ===== */
             :root {
                 --fs-hero: 2rem;
                 --fs-hero-sub: 0.9rem;
@@ -1653,7 +1665,6 @@
                 max-width: 500px;
             }
 
-            /* ===== SUSUNAN PASUKAN MOBILE: LEADER ATAS, 2 KIRI + 2 KANAN ===== */
             .team-arc-container {
                 height: auto;
                 display: grid;
@@ -1769,22 +1780,24 @@
                 width: 140px;
             }
 
-            /* mobile truck animation adjust */
-            @keyframes truckDrive {
-                0%   { transform: translateX(-20px); }
-                15%  { transform: translateX(10px); }
-                55%  { transform: translateX(10px); }
-                65%  { transform: translateX(160px); }
-                90%  { transform: translateX(160px); }
-                100% { transform: translateX(220px); }
+            .fire-scene-wrapper {
+                min-height: 200px;
             }
-            @keyframes firefighterMove {
-                0%   { transform: translateX(-20px); }
-                15%  { transform: translateX(10px); }
-                55%  { transform: translateX(10px); }
-                65%  { transform: translateX(160px); }
-                90%  { transform: translateX(160px); }
-                100% { transform: translateX(220px); }
+            .fire-scene-wrapper .scene-label {
+                font-size: 0.55rem;
+                top: 10px;
+                left: 12px;
+                padding: 2px 10px;
+            }
+            .fire-scene-wrapper .truck-sound-toggle {
+                width: 28px;
+                height: 28px;
+                top: 8px;
+                right: 10px;
+            }
+            .fire-scene-wrapper .truck-sound-toggle svg {
+                width: 14px;
+                height: 14px;
             }
         }
 
@@ -1888,46 +1901,28 @@
                 letter-spacing: 2px;
             }
 
-            .truck-transition {
-                height: 110px;
+            .fire-scene-wrapper {
+                min-height: 160px;
             }
-            .scene-wrap svg {
-                max-width: 360px;
-            }
-            .scene-label {
+            .fire-scene-wrapper .scene-label {
                 font-size: 0.45rem;
-                left: 10px;
-                top: 6px;
+                top: 8px;
+                left: 8px;
+                padding: 2px 8px;
             }
-            .truck-sound-toggle {
-                width: 26px;
-                height: 26px;
+            .fire-scene-wrapper .truck-sound-toggle {
+                width: 24px;
+                height: 24px;
+                top: 6px;
                 right: 8px;
             }
-            .truck-sound-toggle svg {
+            .fire-scene-wrapper .truck-sound-toggle svg {
                 width: 12px;
                 height: 12px;
             }
-
-            @keyframes truckDrive {
-                0%   { transform: translateX(-10px); }
-                15%  { transform: translateX(5px); }
-                55%  { transform: translateX(5px); }
-                65%  { transform: translateX(100px); }
-                90%  { transform: translateX(100px); }
-                100% { transform: translateX(140px); }
-            }
-            @keyframes firefighterMove {
-                0%   { transform: translateX(-10px); }
-                15%  { transform: translateX(5px); }
-                55%  { transform: translateX(5px); }
-                65%  { transform: translateX(100px); }
-                90%  { transform: translateX(100px); }
-                100% { transform: translateX(140px); }
-            }
         }
 
-        /* ACCESSIBILITY: REDUCED MOTION */
+        /* ===== REDUCED MOTION ===== */
         @media (prefers-reduced-motion: reduce) {
             *,
             ::before,
@@ -1947,41 +1942,24 @@
                 animation: none !important;
                 fill: #ff3300 !important;
             }
-            .truck-wheel,
             .flame,
             .smoke-puff,
             .water-jet,
             .water-drop,
-            .rescue-bob,
             .hazard-light {
                 animation: none !important;
             }
             .walkie-device.entered {
                 animation: deviceEntrance 0.01ms forwards !important;
             }
-            .fire-truck,
-            .firefighter {
-                animation: none !important;
-                transform: translateX(30px) !important;
+            .fire-scene-wrapper .fire-truck-group {
+                transition: none !important;
             }
-            .water-jet-group {
-                opacity: 0 !important;
-            }
-            .house-fire {
-                opacity: 1 !important;
-            }
-            .car-fire {
-                opacity: 0 !important;
-            }
-            .car-crash {
-                opacity: 1 !important;
-            }
-            .house-smoke {
-                opacity: 0.4 !important;
+            .fire-scene-wrapper .firefighter-group {
+                transition: none !important;
             }
         }
 
-        /* Fokus kelihatan */
         :focus-visible {
             outline: 2px solid var(--accent-orange);
             outline-offset: 2px;
@@ -2035,12 +2013,11 @@
         </section>
 
         <!-- ==========================================================================
-             JAMBATAN TRANSITION — JENTERA BERGERAK DARI KIRI KE KANAN
+             SCENE KEBAKARAN — JENTERA BERGERAK DENGAN SCROLL
              ========================================================================== -->
-        <div class="truck-transition" data-truck-transition>
-            <div class="truck-road" aria-hidden="true"></div>
-            <div class="scene-label" aria-hidden="true">Operasi Pemadaman — Jentera Bergerak</div>
-            <button type="button" class="truck-sound-toggle" data-truck-sound aria-pressed="false" aria-label="Hidupkan bunyi siren jentera bomba">
+        <div class="fire-scene-wrapper" id="fireScene1" data-scene="house">
+            <div class="scene-label" aria-hidden="true">🔥 Operasi Pemadaman Rumah</div>
+            <button type="button" class="truck-sound-toggle" data-truck-sound aria-pressed="false" aria-label="Hidupkan bunyi siren">
                 <svg class="icon-off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M4 9v6h4l5 5V4L8 9H4z" fill="currentColor" stroke="none" />
                     <line x1="16" y1="9" x2="22" y2="15" />
@@ -2052,128 +2029,103 @@
                     <path d="M18.5 5.5a9 9 0 0 1 0 13" />
                 </svg>
             </button>
-            <div class="scene-wrap" aria-hidden="true">
-                <svg viewBox="0 0 900 160" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Jentera bomba bergerak dari kiri ke kanan memadam kebakaran rumah dan kereta">
-                    <defs>
-                        <filter id="glow">
-                            <feGaussianBlur stdDeviation="2" result="blur"/>
-                            <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
-                        </filter>
-                    </defs>
 
-                    <!-- ===== JENTERA BOMBA (BERGERAK) ===== -->
-                    <g class="fire-truck" style="animation: truckDrive 14s ease-in-out forwards;">
-                        <!-- Badan jentera -->
-                        <rect x="18" y="26" width="120" height="5" rx="2" fill="#c0c0c0" />
-                        <rect x="18" y="37" width="120" height="5" rx="2" fill="#c0c0c0" />
-                        <g stroke="#8a8a8a" stroke-width="2">
-                            <line x1="26" y1="26" x2="26" y2="42" /><line x1="38" y1="26" x2="38" y2="42" />
-                            <line x1="50" y1="26" x2="50" y2="42" /><line x1="62" y1="26" x2="62" y2="42" />
-                            <line x1="74" y1="26" x2="74" y2="42" /><line x1="86" y1="26" x2="86" y2="42" />
-                            <line x1="98" y1="26" x2="98" y2="42" /><line x1="110" y1="26" x2="110" y2="42" />
-                            <line x1="122" y1="26" x2="122" y2="42" /><line x1="134" y1="26" x2="134" y2="42" />
-                        </g>
-                        <rect x="12" y="45" width="130" height="42" rx="6" fill="#d81e05" />
-                        <rect x="12" y="65" width="130" height="8" fill="#ffffff" />
-                        <text x="77" y="62" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" font-weight="800" fill="#ffffff" letter-spacing="1">BOMBA</text>
-                        <path d="M142 87 L142 52 Q142 45 149 45 L165 45 Q174 45 179 54 L186 72 L186 87 Z" fill="#c81a04" />
-                        <path d="M151 52 L165 52 Q168 52 171 57 L175 70 L151 70 Z" fill="#bfe3ff" stroke="#7fb8de" stroke-width="1" />
-                        <rect x="178" y="76" width="6" height="6" rx="1" fill="#fff4c2" />
-                        <rect x="46" y="32" width="40" height="8" rx="3" fill="#2b2b2b" />
-                        <ellipse cx="57" cy="40" rx="22" ry="6" fill="rgba(255,60,0,0.15)" class="siren-glow" />
-                        <ellipse cx="76" cy="40" rx="22" ry="6" fill="rgba(0,100,255,0.08)" class="siren-glow" style="animation-delay: 0.4s;" />
-                        <circle cx="57" cy="36" r="5" class="siren-light" />
-                        <circle cx="76" cy="36" r="5" class="siren-light" style="animation-delay: 0.4s;" />
-                        <line x1="12" y1="45" x2="12" y2="87" stroke="#8a1200" stroke-width="1.5" />
-                        <circle cx="40" cy="88" r="13" fill="#1c1c1c" /><circle cx="40" cy="88" r="5" fill="#c9c9c9" />
-                        <circle cx="150" cy="88" r="13" fill="#1c1c1c" /><circle cx="150" cy="88" r="5" fill="#c9c9c9" />
+            <svg class="fire-scene-svg" viewBox="0 0 1200 280" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Jentera bomba bergerak dari kiri memadam kebakaran rumah">
+                <defs>
+                    <filter id="glow">
+                        <feGaussianBlur stdDeviation="2" result="blur"/>
+                        <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+                    </filter>
+                    <linearGradient id="skyGrad" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0%" stop-color="#d4dce8"/>
+                        <stop offset="100%" stop-color="#f0ebe4"/>
+                    </linearGradient>
+                </defs>
 
-                        <!-- Hos dari jentera ke petugas -->
-                        <path class="hose-line" d="M138 60 Q168 70 196 88" stroke="#555" stroke-width="3.5" fill="none" stroke-linecap="round" />
-                    </g>
+                <!-- Langit & tanah -->
+                <rect width="1200" height="280" fill="url(#skyGrad)" rx="12"/>
+                <rect x="0" y="220" width="1200" height="60" fill="#7d9b6a" rx="0"/>
+                <rect x="0" y="228" width="1200" height="52" fill="#6a8a58" rx="0"/>
 
-                    <!-- ===== PETUGAS BOMBA (BERGERAK BERSAMA JENTERA) ===== -->
-                    <g class="firefighter" style="animation: firefighterMove 14s ease-in-out forwards;">
-                        <circle cx="205" cy="72" r="9" fill="var(--skin-color)" />
-                        <path d="M195 68 Q205 56 216 68 L216 71 L195 71 Z" fill="#c81a04" />
-                        <rect x="196" y="80" width="18" height="34" rx="4" fill="#2f3b4c" />
-                        <rect x="196" y="88" width="18" height="5" fill="#ff7b00" />
-                        <rect x="197" y="112" width="6" height="18" fill="#3d3d3d" />
-                        <rect x="207" y="112" width="6" height="18" fill="#3d3d3d" />
-                        <line x1="212" y1="92" x2="232" y2="88" stroke="#2f3b4c" stroke-width="5" stroke-linecap="round" />
-                    </g>
+                <!-- Jalan -->
+                <rect x="0" y="215" width="1200" height="20" fill="#555" rx="0"/>
+                <line class="road-line" x1="0" y1="225" x2="1200" y2="225"/>
 
-                    <!-- ===== PANCUTAN AIR (AKTIF SEMASA DI RUMAH) ===== -->
-                    <g class="water-jet-group" style="animation: waterJetActive 14s ease-in-out forwards;">
-                        <path class="water-jet" d="M232 88 Q270 74 302 90" stroke="#5ec8ff" stroke-width="3" fill="none" stroke-linecap="round" />
-                        <path class="water-jet" d="M232 92 Q268 88 300 98" stroke="#8fdcff" stroke-width="2" fill="none" stroke-linecap="round" style="animation-delay: 0.15s;" />
-                        <circle class="water-drop water-d1" cx="255" cy="80" r="2.5" fill="#7fd4ff" />
-                        <circle class="water-drop water-d2" cx="270" cy="78" r="2" fill="#7fd4ff" />
-                        <circle class="water-drop water-d3" cx="285" cy="84" r="2.5" fill="#7fd4ff" />
-                        <circle class="water-drop water-d4" cx="295" cy="90" r="2" fill="#7fd4ff" />
-                    </g>
+                <!-- ===== RUMAH ===== -->
+                <g class="house-group">
+                    <polygon points="430,160 530,100 630,160" fill="#b23b2e"/>
+                    <rect x="448" y="160" width="164" height="56" fill="#f4ede4" stroke="#d8cab8" stroke-width="1.5"/>
+                    <rect x="515" y="186" width="30" height="30" fill="#6b4a30"/>
+                    <rect x="562" y="174" width="32" height="24" fill="#bfe3ff" stroke="#7fb8de" stroke-width="1.5"/>
+                    <rect x="464" y="174" width="32" height="24" fill="#3a2416" stroke="#8a6a40" stroke-width="1.5"/>
 
-                    <!-- ===== RUMAH (LOKASI KEBAKARAN 1 - KIRI) ===== -->
-                    <g class="house">
-                        <polygon points="260,96 360,38 460,96" fill="#b23b2e" />
-                        <rect x="278" y="96" width="164" height="56" fill="#f4ede4" stroke="#d8cab8" stroke-width="1.5" />
-                        <rect x="345" y="122" width="30" height="30" fill="#6b4a30" />
-                        <rect x="392" y="110" width="32" height="24" fill="#bfe3ff" stroke="#7fb8de" stroke-width="1.5" />
-                        <rect x="294" y="110" width="32" height="24" fill="#3a2416" stroke="#8a6a40" stroke-width="1.5" />
-
-                        <!-- API (PADAM SELEPAS 6 SAAT) -->
-                        <g class="house-fire" style="animation: fireDie 14s ease-in-out forwards;">
-                            <path class="flame flame-d1" d="M296 134 Q291 116 306 100 Q321 116 314 134 Q309 122 306 134 Q303 122 296 134 Z" fill="#ff3b0f" filter="url(#glow)"/>
-                            <path class="flame flame-d2" d="M299 134 Q297 120 306 108 Q315 120 312 134 Z" fill="#ff7b00" filter="url(#glow)"/>
-                            <path class="flame flame-d3" d="M302 134 Q301 124 306 116 Q311 124 309 134 Z" fill="#ffce54" filter="url(#glow)"/>
-                            <!-- API BUMBUNG -->
-                            <path class="flame flame-d2" d="M348 38 Q341 18 360 2 Q379 18 372 38 Q365 24 360 38 Q355 24 348 38 Z" fill="#ff3b0f" filter="url(#glow)"/>
-                            <path class="flame flame-d3" d="M351 38 Q348 20 360 7 Q372 20 369 38 Z" fill="#ff7b00" filter="url(#glow)"/>
-                            <path class="flame flame-d4" d="M354 38 Q352 24 360 15 Q368 24 366 38 Z" fill="#ffce54" filter="url(#glow)"/>
-                        </g>
+                    <!-- API RUMAH -->
+                    <g class="house-fire-group">
+                        <path class="flame flame-d1" d="M466 198 Q461 180 476 164 Q491 180 484 198 Q479 186 476 198 Q473 186 466 198 Z" fill="#ff3b0f" filter="url(#glow)"/>
+                        <path class="flame flame-d2" d="M469 198 Q467 184 476 172 Q485 184 482 198 Z" fill="#ff7b00" filter="url(#glow)"/>
+                        <path class="flame flame-d3" d="M472 198 Q471 188 476 180 Q481 188 479 198 Z" fill="#ffce54" filter="url(#glow)"/>
+                        <!-- API BUMBUNG -->
+                        <path class="flame flame-d2" d="M518 102 Q511 82 530 66 Q549 82 542 102 Q535 88 530 102 Q525 88 518 102 Z" fill="#ff3b0f" filter="url(#glow)"/>
+                        <path class="flame flame-d3" d="M521 102 Q518 84 530 71 Q542 84 539 102 Z" fill="#ff7b00" filter="url(#glow)"/>
+                        <path class="flame flame-d4" d="M524 102 Q522 88 530 79 Q538 88 536 102 Z" fill="#ffce54" filter="url(#glow)"/>
                         <!-- ASAP -->
-                        <g class="house-smoke" style="animation: houseSmokeFade 14s ease-in-out forwards;">
-                            <circle class="smoke-puff smoke-d1" cx="360" cy="6" r="7" fill="rgba(70,70,70,0.4)" />
-                            <circle class="smoke-puff smoke-d2" cx="352" cy="10" r="6" fill="rgba(70,70,70,0.35)" />
-                            <circle class="smoke-puff smoke-d3" cx="368" cy="8" r="6" fill="rgba(70,70,70,0.35)" />
-                        </g>
+                        <circle class="smoke-puff smoke-d1" cx="530" cy="56" r="9" fill="rgba(70,70,70,0.4)"/>
+                        <circle class="smoke-puff smoke-d2" cx="522" cy="60" r="8" fill="rgba(70,70,70,0.35)"/>
+                        <circle class="smoke-puff smoke-d3" cx="538" cy="58" r="8" fill="rgba(70,70,70,0.35)"/>
                     </g>
+                </g>
 
-                    <!-- ===== KENDERAAN TERLIBAT KEMALANGAN (LOKASI KEBAKARAN 2 - KANAN) ===== -->
-                    <g class="car-crash" style="opacity: 0; animation: carAppear 14s ease-in-out forwards;">
-                        <!-- Tanda skid -->
-                        <path d="M530 144 Q562 140 594 144" stroke="#555" stroke-width="3" fill="none" stroke-dasharray="4 4" opacity="0.4" />
-                        <!-- Kereta condong -->
-                        <g transform="rotate(-5 570 118)">
-                            <path d="M500 128 L500 108 Q502 98 515 96 L540 84 Q550 80 565 80 L603 80 Q617 80 625 90 L643 108 L643 128 Z" fill="#6b7785" stroke="#4a545e" stroke-width="1.5" />
-                            <path d="M539 92 L603 92 L625 108 L539 108 Z" fill="#a8b6bf" opacity="0.85" />
-                            <path d="M553 94 L561 102 L555 106 L565 110" stroke="#f2f5f6" stroke-width="1.4" fill="none" />
-                            <circle cx="535" cy="130" r="13" fill="#1c1c1c" /><circle cx="535" cy="130" r="5" fill="#c9c9c9" />
-                            <circle cx="615" cy="130" r="13" fill="#1c1c1c" /><circle cx="615" cy="130" r="5" fill="#c9c9c9" />
-                            <circle cx="503" cy="118" r="3" class="hazard-light" fill="#ffb300" />
-                            <circle cx="640" cy="118" r="3" class="hazard-light" fill="#ffb300" style="animation-delay: 0.3s;" />
-                        </g>
-
-                        <!-- API KERETA (MUNCUL SELEPAS 6 SAAT) -->
-                        <g class="car-fire" style="animation: carFireAppear 14s ease-in-out forwards;">
-                            <path class="flame flame-d1" d="M530 110 Q522 90 540 72 Q558 90 550 110 Q543 98 540 110 Q537 98 530 110 Z" fill="#ff3b0f" filter="url(#glow)"/>
-                            <path class="flame flame-d2" d="M534 110 Q530 94 540 80 Q550 94 546 110 Z" fill="#ff7b00" filter="url(#glow)"/>
-                            <path class="flame flame-d3" d="M537 110 Q535 98 540 88 Q545 98 543 110 Z" fill="#ffce54" filter="url(#glow)"/>
-                            <circle class="smoke-puff smoke-d1" cx="540" cy="66" r="7" fill="rgba(70,70,70,0.4)" />
-                            <circle class="smoke-puff smoke-d2" cx="532" cy="70" r="6" fill="rgba(70,70,70,0.35)" />
-                            <circle class="smoke-puff smoke-d3" cx="548" cy="68" r="6" fill="rgba(70,70,70,0.35)" />
-                        </g>
+                <!-- ===== JENTERA & BOMBA (BERGERAK) ===== -->
+                <g class="fire-truck-group" style="transform: translateX(0px); transition: transform 0.1s linear;">
+                    <!-- Badan jentera -->
+                    <rect x="20" y="178" width="100" height="6" rx="2" fill="#c0c0c0"/>
+                    <rect x="20" y="190" width="100" height="6" rx="2" fill="#c0c0c0"/>
+                    <g stroke="#8a8a8a" stroke-width="2">
+                        <line x1="28" y1="178" x2="28" y2="196"/><line x1="40" y1="178" x2="40" y2="196"/>
+                        <line x1="52" y1="178" x2="52" y2="196"/><line x1="64" y1="178" x2="64" y2="196"/>
+                        <line x1="76" y1="178" x2="76" y2="196"/><line x1="88" y1="178" x2="88" y2="196"/>
+                        <line x1="100" y1="178" x2="100" y2="196"/><line x1="112" y1="178" x2="112" y2="196"/>
                     </g>
+                    <rect x="12" y="196" width="110" height="34" rx="6" fill="#d81e05"/>
+                    <rect x="12" y="214" width="110" height="6" fill="#ffffff"/>
+                    <text x="67" y="212" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="800" fill="#ffffff" letter-spacing="1">BOMBA</text>
+                    <path d="M122 230 L122 200 Q122 195 128 195 L142 195 Q150 195 154 202 L158 216 L158 230 Z" fill="#c81a04"/>
+                    <path d="M129 200 L142 200 Q145 200 147 204 L150 214 L129 214 Z" fill="#bfe3ff" stroke="#7fb8de" stroke-width="1"/>
+                    <rect x="158" y="220" width="5" height="5" rx="1" fill="#fff4c2"/>
+                    <rect x="40" y="182" width="34" height="7" rx="3" fill="#2b2b2b"/>
+                    <ellipse cx="49" cy="190" rx="18" ry="5" fill="rgba(255,60,0,0.15)" class="siren-glow"/>
+                    <ellipse cx="66" cy="190" rx="18" ry="5" fill="rgba(0,100,255,0.08)" class="siren-glow" style="animation-delay:0.4s"/>
+                    <circle cx="49" cy="187" r="4" class="siren-light"/>
+                    <circle cx="66" cy="187" r="4" class="siren-light" style="animation-delay:0.4s"/>
+                    <line x1="12" y1="196" x2="12" y2="230" stroke="#8a1200" stroke-width="1.5"/>
+                    <circle cx="34" cy="230" r="11" fill="#1c1c1c"/><circle cx="34" cy="230" r="4" fill="#c9c9c9"/>
+                    <circle cx="128" cy="230" r="11" fill="#1c1c1c"/><circle cx="128" cy="230" r="4" fill="#c9c9c9"/>
 
-                    <!-- ===== SEGITIGA AMARAN ===== -->
-                    <g class="warning-triangle" style="opacity: 0; animation: carAppear 14s ease-in-out forwards;">
-                        <polygon points="670 112 653 148 687 148" fill="none" stroke="#ff7b00" stroke-width="4" stroke-linejoin="round" />
-                        <polygon points="670 120 659 144 681 144" fill="#fff8ee" />
-                        <rect x="668" y="126" width="4" height="12" fill="#ff7b00" />
-                        <circle cx="670" cy="141" r="2.4" fill="#ff7b00" />
-                    </g>
-                </svg>
-            </div>
+                    <!-- Hos -->
+                    <path class="hose-line" d="M116 208 Q140 214 162 228" stroke="#555" stroke-width="3" fill="none" stroke-linecap="round"/>
+                </g>
+
+                <!-- ===== BOMBA ===== -->
+                <g class="firefighter-group" style="transform: translateX(0px); transition: transform 0.1s linear;">
+                    <circle cx="172" cy="208" r="8" fill="var(--skin-color)"/>
+                    <path d="M164 204 Q172 194 180 204 L180 207 L164 207 Z" fill="#c81a04"/>
+                    <rect x="165" y="216" width="14" height="28" rx="3" fill="#2f3b4c"/>
+                    <rect x="165" y="224" width="14" height="4" fill="#ff7b00"/>
+                    <rect x="166" y="244" width="5" height="14" fill="#3d3d3d"/>
+                    <rect x="173" y="244" width="5" height="14" fill="#3d3d3d"/>
+                    <line x1="178" y1="228" x2="194" y2="224" stroke="#2f3b4c" stroke-width="4" stroke-linecap="round"/>
+                </g>
+
+                <!-- ===== PANCUTAN AIR ===== -->
+                <g class="water-jet-group">
+                    <path class="water-jet" d="M194 224 Q230 210 256 228" stroke="#5ec8ff" stroke-width="3" fill="none" stroke-linecap="round"/>
+                    <path class="water-jet" d="M194 228 Q228 224 252 234" stroke="#8fdcff" stroke-width="2" fill="none" stroke-linecap="round" style="animation-delay:0.15s"/>
+                    <circle class="water-drop water-d1" cx="215" cy="216" r="2" fill="#7fd4ff"/>
+                    <circle class="water-drop water-d2" cx="228" cy="214" r="1.8" fill="#7fd4ff"/>
+                    <circle class="water-drop water-d3" cx="240" cy="220" r="2" fill="#7fd4ff"/>
+                    <circle class="water-drop water-d4" cx="248" cy="226" r="1.8" fill="#7fd4ff"/>
+                </g>
+            </svg>
         </div>
 
         <!-- ==========================================================================
@@ -2378,7 +2330,129 @@
         </section>
 
         <!-- ==========================================================================
-             VISION & MISSION — OUR DIRECTION
+             SCENE KEBAKARAN KERETA (BAWAH) — JENTERA TURUN KE BAWAH
+             ========================================================================== -->
+        <div class="fire-scene-wrapper" id="fireScene2" data-scene="car">
+            <div class="scene-label" aria-hidden="true">🚗 Operasi Kebakaran Kenderaan</div>
+            <button type="button" class="truck-sound-toggle" data-truck-sound aria-pressed="false" aria-label="Hidupkan bunyi siren">
+                <svg class="icon-off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M4 9v6h4l5 5V4L8 9H4z" fill="currentColor" stroke="none" />
+                    <line x1="16" y1="9" x2="22" y2="15" />
+                    <line x1="22" y1="9" x2="16" y2="15" />
+                </svg>
+                <svg class="icon-on" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M4 9v6h4l5 5V4L8 9H4z" fill="currentColor" stroke="none" />
+                    <path d="M16 8a5 5 0 0 1 0 8" />
+                    <path d="M18.5 5.5a9 9 0 0 1 0 13" />
+                </svg>
+            </button>
+
+            <svg class="fire-scene-svg" viewBox="0 0 1200 280" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Jentera bomba memadam kebakaran kenderaan">
+                <defs>
+                    <filter id="glow2">
+                        <feGaussianBlur stdDeviation="2" result="blur"/>
+                        <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+                    </filter>
+                    <linearGradient id="skyGrad2" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0%" stop-color="#d4dce8"/>
+                        <stop offset="100%" stop-color="#f0ebe4"/>
+                    </linearGradient>
+                </defs>
+
+                <!-- Langit & tanah -->
+                <rect width="1200" height="280" fill="url(#skyGrad2)" rx="12"/>
+                <rect x="0" y="220" width="1200" height="60" fill="#7d9b6a" rx="0"/>
+                <rect x="0" y="228" width="1200" height="52" fill="#6a8a58" rx="0"/>
+
+                <!-- Jalan -->
+                <rect x="0" y="215" width="1200" height="20" fill="#555" rx="0"/>
+                <line class="road-line" x1="0" y1="225" x2="1200" y2="225"/>
+
+                <!-- ===== KERETA TERLIBAT KEMALANGAN ===== -->
+                <g class="car-crash-group">
+                    <!-- Tanda skid -->
+                    <path d="M680 220 Q710 216 740 220" stroke="#555" stroke-width="3" fill="none" stroke-dasharray="4 4" opacity="0.4"/>
+
+                    <!-- Kereta condong -->
+                    <g transform="rotate(-5 730 200)">
+                        <path d="M650 205 L650 185 Q652 175 665 173 L690 161 Q700 157 715 157 L753 157 Q767 157 775 167 L793 185 L793 205 Z" fill="#6b7785" stroke="#4a545e" stroke-width="1.5"/>
+                        <path d="M689 169 L753 169 L775 185 L689 185 Z" fill="#a8b6bf" opacity="0.85"/>
+                        <path d="M703 171 L711 179 L705 183 L715 187" stroke="#f2f5f6" stroke-width="1.4" fill="none"/>
+                        <circle cx="685" cy="207" r="12" fill="#1c1c1c"/><circle cx="685" cy="207" r="4" fill="#c9c9c9"/>
+                        <circle cx="765" cy="207" r="12" fill="#1c1c1c"/><circle cx="765" cy="207" r="4" fill="#c9c9c9"/>
+                        <circle cx="653" cy="195" r="3" class="hazard-light" fill="#ffb300"/>
+                        <circle cx="790" cy="195" r="3" class="hazard-light" fill="#ffb300" style="animation-delay:0.3s"/>
+                    </g>
+
+                    <!-- API KERETA -->
+                    <g class="car-fire-group">
+                        <path class="flame flame-d1" d="M680 188 Q672 168 690 150 Q708 168 700 188 Q693 176 690 188 Q687 176 680 188 Z" fill="#ff3b0f" filter="url(#glow2)"/>
+                        <path class="flame flame-d2" d="M684 188 Q680 172 690 158 Q700 172 696 188 Z" fill="#ff7b00" filter="url(#glow2)"/>
+                        <path class="flame flame-d3" d="M687 188 Q685 176 690 166 Q695 176 693 188 Z" fill="#ffce54" filter="url(#glow2)"/>
+                        <circle class="smoke-puff smoke-d1" cx="690" cy="144" r="8" fill="rgba(70,70,70,0.4)"/>
+                        <circle class="smoke-puff smoke-d2" cx="682" cy="148" r="7" fill="rgba(70,70,70,0.35)"/>
+                        <circle class="smoke-puff smoke-d3" cx="698" cy="146" r="7" fill="rgba(70,70,70,0.35)"/>
+                    </g>
+
+                    <!-- Segitiga amaran -->
+                    <polygon points="825 190 808 226 842 226" fill="none" stroke="#ff7b00" stroke-width="4" stroke-linejoin="round"/>
+                    <polygon points="825 198 814 222 836 222" fill="#fff8ee"/>
+                    <rect x="823" y="204" width="4" height="10" fill="#ff7b00"/>
+                    <circle cx="825" cy="219" r="2.5" fill="#ff7b00"/>
+                </g>
+
+                <!-- ===== JENTERA (DATANG DARI KIRI) ===== -->
+                <g class="fire-truck-group" style="transform: translateX(0px); transition: transform 0.1s linear;">
+                    <rect x="20" y="178" width="100" height="6" rx="2" fill="#c0c0c0"/>
+                    <rect x="20" y="190" width="100" height="6" rx="2" fill="#c0c0c0"/>
+                    <g stroke="#8a8a8a" stroke-width="2">
+                        <line x1="28" y1="178" x2="28" y2="196"/><line x1="40" y1="178" x2="40" y2="196"/>
+                        <line x1="52" y1="178" x2="52" y2="196"/><line x1="64" y1="178" x2="64" y2="196"/>
+                        <line x1="76" y1="178" x2="76" y2="196"/><line x1="88" y1="178" x2="88" y2="196"/>
+                        <line x1="100" y1="178" x2="100" y2="196"/><line x1="112" y1="178" x2="112" y2="196"/>
+                    </g>
+                    <rect x="12" y="196" width="110" height="34" rx="6" fill="#d81e05"/>
+                    <rect x="12" y="214" width="110" height="6" fill="#ffffff"/>
+                    <text x="67" y="212" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="800" fill="#ffffff" letter-spacing="1">BOMBA</text>
+                    <path d="M122 230 L122 200 Q122 195 128 195 L142 195 Q150 195 154 202 L158 216 L158 230 Z" fill="#c81a04"/>
+                    <path d="M129 200 L142 200 Q145 200 147 204 L150 214 L129 214 Z" fill="#bfe3ff" stroke="#7fb8de" stroke-width="1"/>
+                    <rect x="158" y="220" width="5" height="5" rx="1" fill="#fff4c2"/>
+                    <rect x="40" y="182" width="34" height="7" rx="3" fill="#2b2b2b"/>
+                    <ellipse cx="49" cy="190" rx="18" ry="5" fill="rgba(255,60,0,0.15)" class="siren-glow"/>
+                    <ellipse cx="66" cy="190" rx="18" ry="5" fill="rgba(0,100,255,0.08)" class="siren-glow" style="animation-delay:0.4s"/>
+                    <circle cx="49" cy="187" r="4" class="siren-light"/>
+                    <circle cx="66" cy="187" r="4" class="siren-light" style="animation-delay:0.4s"/>
+                    <line x1="12" y1="196" x2="12" y2="230" stroke="#8a1200" stroke-width="1.5"/>
+                    <circle cx="34" cy="230" r="11" fill="#1c1c1c"/><circle cx="34" cy="230" r="4" fill="#c9c9c9"/>
+                    <circle cx="128" cy="230" r="11" fill="#1c1c1c"/><circle cx="128" cy="230" r="4" fill="#c9c9c9"/>
+                    <path class="hose-line" d="M116 208 Q160 214 192 228" stroke="#555" stroke-width="3" fill="none" stroke-linecap="round"/>
+                </g>
+
+                <!-- ===== BOMBA ===== -->
+                <g class="firefighter-group" style="transform: translateX(0px); transition: transform 0.1s linear;">
+                    <circle cx="202" cy="208" r="8" fill="var(--skin-color)"/>
+                    <path d="M194 204 Q202 194 210 204 L210 207 L194 207 Z" fill="#c81a04"/>
+                    <rect x="195" y="216" width="14" height="28" rx="3" fill="#2f3b4c"/>
+                    <rect x="195" y="224" width="14" height="4" fill="#ff7b00"/>
+                    <rect x="196" y="244" width="5" height="14" fill="#3d3d3d"/>
+                    <rect x="203" y="244" width="5" height="14" fill="#3d3d3d"/>
+                    <line x1="208" y1="228" x2="225" y2="224" stroke="#2f3b4c" stroke-width="4" stroke-linecap="round"/>
+                </g>
+
+                <!-- ===== PANCUTAN AIR ===== -->
+                <g class="water-jet-group">
+                    <path class="water-jet" d="M225 224 Q245 210 268 228" stroke="#5ec8ff" stroke-width="3" fill="none" stroke-linecap="round"/>
+                    <path class="water-jet" d="M225 228 Q242 224 264 234" stroke="#8fdcff" stroke-width="2" fill="none" stroke-linecap="round" style="animation-delay:0.15s"/>
+                    <circle class="water-drop water-d1" cx="240" cy="216" r="2" fill="#7fd4ff"/>
+                    <circle class="water-drop water-d2" cx="252" cy="214" r="1.8" fill="#7fd4ff"/>
+                    <circle class="water-drop water-d3" cx="260" cy="220" r="2" fill="#7fd4ff"/>
+                    <circle class="water-drop water-d4" cx="266" cy="226" r="1.8" fill="#7fd4ff"/>
+                </g>
+            </svg>
+        </div>
+
+        <!-- ==========================================================================
+             VISION & MISSION — HALUAN KAMI
              ========================================================================== -->
         <section class="vision-section" id="visionSection">
             <div class="section-title-wrap">
@@ -2495,20 +2569,15 @@
             <div class="workstation-icon">
                 <svg viewBox="0 0 500 480" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Stesen kerja digital">
                     <g transform="skewY(-10deg)">
-                        <!-- Meja -->
                         <rect x="20" y="320" width="420" height="35" fill="#8B5A2B" stroke="#5C3A1E" stroke-width="3" rx="4"/>
                         <rect x="40" y="355" width="20" height="70" fill="#6B4226" rx="2"/>
                         <rect x="400" y="355" width="20" height="70" fill="#6B4226" rx="2"/>
-
-                        <!-- Siren di atas meja -->
                         <rect x="60" y="300" width="40" height="20" fill="#333" rx="3"/>
                         <rect x="68" y="260" width="24" height="42" fill="#222" rx="4"/>
                         <circle cx="74" cy="268" r="8" class="siren-light" />
                         <circle cx="86" cy="268" r="8" class="siren-light" style="animation-delay: 0.4s;" />
                         <ellipse cx="80" cy="300" rx="35" ry="8" fill="rgba(255, 60, 0, 0.15)" class="siren-glow" />
                         <ellipse cx="80" cy="300" rx="45" ry="10" fill="rgba(0, 100, 255, 0.08)" class="siren-glow" style="animation-delay: 0.4s;" />
-
-                        <!-- Komputer -->
                         <rect x="155" y="280" width="150" height="40" fill="#555" rx="4"/>
                         <rect x="165" y="150" width="130" height="130" fill="#333" rx="6"/>
                         <rect x="171" y="156" width="118" height="118" fill="#1a1a2e" rx="4"/>
@@ -2520,11 +2589,9 @@
                         <line x1="183" y1="226" x2="245" y2="226" stroke="#00ffcc" stroke-width="2.5" opacity="0.2"/>
                         <line x1="183" y1="238" x2="220" y2="238" stroke="#00ffcc" stroke-width="2.5" opacity="0.15"/>
                         <line x1="183" y1="250" x2="235" y2="250" stroke="#00ffcc" stroke-width="2.5" opacity="0.1"/>
-
                         <rect x="145" y="325" width="170" height="25" fill="#444" rx="4"/>
                         <rect x="153" y="329" width="154" height="7" fill="#666" rx="2"/>
                         <rect x="153" y="339" width="154" height="7" fill="#666" rx="2"/>
-
                         <ellipse cx="340" cy="330" rx="22" ry="15" fill="#555" stroke="#444" stroke-width="2"/>
                         <path d="M340,315 L340,330" stroke="#444" stroke-width="2.5"/>
                     </g>
@@ -2535,11 +2602,10 @@
     </div>
 
     <!-- ==========================================================================
-       FOOTER — SIREN + EMAIL · HAK CIPTA · SOSMED
+       FOOTER
        ========================================================================== -->
     <footer class="footer-digital">
         <div class="main-container">
-            <!-- SIREN FOOTER -->
             <div class="footer-siren">
                 <div class="footer-siren-wrapper">
                     <svg viewBox="0 0 200 180" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Lampu siren footer">
@@ -2561,11 +2627,9 @@
                 <div class="footer-email fade-in" id="footerEmail">
                     ✉ <a href="mailto:hello@digitalisasibravopgo.com">hello@digitalisasibravopgo.com</a>
                 </div>
-
                 <div class="footer-copyright fade-in fade-in-d1" id="footerCopyright">
                     © <span id="currentYear"></span> BRAVO THE FUTURE — ALL RIGHTS RESERVED
                 </div>
-
                 <div class="social-links">
                     <a href="#" class="social-icon" aria-label="Facebook" role="button">
                         <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
@@ -2606,12 +2670,6 @@
             SUBTEXT: 'Membina cara kerja yang lebih sistematik, pantas dan moden untuk pasukan Bravo PGO Johor.',
             VISION: 'Inovasi Selaras Generasi',
             MISSION: 'Merealisasikan Gaya Kerja Sistematik & Moden',
-            TAGLINE: [
-                'MENGHUBUNGKAN MANUSIA.',
-                'MENGHUBUNGKAN IDEA.',
-                'MEMBINA MASA DEPAN.',
-            ],
-            FOOTER: '© 2035 BRAVO THE FUTURE — ALL RIGHTS RESERVED',
             TEAM_MEMBERS: [
                 { name: 'Mohd Sudin', role: 'Ketua Pasukan / Lead Architect' },
                 { name: 'Ahmad Abdul', role: 'Pembangunan Digital' },
@@ -2621,13 +2679,133 @@
             ],
         };
 
+        /* ============================================================
+           SCROLL-TRIGGERED FIRE SCENE ANIMATION
+           ============================================================ */
+        function initFireSceneAnimations() {
+            // --- Scene 1: Rumah ---
+            const scene1 = document.getElementById('fireScene1');
+            const truck1 = scene1.querySelector('.fire-truck-group');
+            const firefighter1 = scene1.querySelector('.firefighter-group');
+            const water1 = scene1.querySelector('.water-jet-group');
+
+            // --- Scene 2: Kereta ---
+            const scene2 = document.getElementById('fireScene2');
+            const truck2 = scene2.querySelector('.fire-truck-group');
+            const firefighter2 = scene2.querySelector('.firefighter-group');
+            const water2 = scene2.querySelector('.water-jet-group');
+            const carFireGroup = scene2.querySelector('.car-fire-group');
+            const carCrashGroup = scene2.querySelector('.car-crash-group');
+
+            let scene1Done = false;
+            let scene2Started = false;
+            let scene2Done = false;
+
+            // Observer untuk Scene 1 (Rumah)
+            const observer1 = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting && !scene1Done) {
+                        // Trigger animation: truck moves from left to house
+                        scene1.classList.add('active');
+
+                        // Animate truck from left (0) to house position (~420px)
+                        let progress = 0;
+                        const duration = 2000; // ms
+                        const startTime = performance.now();
+
+                        function animateTruck(time) {
+                            const elapsed = time - startTime;
+                            progress = Math.min(elapsed / duration, 1);
+                            // Ease in-out
+                            const ease = progress < 0.5 ?
+                                2 * progress * progress :
+                                1 - Math.pow(-2 * progress + 2, 2) / 2;
+                            const targetX = ease * 390; // from 0 to ~390px
+                            truck1.style.transform = `translateX(${targetX}px)`;
+                            firefighter1.style.transform = `translateX(${targetX}px)`;
+
+                            if (progress < 1) {
+                                requestAnimationFrame(animateTruck);
+                            } else {
+                                // Truck arrived, water active
+                                scene1.classList.add('active');
+                                // After 3 seconds, fire goes out
+                                setTimeout(() => {
+                                    scene1.classList.add('house-done');
+                                    scene1Done = true;
+                                    // Trigger scene 2
+                                    startScene2();
+                                }, 3000);
+                            }
+                        }
+                        requestAnimationFrame(animateTruck);
+                        observer1.unobserve(scene1);
+                    }
+                });
+            }, { threshold: 0.4 });
+
+            observer1.observe(scene1);
+
+            // Function to start Scene 2 (Car)
+            function startScene2() {
+                if (scene2Started) return;
+                scene2Started = true;
+
+                // Make car appear
+                scene2.classList.add('car-active');
+
+                // Animate truck from left to car position (~660px)
+                let progress = 0;
+                const duration = 2200;
+                const startTime = performance.now();
+
+                function animateTruck2(time) {
+                    const elapsed = time - startTime;
+                    progress = Math.min(elapsed / duration, 1);
+                    const ease = progress < 0.5 ?
+                        2 * progress * progress :
+                        1 - Math.pow(-2 * progress + 2, 2) / 2;
+                    const targetX = ease * 630;
+                    truck2.style.transform = `translateX(${targetX}px)`;
+                    firefighter2.style.transform = `translateX(${targetX}px)`;
+
+                    if (progress < 1) {
+                        requestAnimationFrame(animateTruck2);
+                    } else {
+                        // Truck arrived, activate water
+                        scene2.classList.add('active');
+                        // After 3 seconds, car fire goes out
+                        setTimeout(() => {
+                            scene2.classList.add('car-done');
+                            scene2Done = true;
+                        }, 3000);
+                    }
+                }
+                requestAnimationFrame(animateTruck2);
+            }
+
+            // If scene2 is already visible when page loads (e.g. after refresh)
+            const observer2 = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting && scene1Done && !scene2Started) {
+                        startScene2();
+                        observer2.unobserve(scene2);
+                    }
+                });
+            }, { threshold: 0.3 });
+
+            observer2.observe(scene2);
+        }
+
+        /* ============================================================
+           KANDUNGAN & ELEMEN LAIN
+           ============================================================ */
         function initContent() {
             document.getElementById('brandTitle').textContent = PROJECT_CONFIG.PROJECT_NAME;
             document.getElementById('brandSubtitle').textContent = PROJECT_CONFIG.PROJECT_SUBTITLE;
             document.getElementById('heroSubtext').textContent = PROJECT_CONFIG.SUBTEXT;
             document.getElementById('visionText').textContent = PROJECT_CONFIG.VISION;
             document.getElementById('missionText').textContent = PROJECT_CONFIG.MISSION;
-
             document.getElementById('currentYear').textContent = new Date().getFullYear();
 
             const nodes = [
@@ -2637,7 +2815,6 @@
                 document.getElementById('nodeMember3'),
                 document.getElementById('nodeMember4'),
             ];
-
             nodes.forEach((node, i) => {
                 if (node && PROJECT_CONFIG.TEAM_MEMBERS[i]) {
                     const nameEl = node.querySelector('.member-name');
@@ -2652,28 +2829,20 @@
             const container = document.getElementById('greetingContainer');
             const text = PROJECT_CONFIG.GREETING;
             container.innerHTML = '';
-
             const words = text.split(' ');
-
             words.forEach((word, wordIndex) => {
                 const wordDiv = document.createElement('div');
                 wordDiv.className = 'greeting-line';
-
                 const wordSpan = document.createElement('span');
                 wordSpan.className = 'greeting-word';
-
-                word.split('').forEach((char, charIndex) => {
+                word.split('').forEach((char) => {
                     const span = document.createElement('span');
                     span.className = 'char-span';
                     span.textContent = char;
-                    span.dataset.wordIndex = wordIndex;
-                    span.dataset.charIndex = charIndex;
                     wordSpan.appendChild(span);
                 });
-
                 wordDiv.appendChild(wordSpan);
                 container.appendChild(wordDiv);
-
                 if (wordIndex < words.length - 1) {
                     const space = document.createElement('span');
                     space.className = 'char-span';
@@ -2683,14 +2852,10 @@
                     wordDiv.appendChild(space);
                 }
             });
-
             const allChars = container.querySelectorAll('.char-span');
             allChars.forEach((span, index) => {
-                setTimeout(() => {
-                    span.classList.add('visible');
-                }, 1200 + index * 70);
+                setTimeout(() => span.classList.add('visible'), 1200 + index * 70);
             });
-
             setTimeout(() => {
                 document.getElementById('heroSubtext').classList.add('visible');
             }, 1200 + allChars.length * 70 + 300);
@@ -2703,10 +2868,8 @@
                 if (svg) svg.innerHTML = '';
                 return;
             }
-
             svg.innerHTML = '';
             const containerRect = container.getBoundingClientRect();
-
             const leader = document.getElementById('nodeLeader');
             const members = [
                 document.getElementById('nodeMember1'),
@@ -2714,7 +2877,6 @@
                 document.getElementById('nodeMember3'),
                 document.getElementById('nodeMember4'),
             ];
-
             const getCenter = (el) => {
                 if (!el) return { x: 0, y: 0 };
                 const rect = el.getBoundingClientRect();
@@ -2723,9 +2885,7 @@
                     y: rect.top + rect.height / 2 - containerRect.top,
                 };
             };
-
             const leaderCenter = getCenter(leader);
-
             members.forEach((member) => {
                 if (!member) return;
                 const memberCenter = getCenter(member);
@@ -2741,14 +2901,10 @@
 
         function initScrollReveals() {
             const observerOptions = { threshold: 0.25 };
-
             const teamObserver = new IntersectionObserver((entries) => {
                 entries.forEach((entry) => {
                     if (entry.isIntersecting) {
-                        setTimeout(() => {
-                            document.getElementById('nodeLeader').classList.add('entered');
-                        }, 200);
-
+                        setTimeout(() => document.getElementById('nodeLeader').classList.add('entered'), 200);
                         const leftMembers = [
                             document.getElementById('nodeMember1'),
                             document.getElementById('nodeMember2'),
@@ -2757,49 +2913,31 @@
                             document.getElementById('nodeMember3'),
                             document.getElementById('nodeMember4'),
                         ];
-
                         const enterDelay = 600;
-                        leftMembers.forEach(el => {
-                            if (el) setTimeout(() => el.classList.add('entered'), enterDelay);
-                        });
-                        rightMembers.forEach(el => {
-                            if (el) setTimeout(() => el.classList.add('entered'), enterDelay);
-                        });
-
+                        leftMembers.forEach(el => { if (el) setTimeout(() => el.classList.add('entered'), enterDelay); });
+                        rightMembers.forEach(el => { if (el) setTimeout(() => el.classList.add('entered'), enterDelay); });
                         setTimeout(drawTeamConnections, 1400);
                         teamObserver.unobserve(entry.target);
                     }
                 });
             }, observerOptions);
-
             const teamSec = document.getElementById('teamSection');
             if (teamSec) teamObserver.observe(teamSec);
 
             const scrollIndicator = document.getElementById('scrollIndicator');
             window.addEventListener('scroll', () => {
-                if (window.scrollY > 150) {
-                    scrollIndicator.style.opacity = '0';
-                } else {
-                    scrollIndicator.style.opacity = '0.8';
-                }
+                scrollIndicator.style.opacity = window.scrollY > 150 ? '0' : '0.8';
             });
 
             const visionObserver = new IntersectionObserver((entries) => {
                 entries.forEach((entry) => {
                     if (entry.isIntersecting) {
-                        setTimeout(() =>
-                            document.getElementById('cardVision').classList.add('visible'),
-                            200
-                        );
-                        setTimeout(() =>
-                            document.getElementById('cardMission').classList.add('visible'),
-                            500
-                        );
+                        setTimeout(() => document.getElementById('cardVision').classList.add('visible'), 200);
+                        setTimeout(() => document.getElementById('cardMission').classList.add('visible'), 500);
                         visionObserver.unobserve(entry.target);
                     }
                 });
             }, observerOptions);
-
             const visionSec = document.getElementById('visionSection');
             if (visionSec) visionObserver.observe(visionSec);
 
@@ -2807,28 +2945,19 @@
                 entries.forEach((entry) => {
                     if (entry.isIntersecting) {
                         const device = document.querySelector('.walkie-device');
-                        if (device) {
-                            setTimeout(() => device.classList.add('entered'), 100);
-                        }
-
+                        if (device) setTimeout(() => device.classList.add('entered'), 100);
                         const parts = document.querySelectorAll('.walkie-part');
                         parts.forEach((part, idx) => {
-                            setTimeout(() => {
-                                part.classList.add('visible');
-                            }, 650 + idx * 200);
+                            setTimeout(() => part.classList.add('visible'), 650 + idx * 200);
                         });
-
                         const lines = document.querySelectorAll('.msg-line');
                         lines.forEach((line, idx) => {
-                            setTimeout(() => {
-                                line.classList.add('visible');
-                            }, 650 + parts.length * 200 + 300 + idx * 300);
+                            setTimeout(() => line.classList.add('visible'), 650 + parts.length * 200 + 300 + idx * 300);
                         });
                         walkieObserver.unobserve(entry.target);
                     }
                 });
             }, observerOptions);
-
             const walkieSec = document.getElementById('walkieSection');
             if (walkieSec) walkieObserver.observe(walkieSec);
         }
@@ -2836,13 +2965,10 @@
         function initParticleCanvas() {
             const canvas = document.getElementById('particle-canvas');
             const ctx = canvas.getContext('2d');
-
             let width = canvas.width = window.innerWidth;
             let height = canvas.height = window.innerHeight;
-
             const particleCount = 35;
             const particles = [];
-
             class Particle {
                 constructor() {
                     this.x = Math.random() * width;
@@ -2852,14 +2978,12 @@
                     this.radius = Math.random() * 1.5 + 1;
                     this.alpha = Math.random() * 0.4 + 0.3;
                 }
-
                 update() {
                     this.x += this.vx;
                     this.y += this.vy;
                     if (this.x < 0 || this.x > width) this.vx *= -1;
                     if (this.y < 0 || this.y > height) this.vy *= -1;
                 }
-
                 draw() {
                     ctx.beginPath();
                     ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
@@ -2869,10 +2993,7 @@
                     ctx.fill();
                 }
             }
-
-            for (let i = 0; i < particleCount; i++) {
-                particles.push(new Particle());
-            }
+            for (let i = 0; i < particleCount; i++) particles.push(new Particle());
 
             function connectParticles() {
                 for (let i = 0; i < particles.length; i++) {
@@ -2891,7 +3012,6 @@
                     }
                 }
             }
-
             let animationId;
 
             function animate() {
@@ -2901,17 +3021,11 @@
                 connectParticles();
                 animationId = requestAnimationFrame(animate);
             }
-
             animate();
-
             document.addEventListener('visibilitychange', () => {
-                if (document.hidden) {
-                    cancelAnimationFrame(animationId);
-                } else {
-                    animate();
-                }
+                if (document.hidden) cancelAnimationFrame(animationId);
+                else animate();
             });
-
             window.addEventListener('resize', () => {
                 width = canvas.width = window.innerWidth;
                 height = canvas.height = window.innerHeight;
@@ -2922,7 +3036,6 @@
         function initCursorGlow() {
             const glow = document.getElementById('cursorGlow');
             if (!glow || window.innerWidth < 768) return;
-
             window.addEventListener('mousemove', (e) => {
                 glow.style.left = `${e.clientX}px`;
                 glow.style.top = `${e.clientY}px`;
@@ -2934,7 +3047,6 @@
             const statusText = document.getElementById('walkieStatus');
             const answerBtn = document.getElementById('callAnswerBtn');
             const endBtn = document.getElementById('callEndBtn');
-
             if (answerBtn && screenText) {
                 answerBtn.addEventListener('click', () => {
                     screenText.innerHTML = 'TERIMA<br />KASIH';
@@ -2945,7 +3057,6 @@
                     }, 3000);
                 });
             }
-
             if (endBtn && screenText) {
                 endBtn.addEventListener('click', () => {
                     screenText.innerHTML = 'TAMAT';
@@ -2958,9 +3069,6 @@
             }
         }
 
-        /* ==========================================================================
-           JENTERA BOMBA — SIREN AUDIO (WEB AUDIO API SINTETIK)
-           ========================================================================== */
         function initFireTruckSirens() {
             let audioCtx = null;
             const activeSirens = new Map();
@@ -2971,32 +3079,27 @@
                     if (!AudioCtor) return null;
                     audioCtx = new AudioCtor();
                 }
-                if (audioCtx.state === 'suspended') {
-                    audioCtx.resume();
-                }
+                if (audioCtx.state === 'suspended') audioCtx.resume();
                 return audioCtx;
             }
 
             function resetButton(btn) {
                 btn.setAttribute('aria-pressed', 'false');
-                btn.setAttribute('aria-label', 'Hidupkan bunyi siren jentera bomba');
+                btn.setAttribute('aria-label', 'Hidupkan bunyi siren');
             }
 
             function startSiren(btn) {
                 const ctx = getAudioCtx();
                 if (!ctx) return;
-
                 const osc = ctx.createOscillator();
                 const gain = ctx.createGain();
                 osc.type = 'sine';
                 gain.gain.value = 0.0001;
                 osc.connect(gain);
                 gain.connect(ctx.destination);
-
                 const now = ctx.currentTime;
                 osc.frequency.setValueAtTime(560, now);
                 gain.gain.linearRampToValueAtTime(0.07, now + 0.25);
-
                 let sweepUp = true;
                 const sweepInterval = setInterval(() => {
                     const t = ctx.currentTime;
@@ -3005,7 +3108,6 @@
                     osc.frequency.linearRampToValueAtTime(sweepUp ? 1100 : 560, t + 0.9);
                     sweepUp = !sweepUp;
                 }, 900);
-
                 osc.start();
                 activeSirens.set(btn, { osc, gain, sweepInterval });
             }
@@ -3021,32 +3123,23 @@
                     active.gain.gain.linearRampToValueAtTime(0.0001, now + 0.25);
                 }
                 clearInterval(active.sweepInterval);
-                setTimeout(() => {
-                    try { active.osc.stop(); } catch (e) { /* noop */ }
-                }, 300);
+                setTimeout(() => { try { active.osc.stop(); } catch (e) { /* noop */ } }, 300);
                 activeSirens.delete(btn);
             }
 
             document.querySelectorAll('[data-truck-sound]').forEach((btn) => {
                 btn.addEventListener('click', () => {
                     const isOn = btn.getAttribute('aria-pressed') === 'true';
-                    if (isOn) {
-                        stopSiren(btn);
-                        resetButton(btn);
-                    } else {
-                        startSiren(btn);
+                    if (isOn) { stopSiren(btn);
+                        resetButton(btn); } else { startSiren(btn);
                         btn.setAttribute('aria-pressed', 'true');
-                        btn.setAttribute('aria-label', 'Matikan bunyi siren jentera bomba');
-                    }
+                        btn.setAttribute('aria-label', 'Matikan bunyi siren'); }
                 });
             });
-
             document.addEventListener('visibilitychange', () => {
                 if (document.hidden) {
-                    activeSirens.forEach((_, btn) => {
-                        stopSiren(btn);
-                        resetButton(btn);
-                    });
+                    activeSirens.forEach((_, btn) => { stopSiren(btn);
+                        resetButton(btn); });
                 }
             });
         }
@@ -3059,18 +3152,14 @@
             initCursorGlow();
             initWalkieInteractions();
             initFireTruckSirens();
+            initFireSceneAnimations();
 
             let resizeTimeout;
             window.addEventListener('resize', () => {
                 clearTimeout(resizeTimeout);
-                resizeTimeout = setTimeout(() => {
-                    drawTeamConnections();
-                }, 200);
+                resizeTimeout = setTimeout(drawTeamConnections, 200);
             });
-
-            window.addEventListener('load', () => {
-                setTimeout(drawTeamConnections, 1600);
-            });
+            window.addEventListener('load', () => setTimeout(drawTeamConnections, 1600));
         });
     </script>
 </body>
