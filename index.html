@@ -1311,7 +1311,7 @@
         }
 
         /* ==========================================================================
-           11B. JAMBATAN TRANSITION — ADEGAN OPERASI BOMBA
+           11B. JAMBATAN TRANSITION — JENTERA BERGERAK DARI KIRI KE KANAN
            ========================================================================== */
         .truck-transition {
             position: relative;
@@ -1362,13 +1362,90 @@
 
         .scene-wrap svg {
             width: 100%;
-            max-width: 560px;
+            max-width: 900px;
             height: auto;
             display: block;
             filter: drop-shadow(0 8px 10px rgba(0, 0, 0, 0.16));
         }
 
-        /* ----- api & asap ----- */
+        /* ===== ANIMASI JENTERA BERGERAK ===== */
+        @keyframes truckDrive {
+            0%   { transform: translateX(-30px); }
+            15%  { transform: translateX(30px); }   /* Berhenti di rumah */
+            55%  { transform: translateX(30px); }   /* Padam api rumah */
+            65%  { transform: translateX(280px); }  /* Gerak ke kereta */
+            90%  { transform: translateX(280px); }  /* Padam api kereta */
+            100% { transform: translateX(380px); }  /* Keluar ke kanan */
+        }
+
+        @keyframes firefighterMove {
+            0%   { transform: translateX(-30px); }
+            15%  { transform: translateX(30px); }
+            55%  { transform: translateX(30px); }
+            65%  { transform: translateX(280px); }
+            90%  { transform: translateX(280px); }
+            100% { transform: translateX(380px); }
+        }
+
+        @keyframes waterJetActive {
+            0%   { opacity: 0; }
+            15%  { opacity: 1; }
+            50%  { opacity: 1; }
+            55%  { opacity: 0; }
+            65%  { opacity: 0; }
+            75%  { opacity: 1; }
+            88%  { opacity: 1; }
+            100% { opacity: 0; }
+        }
+
+        @keyframes fireDie {
+            0%   { opacity: 1; }
+            45%  { opacity: 1; }
+            55%  { opacity: 0; }
+            100% { opacity: 0; }
+        }
+
+        @keyframes carAppear {
+            0%   { opacity: 0; }
+            55%  { opacity: 0; }
+            65%  { opacity: 1; }
+            100% { opacity: 1; }
+        }
+
+        @keyframes carFireAppear {
+            0%   { opacity: 0; }
+            65%  { opacity: 0; }
+            75%  { opacity: 1; }
+            100% { opacity: 1; }
+        }
+
+        @keyframes houseSmokeFade {
+            0%   { opacity: 0.4; }
+            45%  { opacity: 0.4; }
+            55%  { opacity: 0; }
+            100% { opacity: 0; }
+        }
+
+        .fire-truck,
+        .firefighter {
+            will-change: transform;
+        }
+
+        .water-jet-group {
+            will-change: opacity;
+        }
+
+        .house-fire {
+            will-change: opacity;
+        }
+        .car-fire {
+            will-change: opacity;
+        }
+        .house-smoke {
+            will-change: opacity;
+        }
+
+        /* ----- api & asap (kekal) ----- */
         .flame {
             transform-box: fill-box;
             transform-origin: bottom center;
@@ -1423,18 +1500,7 @@
             100% { opacity: 0; transform: translate(-6px, 26px); }
         }
 
-        /* ----- penyelamat & mangsa ----- */
-        .rescue-bob {
-            transform-box: fill-box;
-            transform-origin: center;
-            animation: rescueBob 0.7s ease-in-out infinite;
-        }
-        @keyframes rescueBob {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-3px); }
-        }
-
-        /* ----- lampu amaran hazard (kereta terlibat kemalangan) ----- */
+        /* ----- lampu amaran hazard ----- */
         .hazard-light {
             animation: hazardBlink 0.6s steps(1) infinite;
         }
@@ -1506,6 +1572,9 @@
             .footer-siren-wrapper {
                 width: 160px;
             }
+            .scene-wrap svg {
+                max-width: 700px;
+            }
         }
 
         @media (max-width: 768px) {
@@ -1513,11 +1582,12 @@
                 height: 130px;
             }
             .scene-wrap svg {
-                max-width: 380px;
+                max-width: 480px;
             }
             .scene-label {
                 left: 14px;
                 top: 8px;
+                font-size: 0.55rem;
             }
             .truck-sound-toggle {
                 width: 30px;
@@ -1604,7 +1674,6 @@
                 width: 100%;
             }
 
-            /* Leader — baris pertama, tengah atas */
             .node-leader {
                 grid-column: 1 / -1;
                 grid-row: 1;
@@ -1621,7 +1690,6 @@
                 top: -22px;
             }
 
-            /* Ahli — 2 di kiri, 2 di kanan, baris kedua & ketiga */
             .node-member-1 {
                 grid-column: 1;
                 grid-row: 2;
@@ -1652,7 +1720,6 @@
                 height: 80px;
             }
 
-            /* Matikan animasi translate untuk mobile (sudah pakai grid) */
             .node-member-1.entered,
             .node-member-2.entered,
             .node-member-3.entered,
@@ -1700,6 +1767,24 @@
             }
             .footer-siren-wrapper {
                 width: 140px;
+            }
+
+            /* mobile truck animation adjust */
+            @keyframes truckDrive {
+                0%   { transform: translateX(-20px); }
+                15%  { transform: translateX(10px); }
+                55%  { transform: translateX(10px); }
+                65%  { transform: translateX(160px); }
+                90%  { transform: translateX(160px); }
+                100% { transform: translateX(220px); }
+            }
+            @keyframes firefighterMove {
+                0%   { transform: translateX(-20px); }
+                15%  { transform: translateX(10px); }
+                55%  { transform: translateX(10px); }
+                65%  { transform: translateX(160px); }
+                90%  { transform: translateX(160px); }
+                100% { transform: translateX(220px); }
             }
         }
 
@@ -1802,6 +1887,44 @@
             .workstation-label {
                 letter-spacing: 2px;
             }
+
+            .truck-transition {
+                height: 110px;
+            }
+            .scene-wrap svg {
+                max-width: 360px;
+            }
+            .scene-label {
+                font-size: 0.45rem;
+                left: 10px;
+                top: 6px;
+            }
+            .truck-sound-toggle {
+                width: 26px;
+                height: 26px;
+                right: 8px;
+            }
+            .truck-sound-toggle svg {
+                width: 12px;
+                height: 12px;
+            }
+
+            @keyframes truckDrive {
+                0%   { transform: translateX(-10px); }
+                15%  { transform: translateX(5px); }
+                55%  { transform: translateX(5px); }
+                65%  { transform: translateX(100px); }
+                90%  { transform: translateX(100px); }
+                100% { transform: translateX(140px); }
+            }
+            @keyframes firefighterMove {
+                0%   { transform: translateX(-10px); }
+                15%  { transform: translateX(5px); }
+                55%  { transform: translateX(5px); }
+                65%  { transform: translateX(100px); }
+                90%  { transform: translateX(100px); }
+                100% { transform: translateX(140px); }
+            }
         }
 
         /* ACCESSIBILITY: REDUCED MOTION */
@@ -1835,6 +1958,26 @@
             }
             .walkie-device.entered {
                 animation: deviceEntrance 0.01ms forwards !important;
+            }
+            .fire-truck,
+            .firefighter {
+                animation: none !important;
+                transform: translateX(30px) !important;
+            }
+            .water-jet-group {
+                opacity: 0 !important;
+            }
+            .house-fire {
+                opacity: 1 !important;
+            }
+            .car-fire {
+                opacity: 0 !important;
+            }
+            .car-crash {
+                opacity: 1 !important;
+            }
+            .house-smoke {
+                opacity: 0.4 !important;
             }
         }
 
@@ -1892,12 +2035,12 @@
         </section>
 
         <!-- ==========================================================================
-             JAMBATAN TRANSITION 1 — OPERASI PEMADAMAN API RUMAH
+             JAMBATAN TRANSITION — JENTERA BERGERAK DARI KIRI KE KANAN
              ========================================================================== -->
         <div class="truck-transition" data-truck-transition>
             <div class="truck-road" aria-hidden="true"></div>
-            <div class="scene-label" aria-hidden="true">Operasi Pemadaman Api Rumah</div>
-            <button type="button" class="truck-sound-toggle" data-truck-sound aria-pressed="false" aria-label="Hidupkan bunyi siren operasi pemadaman api rumah">
+            <div class="scene-label" aria-hidden="true">Operasi Pemadaman — Jentera Bergerak</div>
+            <button type="button" class="truck-sound-toggle" data-truck-sound aria-pressed="false" aria-label="Hidupkan bunyi siren jentera bomba">
                 <svg class="icon-off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M4 9v6h4l5 5V4L8 9H4z" fill="currentColor" stroke="none" />
                     <line x1="16" y1="9" x2="22" y2="15" />
@@ -1910,73 +2053,125 @@
                 </svg>
             </button>
             <div class="scene-wrap" aria-hidden="true">
-                <svg viewBox="0 0 480 160" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Petugas bomba memadamkan kebakaran rumah dengan jentera bomba">
-                    <!-- jentera bomba -->
-                    <rect x="18" y="26" width="120" height="5" rx="2" fill="#c0c0c0" />
-                    <rect x="18" y="37" width="120" height="5" rx="2" fill="#c0c0c0" />
-                    <g stroke="#8a8a8a" stroke-width="2">
-                        <line x1="26" y1="26" x2="26" y2="42" /><line x1="38" y1="26" x2="38" y2="42" />
-                        <line x1="50" y1="26" x2="50" y2="42" /><line x1="62" y1="26" x2="62" y2="42" />
-                        <line x1="74" y1="26" x2="74" y2="42" /><line x1="86" y1="26" x2="86" y2="42" />
-                        <line x1="98" y1="26" x2="98" y2="42" /><line x1="110" y1="26" x2="110" y2="42" />
-                        <line x1="122" y1="26" x2="122" y2="42" /><line x1="134" y1="26" x2="134" y2="42" />
+                <svg viewBox="0 0 900 160" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Jentera bomba bergerak dari kiri ke kanan memadam kebakaran rumah dan kereta">
+                    <defs>
+                        <filter id="glow">
+                            <feGaussianBlur stdDeviation="2" result="blur"/>
+                            <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+                        </filter>
+                    </defs>
+
+                    <!-- ===== JENTERA BOMBA (BERGERAK) ===== -->
+                    <g class="fire-truck" style="animation: truckDrive 14s ease-in-out forwards;">
+                        <!-- Badan jentera -->
+                        <rect x="18" y="26" width="120" height="5" rx="2" fill="#c0c0c0" />
+                        <rect x="18" y="37" width="120" height="5" rx="2" fill="#c0c0c0" />
+                        <g stroke="#8a8a8a" stroke-width="2">
+                            <line x1="26" y1="26" x2="26" y2="42" /><line x1="38" y1="26" x2="38" y2="42" />
+                            <line x1="50" y1="26" x2="50" y2="42" /><line x1="62" y1="26" x2="62" y2="42" />
+                            <line x1="74" y1="26" x2="74" y2="42" /><line x1="86" y1="26" x2="86" y2="42" />
+                            <line x1="98" y1="26" x2="98" y2="42" /><line x1="110" y1="26" x2="110" y2="42" />
+                            <line x1="122" y1="26" x2="122" y2="42" /><line x1="134" y1="26" x2="134" y2="42" />
+                        </g>
+                        <rect x="12" y="45" width="130" height="42" rx="6" fill="#d81e05" />
+                        <rect x="12" y="65" width="130" height="8" fill="#ffffff" />
+                        <text x="77" y="62" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" font-weight="800" fill="#ffffff" letter-spacing="1">BOMBA</text>
+                        <path d="M142 87 L142 52 Q142 45 149 45 L165 45 Q174 45 179 54 L186 72 L186 87 Z" fill="#c81a04" />
+                        <path d="M151 52 L165 52 Q168 52 171 57 L175 70 L151 70 Z" fill="#bfe3ff" stroke="#7fb8de" stroke-width="1" />
+                        <rect x="178" y="76" width="6" height="6" rx="1" fill="#fff4c2" />
+                        <rect x="46" y="32" width="40" height="8" rx="3" fill="#2b2b2b" />
+                        <ellipse cx="57" cy="40" rx="22" ry="6" fill="rgba(255,60,0,0.15)" class="siren-glow" />
+                        <ellipse cx="76" cy="40" rx="22" ry="6" fill="rgba(0,100,255,0.08)" class="siren-glow" style="animation-delay: 0.4s;" />
+                        <circle cx="57" cy="36" r="5" class="siren-light" />
+                        <circle cx="76" cy="36" r="5" class="siren-light" style="animation-delay: 0.4s;" />
+                        <line x1="12" y1="45" x2="12" y2="87" stroke="#8a1200" stroke-width="1.5" />
+                        <circle cx="40" cy="88" r="13" fill="#1c1c1c" /><circle cx="40" cy="88" r="5" fill="#c9c9c9" />
+                        <circle cx="150" cy="88" r="13" fill="#1c1c1c" /><circle cx="150" cy="88" r="5" fill="#c9c9c9" />
+
+                        <!-- Hos dari jentera ke petugas -->
+                        <path class="hose-line" d="M138 60 Q168 70 196 88" stroke="#555" stroke-width="3.5" fill="none" stroke-linecap="round" />
                     </g>
-                    <rect x="12" y="45" width="130" height="42" rx="6" fill="#d81e05" />
-                    <rect x="12" y="65" width="130" height="8" fill="#ffffff" />
-                    <text x="77" y="62" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" font-weight="800" fill="#ffffff" letter-spacing="1">BOMBA</text>
-                    <path d="M142 87 L142 52 Q142 45 149 45 L165 45 Q174 45 179 54 L186 72 L186 87 Z" fill="#c81a04" />
-                    <path d="M151 52 L165 52 Q168 52 171 57 L175 70 L151 70 Z" fill="#bfe3ff" stroke="#7fb8de" stroke-width="1" />
-                    <rect x="178" y="76" width="6" height="6" rx="1" fill="#fff4c2" />
-                    <rect x="46" y="32" width="40" height="8" rx="3" fill="#2b2b2b" />
-                    <ellipse cx="57" cy="40" rx="22" ry="6" fill="rgba(255,60,0,0.15)" class="siren-glow" />
-                    <ellipse cx="76" cy="40" rx="22" ry="6" fill="rgba(0,100,255,0.08)" class="siren-glow" style="animation-delay: 0.4s;" />
-                    <circle cx="57" cy="36" r="5" class="siren-light" />
-                    <circle cx="76" cy="36" r="5" class="siren-light" style="animation-delay: 0.4s;" />
-                    <line x1="12" y1="45" x2="12" y2="87" stroke="#8a1200" stroke-width="1.5" />
-                    <circle cx="40" cy="88" r="13" fill="#1c1c1c" /><circle cx="40" cy="88" r="5" fill="#c9c9c9" />
-                    <circle cx="150" cy="88" r="13" fill="#1c1c1c" /><circle cx="150" cy="88" r="5" fill="#c9c9c9" />
 
-                    <!-- hos dari jentera ke petugas -->
-                    <path d="M138 60 Q168 70 196 88" stroke="#555" stroke-width="3.5" fill="none" stroke-linecap="round" />
+                    <!-- ===== PETUGAS BOMBA (BERGERAK BERSAMA JENTERA) ===== -->
+                    <g class="firefighter" style="animation: firefighterMove 14s ease-in-out forwards;">
+                        <circle cx="205" cy="72" r="9" fill="var(--skin-color)" />
+                        <path d="M195 68 Q205 56 216 68 L216 71 L195 71 Z" fill="#c81a04" />
+                        <rect x="196" y="80" width="18" height="34" rx="4" fill="#2f3b4c" />
+                        <rect x="196" y="88" width="18" height="5" fill="#ff7b00" />
+                        <rect x="197" y="112" width="6" height="18" fill="#3d3d3d" />
+                        <rect x="207" y="112" width="6" height="18" fill="#3d3d3d" />
+                        <line x1="212" y1="92" x2="232" y2="88" stroke="#2f3b4c" stroke-width="5" stroke-linecap="round" />
+                    </g>
 
-                    <!-- petugas bomba -->
-                    <circle cx="205" cy="72" r="9" fill="var(--skin-color)" />
-                    <path d="M195 68 Q205 56 216 68 L216 71 L195 71 Z" fill="#c81a04" />
-                    <rect x="196" y="80" width="18" height="34" rx="4" fill="#2f3b4c" />
-                    <rect x="196" y="88" width="18" height="5" fill="#ff7b00" />
-                    <rect x="197" y="112" width="6" height="18" fill="#3d3d3d" />
-                    <rect x="207" y="112" width="6" height="18" fill="#3d3d3d" />
-                    <line x1="212" y1="92" x2="232" y2="88" stroke="#2f3b4c" stroke-width="5" stroke-linecap="round" />
+                    <!-- ===== PANCUTAN AIR (AKTIF SEMASA DI RUMAH) ===== -->
+                    <g class="water-jet-group" style="animation: waterJetActive 14s ease-in-out forwards;">
+                        <path class="water-jet" d="M232 88 Q270 74 302 90" stroke="#5ec8ff" stroke-width="3" fill="none" stroke-linecap="round" />
+                        <path class="water-jet" d="M232 92 Q268 88 300 98" stroke="#8fdcff" stroke-width="2" fill="none" stroke-linecap="round" style="animation-delay: 0.15s;" />
+                        <circle class="water-drop water-d1" cx="255" cy="80" r="2.5" fill="#7fd4ff" />
+                        <circle class="water-drop water-d2" cx="270" cy="78" r="2" fill="#7fd4ff" />
+                        <circle class="water-drop water-d3" cx="285" cy="84" r="2.5" fill="#7fd4ff" />
+                        <circle class="water-drop water-d4" cx="295" cy="90" r="2" fill="#7fd4ff" />
+                    </g>
 
-                    <!-- pancutan air ke rumah -->
-                    <path class="water-jet" d="M232 88 Q270 74 302 90" stroke="#5ec8ff" stroke-width="3" fill="none" stroke-linecap="round" />
-                    <path class="water-jet" d="M232 92 Q268 88 300 98" stroke="#8fdcff" stroke-width="2" fill="none" stroke-linecap="round" style="animation-delay: 0.15s;" />
-                    <circle class="water-drop water-d1" cx="255" cy="80" r="2.5" fill="#7fd4ff" />
-                    <circle class="water-drop water-d2" cx="270" cy="78" r="2" fill="#7fd4ff" />
-                    <circle class="water-drop water-d3" cx="285" cy="84" r="2.5" fill="#7fd4ff" />
-                    <circle class="water-drop water-d4" cx="295" cy="90" r="2" fill="#7fd4ff" />
+                    <!-- ===== RUMAH (LOKASI KEBAKARAN 1 - KIRI) ===== -->
+                    <g class="house">
+                        <polygon points="260,96 360,38 460,96" fill="#b23b2e" />
+                        <rect x="278" y="96" width="164" height="56" fill="#f4ede4" stroke="#d8cab8" stroke-width="1.5" />
+                        <rect x="345" y="122" width="30" height="30" fill="#6b4a30" />
+                        <rect x="392" y="110" width="32" height="24" fill="#bfe3ff" stroke="#7fb8de" stroke-width="1.5" />
+                        <rect x="294" y="110" width="32" height="24" fill="#3a2416" stroke="#8a6a40" stroke-width="1.5" />
 
-                    <!-- rumah -->
-                    <polygon points="260,96 360,38 460,96" fill="#b23b2e" />
-                    <rect x="278" y="96" width="164" height="56" fill="#f4ede4" stroke="#d8cab8" stroke-width="1.5" />
-                    <rect x="345" y="122" width="30" height="30" fill="#6b4a30" />
-                    <rect x="392" y="110" width="32" height="24" fill="#bfe3ff" stroke="#7fb8de" stroke-width="1.5" />
+                        <!-- API (PADAM SELEPAS 6 SAAT) -->
+                        <g class="house-fire" style="animation: fireDie 14s ease-in-out forwards;">
+                            <path class="flame flame-d1" d="M296 134 Q291 116 306 100 Q321 116 314 134 Q309 122 306 134 Q303 122 296 134 Z" fill="#ff3b0f" filter="url(#glow)"/>
+                            <path class="flame flame-d2" d="M299 134 Q297 120 306 108 Q315 120 312 134 Z" fill="#ff7b00" filter="url(#glow)"/>
+                            <path class="flame flame-d3" d="M302 134 Q301 124 306 116 Q311 124 309 134 Z" fill="#ffce54" filter="url(#glow)"/>
+                            <!-- API BUMBUNG -->
+                            <path class="flame flame-d2" d="M348 38 Q341 18 360 2 Q379 18 372 38 Q365 24 360 38 Q355 24 348 38 Z" fill="#ff3b0f" filter="url(#glow)"/>
+                            <path class="flame flame-d3" d="M351 38 Q348 20 360 7 Q372 20 369 38 Z" fill="#ff7b00" filter="url(#glow)"/>
+                            <path class="flame flame-d4" d="M354 38 Q352 24 360 15 Q368 24 366 38 Z" fill="#ffce54" filter="url(#glow)"/>
+                        </g>
+                        <!-- ASAP -->
+                        <g class="house-smoke" style="animation: houseSmokeFade 14s ease-in-out forwards;">
+                            <circle class="smoke-puff smoke-d1" cx="360" cy="6" r="7" fill="rgba(70,70,70,0.4)" />
+                            <circle class="smoke-puff smoke-d2" cx="352" cy="10" r="6" fill="rgba(70,70,70,0.35)" />
+                            <circle class="smoke-puff smoke-d3" cx="368" cy="8" r="6" fill="rgba(70,70,70,0.35)" />
+                        </g>
+                    </g>
 
-                    <!-- tingkap terbakar -->
-                    <rect x="294" y="110" width="32" height="24" fill="#3a2416" stroke="#8a6a40" stroke-width="1.5" />
-                    <path class="flame flame-d1" d="M296 134 Q291 116 306 100 Q321 116 314 134 Q309 122 306 134 Q303 122 296 134 Z" fill="#ff3b0f" />
-                    <path class="flame flame-d2" d="M299 134 Q297 120 306 108 Q315 120 312 134 Z" fill="#ff7b00" />
-                    <path class="flame flame-d3" d="M302 134 Q301 124 306 116 Q311 124 309 134 Z" fill="#ffce54" />
+                    <!-- ===== KENDERAAN TERLIBAT KEMALANGAN (LOKASI KEBAKARAN 2 - KANAN) ===== -->
+                    <g class="car-crash" style="opacity: 0; animation: carAppear 14s ease-in-out forwards;">
+                        <!-- Tanda skid -->
+                        <path d="M530 144 Q562 140 594 144" stroke="#555" stroke-width="3" fill="none" stroke-dasharray="4 4" opacity="0.4" />
+                        <!-- Kereta condong -->
+                        <g transform="rotate(-5 570 118)">
+                            <path d="M500 128 L500 108 Q502 98 515 96 L540 84 Q550 80 565 80 L603 80 Q617 80 625 90 L643 108 L643 128 Z" fill="#6b7785" stroke="#4a545e" stroke-width="1.5" />
+                            <path d="M539 92 L603 92 L625 108 L539 108 Z" fill="#a8b6bf" opacity="0.85" />
+                            <path d="M553 94 L561 102 L555 106 L565 110" stroke="#f2f5f6" stroke-width="1.4" fill="none" />
+                            <circle cx="535" cy="130" r="13" fill="#1c1c1c" /><circle cx="535" cy="130" r="5" fill="#c9c9c9" />
+                            <circle cx="615" cy="130" r="13" fill="#1c1c1c" /><circle cx="615" cy="130" r="5" fill="#c9c9c9" />
+                            <circle cx="503" cy="118" r="3" class="hazard-light" fill="#ffb300" />
+                            <circle cx="640" cy="118" r="3" class="hazard-light" fill="#ffb300" style="animation-delay: 0.3s;" />
+                        </g>
 
-                    <!-- api atas bumbung -->
-                    <path class="flame flame-d2" d="M348 38 Q341 18 360 2 Q379 18 372 38 Q365 24 360 38 Q355 24 348 38 Z" fill="#ff3b0f" />
-                    <path class="flame flame-d3" d="M351 38 Q348 20 360 7 Q372 20 369 38 Z" fill="#ff7b00" />
-                    <path class="flame flame-d4" d="M354 38 Q352 24 360 15 Q368 24 366 38 Z" fill="#ffce54" />
+                        <!-- API KERETA (MUNCUL SELEPAS 6 SAAT) -->
+                        <g class="car-fire" style="animation: carFireAppear 14s ease-in-out forwards;">
+                            <path class="flame flame-d1" d="M530 110 Q522 90 540 72 Q558 90 550 110 Q543 98 540 110 Q537 98 530 110 Z" fill="#ff3b0f" filter="url(#glow)"/>
+                            <path class="flame flame-d2" d="M534 110 Q530 94 540 80 Q550 94 546 110 Z" fill="#ff7b00" filter="url(#glow)"/>
+                            <path class="flame flame-d3" d="M537 110 Q535 98 540 88 Q545 98 543 110 Z" fill="#ffce54" filter="url(#glow)"/>
+                            <circle class="smoke-puff smoke-d1" cx="540" cy="66" r="7" fill="rgba(70,70,70,0.4)" />
+                            <circle class="smoke-puff smoke-d2" cx="532" cy="70" r="6" fill="rgba(70,70,70,0.35)" />
+                            <circle class="smoke-puff smoke-d3" cx="548" cy="68" r="6" fill="rgba(70,70,70,0.35)" />
+                        </g>
+                    </g>
 
-                    <!-- asap -->
-                    <circle class="smoke-puff smoke-d1" cx="360" cy="6" r="7" fill="rgba(70,70,70,0.4)" />
-                    <circle class="smoke-puff smoke-d2" cx="352" cy="10" r="6" fill="rgba(70,70,70,0.35)" />
-                    <circle class="smoke-puff smoke-d3" cx="368" cy="8" r="6" fill="rgba(70,70,70,0.35)" />
+                    <!-- ===== SEGITIGA AMARAN ===== -->
+                    <g class="warning-triangle" style="opacity: 0; animation: carAppear 14s ease-in-out forwards;">
+                        <polygon points="670 112 653 148 687 148" fill="none" stroke="#ff7b00" stroke-width="4" stroke-linejoin="round" />
+                        <polygon points="670 120 659 144 681 144" fill="#fff8ee" />
+                        <rect x="668" y="126" width="4" height="12" fill="#ff7b00" />
+                        <circle cx="670" cy="141" r="2.4" fill="#ff7b00" />
+                    </g>
                 </svg>
             </div>
         </div>
@@ -2182,90 +2377,6 @@
             </div>
         </section>
 
-
-<!-- ==========================================================================
-             JAMBATAN TRANSITION 2 — PEMADAMAN KEBAKARAN KENDERAAN
-             ========================================================================== -->
-        <div class="truck-transition" data-truck-transition>
-            <div class="truck-road" aria-hidden="true"></div>
-            <div class="scene-label" aria-hidden="true">Pemadaman Kebakaran Kenderaan</div>
-            <button type="button" class="truck-sound-toggle" data-truck-sound aria-pressed="false" aria-label="Hidupkan bunyi siren operasi pemadaman kebakaran kenderaan">
-                <svg class="icon-off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M4 9v6h4l5 5V4L8 9H4z" fill="currentColor" stroke="none" />
-                    <line x1="16" y1="9" x2="22" y2="15" />
-                    <line x1="22" y1="9" x2="16" y2="15" />
-                </svg>
-                <svg class="icon-on" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M4 9v6h4l5 5V4L8 9H4z" fill="currentColor" stroke="none" />
-                    <path d="M16 8a5 5 0 0 1 0 8" />
-                    <path d="M18.5 5.5a9 9 0 0 1 0 13" />
-                </svg>
-            </button>
-            <div class="scene-wrap" aria-hidden="true">
-                <svg viewBox="0 0 480 160" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Petugas bomba memadamkan kebakaran kenderaan">
-                    <!-- jentera bomba -->
-                    <rect x="18" y="26" width="120" height="5" rx="2" fill="#c0c0c0" />
-                    <rect x="18" y="37" width="120" height="5" rx="2" fill="#c0c0c0" />
-                    <g stroke="#8a8a8a" stroke-width="2">
-                        <line x1="26" y1="26" x2="26" y2="42" /><line x1="38" y1="26" x2="38" y2="42" />
-                        <line x1="50" y1="26" x2="50" y2="42" /><line x1="62" y1="26" x2="62" y2="42" />
-                        <line x1="74" y1="26" x2="74" y2="42" /><line x1="86" y1="26" x2="86" y2="42" />
-                        <line x1="98" y1="26" x2="98" y2="42" /><line x1="110" y1="26" x2="110" y2="42" />
-                        <line x1="122" y1="26" x2="122" y2="42" /><line x1="134" y1="26" x2="134" y2="42" />
-                    </g>
-                    <rect x="12" y="45" width="130" height="42" rx="6" fill="#d81e05" />
-                    <rect x="12" y="65" width="130" height="8" fill="#ffffff" />
-                    <text x="77" y="62" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" font-weight="800" fill="#ffffff" letter-spacing="1">BOMBA</text>
-                    <path d="M142 87 L142 52 Q142 45 149 45 L165 45 Q174 45 179 54 L186 72 L186 87 Z" fill="#c81a04" />
-                    <path d="M151 52 L165 52 Q168 52 171 57 L175 70 L151 70 Z" fill="#bfe3ff" stroke="#7fb8de" stroke-width="1" />
-                    <rect x="178" y="76" width="6" height="6" rx="1" fill="#fff4c2" />
-                    <rect x="46" y="32" width="40" height="8" rx="3" fill="#2b2b2b" />
-                    <ellipse cx="57" cy="40" rx="22" ry="6" fill="rgba(255,60,0,0.15)" class="siren-glow" />
-                    <ellipse cx="76" cy="40" rx="22" ry="6" fill="rgba(0,100,255,0.08)" class="siren-glow" style="animation-delay: 0.4s;" />
-                    <circle cx="57" cy="36" r="5" class="siren-light" />
-                    <circle cx="76" cy="36" r="5" class="siren-light" style="animation-delay: 0.4s;" />
-                    <line x1="12" y1="45" x2="12" y2="87" stroke="#8a1200" stroke-width="1.5" />
-                    <circle cx="40" cy="88" r="13" fill="#1c1c1c" /><circle cx="40" cy="88" r="5" fill="#c9c9c9" />
-                    <circle cx="150" cy="88" r="13" fill="#1c1c1c" /><circle cx="150" cy="88" r="5" fill="#c9c9c9" />
-
-                    <!-- hos dari jentera ke petugas -->
-                    <path d="M138 60 Q168 70 196 88" stroke="#555" stroke-width="3.5" fill="none" stroke-linecap="round" />
-
-                    <!-- petugas bomba -->
-                    <circle cx="205" cy="72" r="9" fill="var(--skin-color)" />
-                    <path d="M195 68 Q205 56 216 68 L216 71 L195 71 Z" fill="#c81a04" />
-                    <rect x="196" y="80" width="18" height="34" rx="4" fill="#2f3b4c" />
-                    <rect x="196" y="88" width="18" height="5" fill="#ff7b00" />
-                    <rect x="197" y="112" width="6" height="18" fill="#3d3d3d" />
-                    <rect x="207" y="112" width="6" height="18" fill="#3d3d3d" />
-                    <line x1="212" y1="92" x2="232" y2="90" stroke="#2f3b4c" stroke-width="5" stroke-linecap="round" />
-
-                    <!-- pancutan air ke kenderaan -->
-                    <path class="water-jet" d="M232 90 Q250 78 270 92" stroke="#5ec8ff" stroke-width="3" fill="none" stroke-linecap="round" />
-                    <path class="water-jet" d="M232 94 Q248 92 268 102" stroke="#8fdcff" stroke-width="2" fill="none" stroke-linecap="round" style="animation-delay: 0.15s;" />
-                    <circle class="water-drop water-d1" cx="245" cy="82" r="2.5" fill="#7fd4ff" />
-                    <circle class="water-drop water-d2" cx="255" cy="80" r="2" fill="#7fd4ff" />
-                    <circle class="water-drop water-d3" cx="262" cy="88" r="2.5" fill="#7fd4ff" />
-                    <circle class="water-drop water-d4" cx="266" cy="96" r="2" fill="#7fd4ff" />
-
-                    <!-- kenderaan -->
-                    <path d="M255 128 L255 108 Q257 98 270 96 L295 84 Q305 80 320 80 L358 80 Q372 80 380 90 L398 108 L440 108 L440 128 Z" fill="#3a4a5c" stroke="#22303d" stroke-width="1.5" />
-                    <path d="M300 88 L320 88 Q328 88 333 94 L342 106 L300 106 Z" fill="#bfe3ff" stroke="#7fb8de" stroke-width="1" />
-                    <circle cx="290" cy="130" r="14" fill="#1c1c1c" /><circle cx="290" cy="130" r="5" fill="#c9c9c9" />
-                    <circle cx="410" cy="130" r="14" fill="#1c1c1c" /><circle cx="410" cy="130" r="5" fill="#c9c9c9" />
-
-                    <!-- api enjin -->
-                    <path class="flame flame-d1" d="M258 110 Q250 90 268 72 Q286 90 278 110 Q271 98 268 110 Q265 98 258 110 Z" fill="#ff3b0f" />
-                    <path class="flame flame-d2" d="M262 110 Q258 94 268 80 Q278 94 274 110 Z" fill="#ff7b00" />
-                    <path class="flame flame-d3" d="M265 110 Q263 98 268 88 Q273 98 271 110 Z" fill="#ffce54" />
-
-                    <!-- asap -->
-                    <circle class="smoke-puff smoke-d1" cx="268" cy="66" r="7" fill="rgba(70,70,70,0.4)" />
-                    <circle class="smoke-puff smoke-d2" cx="260" cy="70" r="6" fill="rgba(70,70,70,0.35)" />
-                    <circle class="smoke-puff smoke-d3" cx="276" cy="68" r="6" fill="rgba(70,70,70,0.35)" />
-                </svg>
-            </div>
-        </div>
         <!-- ==========================================================================
              VISION & MISSION — OUR DIRECTION
              ========================================================================== -->
@@ -2305,87 +2416,6 @@
             </div>
         </section>
 
-<!-- ==========================================================================
-             JAMBATAN TRANSITION 3 — PENYELAMAT MANGSA KEMALANGAN JALAN RAYA
-             ========================================================================== -->
-        <div class="truck-transition" data-truck-transition>
-            <div class="truck-road" aria-hidden="true"></div>
-            <div class="scene-label" aria-hidden="true">Penyelamat Mangsa Kemalangan Jalan Raya</div>
-            <button type="button" class="truck-sound-toggle" data-truck-sound aria-pressed="false" aria-label="Hidupkan bunyi siren operasi menyelamat mangsa kemalangan">
-                <svg class="icon-off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M4 9v6h4l5 5V4L8 9H4z" fill="currentColor" stroke="none" />
-                    <line x1="16" y1="9" x2="22" y2="15" />
-                    <line x1="22" y1="9" x2="16" y2="15" />
-                </svg>
-                <svg class="icon-on" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M4 9v6h4l5 5V4L8 9H4z" fill="currentColor" stroke="none" />
-                    <path d="M16 8a5 5 0 0 1 0 8" />
-                    <path d="M18.5 5.5a9 9 0 0 1 0 13" />
-                </svg>
-            </button>
-            <div class="scene-wrap" aria-hidden="true">
-                <svg viewBox="0 0 480 160" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Pasukan menyelamat mengangkat mangsa kemalangan jalan raya ke ambulans">
-                    <!-- tanda skid / kesan brek -->
-                    <path d="M8 144 Q40 140 74 144" stroke="#555" stroke-width="3" fill="none" stroke-dasharray="4 4" opacity="0.4" />
-
-                    <!-- kenderaan terlibat kemalangan (condong) -->
-                    <g transform="rotate(-5 95 118)">
-                        <path d="M25 128 L25 108 Q27 98 40 96 L65 84 Q75 80 90 80 L128 80 Q142 80 150 90 L168 108 L168 128 Z" fill="#6b7785" stroke="#4a545e" stroke-width="1.5" />
-                        <path d="M64 92 L128 92 L150 108 L64 108 Z" fill="#a8b6bf" opacity="0.85" />
-                        <path d="M78 94 L86 102 L80 106 L90 110" stroke="#f2f5f6" stroke-width="1.4" fill="none" />
-                        <circle cx="60" cy="130" r="13" fill="#1c1c1c" /><circle cx="60" cy="130" r="5" fill="#c9c9c9" />
-                        <circle cx="140" cy="130" r="13" fill="#1c1c1c" /><circle cx="140" cy="130" r="5" fill="#c9c9c9" />
-                        <circle cx="28" cy="118" r="3" class="hazard-light" fill="#ffb300" />
-                        <circle cx="165" cy="118" r="3" class="hazard-light" fill="#ffb300" style="animation-delay: 0.3s;" />
-                    </g>
-
-                    <!-- segitiga amaran -->
-                    <polygon points="195,112 178,148 212,148" fill="none" stroke="#ff7b00" stroke-width="4" stroke-linejoin="round" />
-                    <polygon points="195,120 184,144 206,144" fill="#fff8ee" />
-                    <rect x="193" y="126" width="4" height="12" fill="#ff7b00" />
-                    <circle cx="195" cy="141" r="2.4" fill="#ff7b00" />
-
-                    <!-- pasukan penyelamat mengangkat mangsa -->
-                    <g class="rescue-bob">
-                        <circle cx="222" cy="96" r="9" fill="var(--skin-color)" />
-                        <path d="M213 93 Q222 82 232 93 L232 96 L213 96 Z" fill="#ff7b00" />
-                        <rect x="213" y="104" width="18" height="30" rx="4" fill="#e8edf0" />
-                        <rect x="213" y="112" width="18" height="5" fill="#ff7b00" />
-                        <rect x="214" y="134" width="6" height="16" fill="#3d3d3d" />
-                        <rect x="224" y="134" width="6" height="16" fill="#3d3d3d" />
-
-                        <rect x="230" y="112" width="90" height="9" rx="3" fill="#cfd6dc" stroke="#9aa5ad" stroke-width="1" />
-                        <line x1="235" y1="121" x2="235" y2="130" stroke="#9aa5ad" stroke-width="2" />
-                        <line x1="315" y1="121" x2="315" y2="130" stroke="#9aa5ad" stroke-width="2" />
-
-                        <ellipse cx="275" cy="110" rx="34" ry="8" fill="var(--accent-orange-light)" />
-                        <circle cx="245" cy="108" r="7" fill="var(--skin-color)" />
-
-                        <circle cx="330" cy="96" r="9" fill="var(--skin-color)" />
-                        <path d="M321 93 Q330 82 340 93 L340 96 L321 96 Z" fill="#ff7b00" />
-                        <rect x="321" y="104" width="18" height="30" rx="4" fill="#e8edf0" />
-                        <rect x="321" y="112" width="18" height="5" fill="#ff7b00" />
-                        <rect x="322" y="134" width="6" height="16" fill="#3d3d3d" />
-                        <rect x="332" y="134" width="6" height="16" fill="#3d3d3d" />
-                    </g>
-
-                    <!-- ambulans / kenderaan penyelamat -->
-                    <rect x="326" y="90" width="104" height="44" rx="6" fill="#ffffff" stroke="#c9c9c9" stroke-width="1.5" />
-                    <rect x="326" y="108" width="104" height="8" fill="#d81e05" />
-                    <rect x="372" y="96" width="8" height="22" fill="var(--accent-orange)" />
-                    <rect x="364" y="104" width="24" height="8" fill="var(--accent-orange)" />
-                    <path d="M430 134 L430 100 Q430 92 437 92 L450 92 Q459 92 464 100 L470 116 L470 134 Z" fill="#e0e0e0" stroke="#b5b5b5" stroke-width="1" />
-                    <path d="M439 100 L450 100 Q453 100 456 104 L460 114 L439 114 Z" fill="#bfe3ff" stroke="#7fb8de" stroke-width="1" />
-                    <rect x="360" y="80" width="40" height="8" rx="3" fill="#2b2b2b" />
-                    <ellipse cx="371" cy="88" rx="22" ry="6" fill="rgba(255,60,0,0.15)" class="siren-glow" />
-                    <ellipse cx="390" cy="88" rx="22" ry="6" fill="rgba(0,100,255,0.08)" class="siren-glow" style="animation-delay: 0.4s;" />
-                    <circle cx="371" cy="84" r="5" class="siren-light" />
-                    <circle cx="390" cy="84" r="5" class="siren-light" style="animation-delay: 0.4s;" />
-                    <circle cx="350" cy="134" r="13" fill="#1c1c1c" /><circle cx="350" cy="134" r="5" fill="#c9c9c9" />
-                    <circle cx="445" cy="134" r="13" fill="#1c1c1c" /><circle cx="445" cy="134" r="5" fill="#c9c9c9" />
-                </svg>
-            </div>
-        </div>
         <!-- ==========================================================================
              WALKIE TALKIE + WORKSTATION ICON
              ========================================================================== -->
